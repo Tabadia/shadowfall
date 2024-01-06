@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpPower = 7f;
     public float gravity = 10f;
     public float dashLength = 10f;
+    public float normalHeight, crouchHeight;
  
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
@@ -20,33 +21,36 @@ public class PlayerController : MonoBehaviour
     float rotationX = 0;
  
     public bool canMove = true;
- 
+    public bool crouching = false;
+    public bool canDash = true;
+
+    private Vector3 offset; 
     
     CharacterController characterController;
+    public CapsuleCollider playerCollider;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        offset = new Vector3(0, 0.5f, 0);
     }
  
     void Update()
     {
  
-        #region Handles Movment
+        // Movement
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
  
         // Press Left Shift to run
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) && !crouching;
         float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
         float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
- 
-        #endregion
- 
-        #region Handles Jumping
+  
+        // Jumping
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpPower;
@@ -60,10 +64,8 @@ public class PlayerController : MonoBehaviour
         {
             moveDirection.y -= gravity * Time.deltaTime;
         }
- 
-        #endregion
- 
-        #region Handles Rotation
+  
+        // Rotation
         characterController.Move(moveDirection * Time.deltaTime);
  
         if (canMove)
@@ -73,8 +75,25 @@ public class PlayerController : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+
+        // Crouching
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            crouching = true;
+            characterController.height = crouchHeight;
+            playerCollider.height = crouchHeight;
+            walkSpeed /= 2;
+        }
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            crouching = false;
+            characterController.height = normalHeight;
+            playerCollider.height = normalHeight;
+            transform.position += offset;
+            walkSpeed *= 2;
+        }
  
-        #endregion
     }
 }
  
