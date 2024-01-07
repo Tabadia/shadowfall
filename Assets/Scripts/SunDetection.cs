@@ -11,6 +11,10 @@ public class SunDetection : MonoBehaviour
     public float screenAlpha;
     public bool inSun = false;
     public Vector3 lightAngle;
+    public HealthHunger healthHunger;
+    public float sunDamage = 0.25f;
+
+    private Vector3 topPos;
 
     // Start is called before the first frame update
     void Start()
@@ -18,11 +22,13 @@ public class SunDetection : MonoBehaviour
         lightAngle = directionalLight.transform.eulerAngles;
         print(lightAngle.x + " " + lightAngle.y + " " + lightAngle.z);
         lightAngle.x = -360;
+        //StartCoroutine(reduceHealth());
     }
 
     // Update is called once per frame
     void Update()
     {
+        topPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
         screenAlpha = darkenScreen.GetComponent<Image>().color.a;
         int layerMask = 1 << 8;
 
@@ -32,25 +38,28 @@ public class SunDetection : MonoBehaviour
 
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, lightAngle, out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(topPos, lightAngle, out hit, Mathf.Infinity, layerMask))
         {
-            Debug.DrawRay(transform.position, lightAngle * hit.distance, Color.yellow);
+            Debug.DrawRay(topPos, lightAngle * hit.distance, Color.yellow);
             
             if (inSun == true){
                 StartCoroutine(FadeIn());
             }
-            inSun = false;
+            if(hit.transform.tag != "Player"){
+                inSun = false;
+            }
             
         }
         else
         {
-            Debug.DrawRay(transform.position, lightAngle * 1000, Color.white);
+            Debug.DrawRay(topPos, lightAngle * 1000, Color.white);
             
             if (inSun == false){
                 StartCoroutine(FadeOut());
             }
             inSun = true;
         }
+
     }
 
     IEnumerator FadeIn()
@@ -78,4 +87,21 @@ public class SunDetection : MonoBehaviour
         }
         yield return null;
     }
+
+    IEnumerator reduceHealth()
+    {
+        print("rizz");
+        while (true){
+            if (inSun){
+                healthHunger.SetHealth(healthHunger.healthSlider.value - sunDamage);
+                print("damage!!!");
+                yield return new WaitForSeconds(.5f);
+            }
+            else{
+                yield return new WaitForSeconds(1f);
+            }
+            
+        }
+    }
+
 }
