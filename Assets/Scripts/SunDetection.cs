@@ -12,9 +12,11 @@ public class SunDetection : MonoBehaviour
     public bool inSun = false;
     public Vector3 lightAngle;
     public HealthHunger healthHunger;
+    public Player player;
     public float sunDamage = 0.25f;
 
     private Vector3 topPos;
+    public bool canTakeDamage = true;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,6 @@ public class SunDetection : MonoBehaviour
         lightAngle = directionalLight.transform.eulerAngles;
         print(lightAngle.x + " " + lightAngle.y + " " + lightAngle.z);
         lightAngle.x = -360;
-        //StartCoroutine(reduceHealth());
     }
 
     // Update is called once per frame
@@ -57,7 +58,10 @@ public class SunDetection : MonoBehaviour
             if (inSun == false){
                 StartCoroutine(FadeOut());
             }
-            inSun = true;
+            if(canTakeDamage){
+                StartCoroutine(reduceHealth());
+            }
+            inSun = true;            
         }
 
     }
@@ -90,18 +94,11 @@ public class SunDetection : MonoBehaviour
 
     IEnumerator reduceHealth()
     {
-        print("rizz");
-        while (true){
-            if (inSun){
-                healthHunger.SetHealth(healthHunger.healthSlider.value - sunDamage);
-                print("damage!!!");
-                yield return new WaitForSeconds(.5f);
-            }
-            else{
-                yield return new WaitForSeconds(1f);
-            }
-            
-        }
+        canTakeDamage = false;
+        yield return new WaitForSeconds(.1f);
+        player.currentHealth -= sunDamage;
+        healthHunger.SetHealth(player.currentHealth );
+        canTakeDamage = true;
     }
 
 }
