@@ -1,105 +1,76 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
-public class CustomTerrainGenerator : MonoBehaviour
+public class DesertDunesGenerator : MonoBehaviour
 {
-    Mesh mesh;
-    MeshFilter meshFilter;
-    Vector3[] vertices;
-    int[] triangles;
-    Vector2[] uv;
+    public int width = 256;
+    public int height = 256;
+    public float scale = 20.0f;
+    public float duneHeight = 5.0f;
+    public float transitionLength = 20.0f;
 
-    // Set the size of the mesh base
-    public int totalSize = 300; // Total size of the terrain
-    public int flatSize = 100;  // Size of the flat center area
-    public int desertSize = 100; // Size of the surrounding desert area
-    public float strength = 0.3f;
-
-    const float HeightMultiplier = 2f;
+    private MeshCollider meshCollider;
 
     void Start()
     {
-        InitializeMesh();
-        CreateShape();
-        UpdateMesh();
+        meshCollider = GetComponent<MeshCollider>();
+        GenerateTerrain();
     }
 
-    void InitializeMesh()
+    void GenerateTerrain()
     {
-        mesh = new Mesh();
-        meshFilter = GetComponent<MeshFilter>();
-        meshFilter.mesh = mesh;
-    }
-
-    void CreateShape()
-    {
-        vertices = new Vector3[(totalSize + 1) * (totalSize + 1)];
-        uv = new Vector2[vertices.Length];
-
-        for (int i = 0, z = 0; z <= totalSize; z++)
-        {
-            for (int x = 0; x <= totalSize; x++)
-            {
-                float y = CalculateHeight(x, z);
-                vertices[i] = new Vector3(x, y, z);
-                uv[i] = new Vector2((float)x / totalSize, (float)z / totalSize);
-                i++;
-            }
-        }
-
-        CreateTriangles();
-    }
-
-    float CalculateHeight(int x, int z)
-    {
-        float flatCenterHeight = 0f;
-        float desertHeight = Mathf.PerlinNoise(x * strength, z * strength) * HeightMultiplier;
-
-        // Check if the point is inside the flat center area
-        if (x >= (totalSize - flatSize) / 2 && x <= (totalSize + flatSize) / 2 &&
-            z >= (totalSize - flatSize) / 2 && z <= (totalSize + flatSize) / 2)
-        {
-            return flatCenterHeight; // Flat center area
-        }
-        else
-        {
-            return desertHeight; // Surrounding desert area
-        }
-    }
-
-    void CreateTriangles()
-    {
-        triangles = new int[totalSize * totalSize * 6];
-
-        int vert = 0;
-        int tris = 0;
-
-        for (int z = 0; z < totalSize; z++)
-        {
-            for (int x = 0; x < totalSize; x++)
-            {
-                triangles[tris + 0] = vert + 0;
-                triangles[tris + 1] = vert + totalSize + 1;
-                triangles[tris + 2] = vert + 1;
-                triangles[tris + 3] = vert + 1;
-                triangles[tris + 4] = vert + totalSize + 1;
-                triangles[tris + 5] = vert + totalSize + 2;
-
-                vert++;
-                tris += 6;
-            }
-            vert++;
-        }
-    }
-
-    void UpdateMesh()
-    {
+        MeshFilter meshFilter = GetComponent<MeshFilter>();
+        Mesh mesh = meshFilter.mesh;
         mesh.Clear();
+
+        Vector3[] vertices = new Vector3[width * height];
+        Vector2[] uv = new Vector2[width * height];
+        int[] triangles = new int[(width - 1) * (height - 1) * 6];
+        int triIndex = 0;
+
+        for (int z = 0; z < height; z++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                float xCoord = (float)x / width * scale;
+                float zCoord = (float)z / height * scale;
+                float y = Mathf.PerlinNoise(xCoord, zCoord) * duneHeight;
+
+                // Smooth transition towards the last few vertices
+                float transitionFactor = Mathf.Clamp01((float)(width - x) / transitionLength);
+                y *= transitionFactor;
+
+                vertices[z * width + x] = new Vector3(x, y, z);
+                uv[z * width + x] = new Vector2((float)x / width, (float)z / height);
+
+                if (x < width - 1 && z < height - 1)
+                {
+                    triangles[triIndex + 0] = z * width + x;
+                    triangles[triIndex + 1] = (z + 1) * width + x;
+                    triangles[triIndex + 2] = z * width + x + 1;
+
+                    triangles[triIndex + 3] = (z + 1) * width + x;
+                    triangles[triIndex + 4] = (z + 1) * width + x + 1;
+                    triangles[triIndex + 5] = z * width + x + 1;
+
+                    triIndex += 6;
+                }
+            }
+        }
+
         mesh.vertices = vertices;
-        mesh.triangles = triangles;
         mesh.uv = uv;
+        mesh.triangles = triangles;
         mesh.RecalculateNormals();
+
+        // Flip normals by multiplying by -1
+        Vector3[] normals = mesh.normals;
+        for (int i = 0; i < normals.Length; i++)
+        {
+            normals[i] = -normals[i];
+        }
+        mesh.normals = normals;
+
+        // Update the Mesh Collider
+        meshCollider.sharedMesh = mesh;
     }
 }

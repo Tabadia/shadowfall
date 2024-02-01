@@ -9,7 +9,10 @@ public class SunDetection : MonoBehaviour
     public Light directionalLight;
     public GameObject darkenScreen;
     public float screenAlpha;
+
     public bool inSun = false;
+    public bool inAnim = false;
+
     public Vector3 lightAngle;
     public HealthHunger healthHunger;
     public Player player;
@@ -18,17 +21,12 @@ public class SunDetection : MonoBehaviour
     private Vector3 topPos;
     public bool canTakeDamage = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        lightAngle = directionalLight.transform.eulerAngles;
-        print(lightAngle.x + " " + lightAngle.y + " " + lightAngle.z);
-        lightAngle.x = -360;
+    void Start() {
+        lightAngle = directionalLight.transform.forward * -1;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        lightAngle = directionalLight.transform.forward * -1;
         topPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
         screenAlpha = darkenScreen.GetComponent<Image>().color.a;
         int layerMask = 1 << 8;
@@ -42,8 +40,7 @@ public class SunDetection : MonoBehaviour
         if (Physics.Raycast(topPos, lightAngle, out hit, Mathf.Infinity, layerMask))
         {
             Debug.DrawRay(topPos, lightAngle * hit.distance, Color.yellow);
-            
-            if (inSun == true){
+            if (inSun == true && !inAnim){
                 StartCoroutine(FadeIn());
             }
             if(hit.transform.tag != "Player"){
@@ -55,7 +52,7 @@ public class SunDetection : MonoBehaviour
         {
             Debug.DrawRay(topPos, lightAngle * 1000, Color.white);
             
-            if (inSun == false){
+            if (inSun == false && !inAnim){
                 StartCoroutine(FadeOut());
             }
             if(canTakeDamage){
@@ -66,28 +63,36 @@ public class SunDetection : MonoBehaviour
 
     }
 
-    IEnumerator FadeIn()
-    {
+    IEnumerator FadeIn() {
         Image d = darkenScreen.GetComponent<Image>();
         Color dc = d.color;
+        inAnim = true;
         while (dc.a < 0.5f)
         {
             dc.a += 0.05f;
             d.color = dc;
             yield return new WaitForSeconds(0.05f);
         }
+        inAnim = false;
+        if (inSun == true){
+            StartCoroutine(FadeOut());
+        }
         yield return null;
     }
 
-    IEnumerator FadeOut()
-    {
+    IEnumerator FadeOut() {
         Image d = darkenScreen.GetComponent<Image>();
         Color dc = d.color;
+        inAnim = true;
         while (dc.a > 0.05f)
         {
             dc.a -= 0.05f;
             d.color = dc;
             yield return new WaitForSeconds(0.05f);
+        }
+        inAnim = false;
+        if (inSun == false){
+            StartCoroutine(FadeIn());
         }
         yield return null;
     }

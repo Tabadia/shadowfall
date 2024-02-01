@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 3439.4302, g: 2456.882, b: 1539.8381, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1193,6 +1193,7 @@ GameObject:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
   - component: {fileID: 705507996}
+  - component: {fileID: 705507997}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1270,13 +1271,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09229593, y: 0.7010574, z: -0.09229593, w: 0.7010574}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: -1066, y: 274, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 15, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!114 &705507996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,6 +1400,19 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
+--- !u!114 &705507997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d743586755efb154ea91e8acd80ca620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
 --- !u!1 &721964929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2527,7 +2541,7 @@ MonoBehaviour:
   lightAngle: {x: 0, y: 0, z: 0}
   healthHunger: {fileID: 565586030}
   player: {fileID: 1004948809}
-  sunDamage: 5
+  sunDamage: 2
   canTakeDamage: 1
 --- !u!114 &1004948809
 MonoBehaviour:
@@ -2897,8 +2911,9 @@ GameObject:
   - component: {fileID: 1414103873}
   - component: {fileID: 1414103872}
   - component: {fileID: 1414103871}
+  - component: {fileID: 1414103874}
   m_Layer: 0
-  m_Name: Mesh (1)
+  m_Name: Desert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2913,9 +2928,9 @@ Transform:
   m_GameObject: {fileID: 1414103869}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -125, y: -2, z: 125}
+  m_LocalPosition: {x: -125, y: 0.5, z: 124.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2931,11 +2946,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a52b5bade568e34ca4cef44abb638a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSize: 300
-  flatSize: 100
-  desertSize: 100
-  strength: 0.3
-  terrainMaterial: {fileID: 2100000, guid: c7c3728e7534a90499442c47ef5710e9, type: 2}
+  width: 256
+  height: 256
+  scale: 20
+  duneHeight: 5
+  transitionLength: 20
 --- !u!23 &1414103872
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2985,6 +3000,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414103869}
+  m_Mesh: {fileID: 0}
+--- !u!64 &1414103874
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414103869}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &1430635199 stripped
 GameObject:
