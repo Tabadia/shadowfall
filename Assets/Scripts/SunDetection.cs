@@ -19,6 +19,11 @@ public class SunDetection : MonoBehaviour
     public float sunDamage = 0.25f;
 
     private Vector3 topPos;
+    private Vector3 centPos;
+    private Vector3 botPos;
+    private Vector3 leftPos;
+    private Vector3 rightPos;
+
     public bool canTakeDamage = true;
 
     void Start() {
@@ -27,7 +32,12 @@ public class SunDetection : MonoBehaviour
 
     void Update() {
         lightAngle = directionalLight.transform.forward * -1;
-        topPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        centPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        topPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+        botPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        leftPos = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
+        rightPos = new Vector3(transform.position.x + 2, transform.position.y, transform.position.z);
+
         screenAlpha = darkenScreen.GetComponent<Image>().color.a;
         int layerMask = 1 << 8;
 
@@ -37,9 +47,14 @@ public class SunDetection : MonoBehaviour
 
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(topPos, lightAngle, out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(centPos, lightAngle, out hit, Mathf.Infinity, layerMask))
         {
+            Debug.DrawRay(centPos, lightAngle * hit.distance, Color.yellow);
             Debug.DrawRay(topPos, lightAngle * hit.distance, Color.yellow);
+            Debug.DrawRay(botPos, lightAngle * hit.distance, Color.yellow);
+            Debug.DrawRay(leftPos, lightAngle * hit.distance, Color.yellow);
+            Debug.DrawRay(rightPos, lightAngle * hit.distance, Color.yellow);
+
             if (inSun == true && !inAnim){
                 StartCoroutine(FadeIn());
             }
@@ -50,8 +65,11 @@ public class SunDetection : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(topPos, lightAngle * 1000, Color.white);
-            
+            Debug.DrawRay(centPos, lightAngle * 1000, Color.white);
+            Debug.DrawRay(topPos, lightAngle * 1000, Color.green);
+            Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
+            Debug.DrawRay(leftPos, lightAngle * 1000, Color.blue);
+            Debug.DrawRay(rightPos, lightAngle * 1000, Color.blue);
             if (inSun == false && !inAnim){
                 StartCoroutine(FadeOut());
             }
