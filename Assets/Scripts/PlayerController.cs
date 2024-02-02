@@ -93,6 +93,16 @@ public class PlayerController : MonoBehaviour
             transform.position += offset;
             walkSpeed *= 2;
         }
+
+        //sliding
+
+        /* bool isRunning = Input.GetKey(KeyCode.LeftShift) && !crouching;
+        if (isRunning)
+        {
+            if (crouching) {
+
+            }
+        } */
  
     }
 }

@@ -46,8 +46,8 @@ public class SunDetection : MonoBehaviour
         centPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
         topPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
         botPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        leftPos = new Vector3(transform.position.x - sin(angle), transform.position.y, transform.position.z - cos(angle));
-        rightPos = new Vector3(transform.position.x + sin(angle), transform.position.y, transform.position.z + cos(angle));
+        leftPos = new Vector3(transform.position.x - Mathf.Sin(angle), transform.position.y, transform.position.z - Mathf.Cos(angle));
+        rightPos = new Vector3(transform.position.x + Mathf.Sin(angle), transform.position.y, transform.position.z + Mathf.Cos(angle));
 
         
         screenAlpha = darkenScreen.GetComponent<Image>().color.a;
