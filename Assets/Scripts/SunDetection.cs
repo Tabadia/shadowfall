@@ -14,6 +14,8 @@ public class SunDetection : MonoBehaviour
     public bool inAnim = false;
 
     public Vector3 lightAngle;
+    public Vector3 sunDir;
+    
     public HealthHunger healthHunger;
     public Player player;
     public float sunDamage = 0.25f;
@@ -28,6 +30,7 @@ public class SunDetection : MonoBehaviour
 
     void Start() {
         lightAngle = directionalLight.transform.forward * -1;
+        sunDir = directionalLight.transform.forward;
     }
 
     void Update() {
@@ -38,6 +41,9 @@ public class SunDetection : MonoBehaviour
         leftPos = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
         rightPos = new Vector3(transform.position.x + 2, transform.position.y, transform.position.z);
 
+        Vector2 latDir = new Vector2(sunDir.x, sunDir.z);
+        float angle = Vector2.Angle(latDir, new Vector2(1, 0));
+        print(angle);
         screenAlpha = darkenScreen.GetComponent<Image>().color.a;
         int layerMask = 1 << 8;
 
