@@ -15,7 +15,7 @@ public class SunDetection : MonoBehaviour
 
     public Vector3 lightAngle;
     public Vector3 sunDir;
-    
+
     public HealthHunger healthHunger;
     public Player player;
     public float sunDamage = 0.25f;
@@ -29,21 +29,27 @@ public class SunDetection : MonoBehaviour
     public bool canTakeDamage = true;
 
     void Start() {
-        lightAngle = directionalLight.transform.forward * -1;
-        sunDir = directionalLight.transform.forward;
+        // lightAngle = directionalLight.transform.forward * -1;
+        // sunDir = directionalLight.transform.forward;
     }
 
     void Update() {
+
+        sunDir = directionalLight.transform.forward;
         lightAngle = directionalLight.transform.forward * -1;
-        centPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-        topPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-        botPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        leftPos = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
-        rightPos = new Vector3(transform.position.x + 2, transform.position.y, transform.position.z);
 
         Vector2 latDir = new Vector2(sunDir.x, sunDir.z);
         float angle = Vector2.Angle(latDir, new Vector2(1, 0));
         print(angle);
+
+
+        centPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        topPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+        botPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        leftPos = new Vector3(transform.position.x - sin(angle), transform.position.y, transform.position.z - cos(angle));
+        rightPos = new Vector3(transform.position.x + sin(angle), transform.position.y, transform.position.z + cos(angle));
+
+        
         screenAlpha = darkenScreen.GetComponent<Image>().color.a;
         int layerMask = 1 << 8;
 
