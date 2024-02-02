@@ -96,7 +96,8 @@ public class PlayerController : MonoBehaviour
 
         //sliding
 
-        /* bool isRunning = Input.GetKey(KeyCode.LeftShift) && !crouching;
+        //bool isRunning = Input.GetKey(KeyCode.LeftShift) && !crouching;
+        /*
         if (isRunning)
         {
             if (crouching) {

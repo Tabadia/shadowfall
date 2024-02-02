@@ -40,14 +40,15 @@ public class SunDetection : MonoBehaviour
 
         Vector2 latDir = new Vector2(sunDir.x, sunDir.z);
         float angle = Vector2.Angle(latDir, new Vector2(1, 0));
+        float toRadians = (Mathf.PI/180);
         print(angle);
 
 
         centPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
         topPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
         botPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        leftPos = new Vector3(transform.position.x - Mathf.Sin(angle), transform.position.y, transform.position.z - Mathf.Cos(angle));
-        rightPos = new Vector3(transform.position.x + Mathf.Sin(angle), transform.position.y, transform.position.z + Mathf.Cos(angle));
+        leftPos = new Vector3(transform.position.x - Mathf.Sin(angle * toRadians), transform.position.y, transform.position.z - Mathf.Cos(angle * toRadians));
+        rightPos = new Vector3(transform.position.x + Mathf.Sin(angle * toRadians), transform.position.y, transform.position.z + Mathf.Cos(angle * toRadians));
 
         
         screenAlpha = darkenScreen.GetComponent<Image>().color.a;
