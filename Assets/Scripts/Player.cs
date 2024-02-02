@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     
     // Start is called before the first frame update
+    //penis
     void Start()
     {
         StartCoroutine(reduceHunger());
