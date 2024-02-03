@@ -27,10 +27,12 @@ public class SunDetection : MonoBehaviour
     private Vector3 rightPos;
 
     public bool canTakeDamage = true;
+    float toRadians = (Mathf.PI/180);
 
     void Start() {
         // lightAngle = directionalLight.transform.forward * -1;
         // sunDir = directionalLight.transform.forward;
+        
     }
 
     void Update() {
@@ -40,8 +42,8 @@ public class SunDetection : MonoBehaviour
 
         Vector2 latDir = new Vector2(sunDir.x, sunDir.z);
         float angle = Vector2.Angle(latDir, new Vector2(1, 0));
-        float toRadians = (Mathf.PI/180);
-        print(angle);
+        
+        //print(angle);
 
 
         centPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
