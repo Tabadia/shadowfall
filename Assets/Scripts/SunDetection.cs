@@ -26,7 +26,13 @@ public class SunDetection : MonoBehaviour
     private Vector3 leftPos;
     private Vector3 rightPos;
 
+    public GameObject topEffect;
+    public GameObject botEffect;
+    public GameObject leftEffect;
+    public GameObject rightEffect;
+
     public bool canTakeDamage = true;
+    float toRadians = (Mathf.PI/180);
 
     void Start() {
         // lightAngle = directionalLight.transform.forward * -1;
@@ -40,9 +46,8 @@ public class SunDetection : MonoBehaviour
 
         Vector2 latDir = new Vector2(sunDir.x, sunDir.z);
         float angle = Vector2.Angle(latDir, new Vector2(1, 0));
-        float toRadians = (Mathf.PI/180);
-        print(angle);
-
+        
+        //print(angle);
 
         centPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
         topPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
@@ -59,14 +64,15 @@ public class SunDetection : MonoBehaviour
         layerMask = ~layerMask;
 
         RaycastHit hit;
+
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(centPos, lightAngle, out hit, Mathf.Infinity, layerMask))
         {
             Debug.DrawRay(centPos, lightAngle * hit.distance, Color.yellow);
-            Debug.DrawRay(topPos, lightAngle * hit.distance, Color.yellow);
-            Debug.DrawRay(botPos, lightAngle * hit.distance, Color.yellow);
-            Debug.DrawRay(leftPos, lightAngle * hit.distance, Color.yellow);
-            Debug.DrawRay(rightPos, lightAngle * hit.distance, Color.yellow);
+            Debug.DrawRay(topPos, lightAngle * 1000, Color.green);
+            Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
+            Debug.DrawRay(leftPos, lightAngle * 1000, Color.blue);
+            Debug.DrawRay(rightPos, lightAngle * 1000, Color.blue);
 
             if (inSun == true && !inAnim){
                 StartCoroutine(FadeIn());
@@ -75,6 +81,30 @@ public class SunDetection : MonoBehaviour
                 inSun = false;
             }
             
+            if (!Physics.Raycast(topPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
+                topEffect.SetActive(true);
+            }
+            else {
+                topEffect.SetActive(false);
+            }
+            if (!Physics.Raycast(botPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
+                botEffect.SetActive(true);
+            }
+            else {
+                botEffect.SetActive(false);
+            }
+            if (!Physics.Raycast(leftPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
+                leftEffect.SetActive(true);
+            }
+            else {
+                leftEffect.SetActive(false);
+            }
+            if (!Physics.Raycast(rightPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
+                rightEffect.SetActive(true);
+            }
+            else {
+                rightEffect.SetActive(false);
+            }
         }
         else
         {
@@ -83,13 +113,19 @@ public class SunDetection : MonoBehaviour
             Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
             Debug.DrawRay(leftPos, lightAngle * 1000, Color.blue);
             Debug.DrawRay(rightPos, lightAngle * 1000, Color.blue);
+
             if (inSun == false && !inAnim){
                 StartCoroutine(FadeOut());
             }
             if(canTakeDamage){
                 StartCoroutine(reduceHealth());
             }
-            inSun = true;            
+            inSun = true;     
+
+            topEffect.SetActive(false);
+            botEffect.SetActive(false);
+            leftEffect.SetActive(false);
+            rightEffect.SetActive(false);       
         }
 
     }
