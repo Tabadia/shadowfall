@@ -11,11 +11,11 @@ public class PlayerController : MonoBehaviour
     public float jumpPower = 7f;
     public float gravity = 10f;
     public float dashLength = 10f;
+    public float slideMultiplier = 1.5f;
     public float normalHeight, crouchHeight;
  
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
- 
  
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
@@ -23,6 +23,11 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
     public bool crouching = false;
     public bool canDash = true;
+    public bool isSliding = false;
+    
+    private Vector3 playerSlide;
+    public float slideDuration = 1.0f;
+    private float slideTimer;
 
     private Vector3 offset; 
     
@@ -42,7 +47,7 @@ public class PlayerController : MonoBehaviour
         // Movement
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
- 
+
         // Press Left Shift to run
         bool isRunning = Input.GetKey(KeyCode.LeftShift) && !crouching;
         float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
@@ -95,16 +100,32 @@ public class PlayerController : MonoBehaviour
         }
 
         //sliding
-
-        //bool isRunning = Input.GetKey(KeyCode.LeftShift) && !crouching;
-        /*
-        if (isRunning)
-        {
-            if (crouching) {
-
+        
+        if(isRunning) {
+            if(crouching) {
+                isSliding = true;
+                playerSlide = moveDirection.normalized;
+                startSlide();
             }
-        } */
- 
+        }
+        if(isSliding) {
+            updateSlide(playerSlide);
+        }
     }
+
+    void startSlide() {
+        slideTimer = slideDuration;
+    }
+
+    void updateSlide(Vector3 slideDir) {
+        if (slideTimer > 0) {
+            characterController.Move(slideDir * Time.deltaTime * slideMultiplier * runSpeed);
+            Debug.Log(slideTimer);
+            slideTimer -= Time.deltaTime;
+            isSliding = crouching;
+        } else {
+            isSliding = false;
+        }
+    }
+
 }
- 
