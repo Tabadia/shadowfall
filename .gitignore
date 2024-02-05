@@ -272,3 +272,4 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
+.vsconfig
