@@ -22,7 +22,7 @@ public class SunDetection : MonoBehaviour
 
     private Vector3 topPos;
     private Vector3 centPos;
-    private Vector3 botPos;
+    //private Vector3 botPos;
     private Vector3 leftPos;
     private Vector3 rightPos;
 
@@ -49,11 +49,11 @@ public class SunDetection : MonoBehaviour
         
         //print(angle);
 
-        centPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-        topPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-        botPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        leftPos = new Vector3(transform.position.x - Mathf.Sin(angle * toRadians), transform.position.y, transform.position.z - Mathf.Cos(angle * toRadians));
-        rightPos = new Vector3(transform.position.x + Mathf.Sin(angle * toRadians), transform.position.y, transform.position.z + Mathf.Cos(angle * toRadians));
+        centPos = new Vector3(transform.position.x, transform.position.y - transform.localScale.y, transform.position.z);
+        topPos = new Vector3(centPos.x, centPos.y + (transform.localScale.y), centPos.z);
+        //botPos = new Vector3(centPos.x, centPos.y - , centPos.z);
+        leftPos = new Vector3(centPos.x - Mathf.Sin(angle * toRadians)*2f, centPos.y, centPos.z - Mathf.Cos(angle * toRadians)*2f);
+        rightPos = new Vector3(centPos.x + Mathf.Sin(angle * toRadians)*2f, centPos.y, centPos.z + Mathf.Cos(angle * toRadians)*2f);
 
         
         screenAlpha = darkenScreen.GetComponent<Image>().color.a;
@@ -70,7 +70,7 @@ public class SunDetection : MonoBehaviour
         {
             Debug.DrawRay(centPos, lightAngle * hit.distance, Color.yellow);
             Debug.DrawRay(topPos, lightAngle * 1000, Color.green);
-            Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
+            //Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
             Debug.DrawRay(leftPos, lightAngle * 1000, Color.blue);
             Debug.DrawRay(rightPos, lightAngle * 1000, Color.blue);
 
@@ -87,12 +87,12 @@ public class SunDetection : MonoBehaviour
             else {
                 topEffect.SetActive(false);
             }
-            if (!Physics.Raycast(botPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
-                botEffect.SetActive(true);
-            }
-            else {
-                botEffect.SetActive(false);
-            }
+            // if (!Physics.Raycast(botPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
+            //     botEffect.SetActive(true);
+            // }
+            // else {
+            //     botEffect.SetActive(false);
+            // }
             if (!Physics.Raycast(leftPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
                 leftEffect.SetActive(true);
             }
@@ -110,7 +110,7 @@ public class SunDetection : MonoBehaviour
         {
             Debug.DrawRay(centPos, lightAngle * 1000, Color.white);
             Debug.DrawRay(topPos, lightAngle * 1000, Color.green);
-            Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
+            //Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
             Debug.DrawRay(leftPos, lightAngle * 1000, Color.blue);
             Debug.DrawRay(rightPos, lightAngle * 1000, Color.blue);
 
