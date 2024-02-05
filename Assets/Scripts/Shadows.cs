@@ -38,7 +38,7 @@ public class Shadows : MonoBehaviour
             }
 
             clone = Instantiate(original);
-            GameObject emptyParent = new GameObject("EmptyParent");
+            GameObject emptyParent = new GameObject("ScaleObject");
 
             // Set the parent's position to match the originalObject
             //emptyParent.transform.position = original.transform.position;
@@ -62,10 +62,11 @@ public class Shadows : MonoBehaviour
 
             float yScale = (renderer.bounds.size.y - playerHeight) / renderer.bounds.size.y;
             emptyParent.transform.localScale = new Vector3(emptyParent.transform.localScale.x, yScale, emptyParent.transform.localScale.z);
-            
+
             //original.transform.rotation = oRotation;
 
-            clone.transform.position = new Vector3(clone.transform.position.x, clone.transform.position.y - (playerHeight / 2), clone.transform.position.z);
+            //clone.transform.position = new Vector3(clone.transform.position.x, clone.transform.position.y - (playerHeight / 2), clone.transform.position.z);
+            emptyParent.transform.parent = original.transform;
 
             
         }
