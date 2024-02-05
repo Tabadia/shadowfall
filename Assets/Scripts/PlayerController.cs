@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float runSpeed = 12f;
     public float jumpPower = 7f;
     public float gravity = 10f;
-    public float dashLength = 10f;
+    //public float dashLength = 10f;
     public float slideMultiplier = 1.5f;
     public float normalHeight, crouchHeight;
  
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
  
     public bool canMove = true;
     public bool crouching = false;
-    public bool canDash = true;
+    //public bool canDash = true;
     public bool isSliding = false;
     
     private Vector3 playerSlide;
@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private float slideTimer;
 
     private Vector3 offset; 
+
+    public Player player;
     
     CharacterController characterController;
     public CapsuleCollider playerCollider;
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         offset = new Vector3(0, 0.5f, 0);
+        player = GetComponent<Player>();
     }
  
     void Update()
@@ -111,6 +114,14 @@ public class PlayerController : MonoBehaviour
         if(isSliding) {
             updateSlide(playerSlide);
         }
+
+        // Hunger updates
+        if (isRunning) {
+            player.SprintingHunger();
+        }
+        else {
+            player.NormalHunger();
+        }
     }
 
     void startSlide() {
@@ -120,7 +131,7 @@ public class PlayerController : MonoBehaviour
     void updateSlide(Vector3 slideDir) {
         if (slideTimer > 0) {
             characterController.Move(slideDir * Time.deltaTime * slideMultiplier * runSpeed);
-            Debug.Log(slideTimer);
+            //Debug.Log(slideTimer);
             slideTimer -= Time.deltaTime;
             isSliding = crouching;
         } else {

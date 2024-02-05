@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
     public float currentHealth;
     public float currentHunger;
 
-    public float hungerRate = 2f;
+    public float normalHungerRate = 1f;
+    public float sprintHungerRate = 2f;
+    public float hungerRate = 1f;
 
     public HealthHunger healthHunger;
 
@@ -41,9 +43,18 @@ public class Player : MonoBehaviour
     {
         while (true){
             yield return new WaitForSeconds(5f);
-            currentHunger -= hungerRate;
+            currentHunger = Mathf.Max(0, currentHunger - hungerRate);
             healthHunger.SetHunger(currentHunger);
         }
-
     }
+
+    public void SprintingHunger(){
+        hungerRate = sprintHungerRate;
+    }
+
+    public void NormalHunger(){
+        hungerRate = normalHungerRate;
+    }
+
+
 }
