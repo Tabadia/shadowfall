@@ -49,7 +49,7 @@ public class SunDetection : MonoBehaviour
         
         //print(angle);
 
-        centPos = new Vector3(transform.position.x, transform.position.y - transform.localScale.y, transform.position.z);
+        centPos = new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z);
         topPos = new Vector3(centPos.x, centPos.y + (transform.localScale.y), centPos.z);
         //botPos = new Vector3(centPos.x, centPos.y - , centPos.z);
         leftPos = new Vector3(centPos.x - Mathf.Sin(angle * toRadians)*2f, centPos.y, centPos.z - Mathf.Cos(angle * toRadians)*2f);

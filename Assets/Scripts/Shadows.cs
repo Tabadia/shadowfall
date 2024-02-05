@@ -25,8 +25,8 @@ public class Shadows : MonoBehaviour
         for (int i = 0; i < allObjects.Length; i++){
             GameObject original = allObjects[i];
 
-            Quaternion oRotation = original.transform.rotation;
-            original.transform.rotation = Quaternion.identity;
+            // Quaternion oRotation = original.transform.rotation;
+            // original.transform.rotation = Quaternion.identity;
 
         
             MeshRenderer renderer = original.GetComponent<MeshRenderer>();
@@ -47,7 +47,7 @@ public class Shadows : MonoBehaviour
             float yScale = (renderer.bounds.size.y - playerHeight) / renderer.bounds.size.y;
             clone.transform.localScale = new Vector3(clone.transform.localScale.x, yScale, clone.transform.localScale.z);
             
-            original.transform.rotation = oRotation;
+            //original.transform.rotation = oRotation;
 
             clone.transform.position = new Vector3(clone.transform.position.x, clone.transform.position.y - (playerHeight / 2), clone.transform.position.z);
 
