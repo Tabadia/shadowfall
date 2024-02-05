@@ -9,7 +9,10 @@ public class Shadows : MonoBehaviour
 
     public MeshRenderer playerRenderer;
 
+    private float playerHeight;
+
     void Start() {
+        playerHeight = playerRenderer.bounds.size.y;
         GetObjects();
     }
 
@@ -22,21 +25,33 @@ public class Shadows : MonoBehaviour
         for (int i = 0; i < allObjects.Length; i++){
             GameObject original = allObjects[i];
 
+            Quaternion oRotation = original.transform.rotation;
+            original.transform.rotation = Quaternion.identity;
+
+        
+            MeshRenderer renderer = original.GetComponent<MeshRenderer>();
+            if (renderer.bounds.size.y <= playerHeight){
+                print(renderer.bounds.size.y + " " + playerHeight);
+                continue;
+            }
+
             clone = Instantiate(original);
             clone.transform.parent = original.transform;
             
-            MeshRenderer renderer = original.GetComponent<MeshRenderer>();
             MeshRenderer cloneRenderer = clone.GetComponent<MeshRenderer>();
             
 
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             cloneRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
 
-            print(renderer.bounds.size);
-            float yScale = (renderer.bounds.size.y - playerRenderer.bounds.size.y) / renderer.bounds.size.y;
+            float yScale = (renderer.bounds.size.y - playerHeight) / renderer.bounds.size.y;
             clone.transform.localScale = new Vector3(clone.transform.localScale.x, yScale, clone.transform.localScale.z);
+            
+            original.transform.rotation = oRotation;
 
-            clone.transform.position = new Vector3(clone.transform.position.x, clone.transform.position.y - (playerRenderer.bounds.size.y / 2), clone.transform.position.z);
+            clone.transform.position = new Vector3(clone.transform.position.x, clone.transform.position.y - (playerHeight / 2), clone.transform.position.z);
+
+            
         }
     }
 }
