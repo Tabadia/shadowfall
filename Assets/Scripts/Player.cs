@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     public float currentHealth;
     public float currentHunger;
 
-    public float normalHungerRate = 1f;
+    public float stillHungerRate = 1f;
+    public float walkHungerRate = 1.5f;
     public float sprintHungerRate = 2f;
     public float hungerRate = 1f;
 
@@ -48,12 +49,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SprintingHunger(){
+    public void SprintHunger(){
         hungerRate = sprintHungerRate;
     }
 
-    public void NormalHunger(){
-        hungerRate = normalHungerRate;
+    public void WalkHunger(){
+        hungerRate = walkHungerRate;
+    }
+
+    public void StillHunger(){
+        hungerRate = stillHungerRate;
     }
 
 

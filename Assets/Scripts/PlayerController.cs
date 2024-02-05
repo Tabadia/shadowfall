@@ -32,9 +32,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 offset; 
 
     public Player player;
+    public bool isMoving;
     
     CharacterController characterController;
     public CapsuleCollider playerCollider;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour
  
     void Update()
     {
- 
+        isMoving = characterController.velocity != Vector3.zero;
         // Movement
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -103,7 +105,6 @@ public class PlayerController : MonoBehaviour
         }
 
         //sliding
-        
         if(isRunning) {
             if(crouching) {
                 isSliding = true;
@@ -116,11 +117,16 @@ public class PlayerController : MonoBehaviour
         }
 
         // Hunger updates
-        if (isRunning) {
-            player.SprintingHunger();
+        if (isMoving) {
+            if(isRunning){
+                player.SprintHunger();
+            }
+            else {
+                player.WalkHunger();
+            }
         }
         else {
-            player.NormalHunger();
+            player.StillHunger();
         }
     }
 
