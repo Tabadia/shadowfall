@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 2166.6584, g: 1437.6515, b: 790.72473, a: 1}
+  m_IndirectSpecularColor: {r: 2244.2908, g: 1856.8918, b: 1508.9904, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1435,7 +1435,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.84870636, b: 0.6273585, a: 1}
+  m_Color: {r: 1, g: 0.9051142, b: 0.7688679, a: 1}
   m_Intensity: 100000
   m_Range: 10
   m_SpotAngle: 30
@@ -1479,13 +1479,13 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
-  m_ColorTemperature: 6570
+  m_ColorTemperature: 7471
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 1.4321e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
-  m_ShadowAngle: 0.5
+  m_ShadowAngle: 1.5
 --- !u!4 &705507995
 Transform:
   m_ObjectHideFlags: 0
@@ -1543,10 +1543,10 @@ MonoBehaviour:
   m_AreaLightShadowCone: 120
   m_UseScreenSpaceShadows: 0
   m_InteractsWithSky: 1
-  m_AngularDiameter: 0.5
-  m_FlareSize: 1.4
+  m_AngularDiameter: 1.5
+  m_FlareSize: 3
   m_FlareTint: {r: 1, g: 0.921471, b: 0.8632076, a: 1}
-  m_FlareFalloff: 4
+  m_FlareFalloff: 1
   m_SurfaceTexture: {fileID: 0}
   m_SurfaceTint: {r: 1, g: 0.8632076, b: 0.8632076, a: 1}
   m_Distance: 1.5e+11
