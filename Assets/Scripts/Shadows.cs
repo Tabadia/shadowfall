@@ -36,7 +36,8 @@ public class Shadows : MonoBehaviour
            // }
 
             clone = Instantiate(original);
-            GameObject emptyParent = new GameObject(original.name + " Shadow");
+            clone.name = (original.name + "'s Shadow");
+            GameObject emptyParent = new GameObject("Temp");
 
             // Set the parent's position to match the originalObject
             //emptyParent.transform.position = original.transform.position;
@@ -48,7 +49,8 @@ public class Shadows : MonoBehaviour
 
             // Reset the child's local position and rotation
 
-            emptyParent.transform.localPosition = Vector3.zero;
+            emptyParent.transform.localPosition = clone.transform.position;
+            clone.transform.localPosition = new Vector3(0,0,0);
             emptyParent.transform.localRotation = Quaternion.identity;
             emptyParent.transform.localScale = new Vector3(1, 1, 1);
 
@@ -62,7 +64,9 @@ public class Shadows : MonoBehaviour
             emptyParent.transform.localScale = new Vector3(emptyParent.transform.localScale.x, yScale, emptyParent.transform.localScale.z);
            
 
-            clone.transform.position = new Vector3(original.transform.position.x, original.transform.position.y - (playerHeight / 2), original.transform.position.z);
+            emptyParent.transform.position = new Vector3(emptyParent.transform.position.x, emptyParent.transform.position.y - (playerHeight / 2), emptyParent.transform.position.z);
+            clone.transform.SetParent(original.transform, true);
+            Destroy(emptyParent);
             
 
             
