@@ -27,15 +27,13 @@ public class Shadows : MonoBehaviour
         for (int i = 0; i < allObjects.Length; i++){
             GameObject original = allObjects[i];
 
-            // Quaternion oRotation = original.transform.rotation;
-            // original.transform.rotation = Quaternion.identity;
 
         
             MeshRenderer renderer = original.GetComponent<MeshRenderer>();
-            if (renderer.bounds.size.y <= playerHeight){
-                print(renderer.bounds.size.y + " " + playerHeight);
-                continue;
-            }
+            //if (renderer.bounds.size.y <= playerHeight){
+            //    print(renderer.bounds.size.y + " " + playerHeight);
+            //    continue;
+           // }
 
             clone = Instantiate(original);
             GameObject emptyParent = new GameObject("ScaleObject");
@@ -62,10 +60,9 @@ public class Shadows : MonoBehaviour
 
             float yScale = (renderer.bounds.size.y - playerHeight) / renderer.bounds.size.y;
             emptyParent.transform.localScale = new Vector3(emptyParent.transform.localScale.x, yScale, emptyParent.transform.localScale.z);
+           
 
-            //original.transform.rotation = oRotation;
-
-            //clone.transform.position = new Vector3(clone.transform.position.x, clone.transform.position.y - (playerHeight / 2), clone.transform.position.z);
+            clone.transform.position = new Vector3(original.transform.position.x, original.transform.position.y - (playerHeight / 2), original.transform.position.z);
             emptyParent.transform.parent = original.transform;
 
             
