@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 2244.2908, g: 1856.8918, b: 1508.9904, a: 1}
+  m_IndirectSpecularColor: {r: 2243.7083, g: 1855.3735, b: 1505.6171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12176,6 +12176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionalLight: {fileID: 705507994}
   darkenScreen: {fileID: 255486026}
+  maxDarkness: 0.5
   screenAlpha: 0
   inSun: 0
   inAnim: 0

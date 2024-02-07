@@ -8,6 +8,7 @@ public class SunDetection : MonoBehaviour
 
     public Light directionalLight;
     public GameObject darkenScreen;
+    public float maxDarkness;
     public float screenAlpha;
 
     public bool inSun = false;
@@ -37,6 +38,7 @@ public class SunDetection : MonoBehaviour
     void Start() {
         // lightAngle = directionalLight.transform.forward * -1;
         // sunDir = directionalLight.transform.forward;
+        maxDarkness = 0.5f;
     }
 
     void Update() {
@@ -134,7 +136,7 @@ public class SunDetection : MonoBehaviour
         Image d = darkenScreen.GetComponent<Image>();
         Color dc = d.color;
         inAnim = true;
-        while (dc.a < 0.5f)
+        while (dc.a < maxDarkness)
         {
             dc.a += 0.05f;
             d.color = dc;
