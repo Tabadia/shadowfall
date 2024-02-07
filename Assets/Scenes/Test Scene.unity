@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 2243.7083, g: 1855.3735, b: 1505.6171, a: 1}
+  m_IndirectSpecularColor: {r: 2639.8606, g: 1690.5608, b: 977.74176, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1507,7 +1507,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.9051142, b: 0.7688679, a: 1}
+  m_Color: {r: 0.990566, g: 0.9316452, b: 0.8457191, a: 1}
   m_Intensity: 100000
   m_Range: 10
   m_SpotAngle: 30
@@ -1551,7 +1551,7 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
-  m_ColorTemperature: 7471
+  m_ColorTemperature: 4630
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 1.4321e-41, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -1617,10 +1617,10 @@ MonoBehaviour:
   m_InteractsWithSky: 1
   m_AngularDiameter: 1.5
   m_FlareSize: 3
-  m_FlareTint: {r: 1, g: 0.921471, b: 0.8632076, a: 1}
+  m_FlareTint: {r: 1, g: 0.4955074, b: 0.07075471, a: 1}
   m_FlareFalloff: 1
   m_SurfaceTexture: {fileID: 0}
-  m_SurfaceTint: {r: 1, g: 0.8632076, b: 0.8632076, a: 1}
+  m_SurfaceTint: {r: 1, g: 0.3706116, b: 0, a: 1}
   m_Distance: 1.5e+11
   m_UseRayTracedShadows: 0
   m_NumRayTracingSamples: 4
@@ -13936,7 +13936,7 @@ MonoBehaviour:
   m_AreaLightShadowCone: 120
   m_UseScreenSpaceShadows: 0
   m_InteractsWithSky: 1
-  m_AngularDiameter: 5
+  m_AngularDiameter: 6.71
   m_FlareSize: 8.5
   m_FlareTint: {r: 1, g: 1, b: 1, a: 1}
   m_FlareFalloff: 115
@@ -14034,7 +14034,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -14077,7 +14077,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
-  m_ShadowAngle: 5
+  m_ShadowAngle: 6.71
 --- !u!1 &1702346152
 GameObject:
   m_ObjectHideFlags: 0
