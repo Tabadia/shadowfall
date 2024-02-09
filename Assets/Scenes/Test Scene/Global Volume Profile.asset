@@ -319,6 +319,28 @@ MonoBehaviour:
   m_ObsoleteShapeOffsetZ:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &-5200459718723553264
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f946aea2a4821244b6ba2812d186754, type: 3}
+  m_Name: PixelationEffect
+  m_EditorClassIdentifier: 
+  active: 1
+  Width:
+    m_OverrideState: 0
+    m_Value: 0
+  Height:
+    m_OverrideState: 0
+    m_Value: 0
+  Color:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!114 &-5049352682668168008
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -734,6 +756,8 @@ MonoBehaviour:
   - {fileID: 3316981695370930402}
   - {fileID: -1352348374971565032}
   - {fileID: 6178115941049518500}
+  - {fileID: -5200459718723553264}
+  - {fileID: 737724736893854105}
 --- !u!114 &646925832930310929
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -753,6 +777,28 @@ MonoBehaviour:
   opacity:
     m_OverrideState: 1
     m_Value: 0.5
+--- !u!114 &737724736893854105
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4df8c151eae54d846b0a701c08d972ce, type: 3}
+  m_Name: Dithering
+  m_EditorClassIdentifier: 
+  active: 1
+  PatternIndex:
+    m_OverrideState: 0
+    m_Value: 0
+  DitherThreshold:
+    m_OverrideState: 0
+    m_Value: 0
+  DitherScale:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!114 &2737554735039878672
 MonoBehaviour:
   m_ObjectHideFlags: 3
