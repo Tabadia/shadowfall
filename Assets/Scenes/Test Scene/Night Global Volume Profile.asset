@@ -464,13 +464,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   Width:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 480
   Height:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 270
   Color:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
 --- !u!114 &-3329733673353634391
 MonoBehaviour:
@@ -530,16 +530,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df8c151eae54d846b0a701c08d972ce, type: 3}
   m_Name: Dithering
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   PatternIndex:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   DitherThreshold:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 7
   DitherScale:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 3.67
 --- !u!114 &-3157126354001846028
 MonoBehaviour:
   m_ObjectHideFlags: 3
