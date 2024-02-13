@@ -61,5 +61,13 @@ public class Player : MonoBehaviour
         hungerRate = stillHungerRate;
     }
 
-
+    public void setHealth(float health)
+    {
+        currentHealth = health;
+    }
+    
+    public void setHunger(float hunger)
+    {
+        currentHunger = hunger;
+    }
 }

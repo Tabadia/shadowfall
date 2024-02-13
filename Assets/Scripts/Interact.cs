@@ -6,18 +6,34 @@ public class Interact : MonoBehaviour
 {
     public Transform camera;
     public float playerActiveDistance;
-    bool active = false;
+    bool ray = false;
+    public GameObject sensedObject = null;
+    public Player player;
 
     void Update() 
     {
         RaycastHit hit;
-        active = Physics.Raycast(camera.position, camera.TransformDirection(Vector3.forward), out hit, playerActiveDistance);
-        if (Input.GetKeyDown(KeyCode.F) && active == true) 
+        if (Physics.Raycast(camera.position, camera.TransformDirection(Vector3.forward), out hit, playerActiveDistance)) 
         {
-            // if (hit.gameObject.GetComponent<Name>() == "canned_food") 
-            // {
-            //     Debug.Log("eat");
-            // }
+             sensedObject = hit.transform.gameObject;
+        } else
+        {
+            sensedObject = null;
+        }
+        
+        /* just add differnt "if" statements here if you want to interact with another object :) */
+
+        if (Input.GetKeyDown(KeyCode.F) && sensedObject && sensedObject.name.Substring(0,11) == "canned_food")
+        {
+            Debug.Log("yummy: " + sensedObject.name);
+
+            DestroyImmediate(sensedObject.gameObject);
+            sensedObject = null;
+
+            player.setHealth(100);
+            player.setHunger(100);
+            player.healthHunger.SetHealth(100);
+            player.healthHunger.SetHunger(100);
         }
     }
 }
