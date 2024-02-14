@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour
     public float slideDuration = 1.0f;
     private float slideTimer;
 
+    public float speedBoostDuration = 5.0f;
+    public float speedBoostTimer;
+    public bool isSpeedBoost = false;
+
     private Vector3 offset; 
 
     public Player player;
@@ -116,6 +120,12 @@ public class PlayerController : MonoBehaviour
             updateSlide(playerSlide);
         }
 
+        // speed boost update
+        if (isSpeedBoost)
+        {
+            updateSpeedBoost();
+        }
+
         // Hunger updates
         if (isMoving) {
             if(isRunning){
@@ -145,4 +155,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void startSpeedBoost() {
+        speedBoostTimer = speedBoostDuration;
+        runSpeed*=2;
+        isSpeedBoost = true;
+    }
+
+    void updateSpeedBoost() {
+        if (speedBoostTimer > 0) {
+            speedBoostTimer -= Time.deltaTime;
+        } else {
+            runSpeed/=2;
+            isSpeedBoost = false;
+        }
+    }
 }

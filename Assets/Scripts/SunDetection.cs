@@ -119,7 +119,7 @@ public class SunDetection : MonoBehaviour
             if (inSun == false && !inAnim){
                 StartCoroutine(FadeOut());
             }
-            if(canTakeDamage){
+            if(canTakeDamage & player.currentHealth > 0){
                 StartCoroutine(reduceHealth());
             }
             inSun = true;     
