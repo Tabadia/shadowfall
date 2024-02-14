@@ -26,13 +26,9 @@ public class Interact : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && sensedObject && sensedObject.name.Substring(0,11) == "canned_food")
         {
             float food_value = 50;
-
             Debug.Log("yummy: " + sensedObject.name);
-
             DestroyImmediate(sensedObject.gameObject);
             sensedObject = null;
-
-
             if (player.currentHealth <= 50)
             {
                 player.setHealth(player.currentHealth+food_value);
@@ -43,19 +39,20 @@ public class Interact : MonoBehaviour
                 player.healthHunger.SetHealth(player.maxHealth);
             }
             player.setHunger(player.maxHunger);
-            player.healthHunger.SetHunger(player.maxHunger);    
+            player.healthHunger.SetHunger(player.maxHunger);   
+            AudioSource source = GameObject.Find("canned_food_audio").GetComponent<AudioSource>();
+            source.PlayOneShot(source.clip);
         }
 
         if (Input.GetKeyDown(KeyCode.F) && sensedObject && sensedObject.name.Substring(0,12) == "energy_drink")
         {
             float food_value = 5;
-
             Debug.Log("yummy: " + sensedObject.name);
-
             DestroyImmediate(sensedObject.gameObject);
             sensedObject = null;
-
             player.GetComponent<PlayerController>().startSpeedBoost();
+            AudioSource source = GameObject.Find("energy_drink_audio").GetComponent<AudioSource>();
+            source.PlayOneShot(source.clip);
         }
     }
 }

@@ -156,8 +156,11 @@ public class PlayerController : MonoBehaviour
     }
 
     public void startSpeedBoost() {
-        speedBoostTimer = speedBoostDuration;
-        runSpeed*=2;
+        if (!isSpeedBoost)
+        {
+            speedBoostTimer = speedBoostDuration;
+            runSpeed*=2;
+        }   
         isSpeedBoost = true;
     }
 
