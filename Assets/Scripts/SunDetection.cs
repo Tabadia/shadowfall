@@ -19,7 +19,7 @@ public class SunDetection : MonoBehaviour
 
     public HealthHunger healthHunger;
     public Player player;
-    public float sunDamage = 0.25f;
+    public float sunDamage = 0.05f;
 
     private Vector3 topPos;
     private Vector3 centPos;

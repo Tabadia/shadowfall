@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public float walkHungerRate = 1.5f;
     public float sprintHungerRate = 2f;
     public float hungerRate = 1f;
+    public float healthLostFromHungerRate = 2;
+    public int timeAlive = 0;
 
     public HealthHunger healthHunger;
 
@@ -24,7 +26,7 @@ public class Player : MonoBehaviour
     //penis
     void Start()
     {
-        StartCoroutine(reduceHunger());
+        StartCoroutine(reduceHungerHealth());
         currentHunger = maxHunger;
         currentHealth = maxHealth;
     }
@@ -32,20 +34,30 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((currentHealth <= 0) ||(currentHunger <= 0)){
+        if((currentHealth <= 0)){
             if (!dead){
                 dead = true;
                 print("You died");
             }
         }
+        if (currentHealth > 0)
+        {
+            dead = false;
+        }
     }
 
-    IEnumerator reduceHunger()
+    IEnumerator reduceHungerHealth()
     {
         while (true){
-            yield return new WaitForSeconds(5f);
-            currentHunger = Mathf.Max(0, currentHunger - hungerRate);
+            yield return new WaitForSeconds(1f);
+            timeAlive++;
+            if (timeAlive % 5 == 0)
+                currentHunger = Mathf.Max(0, currentHunger - hungerRate);
             healthHunger.SetHunger(currentHunger);
+
+            if (currentHunger <= 0)
+                currentHealth = Mathf.Max(0, currentHealth - healthLostFromHungerRate);
+            healthHunger.SetHealth(currentHealth);
         }
     }
 
