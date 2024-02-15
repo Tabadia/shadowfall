@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f946aea2a4821244b6ba2812d186754, type: 3}
   m_Name: PixelationEffect
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   Width:
     m_OverrideState: 1
     m_Value: 480
@@ -340,7 +340,7 @@ MonoBehaviour:
     m_Value: 270
   Color:
     m_OverrideState: 1
-    m_Value: 150
+    m_Value: 100000000
 --- !u!114 &-5049352682668168008
 MonoBehaviour:
   m_ObjectHideFlags: 3
