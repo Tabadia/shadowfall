@@ -14,6 +14,7 @@ public class Interact : MonoBehaviour
     public TextMeshProUGUI interactText;
     public RectTransform crosshair;
     private Vector3 crosshairOrigin;
+    private float timer = 0f;
 
     void Start() {
         crosshairOrigin = crosshair.anchoredPosition;
@@ -35,8 +36,12 @@ public class Interact : MonoBehaviour
         {
             if (sensedObject && sensedObject.name.Length >= name.Length && sensedObject.name.Substring(0,name.Length) == name)
             {
-                crosshair.localScale = new Vector3(1f, 1f, 1f);
-                crosshair.anchoredPosition = crosshairOrigin*2;
+                timer = 0;
+                while (timer < 1) {
+                    timer += Time.deltaTime;
+                    crosshair.localScale = Vector3.Lerp(new Vector3(.5f, .5f, .5f), new Vector3(1f, 1f, 1f), timer);
+                    crosshair.anchoredPosition = Vector3.Lerp(crosshairOrigin, crosshairOrigin*2, timer);
+                }
                 interactText.enabled = true;
                 if (Input.GetKeyDown(KeyCode.F))
                 {
@@ -44,8 +49,15 @@ public class Interact : MonoBehaviour
                 }
                 break;
             }
-            crosshair.localScale = new Vector3(.5f, .5f, .5f);
-            crosshair.anchoredPosition = crosshairOrigin;
+            timer = 0;
+            while (timer < 1) {
+                timer += Time.deltaTime;
+                crosshair.localScale = Vector3.Lerp(new Vector3(1f, 1f, 1f), new Vector3(.5f, .5f, .5f), timer);
+                crosshair.anchoredPosition = Vector3.Lerp(crosshairOrigin*2, crosshairOrigin, timer);
+            }
+            /*
+            new Vector2(crosshair.transform.position.x, Mathf.Lerp(crosshair.transform.position.y, targetY, Time.deltaTime));
+            */
         }
     }
     

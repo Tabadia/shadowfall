@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
 
         // Crouching
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && characterController.isGrounded)
         {
             crouching = true;
             crouchDown();
