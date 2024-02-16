@@ -10,18 +10,31 @@ public class Interact : MonoBehaviour
     public float playerActiveDistance;
     public GameObject sensedObject = null;
     public Player player;
-    public string[] interactableObjects = {"canned_food", "energy_drink"};
+    public string[] interactableObjects = {"energy_drink", "canned_food"};
     public TextMeshProUGUI interactText;
     public RectTransform crosshair;
-    private Vector3 crosshairOrigin;
-    private float timer = 0f;
+    // private Vector3 crosshairCurrentSize;
+    private Vector3 crosshairGoalSizeSmall;
+    private Vector3 crosshairGoalSizeBig;
+    // private Vector2 crosshairCurrentPos;
+    private Vector2 crosshairGoalPosSmall;
+    private Vector2 crosshairGoalPosBig;
+    // private float duration = 10;
+    // public float time = 0;    
 
     void Start() {
-        crosshairOrigin = crosshair.anchoredPosition;
+        // crosshairCurrentSize = crosshair.localScale;
+        crosshairGoalSizeSmall = crosshair.localScale;
+        crosshairGoalSizeBig = crosshair.localScale*2;
+        // crosshairCurrentPos = crosshair.anchoredPosition;
+        crosshairGoalPosSmall = crosshair.anchoredPosition;
+        crosshairGoalPosBig = crosshair.anchoredPosition*2;
     }
 
     void Update() 
     {
+        crosshair.anchoredPosition = crosshairGoalPosSmall;
+        crosshair.localScale = crosshairGoalSizeSmall;
         RaycastHit hit;
         interactText.enabled = false;
         if (Physics.Raycast(interactCamera.position, interactCamera.TransformDirection(Vector3.forward), out hit, playerActiveDistance)) 
@@ -31,17 +44,12 @@ public class Interact : MonoBehaviour
         {
             sensedObject = null;
         }
-        
         foreach (string name in interactableObjects)
         {
             if (sensedObject && sensedObject.name.Length >= name.Length && sensedObject.name.Substring(0,name.Length) == name)
             {
-                timer = 0;
-                while (timer < 1) {
-                    timer += Time.deltaTime;
-                    crosshair.localScale = Vector3.Lerp(new Vector3(.5f, .5f, .5f), new Vector3(1f, 1f, 1f), timer);
-                    crosshair.anchoredPosition = Vector3.Lerp(crosshairOrigin, crosshairOrigin*2, timer);
-                }
+                crosshair.anchoredPosition = crosshairGoalPosBig;
+                crosshair.localScale = crosshairGoalSizeBig;
                 interactText.enabled = true;
                 if (Input.GetKeyDown(KeyCode.F))
                 {
@@ -49,17 +57,39 @@ public class Interact : MonoBehaviour
                 }
                 break;
             }
-            timer = 0;
-            while (timer < 1) {
-                timer += Time.deltaTime;
-                crosshair.localScale = Vector3.Lerp(new Vector3(1f, 1f, 1f), new Vector3(.5f, .5f, .5f), timer);
-                crosshair.anchoredPosition = Vector3.Lerp(crosshairOrigin*2, crosshairOrigin, timer);
-            }
-            /*
-            new Vector2(crosshair.transform.position.x, Mathf.Lerp(crosshair.transform.position.y, targetY, Time.deltaTime));
-            */
         }
     }
+    // IEnumerator crosshairLerping()
+    // {
+    //     Debug.Log("working???");
+    //     while (true) {
+    //         // yield return new WaitForSeconds(.1f);
+    //         // time = 0;
+    //         // bool lerped = false;
+    //         // crosshairCurrentSize = crosshair.localScale;
+    //         // crosshairCurrentPos = crosshair.anchoredPosition;
+    //         // foreach (string name in interactableObjects)
+    //         // {
+    //         //     if (sensedObject && sensedObject.name.Length >= name.Length && sensedObject.name.Substring(0,name.Length) == name)
+    //         //     {
+    //         //         lerped = true;
+    //         //         while (time < duration) {
+    //         //             crosshair.localScale = Vector3.Lerp(crosshairCurrentSize, crosshairGoalSizeBig, time / duration);
+    //         //             crosshair.anchoredPosition = Vector2.Lerp(crosshairCurrentPos, crosshairGoalPosBig, time / duration);
+    //         //             time += Time.deltaTime;
+    //         //         }
+    //         //     }
+    //         //     else if (!lerped)
+    //         //     {
+    //         //         while (time < duration) {
+    //         //             crosshair.localScale = Vector3.Lerp(crosshairCurrentSize, crosshairGoalSizeSmall, time / duration);
+    //         //             crosshair.anchoredPosition = Vector2.Lerp(crosshairCurrentPos, crosshairGoalPosSmall, time / duration);
+            //             time += Time.deltaTime;
+            //         }
+    //         //     }
+    //         // }
+    //     }
+    // }
     
     void Interact_canned_food() 
     {

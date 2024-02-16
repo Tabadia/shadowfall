@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.C) && crouching)
         {
-            crouching = false;
+            Debug.Log("crouch done!");
             crouchUp();
         }
 
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
             isSliding = crouching;
         } else {
             isSliding = false;
-            crouching = false;
+            Debug.Log("slide done!");
             crouchUp();
         }
     }
@@ -178,6 +178,8 @@ public class PlayerController : MonoBehaviour
             playerCollider.height = normalHeight;
             transform.position += offset;
             walkSpeed *= 2;
+            crouching = false;
+            isSliding = false;
     }
 
     void crouchDown() {
