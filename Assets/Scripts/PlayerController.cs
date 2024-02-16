@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public Camera playerCamera;
     public float walkSpeed = 6f;
-    public float runSpeed = 12f;
+    public float runSpeedMultiplier = 1.5f;
+    public float runSpeed;
     public float jumpPower = 7f;
     public float gravity = 10f;
     //public float dashLength = 10f;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public bool crouching = false;
     //public bool canDash = true;
     public bool isSliding = false;
+    public bool isRunning = false;
     
     private Vector3 playerSlide;
     public float slideDuration = 1.0f;
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         offset = new Vector3(0, 0.5f, 0);
         player = GetComponent<Player>();
+        runSpeed = runSpeedMultiplier*walkSpeed;
     }
  
     void Update()
@@ -58,9 +61,9 @@ public class PlayerController : MonoBehaviour
         Vector3 right = transform.TransformDirection(Vector3.right);
 
         // Press Left Shift to run
-        bool isRunning = Input.GetKey(KeyCode.LeftShift) && !crouching && (player.currentHunger != 0);
+        isRunning = Input.GetKey(KeyCode.LeftShift) && !crouching && (player.currentHunger != 0) && Input.GetAxis("Vertical") > 0;
         float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
+        float curSpeedY = canMove ? (Input.GetAxis("Vertical") > 0 ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
   
@@ -95,17 +98,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             crouching = true;
-            characterController.height = crouchHeight;
-            playerCollider.height = crouchHeight;
-            walkSpeed /= 2;
+            crouchDown();
         }
-        if (Input.GetKeyUp(KeyCode.C))
+        if (Input.GetKeyUp(KeyCode.C) && crouching)
         {
             crouching = false;
-            characterController.height = normalHeight;
-            playerCollider.height = normalHeight;
-            transform.position += offset;
-            walkSpeed *= 2;
+            crouchUp();
         }
 
         //sliding
@@ -152,6 +150,8 @@ public class PlayerController : MonoBehaviour
             isSliding = crouching;
         } else {
             isSliding = false;
+            crouching = false;
+            crouchUp();
         }
     }
 
@@ -171,5 +171,18 @@ public class PlayerController : MonoBehaviour
             runSpeed/=2;
             isSpeedBoost = false;
         }
+    }
+
+    void crouchUp() {
+            characterController.height = normalHeight;
+            playerCollider.height = normalHeight;
+            transform.position += offset;
+            walkSpeed *= 2;
+    }
+
+    void crouchDown() {
+            characterController.height = crouchHeight;
+            playerCollider.height = crouchHeight;
+            walkSpeed /= 2;
     }
 }

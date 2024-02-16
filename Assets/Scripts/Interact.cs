@@ -5,9 +5,8 @@ using TMPro;
 
 public class Interact : MonoBehaviour
 {
-    public Transform camera;
+    public Transform interactCamera;
     public float playerActiveDistance;
-    bool ray = false;
     public GameObject sensedObject = null;
     public Player player;
     public string[] interactableObjects = {"canned_food", "energy_drink"};
@@ -17,7 +16,7 @@ public class Interact : MonoBehaviour
     {
         RaycastHit hit;
         interactText.enabled = false;
-        if (Physics.Raycast(camera.position, camera.TransformDirection(Vector3.forward), out hit, playerActiveDistance)) 
+        if (Physics.Raycast(interactCamera.position, interactCamera.TransformDirection(Vector3.forward), out hit, playerActiveDistance)) 
         {
              sensedObject = hit.transform.gameObject;
         } else
@@ -42,32 +41,31 @@ public class Interact : MonoBehaviour
     void Interact_canned_food() 
     {
         float food_value = 50;
-            Debug.Log("yummy: " + sensedObject.name);
-            DestroyImmediate(sensedObject.gameObject);
-            sensedObject = null;
-            if (player.currentHealth <= 50)
-            {
-                player.setHealth(player.currentHealth+food_value);
-                player.healthHunger.SetHealth(player.currentHealth);
-            } else 
-            {
-                player.setHealth(player.maxHealth);
-                player.healthHunger.SetHealth(player.maxHealth);
-            }
-            player.setHunger(player.maxHunger);
-            player.healthHunger.SetHunger(player.maxHunger);   
-            AudioSource source = GameObject.Find("canned_food_audio").GetComponent<AudioSource>();
-            source.PlayOneShot(source.clip);
+        Debug.Log("yummy: " + sensedObject.name);
+        DestroyImmediate(sensedObject.gameObject);
+        sensedObject = null;
+        if (player.currentHealth <= 50)
+        {
+            player.setHealth(player.currentHealth+food_value);
+            player.healthHunger.SetHealth(player.currentHealth);
+        } else 
+        {
+            player.setHealth(player.maxHealth);
+            player.healthHunger.SetHealth(player.maxHealth);
+        }
+        player.setHunger(player.maxHunger);
+        player.healthHunger.SetHunger(player.maxHunger);   
+        AudioSource source = GameObject.Find("canned_food_audio").GetComponent<AudioSource>();
+        source.PlayOneShot(source.clip);
     }
 
     void Interact_energy_drink()
     {
-        float food_value = 5;
-            Debug.Log("yummy: " + sensedObject.name);
-            DestroyImmediate(sensedObject.gameObject);
-            sensedObject = null;
-            player.GetComponent<PlayerController>().startSpeedBoost();
-            AudioSource source = GameObject.Find("energy_drink_audio").GetComponent<AudioSource>();
-            source.PlayOneShot(source.clip);
+        Debug.Log("yummy: " + sensedObject.name);
+        DestroyImmediate(sensedObject.gameObject);
+        sensedObject = null;
+        player.GetComponent<PlayerController>().startSpeedBoost();
+        AudioSource source = GameObject.Find("energy_drink_audio").GetComponent<AudioSource>();
+        source.PlayOneShot(source.clip);
     }
 }
