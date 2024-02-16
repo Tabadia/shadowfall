@@ -42,11 +42,19 @@ Material:
         m_Texture: {fileID: 2800000, guid: 9f457d128b8e5884381915181c853410, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Triplanar_71cf50d77eef4e9ba5cbdb7a1b6603eb_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 9f457d128b8e5884381915181c853410, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Triplanar_e7cf38df8cd248dabb0defb4e0d3ff32_Texture_1:
         m_Texture: {fileID: 2800000, guid: 11aa6faa2bb0c0c48be80684266c4dd9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Triplanar_eec8d817e85248adaeb001cb6f380a66_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 4c8da85ba2a62c548bf2e63d90ff0647, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_eec8d817e85248adaeb001cb6f380a66_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 4c8da85ba2a62c548bf2e63d90ff0647, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -108,10 +116,10 @@ Material:
     - _StencilRefGBuffer: 10
     - _StencilRefMV: 40
     - _StencilWriteMask: 6
-    - _StencilWriteMaskDepth: 8
+    - _StencilWriteMaskDepth: 9
     - _StencilWriteMaskDistortionVec: 4
-    - _StencilWriteMaskGBuffer: 14
-    - _StencilWriteMaskMV: 40
+    - _StencilWriteMaskGBuffer: 15
+    - _StencilWriteMaskMV: 41
     - _SupportDecals: 1
     - _SurfaceType: 0
     - _Tiling: 0.47
