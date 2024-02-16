@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Interact : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class Interact : MonoBehaviour
     public Player player;
     public string[] interactableObjects = {"canned_food", "energy_drink"};
     public TextMeshProUGUI interactText;
+    public RectTransform crosshair;
+    private Vector3 crosshairOrigin;
+
+    void Start() {
+        crosshairOrigin = crosshair.anchoredPosition;
+    }
 
     void Update() 
     {
@@ -28,6 +35,8 @@ public class Interact : MonoBehaviour
         {
             if (sensedObject && sensedObject.name.Length >= name.Length && sensedObject.name.Substring(0,name.Length) == name)
             {
+                crosshair.localScale = new Vector3(1f, 1f, 1f);
+                crosshair.anchoredPosition = crosshairOrigin*2;
                 interactText.enabled = true;
                 if (Input.GetKeyDown(KeyCode.F))
                 {
@@ -35,6 +44,8 @@ public class Interact : MonoBehaviour
                 }
                 break;
             }
+            crosshair.localScale = new Vector3(.5f, .5f, .5f);
+            crosshair.anchoredPosition = crosshairOrigin;
         }
     }
     
