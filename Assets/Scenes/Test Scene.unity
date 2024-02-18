@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 2430.9485, g: 1615.6477, b: 982.30676, a: 1}
+  m_IndirectSpecularColor: {r: 821.0626, g: 508.65485, b: 253.0137, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3298,13 +3298,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09229593, y: 0.7010574, z: -0.09229593, w: 0.7010574}
+  m_LocalRotation: {x: 0.060290415, y: 0.826586, z: -0.0013810006, w: 0.5595702}
   m_LocalPosition: {x: -773.7207, y: 777.6521, z: -1134.868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975774202}
-  m_LocalEulerAnglesHint: {x: 15, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 4, y: 112.004, z: 5.645}
 --- !u!114 &705507996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3439,7 +3439,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d743586755efb154ea91e8acd80ca620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.5
+  rotationSpeed: 1
+  sunLight: {fileID: 705507993}
+  moonLight: {fileID: 1695840490}
 --- !u!1 &721964929
 GameObject:
   m_ObjectHideFlags: 0
@@ -14823,7 +14825,7 @@ MonoBehaviour:
   leftEffect: {fileID: 1912716924}
   rightEffect: {fileID: 893613626}
   canTakeDamage: 1
-  camera: {fileID: 963194225}
+  pCamera: {fileID: 963194225}
 --- !u!114 &1004948809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18831,7 +18833,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d743586755efb154ea91e8acd80ca620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.5
+  rotationSpeed: 25
+  sunLight: {fileID: 0}
+  moonLight: {fileID: 0}
 --- !u!114 &1695840493
 MonoBehaviour:
   m_ObjectHideFlags: 0

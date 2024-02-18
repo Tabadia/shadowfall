@@ -35,7 +35,7 @@ public class SunDetection : MonoBehaviour
     public bool canTakeDamage = true;
     float toRadians = (Mathf.PI/180);
 
-    public GameObject camera;
+    public GameObject pCamera;
 
     void Start() {
         // lightAngle = directionalLight.transform.forward * -1;
@@ -53,7 +53,7 @@ public class SunDetection : MonoBehaviour
         
         //print(angle);
 
-        centPos = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z);
+        centPos = new Vector3(pCamera.transform.position.x, pCamera.transform.position.y, pCamera.transform.position.z);
         topPos = new Vector3(centPos.x, centPos.y + (transform.localScale.y), centPos.z);
         //botPos = new Vector3(centPos.x, centPos.y - , centPos.z);
         leftPos = new Vector3(centPos.x - Mathf.Sin(angle * toRadians)*2f, centPos.y, centPos.z - Mathf.Cos(angle * toRadians)*2f);
