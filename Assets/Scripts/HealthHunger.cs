@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class HealthHunger : MonoBehaviour
 {
     public Slider healthSlider;
-    public Slider hungerSlider;
+    public Image hungerCircle;
+
+    public float maxHunger;
 
     public void SetMaxHealth(float max){
         healthSlider.maxValue = max;
@@ -18,11 +20,11 @@ public class HealthHunger : MonoBehaviour
     }
 
     public void SetMaxHunger(float max){
-        hungerSlider.maxValue = max;
-        hungerSlider.value = max;
+        maxHunger = max;
+        
     }
 
     public void SetHunger(float val){
-        hungerSlider.value = val;
+        hungerCircle.fillAmount = val/maxHunger;
     }
 }

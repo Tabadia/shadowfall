@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         StartCoroutine(reduceHungerHealth());
+        healthHunger.SetMaxHunger(maxHunger);
         currentHunger = maxHunger;
         currentHealth = maxHealth;
     }
@@ -40,6 +41,10 @@ public class Player : MonoBehaviour
                 print("You died");
             }
         }
+
+        currentHunger = Mathf.Max(0,currentHunger - hungerRate/20);
+        healthHunger.SetHunger(currentHunger);
+
         if (currentHealth > 0)
         {
             dead = false;
@@ -51,9 +56,9 @@ public class Player : MonoBehaviour
         while (true){
             yield return new WaitForSeconds(1f);
             timeAlive++;
-            if (timeAlive % 5 == 0)
-                currentHunger = Mathf.Max(0, currentHunger - hungerRate);
-            healthHunger.SetHunger(currentHunger);
+            //if (timeAlive % 5 == 0)
+                //currentHunger = Mathf.Max(0, currentHunger - hungerRate);
+            //healthHunger.SetHunger(currentHunger);
 
             if (currentHunger <= 0)
                 currentHealth = Mathf.Max(0, currentHealth - healthLostFromHungerRate);
