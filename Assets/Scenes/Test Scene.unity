@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 2429.255, g: 1622.3016, b: 997.1365, a: 1}
+  m_IndirectSpecularColor: {r: 2429.1628, g: 1614.6869, b: 982.32666, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2448,7 +2448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 565586029}
-  hungerCircle: {fileID: 1676295033}
+  hungerCircle: {fileID: 1926393373}
   maxHunger: 0
 --- !u!1001 &572659965
 PrefabInstance:
