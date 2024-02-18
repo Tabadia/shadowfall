@@ -30,6 +30,10 @@ public class Shadows : MonoBehaviour
 
         
             MeshRenderer renderer = original.GetComponent<MeshRenderer>();
+            //if (renderer.bounds.size.y <= playerHeight){
+            //    print(renderer.bounds.size.y + " " + playerHeight);
+            //    continue;
+           // }
 
             clone = Instantiate(original);
             clone.name = (original.name + "'s Shadow");
@@ -57,23 +61,12 @@ public class Shadows : MonoBehaviour
             cloneRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
 
             float yScale = (renderer.bounds.size.y - playerHeight) / renderer.bounds.size.y;
-            if ((original.name == "Player Object") || (renderer.bounds.size.y <= playerHeight)){
-                yScale = .5f;
-            }
-
             emptyParent.transform.localScale = new Vector3(emptyParent.transform.localScale.x, yScale, emptyParent.transform.localScale.z);
+           
 
             emptyParent.transform.position = new Vector3(emptyParent.transform.position.x, emptyParent.transform.position.y - (playerHeight / 2), emptyParent.transform.position.z);
-            
             clone.transform.SetParent(original.transform, true);
             Destroy(emptyParent);
-
-            if (original.name == "Player Object"){
-                clone.transform.localPosition = new Vector3(0, -.5f, 0);
-            }
-            else if (renderer.bounds.size.y <= playerHeight){
-                clone.transform.localPosition = new Vector3(clone.transform.localPosition.x, -0.25f, clone.transform.localPosition.z);
-            }
             
 
             
