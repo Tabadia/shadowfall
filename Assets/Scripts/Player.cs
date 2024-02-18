@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        currentHunger = Mathf.Max(0,currentHunger - hungerRate/20);
+        currentHunger = Mathf.Max(0,currentHunger - hungerRate/30);
         healthHunger.SetHunger(currentHunger);
 
         if (currentHealth > 0)
