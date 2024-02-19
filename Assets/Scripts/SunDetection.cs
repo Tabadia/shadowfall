@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -77,6 +78,7 @@ public class SunDetection : MonoBehaviour
         if (Physics.Raycast(centPos, lightAngle, out hit, Mathf.Infinity, layerMask))
         {
             sunTime = 0;
+            sun.fillAmount = 0;
             Debug.DrawRay(centPos, lightAngle * hit.distance, Color.yellow);
             Debug.DrawRay(topPos, lightAngle * 1000, Color.green);
             //Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
@@ -176,16 +178,16 @@ public class SunDetection : MonoBehaviour
     IEnumerator reduceHealth()
     {
         canTakeDamage = false;
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.001f);
         if (sunTime <= maxSunTime)
         {
-            sunTime += 0.1f;
+            sunTime += 0.01f;
             sun.fillAmount = sunTime / maxSunTime;
 
         }
         else
         {
-            player.currentHealth -= sunDamage;
+            player.currentHealth -= sunDamage/10;
             healthHunger.SetHealth(player.currentHealth);
         }
         canTakeDamage = true;
