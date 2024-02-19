@@ -43,8 +43,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        currentHunger = Mathf.Max(0,currentHunger - hungerRate/30);
-        healthHunger.SetHunger(currentHunger);
 
         if (currentHealth > 0)
         {
@@ -55,14 +53,13 @@ public class Player : MonoBehaviour
     IEnumerator reduceHungerHealth()
     {
         while (true){
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.001f);
             timeAlive++;
-            //if (timeAlive % 5 == 0)
-                //currentHunger = Mathf.Max(0, currentHunger - hungerRate);
-            //healthHunger.SetHunger(currentHunger);
+            currentHunger = Mathf.Max(0, currentHunger - hungerRate/1000);
+            healthHunger.SetHunger(currentHunger);
 
             if (currentHunger <= 0)
-                currentHealth = Mathf.Max(0, currentHealth - healthLostFromHungerRate);
+                currentHealth = Mathf.Max(0, currentHealth - healthLostFromHungerRate/1000);
             healthHunger.SetHealth(currentHealth);
         }
     }
