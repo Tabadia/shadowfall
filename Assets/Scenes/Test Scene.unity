@@ -2681,7 +2681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hungerCircle: {fileID: 1362987459}
-  healthCircle: {fileID: 0}
+  healthCircle: {fileID: 282262876}
   maxHunger: 0
   maxHealth: 0
 --- !u!1001 &572659965

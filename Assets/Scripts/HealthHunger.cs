@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthHunger : MonoBehaviour
 {
     public Image hungerCircle;
-    public Image healthCircle = GetComponent<healthCircle>();
+    public Image healthCircle;
 
     public float maxHunger;
     public float maxHealth;
