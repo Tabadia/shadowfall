@@ -19,7 +19,7 @@ public class HealthHunger : MonoBehaviour
     public void SetHealth(float val){
         healthCircle.fillAmount = val/maxHealth;
         healthCircle.color = new Color32(255, (byte)(255 * healthCircle.fillAmount), (byte)(255 * healthCircle.fillAmount), 250);
-        healthHeart.color = new Color32(255, (byte)(255 * healthCircle.fillAmount), (byte)(255 * healthCircle.fillAmount), 250);
+        healthHeart.color = new Color32(255, (byte)(255 * healthCircle.fillAmount), (byte)(255 * healthCircle.fillAmount), 255);
     }
 
     public void SetMaxHunger(float max){

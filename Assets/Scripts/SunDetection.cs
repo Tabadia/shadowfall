@@ -20,6 +20,8 @@ public class SunDetection : MonoBehaviour
     public HealthHunger healthHunger;
     public Player player;
     public float sunDamage = 0.05f;
+    public float maxSunTime = 1.0f;
+    private float sunTime = 0.0f;
 
     private Vector3 topPos;
     private Vector3 centPos;
@@ -32,6 +34,8 @@ public class SunDetection : MonoBehaviour
     public GameObject leftEffect;
     public GameObject rightEffect;
 
+
+    public Image sun;
     public bool canTakeDamage = true;
     float toRadians = (Mathf.PI/180);
 
@@ -72,6 +76,7 @@ public class SunDetection : MonoBehaviour
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(centPos, lightAngle, out hit, Mathf.Infinity, layerMask))
         {
+            sunTime = 0;
             Debug.DrawRay(centPos, lightAngle * hit.distance, Color.yellow);
             Debug.DrawRay(topPos, lightAngle * 1000, Color.green);
             //Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
@@ -172,8 +177,17 @@ public class SunDetection : MonoBehaviour
     {
         canTakeDamage = false;
         yield return new WaitForSeconds(.1f);
-        player.currentHealth -= sunDamage;
-        healthHunger.SetHealth(player.currentHealth );
+        if (sunTime <= maxSunTime)
+        {
+            sunTime += 0.1f;
+            sun.fillAmount = sunTime / maxSunTime;
+
+        }
+        else
+        {
+            player.currentHealth -= sunDamage;
+            healthHunger.SetHealth(player.currentHealth);
+        }
         canTakeDamage = true;
     }
 
