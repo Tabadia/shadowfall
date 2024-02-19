@@ -102,7 +102,6 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.C) && crouching)
         {
-            Debug.Log("crouch done!");
             crouchUp();
         }
 
@@ -145,12 +144,10 @@ public class PlayerController : MonoBehaviour
     void updateSlide(Vector3 slideDir) {
         if (slideTimer > 0) {
             characterController.Move(slideDir * Time.deltaTime * slideMultiplier * runSpeed);
-            //Debug.Log(slideTimer);
             slideTimer -= Time.deltaTime;
             isSliding = crouching;
         } else {
             isSliding = false;
-            Debug.Log("slide done!");
             crouchUp();
         }
     }

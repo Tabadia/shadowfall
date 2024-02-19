@@ -5,23 +5,22 @@ using UnityEngine.UI;
 
 public class HealthHunger : MonoBehaviour
 {
-    public Slider healthSlider;
     public Image hungerCircle;
+    public Image healthCircle = GetComponent<healthCircle>();
 
     public float maxHunger;
+    public float maxHealth;
 
-    public void SetMaxHealth(float max){
-        healthSlider.maxValue = max;
-        healthSlider.value = max;
+    public void SetMaxHealth(float max) {
+        maxHealth = max;
     }
 
     public void SetHealth(float val){
-        healthSlider.value = val;
+        healthCircle.fillAmount = val/maxHealth;
     }
 
     public void SetMaxHunger(float max){
         maxHunger = max;
-        
     }
 
     public void SetHunger(float val){
