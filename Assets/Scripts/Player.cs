@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(reduceHungerHealth());
         healthHunger.SetMaxHunger(maxHunger);
+        healthHunger.SetMaxHealth(maxHealth);
         currentHunger = maxHunger;
         currentHealth = maxHealth;
     }
