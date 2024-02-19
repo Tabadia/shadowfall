@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4175.8403, g: 2800.136, b: 1778.6174, a: 1}
+  m_IndirectSpecularColor: {r: 4187.101, g: 2801.6707, b: 1770.3016, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -962,7 +962,7 @@ GameObject:
   - component: {fileID: 215366499}
   - component: {fileID: 215366501}
   - component: {fileID: 215366500}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sun Indicator Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1248,7 +1248,7 @@ GameObject:
   - component: {fileID: 255486027}
   - component: {fileID: 255486029}
   - component: {fileID: 255486028}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Darken Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1428,7 +1428,7 @@ GameObject:
   - component: {fileID: 282262875}
   - component: {fileID: 282262877}
   - component: {fileID: 282262876}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: New Health Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1587,7 +1587,7 @@ GameObject:
   - component: {fileID: 308406865}
   - component: {fileID: 308406867}
   - component: {fileID: 308406866}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: stomach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2034,7 +2034,7 @@ GameObject:
   - component: {fileID: 386871596}
   - component: {fileID: 386871598}
   - component: {fileID: 386871597}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: The Health Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2217,7 +2217,7 @@ GameObject:
   - component: {fileID: 409468204}
   - component: {fileID: 409468206}
   - component: {fileID: 409468205}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: New Hunger Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2665,7 +2665,7 @@ GameObject:
   - component: {fileID: 565586028}
   - component: {fileID: 565586029}
   - component: {fileID: 565586030}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3261,7 +3261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 659947263}
   - component: {fileID: 659947264}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Hunger bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3689,7 +3689,7 @@ GameObject:
   - component: {fileID: 721964930}
   - component: {fileID: 721964932}
   - component: {fileID: 721964931}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4379,7 +4379,7 @@ GameObject:
   - component: {fileID: 828229452}
   - component: {fileID: 828229454}
   - component: {fileID: 828229453}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4452,7 +4452,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 848013384}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Camera Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9984,7 +9984,7 @@ GameObject:
   - component: {fileID: 983196380}
   - component: {fileID: 983196382}
   - component: {fileID: 983196381}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14951,7 +14951,7 @@ GameObject:
   - component: {fileID: 1004948809}
   - component: {fileID: 1004948810}
   - component: {fileID: 1004948811}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -15057,7 +15057,7 @@ MonoBehaviour:
   sunDir: {x: 0, y: 0, z: 0}
   healthHunger: {fileID: 565586030}
   player: {fileID: 1004948809}
-  sunDamage: 2
+  sunDamage: 4
   maxSunTime: 1
   topEffect: {fileID: 996911388}
   botEffect: {fileID: 3123977806949593372}
@@ -15066,6 +15066,9 @@ MonoBehaviour:
   sun: {fileID: 1033477333}
   canTakeDamage: 1
   pCamera: {fileID: 963194225}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 19
 --- !u!114 &1004948809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15078,6 +15081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537a02a4b81488f4595c97c79e4b46c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   maxHealth: 100
   maxHunger: 100
   currentHealth: 0
@@ -15135,7 +15139,7 @@ GameObject:
   - component: {fileID: 1033477332}
   - component: {fileID: 1033477334}
   - component: {fileID: 1033477333}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sun Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16204,7 +16208,7 @@ GameObject:
   - component: {fileID: 1218437924}
   - component: {fileID: 1218437926}
   - component: {fileID: 1218437925}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: The Hunger Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16387,7 +16391,7 @@ GameObject:
   - component: {fileID: 1261457525}
   - component: {fileID: 1261457527}
   - component: {fileID: 1261457526}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17146,7 +17150,7 @@ GameObject:
   - component: {fileID: 1327241964}
   - component: {fileID: 1327241963}
   - component: {fileID: 1327241962}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UI - Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17572,7 +17576,7 @@ GameObject:
   - component: {fileID: 1362987458}
   - component: {fileID: 1362987460}
   - component: {fileID: 1362987459}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: New Hunger Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18391,7 +18395,7 @@ GameObject:
   - component: {fileID: 1545992441}
   - component: {fileID: 1545992440}
   - component: {fileID: 1545992439}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19533,7 +19537,7 @@ GameObject:
   - component: {fileID: 1702346153}
   - component: {fileID: 1702346155}
   - component: {fileID: 1702346154}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20168,7 +20172,7 @@ GameObject:
   - component: {fileID: 1770474626}
   - component: {fileID: 1770474628}
   - component: {fileID: 1770474627}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Interact Message
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20439,7 +20443,7 @@ GameObject:
   - component: {fileID: 1843334394}
   - component: {fileID: 1843334396}
   - component: {fileID: 1843334395}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: New Hunger Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25856,7 +25860,7 @@ GameObject:
   - component: {fileID: 2025390333}
   - component: {fileID: 2025390335}
   - component: {fileID: 2025390334}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -41,7 +41,7 @@ public class SunDetection : MonoBehaviour
     float toRadians = (Mathf.PI/180);
 
     public GameObject pCamera;
-
+    public LayerMask layerMask;
     void Start() {
         // lightAngle = directionalLight.transform.forward * -1;
         // sunDir = directionalLight.transform.forward;
@@ -66,17 +66,19 @@ public class SunDetection : MonoBehaviour
 
         
         screenAlpha = darkenScreen.GetComponent<Image>().color.a;
-        int layerMask = 1 << 8;
+        //int layerMask = ~(1 << 8 | 1 << 5); // ignore both layerX and layerY
+        // int layerMask = 1 << 8;
 
-        // This would cast rays only against colliders in layer 8.
-        // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
-        layerMask = ~layerMask;
+        // // This would cast rays only against colliders in layer 8.
+        // // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
+        // layerMask = ~layerMask;
 
         RaycastHit hit;
 
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(centPos, lightAngle, out hit, Mathf.Infinity, layerMask))
         {
+            print(hit.collider.gameObject.name);
             sunTime = 0;
             sun.fillAmount = 0;
             Debug.DrawRay(centPos, lightAngle * hit.distance, Color.yellow);
