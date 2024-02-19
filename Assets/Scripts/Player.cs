@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public InventoryObject inventory;
+    
     public int maxHealth = 100;
     public int maxHunger = 100;
 
