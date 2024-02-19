@@ -117,7 +117,7 @@ Material:
     - _StencilWriteMaskMV: 43
     - _Strength: 7.5
     - _Strength_2: 0.5
-    - _Strength_3: 1
+    - _Strength_3: 0.5
     - _SurfaceType: 0
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
@@ -132,8 +132,8 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.50980395, g: 0.5254902, b: 0.6862745, a: 0}
-    - _Color_2: {r: 0.8352942, g: 0.40784317, b: 0.5294118, a: 0}
+    - _Color: {r: 0.6862745, g: 0.6075205, b: 0.50980395, a: 0}
+    - _Color_2: {r: 0.8867924, g: 0.34912956, b: 0.33882165, a: 0}
     - _Diffuse_Color_Ramp_Step: {r: 1, g: -2.17, b: 0, a: 0}
     - _Diffuse_Texture_Tint: {r: 0.7176471, g: 0.8352942, b: 0.40784317, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
@@ -143,5 +143,5 @@ Material:
     - _Shadow_Color: {r: 0.6392157, g: 0, b: 0.91372555, a: 0.23921569}
     - _Tiling: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling_2: {r: 6.34, g: 10, b: 0, a: 0}
-    - _Tiling_3: {r: 3, g: 3, b: 0, a: 0}
+    - _Tiling_3: {r: 9, g: 9, b: 0, a: 0}
   m_BuildTextureStacks: []

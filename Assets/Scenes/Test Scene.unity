@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 806.07385, g: 499.33356, b: 248.7847, a: 1}
+  m_IndirectSpecularColor: {r: 4187.935, g: 2804.885, b: 1776.512, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3457,13 +3457,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.060290415, y: 0.826586, z: -0.0013810006, w: 0.5595702}
+  m_LocalRotation: {x: 0.1742349, y: 0.7931035, z: -0.16937897, w: 0.5585157}
   m_LocalPosition: {x: -773.7207, y: 777.6521, z: -1134.868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975774202}
-  m_LocalEulerAnglesHint: {x: 4, y: 112.004, z: 5.645}
+  m_LocalEulerAnglesHint: {x: 27.6, y: 111.08, z: 5.645}
 --- !u!114 &705507996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3598,7 +3598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d743586755efb154ea91e8acd80ca620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 1
+  rotationSpeed: 0
   sunLight: {fileID: 705507993}
   moonLight: {fileID: 1695840490}
 --- !u!1 &721964929
