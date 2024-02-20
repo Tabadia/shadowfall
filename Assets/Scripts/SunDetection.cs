@@ -20,6 +20,7 @@ public class SunDetection : MonoBehaviour
 
     public HealthHunger healthHunger;
     public Player player;
+    
     public float sunDamage = 0.05f;
 
     public float burnSpeed = 0.01f;
