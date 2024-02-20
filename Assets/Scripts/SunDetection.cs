@@ -79,7 +79,7 @@ public class SunDetection : MonoBehaviour
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(centPos, lightAngle, out hit, Mathf.Infinity, layerMask))
         {
-            print(hit.collider.gameObject.name);
+            //print(hit.collider.gameObject.name);
             sunTime -= Time.deltaTime * burnSpeed;
             if (sunTime <= 0)
                 sunTime = 0;
