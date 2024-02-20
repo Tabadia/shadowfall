@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8313994505192810938}
   - component: {fileID: 7443808969843360564}
   m_Layer: 0
-  m_Name: canned_food_audio
+  m_Name: CannedPeaches_audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

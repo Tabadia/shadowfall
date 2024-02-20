@@ -23,9 +23,15 @@ public class Player : MonoBehaviour
 
     public bool dead = false;
 
-    
+
     // Start is called before the first frame update
     //penis
+    
+    private void OnApplicationQuit()
+    {
+        inventory.Containter.Clear();
+    }
+    
     void Start()
     {
         healthHunger.SetMaxHunger(maxHunger);

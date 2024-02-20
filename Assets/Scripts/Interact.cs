@@ -10,7 +10,7 @@ public class Interact : MonoBehaviour
     public float playerActiveDistance;
     public GameObject sensedObject = null;
     public Player player;
-    public string[] interactableObjects = {"energy_drink", "canned_food"};
+    public string[] interactableObjects = {"energy_drink", "CannedPeaches"};
     public TextMeshProUGUI interactText;
     public RectTransform crosshair;
     // private Vector3 crosshairCurrentSize;
@@ -52,8 +52,11 @@ public class Interact : MonoBehaviour
                 crosshair.localScale = crosshairGoalSizeBig;
                 interactText.enabled = true;
                 if (Input.GetKeyDown(KeyCode.F))
-                {
-                    Invoke("Interact_" + name, 0);
+                {  
+                    player.inventory.AddItem(sensedObject.GetComponent<Item>().item, 1);
+                    DestroyImmediate(sensedObject.gameObject);
+                    sensedObject = null;
+                    //Invoke("Interact_" + name, 0);
                 }
                 break;
             }
@@ -91,7 +94,7 @@ public class Interact : MonoBehaviour
     //     }
     // }
     
-    void Interact_canned_food() 
+    void Interact_CannedPeaches() 
     {
         float food_value = 50;
         Debug.Log("yummy: " + sensedObject.name);

@@ -5,7 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    public Camera playerCamera;
+    public GameObject playerCamera;
+    public GameObject inventoryCamera;
+    public bool isInventoryCamera = false;
     public float walkSpeed = 6f;
     public float runSpeedMultiplier = 1.5f;
     public float runSpeed;
@@ -55,6 +57,19 @@ public class PlayerController : MonoBehaviour
  
     void Update()
     {
+        if (Input.GetKeyUp(KeyCode.I))
+        {
+            isInventoryCamera = !isInventoryCamera;
+            playerCamera.SetActive(!isInventoryCamera);
+            inventoryCamera.SetActive(isInventoryCamera);
+            canMove = !canMove;
+            Cursor.visible = !Cursor.visible;
+            if (Cursor.lockState == CursorLockMode.Locked)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
+        }
+
         isMoving = characterController.velocity != Vector3.zero;
         // Movement
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -89,7 +104,7 @@ public class PlayerController : MonoBehaviour
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+            playerCamera.GetComponent<Camera>().transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
 

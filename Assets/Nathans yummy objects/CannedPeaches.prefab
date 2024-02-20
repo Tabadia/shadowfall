@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 1652008319270319634}
   - component: {fileID: 8968983932862129362}
   - component: {fileID: -6975806369759916008}
+  - component: {fileID: 1545671840355584707}
   m_Layer: 0
-  m_Name: canned_food
+  m_Name: CannedPeaches
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,3 +107,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1545671840355584707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190586298078959560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd129bf4ffd10184a91835ad7f56dabc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: b4b3ee0260aee674e91ccaa59de77f5c, type: 2}
