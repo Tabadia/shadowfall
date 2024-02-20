@@ -56,11 +56,9 @@ public class Player : MonoBehaviour
             dead = false;
         }
 
-        currentHunger = Mathf.Max(0, currentHunger - hungerRate * Time.deltaTime);
+            currentHunger = Mathf.Max(0, currentHunger - hungerRate * Time.deltaTime);
             healthHunger.SetHunger(currentHunger);
-
-            if (currentHunger <= 0)
-                currentHealth = Mathf.Max(0, currentHealth - healthLostFromHungerRate * Time.deltaTime);
+            currentHealth = Mathf.Max(0, currentHealth - healthLostFromHungerRate * Time.deltaTime);
             healthHunger.SetHealth(currentHealth);
     }
 

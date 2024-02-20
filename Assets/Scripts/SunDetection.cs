@@ -50,7 +50,7 @@ public class SunDetection : MonoBehaviour
     }
 
     void Update() {
-
+        sun.color = new Color32(255, (byte)(255 * (1 - sun.fillAmount)), (byte)(255 * (1 - sun.fillAmount)), 255);
         sunDir = directionalLight.transform.forward;
         lightAngle = directionalLight.transform.forward * -1;
 
