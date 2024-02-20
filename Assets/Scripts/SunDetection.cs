@@ -142,8 +142,10 @@ public class SunDetection : MonoBehaviour
                 }
             else
             {
+            
             player.currentHealth -= sunDamage * Time.deltaTime;
             healthHunger.SetHealth(player.currentHealth);
+            sunTime = 1.0f;
             }
             }
             inSun = true;     
