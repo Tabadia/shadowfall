@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4187.101, g: 2801.6707, b: 1770.3016, a: 1}
+  m_IndirectSpecularColor: {r: 4188.3726, g: 2802.6807, b: 1771.0977, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15057,8 +15057,8 @@ MonoBehaviour:
   sunDir: {x: 0, y: 0, z: 0}
   healthHunger: {fileID: 565586030}
   player: {fileID: 1004948809}
-  sunDamage: 4
-  maxSunTime: 1
+  sunDamage: 20
+  burnSpeed: 1
   topEffect: {fileID: 996911388}
   botEffect: {fileID: 3123977806949593372}
   leftEffect: {fileID: 1912716924}
@@ -15086,9 +15086,9 @@ MonoBehaviour:
   maxHunger: 100
   currentHealth: 0
   currentHunger: 0
-  stillHungerRate: 1
-  walkHungerRate: 1.5
-  sprintHungerRate: 2
+  stillHungerRate: 0.5
+  walkHungerRate: 0.75
+  sprintHungerRate: 1
   hungerRate: 1
   healthLostFromHungerRate: 2
   timeAlive: 0

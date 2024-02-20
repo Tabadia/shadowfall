@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
     //penis
     void Start()
     {
-        StartCoroutine(reduceHungerHealth());
         healthHunger.SetMaxHunger(maxHunger);
         healthHunger.SetMaxHealth(maxHealth);
         currentHunger = maxHunger;
@@ -50,21 +49,16 @@ public class Player : MonoBehaviour
         {
             dead = false;
         }
-    }
 
-    IEnumerator reduceHungerHealth()
-    {
-        while (true){
-            yield return new WaitForSeconds(0.001f);
-            timeAlive++;
-            currentHunger = Mathf.Max(0, currentHunger - hungerRate/1000);
+        currentHunger = Mathf.Max(0, currentHunger - hungerRate * Time.deltaTime);
             healthHunger.SetHunger(currentHunger);
 
             if (currentHunger <= 0)
-                currentHealth = Mathf.Max(0, currentHealth - healthLostFromHungerRate/1000);
+                currentHealth = Mathf.Max(0, currentHealth - healthLostFromHungerRate * Time.deltaTime);
             healthHunger.SetHealth(currentHealth);
-        }
     }
+
+
 
     public void SprintHunger(){
         hungerRate = sprintHungerRate;

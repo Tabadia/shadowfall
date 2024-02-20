@@ -21,7 +21,8 @@ public class SunDetection : MonoBehaviour
     public HealthHunger healthHunger;
     public Player player;
     public float sunDamage = 0.05f;
-    public float maxSunTime = 1.0f;
+
+    public float burnSpeed = 0.01f;
     private float sunTime = 0.0f;
 
     private Vector3 topPos;
@@ -79,8 +80,10 @@ public class SunDetection : MonoBehaviour
         if (Physics.Raycast(centPos, lightAngle, out hit, Mathf.Infinity, layerMask))
         {
             print(hit.collider.gameObject.name);
-            sunTime = 0;
-            sun.fillAmount = 0;
+            sunTime -= Time.deltaTime * burnSpeed;
+            if (sunTime <= 0)
+                sunTime = 0;
+            sun.fillAmount = sunTime;
             Debug.DrawRay(centPos, lightAngle * hit.distance, Color.yellow);
             Debug.DrawRay(topPos, lightAngle * 1000, Color.green);
             //Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
@@ -131,7 +134,17 @@ public class SunDetection : MonoBehaviour
                 StartCoroutine(FadeOut());
             }
             if(canTakeDamage & player.currentHealth > 0){
-                StartCoroutine(reduceHealth());
+                if (sunTime <= 1.0f)
+                {
+                sunTime += burnSpeed * Time.deltaTime;
+                sun.fillAmount = sunTime;
+
+                }
+            else
+            {
+            player.currentHealth -= sunDamage * Time.deltaTime;
+            healthHunger.SetHealth(player.currentHealth);
+            }
             }
             inSun = true;     
 
@@ -177,22 +190,5 @@ public class SunDetection : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator reduceHealth()
-    {
-        canTakeDamage = false;
-        yield return new WaitForSeconds(.001f);
-        if (sunTime <= maxSunTime)
-        {
-            sunTime += 0.01f;
-            sun.fillAmount = sunTime / maxSunTime;
-
-        }
-        else
-        {
-            player.currentHealth -= sunDamage/10;
-            healthHunger.SetHealth(player.currentHealth);
-        }
-        canTakeDamage = true;
-    }
 
 }
