@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4193.858, g: 2806.507, b: 1774.092, a: 1}
+  m_IndirectSpecularColor: {r: 4193.819, g: 2806.4915, b: 1774.092, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10230,7 +10230,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ae941d6a11ba26f41b9edee28cebf1a3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 80b62d1b48cce9e4a8060135c5a9f52d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -10252,7 +10252,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0.04
-      value: 1
+      value: 1.0541687
       inSlope: -15.974216
       outSlope: -15.974216
       tangentMode: 0
@@ -10261,7 +10261,7 @@ AudioSource:
       outWeight: 0.118679665
     - serializedVersion: 3
       time: 0.15648468
-      value: 0.5166626
+      value: 0.5708313
       inSlope: -4.384231
       outSlope: -4.384231
       tangentMode: 0
@@ -10270,7 +10270,7 @@ AudioSource:
       outWeight: 0.31921563
     - serializedVersion: 3
       time: 0.28747955
-      value: 0.30000305
+      value: 0.35417175
       inSlope: -2.0750213
       outSlope: -2.0750213
       tangentMode: 0
@@ -10279,7 +10279,7 @@ AudioSource:
       outWeight: 0
     - serializedVersion: 3
       time: 0.44464904
-      value: 0.1416626
+      value: 0.1958313
       inSlope: -0.39078063
       outSlope: -0.39078063
       tangentMode: 0
@@ -10287,8 +10287,8 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.64
-      value: 0.020843506
+      time: 0.634339
+      value: 0.1166687
       inSlope: -0.09769516
       outSlope: -0.09769516
       tangentMode: 0
@@ -10296,13 +10296,22 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -0.04001595
-      outSlope: -0.04001595
+      time: 0.8080492
+      value: 0.033532158
+      inSlope: -0.3785807
+      outSlope: -0.3785807
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.27567652
+      outSlope: -0.27567652
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.37771478
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
