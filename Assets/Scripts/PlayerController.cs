@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject playerCamera;
     public GameObject inventoryCamera;
+    public GameObject globalLight;
+    public GameObject backpackLight;
     public bool isInventoryCamera = false;
     public float walkSpeed = 6f;
     public float runSpeedMultiplier = 1.5f;
@@ -62,6 +64,8 @@ public class PlayerController : MonoBehaviour
             isInventoryCamera = !isInventoryCamera;
             playerCamera.SetActive(!isInventoryCamera);
             inventoryCamera.SetActive(isInventoryCamera);
+            globalLight.SetActive(!isInventoryCamera);
+            backpackLight.SetActive(isInventoryCamera);
             canMove = !canMove;
             Cursor.visible = !Cursor.visible;
             if (Cursor.lockState == CursorLockMode.Locked)
