@@ -30,6 +30,8 @@ public class InventorySpace
 {
     public ItemObject item;
     public int amount;
+    public float backpackSpaceX;
+    public float backpackSpaceY;
     public InventorySpace(ItemObject item, int amount)
     {
         this.item = item;

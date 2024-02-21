@@ -56,6 +56,7 @@ public class Interact : MonoBehaviour
                     player.inventory.AddItem(sensedObject.GetComponent<Item>().item, 1);
                     DestroyImmediate(sensedObject.gameObject);
                     sensedObject = null;
+                    
                     //Invoke("Interact_" + name, 0);
                 }
                 break;
