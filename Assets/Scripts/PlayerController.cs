@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject playerCamera;
     public GameObject inventoryCamera;
-    public GameObject globalLight;
-    public GameObject backpackLight;
+    public GameObject backpack;
+    public GameObject playerObject;
     public bool isInventoryCamera = false;
     public float walkSpeed = 6f;
     public float runSpeedMultiplier = 1.5f;
@@ -56,16 +56,16 @@ public class PlayerController : MonoBehaviour
         player = GetComponent<Player>();
         runSpeed = runSpeedMultiplier*walkSpeed;
     }
- 
+
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.I))
         {
             isInventoryCamera = !isInventoryCamera;
             playerCamera.SetActive(!isInventoryCamera);
+            playerObject.SetActive(!isInventoryCamera);
             inventoryCamera.SetActive(isInventoryCamera);
-            globalLight.SetActive(!isInventoryCamera);
-            backpackLight.SetActive(isInventoryCamera);
+            backpack.SetActive(isInventoryCamera);
             canMove = !canMove;
             Cursor.visible = !Cursor.visible;
             if (Cursor.lockState == CursorLockMode.Locked)
