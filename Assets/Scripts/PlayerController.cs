@@ -154,6 +154,11 @@ public class PlayerController : MonoBehaviour
         else {
             player.StillHunger();
         }
+        
+        //dying
+        if(player.dead) {
+            respawn();
+        }
     }
 
     void startSlide() {
@@ -202,5 +207,12 @@ public class PlayerController : MonoBehaviour
             characterController.height = crouchHeight;
             playerCollider.height = crouchHeight;
             walkSpeed /= 2;
+    }
+
+    public void respawn() {
+        player.setHunger(player.maxHunger);
+        player.setHealth(player.maxHealth);
+        transform.position = new Vector3(1, 1, 1);
+        player.dead = false;
     }
 }
