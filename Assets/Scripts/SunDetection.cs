@@ -37,6 +37,7 @@ public class SunDetection : MonoBehaviour
     public GameObject leftEffect;
     public GameObject rightEffect;
 
+    public GameObject sunLight;
 
     public Image sun;
     public bool canTakeDamage = true;
@@ -76,87 +77,86 @@ public class SunDetection : MonoBehaviour
         // layerMask = ~layerMask;
 
         RaycastHit hit;
-
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(centPos, lightAngle, out hit, Mathf.Infinity, layerMask))
-        {
-            //print(hit.collider.gameObject.name);
-            sunTime -= Time.deltaTime * burnSpeed;
-            if (sunTime <= 0)
-                sunTime = 0;
-            sun.fillAmount = sunTime;
-            Debug.DrawRay(centPos, lightAngle * hit.distance, Color.yellow);
-            Debug.DrawRay(topPos, lightAngle * 1000, Color.green);
-            //Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
-            Debug.DrawRay(leftPos, lightAngle * 1000, Color.blue);
-            Debug.DrawRay(rightPos, lightAngle * 1000, Color.blue);
-
-            if (inSun == true && !inAnim){
-                StartCoroutine(FadeIn());
-            }
-            if(hit.transform.tag != "Player"){
-                inSun = false;
-            }
-            
-            if (!Physics.Raycast(topPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
-                topEffect.SetActive(true);
-            }
-            else {
-                topEffect.SetActive(false);
-            }
-            // if (!Physics.Raycast(botPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
-            //     botEffect.SetActive(true);
-            // }
-            // else {
-            //     botEffect.SetActive(false);
-            // }
-            if (!Physics.Raycast(leftPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
-                leftEffect.SetActive(true);
-            }
-            else {
-                leftEffect.SetActive(false);
-            }
-            if (!Physics.Raycast(rightPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
-                rightEffect.SetActive(true);
-            }
-            else {
-                rightEffect.SetActive(false);
-            }
-        }
-        else
-        {
-            Debug.DrawRay(centPos, lightAngle * 1000, Color.white);
-            Debug.DrawRay(topPos, lightAngle * 1000, Color.green);
-            //Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
-            Debug.DrawRay(leftPos, lightAngle * 1000, Color.blue);
-            Debug.DrawRay(rightPos, lightAngle * 1000, Color.blue);
-
-            if (inSun == false && !inAnim){
-                StartCoroutine(FadeOut());
-            }
-            if(canTakeDamage & player.currentHealth > 0){
-                if (sunTime <= 1.0f)
+        if (sunLight.activeSelf == true){
+            if (Physics.Raycast(centPos, lightAngle, out hit, Mathf.Infinity, layerMask))
                 {
-                sunTime += burnSpeed * Time.deltaTime;
-                sun.fillAmount = sunTime;
+                    //print(hit.collider.gameObject.name);
+                    sunTime -= Time.deltaTime * burnSpeed;
+                    if (sunTime <= 0)
+                        sunTime = 0;
+                    sun.fillAmount = sunTime;
+                    Debug.DrawRay(centPos, lightAngle * hit.distance, Color.yellow);
+                    Debug.DrawRay(topPos, lightAngle * 1000, Color.green);
+                    //Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
+                    Debug.DrawRay(leftPos, lightAngle * 1000, Color.blue);
+                    Debug.DrawRay(rightPos, lightAngle * 1000, Color.blue);
 
+                    if (inSun == true && !inAnim){
+                        StartCoroutine(FadeIn());
+                    }
+                    if(hit.transform.tag != "Player"){
+                        inSun = false;
+                    }
+                    
+                    if (!Physics.Raycast(topPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
+                        topEffect.SetActive(true);
+                    }
+                    else {
+                        topEffect.SetActive(false);
+                    }
+                    // if (!Physics.Raycast(botPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
+                    //     botEffect.SetActive(true);
+                    // }
+                    // else {
+                    //     botEffect.SetActive(false);
+                    // }
+                    if (!Physics.Raycast(leftPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
+                        leftEffect.SetActive(true);
+                    }
+                    else {
+                        leftEffect.SetActive(false);
+                    }
+                    if (!Physics.Raycast(rightPos, lightAngle, out hit, Mathf.Infinity, layerMask)){
+                        rightEffect.SetActive(true);
+                    }
+                    else {
+                        rightEffect.SetActive(false);
+                    }
                 }
             else
             {
-            
-            player.currentHealth -= sunDamage * Time.deltaTime;
-            healthHunger.SetHealth(player.currentHealth);
-            sunTime = 1.0f;
-            }
-            }
-            inSun = true;     
+                Debug.DrawRay(centPos, lightAngle * 1000, Color.white);
+                Debug.DrawRay(topPos, lightAngle * 1000, Color.green);
+                //Debug.DrawRay(botPos, lightAngle * 1000, Color.green);
+                Debug.DrawRay(leftPos, lightAngle * 1000, Color.blue);
+                Debug.DrawRay(rightPos, lightAngle * 1000, Color.blue);
 
-            topEffect.SetActive(false);
-            botEffect.SetActive(false);
-            leftEffect.SetActive(false);
-            rightEffect.SetActive(false);       
+                if (inSun == false && !inAnim){
+                    StartCoroutine(FadeOut());
+                }
+                if(canTakeDamage & player.currentHealth > 0){
+                    if (sunTime <= 1.0f)
+                    {
+                    sunTime += burnSpeed * Time.deltaTime;
+                    sun.fillAmount = sunTime;
+
+                    }
+                else
+                {
+                
+                player.currentHealth -= sunDamage * Time.deltaTime;
+                healthHunger.SetHealth(player.currentHealth);
+                sunTime = 1.0f;
+                }
+                }
+                inSun = true;     
+
+                topEffect.SetActive(false);
+                botEffect.SetActive(false);
+                leftEffect.SetActive(false);
+                rightEffect.SetActive(false);       
+            }
         }
-
     }
 
     IEnumerator FadeIn() {

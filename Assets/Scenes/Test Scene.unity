@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 8384.187, g: 5611.149, b: 3547.1685, a: 1}
+  m_IndirectSpecularColor: {r: 4866.3833, g: 3234.9028, b: 1968.1213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3776,7 +3776,6 @@ GameObject:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
   - component: {fileID: 705507996}
-  - component: {fileID: 705507997}
   m_Layer: 0
   m_Name: Sun Light
   m_TagString: Untagged
@@ -3854,14 +3853,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1742349, y: 0.7931035, z: -0.16937897, w: 0.5585157}
+  m_LocalRotation: {x: 0.09229593, y: 0.7010574, z: -0.09229593, w: 0.7010574}
   m_LocalPosition: {x: -773.7207, y: 777.6521, z: -1134.868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 23082516}
   m_Father: {fileID: 975774202}
-  m_LocalEulerAnglesHint: {x: 27.6, y: 111.08, z: 5.645}
+  m_LocalEulerAnglesHint: {x: 15, y: 90, z: 0}
 --- !u!114 &705507996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3984,21 +3983,6 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
---- !u!114 &705507997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705507993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d743586755efb154ea91e8acd80ca620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 0
-  sunLight: {fileID: 705507993}
-  moonLight: {fileID: 1695840490}
 --- !u!1 &721964929
 GameObject:
   m_ObjectHideFlags: 0
@@ -10151,6 +10135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 975774202}
+  - component: {fileID: 975774203}
   m_Layer: 0
   m_Name: LIGHTING
   m_TagString: Untagged
@@ -10173,13 +10158,31 @@ Transform:
   m_Children:
   - {fileID: 705507995}
   - {fileID: 758047561}
-  - {fileID: 2097022097}
-  - {fileID: 1641726476}
   - {fileID: 1695840491}
   - {fileID: 1141197219}
+  - {fileID: 2097022097}
   - {fileID: 1321841948}
+  - {fileID: 1641726476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &975774203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975774201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d743586755efb154ea91e8acd80ca620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 2
+  sunLight: {fileID: 705507993}
+  moonLight: {fileID: 1695840490}
+  sunVol: {fileID: 758047559}
+  moonVol: {fileID: 1141197218}
+  timesRotated: 0
 --- !u!1 &976777239
 GameObject:
   m_ObjectHideFlags: 0
@@ -15448,6 +15451,7 @@ MonoBehaviour:
   botEffect: {fileID: 3123977806949593372}
   leftEffect: {fileID: 1912716924}
   rightEffect: {fileID: 893613626}
+  sunLight: {fileID: 705507993}
   sun: {fileID: 1033477333}
   canTakeDamage: 1
   pCamera: {fileID: 963194225}
@@ -19472,7 +19476,6 @@ GameObject:
   - component: {fileID: 1695840491}
   - component: {fileID: 1695840494}
   - component: {fileID: 1695840493}
-  - component: {fileID: 1695840492}
   m_Layer: 0
   m_Name: Moon Light
   m_TagString: Untagged
@@ -19488,28 +19491,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695840490}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.09229593, y: 0.7010574, z: -0.09229593, w: 0.7010574}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -773.7207, y: 777.6521, z: -1134.868}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975774202}
-  m_LocalEulerAnglesHint: {x: 15, y: 90, z: 0}
---- !u!114 &1695840492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695840490}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d743586755efb154ea91e8acd80ca620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 25
-  sunLight: {fileID: 0}
-  moonLight: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1695840493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19522,7 +19510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 0.5
+  m_Intensity: 1000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -19552,10 +19540,10 @@ MonoBehaviour:
   m_AreaLightShadowCone: 120
   m_UseScreenSpaceShadows: 0
   m_InteractsWithSky: 1
-  m_AngularDiameter: 6.71
-  m_FlareSize: 8.5
+  m_AngularDiameter: 8
+  m_FlareSize: 1
   m_FlareTint: {r: 1, g: 1, b: 1, a: 1}
-  m_FlareFalloff: 115
+  m_FlareFalloff: 10
   m_SurfaceTexture: {fileID: 2800000, guid: 95c0cb43ff81f534a9a2f919c654aa60, type: 3}
   m_SurfaceTint: {r: 1, g: 1, b: 1, a: 1}
   m_Distance: 1.5e+11
@@ -19589,7 +19577,7 @@ MonoBehaviour:
   m_VolumetricShadowDimmer: 0
   m_ShadowFadeDistance: 10000
   m_UseContactShadow:
-    m_Override: 1
+    m_Override: 0
     m_UseOverride: 1
     m_Level: 0
   m_RayTracedContactShadow: 0
@@ -19644,7 +19632,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 1000
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -19693,7 +19681,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
-  m_ShadowAngle: 6.71
+  m_ShadowAngle: 7
 --- !u!1 &1696423701
 GameObject:
   m_ObjectHideFlags: 0
@@ -26446,7 +26434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2097022095
 MonoBehaviour:
   m_ObjectHideFlags: 0

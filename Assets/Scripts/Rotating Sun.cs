@@ -5,41 +5,53 @@ public class RotateDirectionalLight : MonoBehaviour
     public float rotationSpeed = 10f; // Adjust the speed of rotation as needed
     private Vector3 currentSunRotation;
     private Vector3 currentMoonRotation;
-    private bool rotatingUp = true;
 
     public GameObject sunLight;
     public GameObject moonLight;
+    public GameObject sunVol;
+    public GameObject moonVol;
+
+    public int timesRotated = 0;
 
     void Update()
     {
-        if (rotatingUp)
-        {
-            currentSunRotation = sunLight.transform.rotation.eulerAngles;
-            if (currentSunRotation.x >= 90)
-            {
-                rotatingUp = false;
-                sunLight.SetActive(false);
-                moonLight.SetActive(true);
-            }
-            else
-            {
-                RotateUp(sunLight, currentSunRotation);
+        currentMoonRotation = moonLight.transform.rotation.eulerAngles;
+        currentSunRotation = sunLight.transform.rotation.eulerAngles;
+
+        if (timesRotated == 0){
+            RotateUp(sunLight, currentSunRotation);
+            if(currentSunRotation.x == 90f){
+                timesRotated++;
             }
         }
-        else
-        {
-            currentMoonRotation = moonLight.transform.rotation.eulerAngles;
-            if (currentMoonRotation.x <= -4)
-            {
-                print("mooned");
-                rotatingUp = true;
+        else if (timesRotated == 1){
+            RotateDown(sunLight, currentSunRotation);
+            if(currentSunRotation.x >= 190f){
+                timesRotated++;
+                moonLight.SetActive(true);
+                sunLight.SetActive(false);
+                moonVol.SetActive(true);
+                sunVol.SetActive(false);
+            }
+        }
+        else if (timesRotated == 2){
+            RotateUp(moonLight, currentMoonRotation);
+            if(currentMoonRotation.x == 90f){
+                timesRotated++;
+            }
+        }
+        else if (timesRotated == 3){
+            RotateDown(moonLight, currentMoonRotation);
+            if(currentMoonRotation.x >= 190f){
+                timesRotated++;
                 moonLight.SetActive(false);
                 sunLight.SetActive(true);
+                moonVol.SetActive(false);
+                sunVol.SetActive(true);
             }
-            else
-            {
-                RotateDown(moonLight, currentMoonRotation);
-            }
+        }
+        else {
+            timesRotated = 0;
         }
     }
 
