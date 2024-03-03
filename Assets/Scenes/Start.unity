@@ -174,8 +174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   consoleText: {fileID: 412536710}
-  letterDelay: 0.05
-  lineDelay: 1
+  maxLines: 10
+  letterDelay: 0.025
+  lineDelay: 0.5
   cursorBlinkRate: 0.1
 --- !u!114 &412536710
 MonoBehaviour:
@@ -197,10 +198,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Testing Database XA34IL Connection............\r\nERROR\r\nTesting Main
-    Connection....\r\nERROR\r\nTesting Cryopod ID 6749 Activation Code.....\r\nERROR\r\nManual
-    Assistance Required\r\nCalling Operations Assistant......\r\nERROR\r\nActivating
-    Function Code \"LAST STRAW\"....\r\nSUCCESS\r\nG o o d   M o r n i n g\r\n\r\n
+  m_text: 'THIS IS JUST A PLACEHOLDER
+
+    <color=red>PLEASE HELP ME GOD'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f247428c6edc30644af85d5fd0ee8d3d, type: 2}
   m_sharedMaterial: {fileID: 8775286311341429867, guid: f247428c6edc30644af85d5fd0ee8d3d, type: 2}
@@ -209,8 +209,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4289200054
-  m_fontColor: {r: 0.7143865, g: 1, b: 0.6556604, a: 1}
+    rgba: 4278255360
+  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
