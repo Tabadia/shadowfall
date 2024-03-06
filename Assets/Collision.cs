@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collisions : MonoBehaviour
+public class Collision : MonoBehaviour
 {
- 	void OnCollisionEnter(Collision collision)
+    /*float OnCollisionEnter(Collision collision)
 	{
 		Vector3 normal = collision.contacts[0].normal;
 
 		float collisionAngleTest1 = Vector3.Angle(Vector3.zero, -normal);
 
-		Debug.Log(collisionAngleTest1);
-    }
+		return collisionAngleTest1;
+    }*/
 }

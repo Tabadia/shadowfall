@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject playerCamera;
+    public GameObject inventoryCamera;
     public GameObject backpack;
     public GameObject playerObject;
     public bool isInventoryCamera = false;
@@ -61,21 +62,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.I))
         {
             isInventoryCamera = !isInventoryCamera;
+            playerCamera.SetActive(!isInventoryCamera);
             playerObject.SetActive(!isInventoryCamera);
+            inventoryCamera.SetActive(isInventoryCamera);
             backpack.SetActive(isInventoryCamera);
             canMove = !canMove;
             Cursor.visible = !Cursor.visible;
-            if (isInventoryCamera)
-            {
-                playerCamera.transform.localPosition = new Vector3(0, 2.5f, 0);
-                playerCamera.GetComponent<Camera>().transform.localRotation = Quaternion.Euler(90, 0, 0);
-            }
-            else 
-            {
-                playerCamera.transform.localPosition = new Vector3(0, 0.669f, 0);
-                playerCamera.GetComponent<Camera>().transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-            }
-            
             if (Cursor.lockState == CursorLockMode.Locked)
                 Cursor.lockState = CursorLockMode.None;
             else
@@ -122,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
         // Crouching
 
-        if (canMove && Input.GetKeyDown(KeyCode.C) && characterController.isGrounded)
+        if (Input.GetKeyDown(KeyCode.C) && characterController.isGrounded)
         {
             crouching = true;
             crouchDown();
