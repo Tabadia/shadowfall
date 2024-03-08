@@ -6,9 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject playerCamera;
-    public GameObject backpack;
     public GameObject playerObject;
-    public bool isInventoryCamera = false;
+    public GameObject inventoryScreen;
+    public bool isInventory = false;
     public float walkSpeed = 6f;
     public float runSpeedMultiplier = 1.5f;
     public float runSpeed;
@@ -60,22 +60,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.I))
         {
-            isInventoryCamera = !isInventoryCamera;
-            playerObject.SetActive(!isInventoryCamera);
-            backpack.SetActive(isInventoryCamera);
+            inventoryScreen.setActive(!isInventory);
+            isInventory = !isInventory;
             canMove = !canMove;
             Cursor.visible = !Cursor.visible;
-            if (isInventoryCamera)
-            {
-                playerCamera.transform.localPosition = new Vector3(0, 2.5f, 0);
-                playerCamera.GetComponent<Camera>().transform.localRotation = Quaternion.Euler(90, 0, 0);
-            }
-            else 
-            {
-                playerCamera.transform.localPosition = new Vector3(0, 0.669f, 0);
-                playerCamera.GetComponent<Camera>().transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-            }
-            
             if (Cursor.lockState == CursorLockMode.Locked)
                 Cursor.lockState = CursorLockMode.None;
             else
