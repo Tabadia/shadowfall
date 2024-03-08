@@ -198,9 +198,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'THIS IS JUST A PLACEHOLDER
-
-    <color=red>PLEASE HELP ME GOD'
+  m_text: "Testing Database XA34IL Connection:\r\n<color=red>ERROR</color>\nTesting
+    Main Connection:\n<color=red>ERROR</color>\nTesting Cryopod ID 6749 Activation
+    Code:\n<color=red>ERROR</color>\r\n Manual Assistance Required\nCalling Operations
+    Assistant:+\r\n<color=red>ERROR</color>\nActivating Emergency Function Code AWAKE:\n<color=green>SUCCESS</color>\nG
+    o o d   M o r n i n g"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f247428c6edc30644af85d5fd0ee8d3d, type: 2}
   m_sharedMaterial: {fileID: 8775286311341429867, guid: f247428c6edc30644af85d5fd0ee8d3d, type: 2}

@@ -37,7 +37,7 @@ MonoBehaviour:
     m_Value: {fileID: 2800000, guid: 57a8506309150e544ae2bfb47aa39d8f, type: 3}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.037
+    m_Value: 0.062
   m_MaxSamples:
     m_OverrideState: 1
     m_Value: 12
