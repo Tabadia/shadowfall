@@ -18,7 +18,7 @@ public class TextAnimation : MonoBehaviour
 
     void Start()
     {
-        AddMessage("Testing Database XA34IL Connection:\n" +
+        /*AddMessage("Testing Database XA34IL Connection:\n" +
             "<color=red>ERROR</color>\n" +
             "Testing Main Connection:\n" +
             "<color=red>ERROR</color>\n" +
@@ -29,7 +29,9 @@ public class TextAnimation : MonoBehaviour
             "<color=red>ERROR</color>\n" +
             "Activating Emergency Function Code AWAKE:\n" +
             "<color=green>SUCCESS</color>\n" +
-            "G o o d   M o r n i n g\n");
+            "G o o d   M o r n i n g\n");*/
+
+        AddMessage(consoleText.text);
         StartCoroutine(UpdateConsole());
     }
 

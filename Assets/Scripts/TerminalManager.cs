@@ -16,6 +16,14 @@ public class TerminalManager : MonoBehaviour
     public ScrollRect sr;
     public GameObject msgList;
 
+    Interpreter interpreter;
+
+
+    private void Start()
+    {
+        interpreter = GetComponent<Interpreter>();
+    }
+
 
     private void OnGUI()
     {
@@ -30,6 +38,10 @@ public class TerminalManager : MonoBehaviour
             //Instantiate a game object with a director prefix
             AddDirectoryLine(userInput);
 
+            //Add the interpretation line
+            int lines = AddInterpreterLines(interpreter.Interpret(userInput));
+
+            ScrollToBottom(lines);
             //Move the user input line to the end
             userInputLine.transform.SetAsLastSibling();
 
@@ -64,17 +76,47 @@ public class TerminalManager : MonoBehaviour
         //Set the text of the new game object
         msg.GetComponentsInChildren<TMP_Text>()[1].text = userInput;
 
-        StartCoroutine(ScrollToBottom());
 
 
 
     }
 
-    IEnumerator ScrollToBottom()
+    int AddInterpreterLines(List<string> interpretation)
     {
-        yield return new WaitForEndOfFrame();
-        sr.gameObject.SetActive(true);
-        sr.verticalNormalizedPosition = 0f;
+        for (int i = 0; i < interpretation.Count; i++)
+        {
+            //Instantiate the response line
+            GameObject res = Instantiate(responseLine, msgList.transform);
+
+            res.transform.SetAsLastSibling();
+
+            //Get the size of the message list + resize
+            Vector2 listSize = msgList.GetComponent<RectTransform>().sizeDelta;
+            msgList.GetComponent<RectTransform>().sizeDelta = new Vector2(listSize.x, listSize.y + 27.0f);
+
+
+            res.GetComponentInChildren<TMP_Text>().text = interpretation[i];
+
+
+
+        }
+
+        return interpretation.Count;
+    
+    }
+
+    void ScrollToBottom(int lines)
+    {
+        if (lines > 4)
+        {
+
+            sr.velocity = new Vector2(0, 450);
+        }
+        else
+        {
+            sr.verticalNormalizedPosition = 0;
+        
+        }
     }
 
 }

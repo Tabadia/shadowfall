@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1801758, g: 0.1801758, b: 0.1801758, a: 1}
+  m_IndirectSpecularColor: {r: 0.17980959, g: 0.17980959, b: 0.17980959, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -189,8 +189,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278321381
-  m_fontColor: {r: 0.8962264, g: 0, b: 0.009250506, a: 1}
+    rgba: 4278241228
+  m_fontColor: {r: 0.8018868, g: 0.7801425, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1334,6 +1334,7 @@ GameObject:
   - component: {fileID: 1958695565}
   - component: {fileID: 1958695564}
   - component: {fileID: 1958695568}
+  - component: {fileID: 1958695569}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1442,6 +1443,18 @@ MonoBehaviour:
   userInputLine: {fileID: 1510616643}
   sr: {fileID: 203477224}
   msgList: {fileID: 2094472220}
+--- !u!114 &1958695569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958695563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05527676272982a43acd6ae011f294f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2094472220
 GameObject:
   m_ObjectHideFlags: 0
