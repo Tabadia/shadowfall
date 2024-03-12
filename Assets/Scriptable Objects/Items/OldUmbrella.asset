@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc51d954ca87d044b85bf567f4d8d0c, type: 3}
   m_Name: OldUmbrella
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 6434411284224944328, guid: 014706e7873a7c1469e1bd65e53a3bdf, type: 3}
   type: 1
   description: An old scathed umbrella with enough fabric to protect you from sunlight.
   sunlightResistanceBonus: 25

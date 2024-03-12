@@ -60,15 +60,20 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.I))
         {
-            inventoryScreen.setActive(!isInventory);
+            inventoryScreen.SetActive(!isInventory);
             isInventory = !isInventory;
             canMove = !canMove;
-            Cursor.visible = !Cursor.visible;
-            if (Cursor.lockState == CursorLockMode.Locked)
+            if (Cursor.lockState == CursorLockMode.Locked) {
                 Cursor.lockState = CursorLockMode.None;
-            else
+                Cursor.visible = true;
+            }
+            else {
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+
+            }
         }
+
 
         isMoving = characterController.velocity != Vector3.zero;
         // Movement

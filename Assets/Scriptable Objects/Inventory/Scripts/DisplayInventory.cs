@@ -50,7 +50,7 @@ public class DisplayInventory : MonoBehaviour
             else
             {
                 var obj = Instantiate(inventory.Containter[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
-                obj.GetComponent<Transform>().localPosition = GetPosition(i);
+                obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
                 obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Containter[i].amount.ToString("n0");
                 itemsDisplayed.Add(inventory.Containter[i], obj);
             }

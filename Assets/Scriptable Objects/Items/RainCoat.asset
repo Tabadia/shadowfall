@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc51d954ca87d044b85bf567f4d8d0c, type: 3}
   m_Name: RainCoat
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  type: 0
+  prefab: {fileID: 8256246343217122364, guid: d511ad6501abd1c4ca45645ee3c56687, type: 3}
+  type: 1
   description: 
   sunlightResistanceBonus: 50
