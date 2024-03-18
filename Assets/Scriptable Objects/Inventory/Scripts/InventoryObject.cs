@@ -1,39 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
-public class InventoryObject : ScriptableObject
-{
-    public List<InventorySpace> Containter = new List<InventorySpace>();
+public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver {
+    public ItemDatabaseObejct database;
+    public List<InventorySpace> Container = new List<InventorySpace>();
     public void AddItem(ItemObject item, int amount)
     {
-        bool hasItem = false;
-        for (int i = 0; i < Containter.Count; i++)
+        for (int i = 0; i < Container.Count; i++)
         {
-            if (Containter[i].item == item)
+            if (Container[i].item == item)
             {
-                Containter[i].AddAmount(amount);
-                hasItem = true;
-                break;
+                Container[i].AddAmount(amount);
+                return;
             }
         }
-        if(!hasItem)
+        Container.Add(new InventorySpace(database.GetId[item], item, amount));     
+    }
+
+    public void Save()
+    {
+
+    }
+
+    public void Load()
+    {
+
+    }
+
+    public void OnAfterDeserialize()
+    {
+        for (int i = 0;i < Container.Count;i++)
         {
-            Containter.Add(new InventorySpace(item, amount));
+            Container[i].item = database.GetItem[Container[i].ID];
         }
+    }
+
+    public void OnBeforeSerialize()
+    {
     }
 }
 
 [System.Serializable]
 public class InventorySpace
 {
+    public int ID;
     public ItemObject item;
     public int amount;
     public float backpackSpaceX;
     public float backpackSpaceY;
-    public InventorySpace(ItemObject item, int amount)
+    public InventorySpace(int ID, ItemObject item, int amount)
     {
+        this.ID = ID;
         this.item = item;
         this.amount = amount;
     }

@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     
     private void OnApplicationQuit()
     {
-        inventory.Containter.Clear();
+        inventory.Container.Clear();
     }
     
     void Start()
