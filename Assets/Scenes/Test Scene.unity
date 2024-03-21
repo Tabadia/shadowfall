@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4868.237, g: 3250.3071, b: 1995.4143, a: 1}
+  m_IndirectSpecularColor: {r: 4867.2466, g: 3252.483, b: 2000.0374, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7123,8 +7123,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 145, y: 0}
-  m_SizeDelta: {x: -550, y: -172}
+  m_AnchoredPosition: {x: 145, y: -61.341705}
+  m_SizeDelta: {x: -550, y: -49.3166}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &819192645
 MonoBehaviour:
@@ -7139,15 +7139,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.21960784, g: 0.21960786, b: 0.21960786, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e162552a300f10c47bf33843b092bbee, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7176,6 +7176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acc4a485940a9d4995b3679e0e5b59c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryPrefab: {fileID: 0}
   inventory: {fileID: 11400000, guid: cb074edc15638dc479fd65fac3b95d2f, type: 2}
   X_START: -135
   Y_START: 128

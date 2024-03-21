@@ -53,14 +53,21 @@ public class Interact : MonoBehaviour
                 interactText.enabled = true;
                 if (Input.GetKeyDown(KeyCode.F))
                 {  
-                    player.inventory.AddItem(sensedObject.GetComponent<Item>().item, 1);
+                    player.inventory.AddItem(sensedObject.GetComponent<GroundItem>().item, 1);
                     DestroyImmediate(sensedObject.gameObject);
                     sensedObject = null;
                     
-                    //Invoke("Interact_" + name, 0);
                 }
                 break;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            player.inventory.Save();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad9))
+        {
+            player.inventory.Load();
         }
     }
     // IEnumerator crosshairLerping()
