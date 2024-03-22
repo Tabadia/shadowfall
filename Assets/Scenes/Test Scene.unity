@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4867.2466, g: 3252.483, b: 2000.0374, a: 1}
+  m_IndirectSpecularColor: {r: 4858.0815, g: 3228.7935, b: 1964.5137, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5317,147 +5317,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611480798}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &624704899
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7795576139073125409, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: injectionPoint
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139073125409, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668739].edgeMaterial
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139073125409, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668739].edgeThickness
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139073125409, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668739].noiseMaterial
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139073125409, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668739].renderTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: 5b7f1a7bc20ef0d4890e9340114266f2, type: 2}
-    - target: {fileID: 7795576139073125409, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668739].colorMapMaterial
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139073125409, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668739].layerMask.m_Bits
-      value: 309
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139073125409, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668739].colorMapTransMaterial
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139073125409, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668739].colorMapCompositeMaterial
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139073125410, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017814, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017814, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.4721954
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017814, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -9.225251
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017814, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -13.898935
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017814, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017814, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017814, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017814, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017814, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017814, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017814, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017815, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_Name
-      value: Custom Passes
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576139575017815, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576140675404707, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576140675404707, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668737].passFoldout
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576140675404707, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668738].filterFoldout
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576140675404707, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668737].overrideStencil
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576140675404707, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668738].sortingCriteria
-      value: 59
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576140675404707, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668737].overrideMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 37c8ce656ae8caa499c8c8e9cb42632c, type: 2}
-    - target: {fileID: 7795576140675404707, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668738].overrideMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 9e6fe32babaf87344bdba81c0f1c151e, type: 2}
-    - target: {fileID: 7795576140675404707, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: managedReferences[7761345042551668737].overrideMaterialPassName
-      value: Forward
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795576140675404716, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
 --- !u!1 &629674310
 GameObject:
   m_ObjectHideFlags: 0
@@ -6330,7 +6189,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: f04bad787da74fa469901963479a38d1, type: 2}
+  sharedProfile: {fileID: 11400000, guid: e9de25cb936087d468c951e758f09830, type: 2}
 --- !u!4 &758047561
 Transform:
   m_ObjectHideFlags: 0
@@ -36940,6 +36799,255 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &7795576139121786068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7795576139121786069}
+  m_Layer: 0
+  m_Name: Custom Passes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7795576139121786069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7795576139121786068}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4721954, y: -9.225251, z: -13.898935}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7795576139556766115}
+  - {fileID: 7795576140085325345}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7795576139556766113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7795576139556766115}
+  - component: {fileID: 7795576139556766114}
+  m_Layer: 0
+  m_Name: Toon Custom Pass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &7795576139556766114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7795576139556766113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  fadeRadius: 0
+  priority: 0
+  customPasses:
+  - rid: 7761345042551668739
+  injectionPoint: 5
+  m_TargetCamera: {fileID: 0}
+  useTargetCamera: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 7761345042551668739
+      type: {class: ToonCustomPass, ns: , asm: Assembly-CSharp}
+      data:
+        m_Name: Toon Custom Pass
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 309
+        edgeThickness: 1
+        colorThreshold: 0.001
+        colorMultiplier: 5
+        colorBias: 1
+        depthThreshold: 0.005
+        depthMultiplier: 1000
+        depthBias: 1
+        normalThreshold: 1
+        normalMultiplier: 1
+        normalBias: 1
+        noiseScale: 1
+        noiseMinMultiplier: 1
+        noiseMaxMultiplier: 1
+        noiseStep: {x: 0, y: 1}
+        renderTexture: {fileID: 8400000, guid: 5b7f1a7bc20ef0d4890e9340114266f2, type: 2}
+        colorMapMaterial: {fileID: 0}
+        colorMapTransMaterial: {fileID: 0}
+        colorMapCompositeMaterial: {fileID: 0}
+        edgeMaterial: {fileID: 0}
+        noiseMaterial: {fileID: 0}
+--- !u!4 &7795576139556766115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7795576139556766113}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.514, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7795576139121786069}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7795576140085325344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7795576140085325359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  fadeRadius: 0
+  priority: 0
+  customPasses:
+  - rid: 7761345042551668737
+  - rid: 7761345042551668738
+  injectionPoint: 1
+  m_TargetCamera: {fileID: 0}
+  useTargetCamera: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 7761345042551668737
+      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition, asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: Shadow Mask Custom Pass
+        enabled: 1
+        targetColorBuffer: 1
+        targetDepthBuffer: 1
+        clearFlags: -1
+        passFoldout: 0
+        m_Version: 0
+        filterFoldout: 1
+        rendererFoldout: 1
+        renderQueueType: 2
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 1
+        sortingCriteria: 59
+        overrideMode: 1
+        overrideMaterial: {fileID: 2100000, guid: 37c8ce656ae8caa499c8c8e9cb42632c, type: 2}
+        overrideMaterialPassIndex: 0
+        overrideMaterialPassName: Forward
+        overrideShader: {fileID: 0}
+        overrideShaderPassIndex: 0
+        overrideShaderPassName: Forward
+        overrideDepthState: 1
+        depthCompareFunction: 4
+        depthWrite: 1
+        overrideStencil: 0
+        stencilReferenceValue: 64
+        stencilWriteMask: 192
+        stencilReadMask: 192
+        stencilCompareFunction: 8
+        stencilPassOperation: 0
+        stencilFailOperation: 0
+        stencilDepthFailOperation: 0
+        shaderPass: 0
+    - rid: 7761345042551668738
+      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition, asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: Shadow Custom Pass
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        filterFoldout: 1
+        rendererFoldout: 1
+        renderQueueType: 10
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 23
+        sortingCriteria: 59
+        overrideMode: 1
+        overrideMaterial: {fileID: 2100000, guid: 9e6fe32babaf87344bdba81c0f1c151e, type: 2}
+        overrideMaterialPassIndex: 0
+        overrideMaterialPassName: ForwardOnly
+        overrideShader: {fileID: 0}
+        overrideShaderPassIndex: 0
+        overrideShaderPassName: Forward
+        overrideDepthState: 1
+        depthCompareFunction: 4
+        depthWrite: 1
+        overrideStencil: 0
+        stencilReferenceValue: 64
+        stencilWriteMask: 192
+        stencilReadMask: 192
+        stencilCompareFunction: 8
+        stencilPassOperation: 0
+        stencilFailOperation: 0
+        stencilDepthFailOperation: 0
+        shaderPass: 0
+--- !u!4 &7795576140085325345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7795576140085325359}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.991, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7795576139121786069}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7795576140085325359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7795576140085325345}
+  - component: {fileID: 7795576140085325344}
+  m_Layer: 0
+  m_Name: Toon Shadow Custom Pass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -36953,7 +37061,7 @@ SceneRoots:
   - {fileID: 1744376393}
   - {fileID: 1046074400}
   - {fileID: 1865877622}
-  - {fileID: 624704899}
+  - {fileID: 7795576139121786069}
   - {fileID: 1079954346}
   - {fileID: 2015709160}
   - {fileID: 1911540659}

@@ -75,7 +75,7 @@ Material:
     - _Float: 0
     - _OpaqueCullMode: 2
     - _RenderQueueType: 4
-    - _Shadow_Strength: 1
+    - _Shadow_Strength: 0.8
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 1
