@@ -13,6 +13,10 @@ public class Interact : MonoBehaviour
     public string[] interactableObjects = {"energy_drink", "CannedPeaches"};
     public TextMeshProUGUI interactText;
     public RectTransform crosshair;
+
+    // public GameObject wall;
+    public GameObject[] planks;
+
     // private Vector3 crosshairCurrentSize;
     private Vector3 crosshairGoalSizeSmall;
     private Vector3 crosshairGoalSizeBig;
@@ -43,6 +47,17 @@ public class Interact : MonoBehaviour
         } else
         {
             sensedObject = null;
+        }
+        if (sensedObject != null){
+            print(sensedObject.name + " " + sensedObject.tag);
+            if(sensedObject.tag == "Boardable"){
+                crosshair.anchoredPosition = crosshairGoalPosBig;
+                crosshair.localScale = crosshairGoalSizeBig;
+                interactText.enabled = true;
+                if (Input.GetKeyDown(KeyCode.F)) {  
+                    placeBoards(sensedObject);
+                }  
+            }
         }
         foreach (string name in interactableObjects)
         {
@@ -131,5 +146,16 @@ public class Interact : MonoBehaviour
         player.GetComponent<PlayerController>().startSpeedBoost();
         AudioSource source = GameObject.Find("energy_drink_audio").GetComponent<AudioSource>();
         source.PlayOneShot(source.clip);
+    }
+
+    void placeBoards(GameObject wall)
+    {
+        // if player has planks in inventory
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject plank = Instantiate(planks[Random.Range(0, planks.Length)]);
+            plank.transform.SetParent(wall.transform);
+            plank.transform.localPosition = new Vector3(0, 9 + (i * 2.5f), -1);
+        }
     }
 }
