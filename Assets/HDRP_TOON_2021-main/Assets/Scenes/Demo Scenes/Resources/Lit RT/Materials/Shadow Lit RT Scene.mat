@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Shadow Lit RT Scene
-  m_Shader: {fileID: -6465566751694194690, guid: f75b81fb531f52244ba2d8729c04f7be, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 0cc7eb41e57b1134b81278e232e81f18, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -69,13 +69,13 @@ Material:
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 10
     - _Edge_Overlay_Shadows_RenderTexture_Required: 0
-    - _Edge_Thickness: -3.59
+    - _Edge_Thickness: -25.58
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _Float: 0
     - _OpaqueCullMode: 2
     - _RenderQueueType: 4
-    - _Shadow_Strength: 0.8
+    - _Shadow_Strength: 1
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 1
@@ -104,7 +104,7 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _Edge_Color: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Shadow_Color: {r: 0.24528301, g: 0.23949803, b: 0.23949803, a: 0}
+    - _Shadow_Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &409769937046763340
 MonoBehaviour:
