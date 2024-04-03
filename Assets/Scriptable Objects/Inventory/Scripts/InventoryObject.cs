@@ -11,14 +11,14 @@ using JetBrains.Annotations;
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject {
     public string savePath;
-    private ItemDatabaseObejct database;
+    public ItemDatabaseObejct database;
     public Inventory Container;
 
     public void AddItem(Item item, int amount)
     {
         for (int i = 0; i < Container.Items.Count; i++)
         {
-            if (Container.Items[i].item == item)
+            if (Container.Items[i].item.Id == item.Id)
             {
                 Container.Items[i].AddAmount(amount);
                 return;
