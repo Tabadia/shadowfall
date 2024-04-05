@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shadow Lit RT Scene
-  m_Shader: {fileID: -6465566751694194690, guid: f75b81fb531f52244ba2d8729c04f7be, type: 3}
+  m_Name: Shadow Lit Intro Scene
+  m_Shader: {fileID: -6465566751694194690, guid: 0cc7eb41e57b1134b81278e232e81f18, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -75,7 +75,7 @@ Material:
     - _Float: 0
     - _OpaqueCullMode: 2
     - _RenderQueueType: 4
-    - _Shadow_Strength: 0.8
+    - _Shadow_Strength: 1
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 1

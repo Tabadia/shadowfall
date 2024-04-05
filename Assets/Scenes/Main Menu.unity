@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 34.156773, g: 18.013407, b: 7.2075014, a: 1}
+  m_IndirectSpecularColor: {r: 34.148735, g: 17.98795, b: 7.224845, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -368,7 +368,7 @@ PrefabInstance:
     - target: {fileID: 7795576140675404707, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
       propertyPath: managedReferences[7761345042551668738].overrideMaterial
       value: 
-      objectReference: {fileID: 2100000, guid: 9e6fe32babaf87344bdba81c0f1c151e, type: 2}
+      objectReference: {fileID: 2100000, guid: 8f627364e89a6654b8212933818bc923, type: 2}
     - target: {fileID: 7795576140675404707, guid: 5bd6d124e3cdb3548984e0f3191d1579, type: 3}
       propertyPath: managedReferences[7761345042551668737].overrideMaterialPassName
       value: Forward
