@@ -10,9 +10,11 @@ public class ShadowMonster : MonoBehaviour
     public int maxFlickerCount = 3;
     public float clearTurnedOffInterval = 60f;
     public float clearFlickeredInterval = 30f;
+    public bool canGoThruWalls = false;
 
     private List<GameObject> flickeredLights = new List<GameObject>();
     private List<GameObject> turnedOffLights = new List<GameObject>();
+
 
     void Start()
     {
@@ -33,7 +35,7 @@ public class ShadowMonster : MonoBehaviour
             if (col.CompareTag("Light"))
             {
                 GameObject lightObject = col.gameObject;
-                if (!flickeredLights.Contains(lightObject))
+                if (!flickeredLights.Contains(lightObject) && lightObject.transform.GetChild(0).gameObject.activeSelf &&!IsInSmallRadius(lightObject))
                 {
                     StartCoroutine(FlickerLight(lightObject));
                     flickeredLights.Add(lightObject);
@@ -42,6 +44,7 @@ public class ShadowMonster : MonoBehaviour
         }
 
         colliders = Physics.OverlapSphere(transform.position, smallRadius);
+        bool allLightsOff = true;
         foreach (Collider col in colliders)
         {
             if (col.CompareTag("Light"))
@@ -51,9 +54,12 @@ public class ShadowMonster : MonoBehaviour
                 {
                     TurnOffLight(lightObject);
                     turnedOffLights.Add(lightObject);
+                    allLightsOff = false;
                 }
             }
         }
+
+        canGoThruWalls = allLightsOff;
     }
 
     IEnumerator FlickerLight(GameObject lightObject)
@@ -67,6 +73,7 @@ public class ShadowMonster : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(0.1f, 0.5f));
             flickerCount++;
         }
+        lightObject.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     void TurnOffLight(GameObject lightObject)
@@ -82,5 +89,11 @@ public class ShadowMonster : MonoBehaviour
     void ClearFlickeredLights()
     {
         flickeredLights.Clear();
+    }
+
+    bool IsInSmallRadius(GameObject lightObject)
+    {
+        float distance = Vector3.Distance(transform.position, lightObject.transform.position);
+        return distance <= smallRadius;
     }
 }

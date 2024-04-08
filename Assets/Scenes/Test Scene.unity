@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4863.688, g: 3233.1646, b: 1967.3577, a: 1}
+  m_IndirectSpecularColor: {r: 4864.5474, g: 3233.7524, b: 1967.637, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 47128884}
   - component: {fileID: 47128888}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Shadow Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
