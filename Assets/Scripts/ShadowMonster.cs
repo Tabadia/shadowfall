@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.AI;
 
 public class ShadowMonster : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class ShadowMonster : MonoBehaviour
     public float clearTurnedOffInterval = 60f;
     public float clearFlickeredInterval = 30f;
     public bool canGoThruWalls = false;
+    public GameObject player;
 
     private List<GameObject> flickeredLights = new List<GameObject>();
     private List<GameObject> turnedOffLights = new List<GameObject>();
 
+    public NavMeshAgent agent;
 
     void Start()
     {
@@ -25,6 +28,18 @@ public class ShadowMonster : MonoBehaviour
     void Update()
     {
         CheckLights();
+
+        agent.destination = player.transform.position;
+
+        // if (canGoThruWalls)
+        // {
+        //     agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance; // Disable obstacle avoidance
+        //     print("Can go thru walls");
+        // }
+        // else
+        // {
+        //     agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance; // Enable obstacle avoidance
+        // }
     }
 
     void CheckLights()
@@ -54,6 +69,9 @@ public class ShadowMonster : MonoBehaviour
                 {
                     TurnOffLight(lightObject);
                     turnedOffLights.Add(lightObject);
+                }
+                if(lightObject.transform.GetChild(0).gameObject.activeSelf)
+                {
                     allLightsOff = false;
                 }
             }
