@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class Interact : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Interact : MonoBehaviour
     public float playerActiveDistance;
     public GameObject sensedObject = null;
     public Player player;
-    public string[] interactableObjects = {"energy_drink", "CannedPeaches"};
+    public string[] interactableObjects = { "CocaCola", "CannedPeaches"};
     public TextMeshProUGUI interactText;
     public RectTransform crosshair;
 
@@ -44,6 +45,7 @@ public class Interact : MonoBehaviour
         if (Physics.Raycast(interactCamera.position, interactCamera.TransformDirection(Vector3.forward), out hit, playerActiveDistance)) 
         {
              sensedObject = hit.transform.gameObject;
+            Debug.Log(hit.transform.gameObject);
         } else
         {
             sensedObject = null;
@@ -74,7 +76,7 @@ public class Interact : MonoBehaviour
                 crosshair.localScale = crosshairGoalSizeBig;
                 interactText.enabled = true;
                 if (Input.GetKeyDown(KeyCode.F))
-                {  
+                {
                     player.inventory.AddItem(sensedObject.GetComponent<GroundItem>().item, 1);
                     DestroyImmediate(sensedObject.gameObject);
                     sensedObject = null;
@@ -124,7 +126,7 @@ public class Interact : MonoBehaviour
     //     }
     // }
     
-    void Interact_CannedPeaches() 
+    /*void Interact_CannedPeaches() 
     {
         float food_value = 50;
         Debug.Log("yummy: " + sensedObject.name);
@@ -153,20 +155,20 @@ public class Interact : MonoBehaviour
         player.GetComponent<PlayerController>().startSpeedBoost();
         AudioSource source = GameObject.Find("energy_drink_audio").GetComponent<AudioSource>();
         source.PlayOneShot(source.clip);
-    }
+    }*/
 
     IEnumerator placeBoards(GameObject wall)
     {
         // if player has planks in inventory
         for (int i = 0; i < 3; i++)
         {
-            GameObject plank = Instantiate(planks[Random.Range(0, planks.Length)]);
+            /*GameObject plank = Instantiate(planks[System.Random.Range(0, planks.Length)]);
             plank.transform.SetParent(wall.transform.parent.gameObject.transform);
             plank.transform.localPosition = new Vector3(0, 9 + (i * 2.5f), -1);
             plank.transform.localScale = new Vector3(100, 100, 100);
-            float randomZRotation = Random.Range(-15, 15);
+            float randomZRotation = System.Random.Range(-15, 15);
             plank.transform.localRotation = Quaternion.Euler(0, 0, randomZRotation);
-            // plank.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            // plank.transform.localRotation = Quaternion.Euler(0, 0, 0);*/
             yield return new WaitForSeconds(.5f);
         }
     }

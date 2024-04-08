@@ -16,15 +16,34 @@ public class InventoryObject : ScriptableObject {
 
     public void AddItem(Item item, int amount)
     {
-        for (int i = 0; i < Container.Items.Count; i++)
+        if (item.buffs.Length > 0)
         {
-            if (Container.Items[i].item.Id == item.Id)
+            SetEmptySpace(item, amount);
+            return;
+        }
+
+        for (int i = 0; i < Container.Items.Length; i++)
+        {
+            if (Container.Items[i].ID == item.Id)
             {
                 Container.Items[i].AddAmount(amount);
                 return;
             }
         }
-        Container.Items.Add(new InventorySpace(item.Id , item, amount));     
+        SetEmptySpace(item, amount);
+    }
+    public InventorySpace SetEmptySpace(Item item, int amount)
+    {
+        for (int i = 0; i < Container.Items.Length; i++)
+        {
+            if (Container.Items[i].ID <= -1)
+            {
+                Container.Items[i].UpdateSpace(item.Id, item, amount);
+                return Container.Items[i];
+            }
+        }
+        //set up full inv
+        return null;
     }
     [ContextMenu("Save")]
 
@@ -58,7 +77,7 @@ public class InventoryObject : ScriptableObject {
 [System.Serializable]
 public class Inventory
 {
-    public List<InventorySpace> Items = new List<InventorySpace>();
+    public InventorySpace[] Items = new InventorySpace[25]; 
 }
 
 [System.Serializable]
@@ -67,9 +86,19 @@ public class InventorySpace
     public int ID;
     public Item item;
     public int amount;
-    public float backpackSpaceX;
-    public float backpackSpaceY;
+    public InventorySpace()
+    {
+        this.ID = -1;
+        this.item = null;
+        this.amount = 0;
+    }
     public InventorySpace(int ID, Item item, int amount)
+    {
+        this.ID = ID;
+        this.item = item;
+        this.amount = amount;
+    }
+    public void UpdateSpace(int ID, Item item, int amount)
     {
         this.ID = ID;
         this.item = item;

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02d28826849cbe4481f3813d6483170, type: 3}
   m_Name: CocaCola
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8270204862960576430, guid: 89edf60fe1b5a1649b60b81a0390d845, type: 3}
+  Id: 2
+  uiDisplay: {fileID: 21300000, guid: 9f586afa44539024daecefac728b1f71, type: 3}
   type: 0
   description: 
-  restoreHealthValue: 0
+  buffs: []

@@ -44,7 +44,10 @@ public class Item
         buffs = new ItemBuff[item.buffs.Length];
         for(int i = 0; i < buffs.Length; i++)
         {
-            buffs[i] = new ItemBuff(item.buffs[i].min, item.buffs[i].max);
+            buffs[i] = new ItemBuff(item.buffs[i].min, item.buffs[i].max)
+            {
+                attribute = item.buffs[i].attribute
+            };
         }
     }
 }

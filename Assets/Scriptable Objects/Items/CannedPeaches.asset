@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02d28826849cbe4481f3813d6483170, type: 3}
   m_Name: CannedPeaches
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3853650926618706457, guid: d585a06873283b6409a7905e59434e41, type: 3}
+  Id: 1
+  uiDisplay: {fileID: 0}
   type: 0
   description: Peaches preserved inside of a metalic can.
-  restoreHealthValue: 50
+  buffs: []

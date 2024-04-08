@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02d28826849cbe4481f3813d6483170, type: 3}
   m_Name: CannedBeans
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5181343613284650603, guid: 08c2e320365939845b1b4fc2aadb260c, type: 3}
+  Id: 0
+  uiDisplay: {fileID: 0}
   type: 0
   description: 
-  restoreHealthValue: 0
+  buffs: []
