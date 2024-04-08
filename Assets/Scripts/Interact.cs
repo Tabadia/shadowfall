@@ -57,6 +57,14 @@ public class Interact : MonoBehaviour
                     StartCoroutine(placeBoards(sensedObject));
                 }  
             }
+            if(sensedObject.tag == "Light"){
+                crosshair.anchoredPosition = crosshairGoalPosBig;
+                crosshair.localScale = crosshairGoalSizeBig;
+                interactText.enabled = true;
+                if (Input.GetKeyDown(KeyCode.F)) {
+                    sensedObject.transform.GetChild(0).gameObject.SetActive(!sensedObject.transform.GetChild(0).gameObject.activeSelf);
+                }
+            }
         }
         foreach (string name in interactableObjects)
         {
