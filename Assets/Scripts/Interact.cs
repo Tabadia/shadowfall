@@ -49,13 +49,12 @@ public class Interact : MonoBehaviour
             sensedObject = null;
         }
         if (sensedObject != null){
-            print(sensedObject.name + " " + sensedObject.tag);
             if(sensedObject.tag == "Boardable"){
                 crosshair.anchoredPosition = crosshairGoalPosBig;
                 crosshair.localScale = crosshairGoalSizeBig;
                 interactText.enabled = true;
                 if (Input.GetKeyDown(KeyCode.F)) {  
-                    placeBoards(sensedObject);
+                    StartCoroutine(placeBoards(sensedObject));
                 }  
             }
         }
@@ -148,14 +147,19 @@ public class Interact : MonoBehaviour
         source.PlayOneShot(source.clip);
     }
 
-    void placeBoards(GameObject wall)
+    IEnumerator placeBoards(GameObject wall)
     {
         // if player has planks in inventory
         for (int i = 0; i < 3; i++)
         {
             GameObject plank = Instantiate(planks[Random.Range(0, planks.Length)]);
-            plank.transform.SetParent(wall.transform);
+            plank.transform.SetParent(wall.transform.parent.gameObject.transform);
             plank.transform.localPosition = new Vector3(0, 9 + (i * 2.5f), -1);
+            plank.transform.localScale = new Vector3(100, 100, 100);
+            float randomZRotation = Random.Range(-15, 15);
+            plank.transform.localRotation = Quaternion.Euler(0, 0, randomZRotation);
+            // plank.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            yield return new WaitForSeconds(.5f);
         }
     }
 }
