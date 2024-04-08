@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System;
+// using System;
 
 public class Interact : MonoBehaviour
 {
@@ -55,7 +55,8 @@ public class Interact : MonoBehaviour
                 crosshair.anchoredPosition = crosshairGoalPosBig;
                 crosshair.localScale = crosshairGoalSizeBig;
                 interactText.enabled = true;
-                if (Input.GetKeyDown(KeyCode.F)) {  
+                if (Input.GetKeyDown(KeyCode.F) && !sensedObject.name.Contains("BOARDED")){ 
+                    sensedObject.name += " BOARDED"; 
                     StartCoroutine(placeBoards(sensedObject));
                 }  
             }
@@ -162,13 +163,13 @@ public class Interact : MonoBehaviour
         // if player has planks in inventory
         for (int i = 0; i < 3; i++)
         {
-            /*GameObject plank = Instantiate(planks[System.Random.Range(0, planks.Length)]);
+            GameObject plank = Instantiate(planks[Random.Range(0, planks.Length)]);
             plank.transform.SetParent(wall.transform.parent.gameObject.transform);
             plank.transform.localPosition = new Vector3(0, 9 + (i * 2.5f), -1);
             plank.transform.localScale = new Vector3(100, 100, 100);
-            float randomZRotation = System.Random.Range(-15, 15);
+            float randomZRotation = Random.Range(-10, 10);
             plank.transform.localRotation = Quaternion.Euler(0, 0, randomZRotation);
-            // plank.transform.localRotation = Quaternion.Euler(0, 0, 0);*/
+            //plank.transform.localRotation = Quaternion.Euler(0, 0, 0);
             yield return new WaitForSeconds(.5f);
         }
     }
