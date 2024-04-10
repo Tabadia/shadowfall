@@ -94,6 +94,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 483799254002397227}
+  - component: {fileID: 4221756266877375625}
+  - component: {fileID: 6953739626424045379}
   - component: {fileID: 670431927341455301}
   - component: {fileID: -2146479834910744218}
   m_Layer: 0
@@ -119,6 +121,58 @@ Transform:
   - {fileID: 8519406502206803011}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4221756266877375625
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190586298078959560}
+  m_Mesh: {fileID: -2432090755550338912, guid: e507983bb5f8147479fd9090c1ec7782, type: 3}
+--- !u!23 &6953739626424045379
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190586298078959560}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 8849801203251535490, guid: e507983bb5f8147479fd9090c1ec7782, type: 3}
+  - {fileID: -5529292304421771591, guid: e507983bb5f8147479fd9090c1ec7782, type: 3}
+  - {fileID: -6388254203272786494, guid: e507983bb5f8147479fd9090c1ec7782, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &670431927341455301
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -140,7 +194,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2432090755550338912, guid: e507983bb5f8147479fd9090c1ec7782, type: 3}
 --- !u!114 &-2146479834910744218
 MonoBehaviour:
   m_ObjectHideFlags: 0

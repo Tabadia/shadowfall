@@ -26,12 +26,12 @@ public class Player : MonoBehaviour
 
     // Start is called before the first frame update
     //penis
-    
+
     private void OnApplicationQuit()
     {
-        //inventory.Container.Clear();
+        inventory.Container.Items = new InventorySpace[25];
     }
-    
+
     void Start()
     {
         healthHunger.SetMaxHunger(maxHunger);

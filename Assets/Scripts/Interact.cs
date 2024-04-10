@@ -11,7 +11,7 @@ public class Interact : MonoBehaviour
     public float playerActiveDistance;
     public GameObject sensedObject = null;
     public Player player;
-    public string[] interactableObjects = { "CocaCola", "CannedPeaches"};
+    public string[] interactableObjects = { "CocaCola", "CannedPeaches", "JarredPickles"};
     public TextMeshProUGUI interactText;
     public RectTransform crosshair;
 
