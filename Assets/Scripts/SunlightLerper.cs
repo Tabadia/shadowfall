@@ -18,14 +18,21 @@ public class SunlightLerper : MonoBehaviour
     private bool isLerping = false; // Flag to indicate if lerping is in progress
     private float lerpStartTime; // Time when lerping started
     private int currentTransition = 1; // Track the current transition
+    public MenuAnimation menAnim;
 
     void Start()
     {
+        menAnim = GetComponent<MenuAnimation>();
         StartLerp();
     }
 
-    void Update()
+    void Update() 
     {
+
+        if (currentTransition >= 2)
+        {
+            menAnim.active = true;
+        }
         if (isLerping)
         {
             // Calculate the progress of the lerp based on the current transition

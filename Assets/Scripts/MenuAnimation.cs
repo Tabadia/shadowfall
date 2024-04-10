@@ -5,13 +5,15 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System;
 
-public class TextAnimation : MonoBehaviour
+public class MenuAnimation : MonoBehaviour
 {
     public TMP_Text consoleText;
     public int maxLines = 10; // Maximum number of lines to display
     public float letterDelay = 0.1f; // Delay between each letter
     public float lineDelay = 0.5f; // Delay between each line
     public float cursorBlinkRate = 0.5f; // Rate at which the cursor blinks
+    public bool active = false;
+    public bool canActive = true;
 
 
     private Queue<string> messageQueue = new Queue<string>(); // Queue to store messages
@@ -34,8 +36,21 @@ public class TextAnimation : MonoBehaviour
             "G o o d   M o r n i n g\n");*/
 
         AddMessage(consoleText.text);
-        StartCoroutine(UpdateConsole());
+        consoleText.text = "";
 
+
+    }
+
+    private void Update()
+    {
+
+        if (active && canActive)
+        {
+            // Restart the UpdateConsole coroutine to display the updated messages
+            canActive = false;
+            StartCoroutine("UpdateConsole");
+
+        }
     }
 
 
@@ -100,8 +115,6 @@ public class TextAnimation : MonoBehaviour
         // Update current message to include all messages in the queue
         currentMessage = string.Join("\n", messageQueue.ToArray());
 
-        // Restart the UpdateConsole coroutine to display the updated messages
-        StopCoroutine("UpdateConsole");
-        StartCoroutine("UpdateConsole");
+  
     }
 }
