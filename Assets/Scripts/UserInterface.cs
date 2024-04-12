@@ -7,21 +7,19 @@ using UnityEngine.Events;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 
-public class DisplayInventory : MonoBehaviour
+public abstract class UserInterface : MonoBehaviour
 {
-    public MouseItem mouseItem = new MouseItem();
-    public GameObject inventoryPrefab;
+    public Player player;
     public InventoryObject inventory;
-    public float X_START;
-    public float Y_START;
-    public float X_SPACE_BETWEEN_ITEM;
-    public float NUMBER_OF_COLUMN;
-    public float Y_SPACE_BETWEEN_ITEM;
-    Dictionary<GameObject, InventorySpace> itemsDisplayed = new Dictionary<GameObject, InventorySpace>();
+    public Dictionary<GameObject, InventorySpace> itemsDisplayed = new Dictionary<GameObject, InventorySpace>();
     // Start is called before the first frame update
     void Start()
-    {               
-        CreateSpace();    
+    {
+        for (int i = 0; i < inventory.Container.Items.Length; i++)
+        {
+            inventory.Container.Items[i].parent = this;
+        }
+        CreateSpace();
     }
 
     // Update is called once per frame
@@ -30,24 +28,7 @@ public class DisplayInventory : MonoBehaviour
         UpdateSpace();
     }
 
-    public void CreateSpace()
-    {
-        itemsDisplayed = new Dictionary<GameObject, InventorySpace>();
-        for (int i = 0; i < inventory.Container.Items.Length; i++)
-        {
-            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-
-            AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
-            AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });
-            AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
-            AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
-            AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
-
-
-            itemsDisplayed.Add(obj, inventory.Container.Items[i]);
-        }
-    }
+    public abstract void CreateSpace();
     public void UpdateSpace()
     {
         foreach (KeyValuePair<GameObject, InventorySpace> space in itemsDisplayed)
@@ -61,18 +42,15 @@ public class DisplayInventory : MonoBehaviour
             }
             else
             {
-                space.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;  
+                space.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
                 space.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
                 space.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
     }
-    public Vector3 GetPosition(int i)
-    {
-        return new Vector3(X_START + (X_SPACE_BETWEEN_ITEM * (i % NUMBER_OF_COLUMN)), Y_START + (-Y_SPACE_BETWEEN_ITEM * (int)(i / NUMBER_OF_COLUMN)), 0f);
-    }
+    
 
-    private void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
+    protected void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
     {
         EventTrigger trigger = obj.GetComponent<EventTrigger>();
         var eventTrigger = new EventTrigger.Entry();
@@ -83,16 +61,16 @@ public class DisplayInventory : MonoBehaviour
 
     public void OnEnter(GameObject obj)
     {
-        mouseItem.hoverObj = obj;
+        player.mouseItem.hoverObj = obj;
         if (itemsDisplayed.ContainsKey(obj))
         {
-            mouseItem.hoverItem = itemsDisplayed[obj];
+            player.mouseItem.hoverItem = itemsDisplayed[obj];
         }
     }
     public void OnExit(GameObject obj)
     {
-        mouseItem.hoverObj = null;
-        mouseItem.hoverItem = null;
+        player.mouseItem.hoverObj = null;
+        player.mouseItem.hoverItem = null;
     }
     public void OnDragStart(GameObject obj)
     {
@@ -100,33 +78,41 @@ public class DisplayInventory : MonoBehaviour
         var rt = mouseObject.AddComponent<RectTransform>();
         rt.sizeDelta = new Vector2(50, 50);
         mouseObject.transform.SetParent(transform.parent);
-        if (itemsDisplayed[obj].ID >= 0 )
+        if (itemsDisplayed[obj].ID >= 0)
         {
             var img = mouseObject.AddComponent<Image>();
             img.sprite = inventory.database.GetItem[itemsDisplayed[obj].ID].uiDisplay;
             img.raycastTarget = false;
         }
-        mouseItem.obj = mouseObject;
-        mouseItem.item = itemsDisplayed[obj];
+        player.mouseItem.obj = mouseObject;
+        player.mouseItem.item = itemsDisplayed[obj];
     }
     public void OnDragEnd(GameObject obj)
     {
-        if (mouseItem.hoverObj)
+        if (player.mouseItem.hoverObj)
         {
-            inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
+            inventory.MoveItem(itemsDisplayed[obj], player.mouseItem.hoverItem.parent.itemsDisplayed[player.mouseItem.hoverObj]);
         }
         else
         {
 
         }
-        Destroy(mouseItem.obj);
-        mouseItem.item = null;
+        Destroy(player.mouseItem.obj);
+        player.mouseItem.item = null;
     }
     public void OnDrag(GameObject obj)
     {
-        if (mouseItem.obj != null)
+        if (player.mouseItem.obj != null)
         {
-            mouseItem.obj.GetComponent<RectTransform>().position = Input.mousePosition;
+            player.mouseItem.obj.GetComponent<RectTransform>().position = Input.mousePosition;
         }
     }
+}
+
+public class MouseItem
+{
+    public GameObject obj;
+    public InventorySpace item;
+    public InventorySpace hoverItem;
+    public GameObject hoverObj;
 }
