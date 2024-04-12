@@ -3,56 +3,65 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System;
 
 public class MenuAnimation : MonoBehaviour
 {
     public TMP_Text consoleText;
+    public TMP_Text textObject1;
+    public TMP_Text textObject2;
+    public TMP_Text textObject3;
+
+    public float consoleLetterDelay = 0.1f; // Delay between each letter for consoleText
+    public float textObjectLetterDelay = 0.1f; // Delay between each letter for text objects
+
     public int maxLines = 10; // Maximum number of lines to display
-    public float letterDelay = 0.1f; // Delay between each letter
     public float lineDelay = 0.5f; // Delay between each line
     public float cursorBlinkRate = 0.5f; // Rate at which the cursor blinks
-    public bool active = false;
-    public bool canActive = true;
-
 
     private Queue<string> messageQueue = new Queue<string>(); // Queue to store messages
     private string currentMessage = ""; // Current message being displayed
     private bool cursorVisible = true; // Flag to control cursor visibility
 
+    public bool active = false; // Flag to start the menu animation
+    private bool menuAnimationFinished = false; // Flag to track when menu animation has finished
+
+    private string textObject1OriginalText;
+    private string textObject2OriginalText;
+    private string textObject3OriginalText;
+
     void Start()
     {
-        /*AddMessage("Testing Database XA34IL Connection:\n" +
-            "<color=red>ERROR</color>\n" +
-            "Testing Main Connection:\n" +
-            "<color=red>ERROR</color>\n" +
-            "Testing Cryopod ID 6749 Activation Code:\n" +
-            "<color=red>ERROR</color>\n" +
-            "Manual Assistance Required\n" +
-            "Calling Operations Assistant:\n" +
-            "<color=red>ERROR</color>\n" +
-            "Activating Emergency Function Code AWAKE:\n" +
-            "<color=green>SUCCESS</color>\n" +
-            "G o o d   M o r n i n g\n");*/
+        // Save original text values and clear the text of the three additional TMP_Text objects
+        textObject1OriginalText = textObject1.text;
+        textObject2OriginalText = textObject2.text;
+        textObject3OriginalText = textObject3.text;
+
+        textObject1.text = "";
+        textObject2.text = "";
+        textObject3.text = "";
 
         AddMessage(consoleText.text);
         consoleText.text = "";
 
+        // Start the menu animation when active becomes true
 
     }
 
     private void Update()
     {
 
-        if (active && canActive)
+        if (active)
         {
-            // Restart the UpdateConsole coroutine to display the updated messages
-            canActive = false;
             StartCoroutine("UpdateConsole");
+        }
 
+        if (menuAnimationFinished)
+        {
+            // Start the animation for other text objects once menu animation completes
+            StartCoroutine("AnimateOtherTextObjects");
+            menuAnimationFinished = false;
         }
     }
-
 
     IEnumerator UpdateConsole()
     {
@@ -75,7 +84,7 @@ public class MenuAnimation : MonoBehaviour
                     {
                         typedMessage += parts[i][j];
                         consoleText.text = typedMessage + (cursorVisible ? "_" : "");
-                        yield return new WaitForSeconds(letterDelay);
+                        yield return new WaitForSeconds(consoleLetterDelay);
                     }
                 }
 
@@ -89,6 +98,31 @@ public class MenuAnimation : MonoBehaviour
             // Display the complete typed message
             consoleText.text = typedMessage;
             yield return new WaitForSeconds(lineDelay); // Wait for lineDelay after displaying each message
+        }
+
+        // Set menuAnimationFinished flag to true when consoleText animation finishes
+        menuAnimationFinished = true;
+    }
+
+    IEnumerator AnimateOtherTextObjects()
+    {
+        // Start the animation for textObject1, textObject2, and textObject3 concurrently
+        StartCoroutine(AnimateText(textObject1, textObject1OriginalText, textObjectLetterDelay));
+        StartCoroutine(AnimateText(textObject2, textObject2OriginalText, textObjectLetterDelay));
+        StartCoroutine(AnimateText(textObject3, textObject3OriginalText, textObjectLetterDelay));
+
+        // Wait for all animations to finish
+        yield return new WaitForSeconds((textObject1OriginalText.Length + textObject2OriginalText.Length + textObject3OriginalText.Length) * textObjectLetterDelay);
+    }
+
+    IEnumerator AnimateText(TMP_Text textObject, string originalText, float letterDelay)
+    {
+        textObject.text = "";
+
+        foreach (char letter in originalText)
+        {
+            textObject.text += letter;
+            yield return new WaitForSeconds(letterDelay);
         }
     }
 
@@ -114,7 +148,5 @@ public class MenuAnimation : MonoBehaviour
 
         // Update current message to include all messages in the queue
         currentMessage = string.Join("\n", messageQueue.ToArray());
-
-  
     }
 }
