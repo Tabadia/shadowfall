@@ -72,6 +72,35 @@ public class InventoryObject : ScriptableObject {
     {
         Container = new Inventory();
     }
+
+    public void MoveItem(InventorySpace item1, InventorySpace item2)
+    {
+        InventorySpace temp = new InventorySpace(item2.ID, item2.item, item2.amount);
+        item2.UpdateSpace(item1.ID, item1.item, item1.amount);
+        item1.UpdateSpace(temp.ID, temp.item, temp.amount);
+    }
+
+    public void RemoveItem(Item item)
+    {
+        for (int i = 0; i < Container.Items.Length; i++)
+        {
+            if (Container.Items[i].item == item)
+            {
+                Container.Items[i].UpdateSpace(-1, null, 0);
+            }
+        }
+    }
+
+    public void DropItem(Item item)
+    {
+        for (int i = 0; i < Container.Items.Length; i++)
+        {
+            if (Container.Items[i].item == item)
+            {
+                Container.Items[i].UpdateSpace(-1, null, 0);
+            }
+        }
+    }
 }
 
 [System.Serializable]
@@ -83,6 +112,7 @@ public class Inventory
 [System.Serializable]
 public class InventorySpace
 {
+    public UserInterface parent;
     public int ID;
     public Item item;
     public int amount;
