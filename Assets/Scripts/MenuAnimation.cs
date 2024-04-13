@@ -82,6 +82,7 @@ public class MenuAnimation : MonoBehaviour
             yield return null;
 
         }
+        consoleText.text = consoleText.text.Remove(consoleText.text.Length - 1, 1);
         menuAnimationFinished = true;
       
     }

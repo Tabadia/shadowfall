@@ -1180,7 +1180,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: Test Scene
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &938782686
@@ -3168,7 +3168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 39.2, y: 0}
+  m_AnchoredPosition: {x: 12, y: 0}
   m_SizeDelta: {x: 780.30005, y: 110.79999}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &5896035353901132797
@@ -3236,8 +3236,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11.37
-  m_fontSizeBase: 11.37
+  m_fontSize: 11.6
+  m_fontSizeBase: 11.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
