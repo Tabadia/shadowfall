@@ -11,23 +11,21 @@ public class MenuAnimation : MonoBehaviour
     public TMP_Text textObject2;
     public TMP_Text textObject3;
 
-    public float consoleLetterDelay = 0.1f; // Delay between each letter for consoleText
-    public float textObjectLetterDelay = 0.1f; // Delay between each letter for text objects
+    public float consoleCharPerSecond = 10.0f;
+    public float textObjectDuration = 10.0f; // Delay between each letter for text objects
 
     public int maxLines = 10; // Maximum number of lines to display
     public float lineDelay = 0.5f; // Delay between each line
-    public float cursorBlinkRate = 0.5f; // Rate at which the cursor blinks
 
-    private Queue<string> messageQueue = new Queue<string>(); // Queue to store messages
-    private string currentMessage = ""; // Current message being displayed
-    private bool cursorVisible = true; // Flag to control cursor visibility
 
     public bool active = false; // Flag to start the menu animation
+    public bool canActive = true;
     private bool menuAnimationFinished = false; // Flag to track when menu animation has finished
 
     private string textObject1OriginalText;
     private string textObject2OriginalText;
     private string textObject3OriginalText;
+    private string consoleOriginalText;
 
     void Start()
     {
@@ -35,13 +33,11 @@ public class MenuAnimation : MonoBehaviour
         textObject1OriginalText = textObject1.text;
         textObject2OriginalText = textObject2.text;
         textObject3OriginalText = textObject3.text;
-
+        consoleOriginalText = consoleText.text;
         textObject1.text = "";
         textObject2.text = "";
         textObject3.text = "";
-
-        AddMessage(consoleText.text);
-        consoleText.text = "";
+       consoleText.text = "";
 
         // Start the menu animation when active becomes true
 
@@ -50,9 +46,10 @@ public class MenuAnimation : MonoBehaviour
     private void Update()
     {
 
-        if (active)
+        if (active && canActive)
         {
             StartCoroutine("UpdateConsole");
+            canActive = false;
         }
 
         if (menuAnimationFinished)
@@ -63,90 +60,64 @@ public class MenuAnimation : MonoBehaviour
         }
     }
 
+
     IEnumerator UpdateConsole()
     {
-        foreach (string message in messageQueue)
+        consoleText.text = "_";
+
+        for (int i = 0; i < consoleOriginalText.Length;)
         {
-            string[] parts = Regex.Split(message, @"(<.*?>)"); // Split the message using color tags as delimiters
-            string typedMessage = "";
-
-            for (int i = 0; i < parts.Length; i++)
+            for (int j = 0; j < consoleCharPerSecond * Time.deltaTime; j++)
             {
-                if (parts[i].StartsWith("<") && parts[i].EndsWith(">"))
+                if (i < consoleOriginalText.Length)
                 {
-                    // If the part is a color tag, just append it to the typed message
-                    typedMessage += parts[i];
-                }
-                else
-                {
-                    // If the part is text, type it letter by letter
-                    for (int j = 0; j < parts[i].Length; j++)
-                    {
-                        typedMessage += parts[i][j];
-                        consoleText.text = typedMessage + (cursorVisible ? "_" : "");
-                        yield return new WaitForSeconds(consoleLetterDelay);
-                    }
+                    consoleText.text = consoleText.text.Remove(consoleText.text.Length - 1, 1);
+                    consoleText.text += consoleOriginalText[i];
+                    consoleText.text += "_";
+                    i++;
                 }
 
-                // Check if the typed message ends with a newline character
-                if (typedMessage.EndsWith("\n"))
-                {
-                    yield return new WaitForSeconds(lineDelay);
-                }
+               
             }
+            yield return null;
 
-            // Display the complete typed message
-            consoleText.text = typedMessage;
-            yield return new WaitForSeconds(lineDelay); // Wait for lineDelay after displaying each message
         }
-
-        // Set menuAnimationFinished flag to true when consoleText animation finishes
         menuAnimationFinished = true;
+      
     }
+
+    
+
 
     IEnumerator AnimateOtherTextObjects()
     {
         // Start the animation for textObject1, textObject2, and textObject3 concurrently
-        StartCoroutine(AnimateText(textObject1, textObject1OriginalText, textObjectLetterDelay));
-        StartCoroutine(AnimateText(textObject2, textObject2OriginalText, textObjectLetterDelay));
-        StartCoroutine(AnimateText(textObject3, textObject3OriginalText, textObjectLetterDelay));
+        StartCoroutine(AnimateText(textObject1, textObject1OriginalText ));
+        StartCoroutine(AnimateText(textObject2, textObject2OriginalText ));
+        StartCoroutine(AnimateText(textObject3, textObject3OriginalText));
 
         // Wait for all animations to finish
-        yield return new WaitForSeconds((textObject1OriginalText.Length + textObject2OriginalText.Length + textObject3OriginalText.Length) * textObjectLetterDelay);
+        yield return null;
     }
 
-    IEnumerator AnimateText(TMP_Text textObject, string originalText, float letterDelay)
+    IEnumerator AnimateText(TMP_Text textObject, string originalText)
     {
-        textObject.text = "";
-
-        foreach (char letter in originalText)
+        for (int i = 0; i < originalText.Length;)
         {
-            textObject.text += letter;
-            yield return new WaitForSeconds(letterDelay);
+            for (int j = 0; j < (originalText.Length/textObjectDuration)* Time.deltaTime; j++)
+            {
+                if (i < originalText.Length)
+                {
+                    textObject.text += originalText[i];
+                    i++;
+                }
+
+
+            }
+            yield return null;
+
         }
     }
 
-    IEnumerator BlinkCursor()
-    {
-        while (true)
-        {
-            cursorVisible = !cursorVisible;
-            consoleText.text = currentMessage + (cursorVisible ? "_" : "");
-            yield return new WaitForSeconds(cursorBlinkRate);
-        }
-    }
 
-    public void AddMessage(string message)
-    {
-        messageQueue.Enqueue(message);
-
-        // Ensure that the queue does not exceed the maximum number of lines
-        while (messageQueue.Count > maxLines)
-        {
-            messageQueue.Dequeue();
-        }
-
-        // Update current message to include all messages in the queue
-        currentMessage = string.Join("\n", messageQueue.ToArray());
-    }
 }

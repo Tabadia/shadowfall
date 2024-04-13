@@ -924,12 +924,12 @@ MonoBehaviour:
   textObject1: {fileID: 17281094}
   textObject2: {fileID: 118396274}
   textObject3: {fileID: 1492157127}
-  consoleLetterDelay: 0.0005
-  textObjectLetterDelay: 0
+  consoleCharPerSecond: 100
+  textObjectDuration: 5
   maxLines: 10
   lineDelay: 0
-  cursorBlinkRate: 0.5
   active: 0
+  canActive: 1
 --- !u!1 &758047559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,7 +1219,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -24.6, y: 81}
+  m_AnchoredPosition: {x: -24.600037, y: 81}
   m_SizeDelta: {x: 318, y: 195}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &938782688
