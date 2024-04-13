@@ -14,6 +14,8 @@ public class MainMenu : MonoBehaviour
     
     [SerializeField] private float nextSceneDelay = 0.3f;
 
+    public Animator transition;
+
     public void Hover()
     {
         audioSource.PlayOneShot(hoverClip, hoverVolume);
@@ -24,10 +26,18 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(ChangeSceneDelay(sceneName));
         audioSource.PlayOneShot(pressClip, pressVolume);
     }
-    
+    public void Quit()
+    {
+        audioSource.PlayOneShot(pressClip, pressVolume);
+        Application.Quit();
+
+    }
     IEnumerator ChangeSceneDelay(string sceneName)
     {
+        transition.SetTrigger("Start");
         yield return new WaitForSeconds(nextSceneDelay);
         SceneManager.LoadScene(sceneName);
     }
+
+   
 }
