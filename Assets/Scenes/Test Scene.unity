@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4867.5493, g: 3252.1567, b: 1999.4045, a: 1}
+  m_IndirectSpecularColor: {r: 4867.5337, g: 3252.149, b: 1999.3616, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7835,6 +7835,7 @@ GameObject:
   - component: {fileID: 819192646}
   - component: {fileID: 819192645}
   - component: {fileID: 819192647}
+  - component: {fileID: 819192648}
   m_Layer: 5
   m_Name: InventoryPanel
   m_TagString: Untagged
@@ -7919,6 +7920,19 @@ MonoBehaviour:
   X_SPACE_BETWEEN_ITEM: 68
   NUMBER_OF_COLUMN: 5
   Y_SPACE_BETWEEN_ITEM: 64
+--- !u!114 &819192648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819192643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &828229451
 GameObject:
   m_ObjectHideFlags: 0
@@ -28385,6 +28399,7 @@ GameObject:
   - component: {fileID: 1855732083}
   - component: {fileID: 1855732082}
   - component: {fileID: 1855732084}
+  - component: {fileID: 1855732085}
   m_Layer: 5
   m_Name: EquipmentPanel
   m_TagString: Untagged
@@ -28472,6 +28487,19 @@ MonoBehaviour:
   - {fileID: 84556063}
   - {fileID: 260073970}
   - {fileID: 683692091}
+--- !u!114 &1855732085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855732079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &1865877618
 GameObject:
   m_ObjectHideFlags: 0

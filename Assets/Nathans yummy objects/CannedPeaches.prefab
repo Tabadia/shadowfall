@@ -123,3 +123,4 @@ MonoBehaviour:
     Name: 
     Id: 0
     buffs: []
+    obj: {fileID: 9190586298078959560}

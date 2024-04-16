@@ -13,6 +13,8 @@ public class InventoryObject : ScriptableObject {
     public string savePath;
     public ItemDatabaseObejct database;
     public Inventory Container;
+    public Player player;
+    public Transform worldMap;
 
     public void AddItem(Item item, int amount)
     {
@@ -70,7 +72,7 @@ public class InventoryObject : ScriptableObject {
     [ContextMenu("Clear")]
     public void Clear()
     {
-        Container = new Inventory();
+        Container.Clear();
     }
 
     public void MoveItem(InventorySpace item1, InventorySpace item2)
@@ -97,7 +99,9 @@ public class InventoryObject : ScriptableObject {
         {
             if (Container.Items[i].item == item)
             {
+                player.dropItem(Container.Items[i].item.obj);
                 Container.Items[i].UpdateSpace(-1, null, 0);
+                Instantiate(Container.Items[i].item.obj, worldMap);
             }
         }
     }
@@ -107,11 +111,19 @@ public class InventoryObject : ScriptableObject {
 public class Inventory
 {
     public InventorySpace[] Items = new InventorySpace[25]; 
+    public void Clear()
+    {
+        for (int i = 0; i < Items.Length; i++)
+        {
+            Items[i].UpdateSpace(-1, new Item(), 0);
+        }
+    }
 }
 
 [System.Serializable]
 public class InventorySpace
 {
+    public ItemType[] AllowedItems = new ItemType[0];
     public UserInterface parent;
     public int ID;
     public Item item;
@@ -137,5 +149,20 @@ public class InventorySpace
     public void AddAmount(int value)
     {
         amount += value;
+    }
+    public bool CanPlaceInSpace(ItemObject item)
+    {
+        if(AllowedItems.Length <= 0)
+        {
+            return true;
+        }
+        for (int i = 0; i < AllowedItems.Length; i++)
+        {
+            if (item.type == AllowedItems[i])
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

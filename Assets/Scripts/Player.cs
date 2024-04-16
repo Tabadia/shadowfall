@@ -88,4 +88,9 @@ public class Player : MonoBehaviour
     {
         currentHunger = hunger;
     }
+    public void dropItem(GameObject item)
+    {
+        item.transform.SetParent(transform);
+        Instantiate(item, transform.position, Quaternion.identity);
+    }
 }
