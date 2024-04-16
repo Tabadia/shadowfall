@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4862.473, g: 3195.024, b: 1805.6687, a: 1}
+  m_IndirectSpecularColor: {r: 4867.5493, g: 3252.1567, b: 1999.4045, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7841,7 +7841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &819192644
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19574,8 +19574,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 963194225}
   playerObject: {fileID: 1545992437}
-  inventoryScreen: {fileID: 819192643}
-  crosshair: {fileID: 828229451}
+  UIObjects:
+  - {fileID: 1770474625}
+  - {fileID: 828229451}
+  - {fileID: 819192643}
+  - {fileID: 1855732079}
   isInventory: 0
   walkSpeed: 6
   runSpeedMultiplier: 1.5
@@ -28388,7 +28391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1855732080
 RectTransform:
   m_ObjectHideFlags: 0

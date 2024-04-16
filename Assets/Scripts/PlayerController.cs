@@ -8,8 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject playerCamera;
     public GameObject playerObject;
-    public GameObject inventoryScreen;
-    public GameObject crosshair;
+    public GameObject[] UIObjects;
     public bool isInventory = false;
     public float walkSpeed = 6f;
     public float runSpeedMultiplier = 1.5f;
@@ -62,8 +61,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.I))
         {
-            inventoryScreen.SetActive(!isInventory);
-            crosshair.SetActive(isInventory);
+            for (int i = 0; i < UIObjects.Length; i++) {
+                UIObjects[i].SetActive(!UIObjects[i].activeInHierarchy);
+            }
             isInventory = !isInventory;
             canMove = !canMove;
             if (Cursor.lockState == CursorLockMode.Locked) {
