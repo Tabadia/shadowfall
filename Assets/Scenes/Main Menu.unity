@@ -525,6 +525,8 @@ GameObject:
   - component: {fileID: 192178250}
   - component: {fileID: 192178249}
   - component: {fileID: 192178248}
+  - component: {fileID: 192178252}
+  - component: {fileID: 192178251}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -549,7 +551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -28.36, y: -54.619995}
+  m_AnchoredPosition: {x: -76, y: -54.619995}
   m_SizeDelta: {x: 194.73999, y: 66.5}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &192178248
@@ -585,16 +587,40 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1327241967}
-          m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-          m_MethodName: Pressed
+        - m_Target: {fileID: 192178251}
+          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_MethodName: SetTrigger
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Test Scene
+            m_StringArgument: Exit Config
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1029571140}
+          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_MethodName: SetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Exit Config
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 69784435}
+          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_MethodName: SetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Exit Config
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!114 &192178249
@@ -618,7 +644,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.7921569, g: 0.101960786, b: 0.101960786, a: 0.21960784}
+    m_NormalColor: {r: 0.7921569, g: 0.101960786, b: 0.101960786, a: 0.5254902}
     m_HighlightedColor: {r: 0.09420614, g: 0.6886792, b: 0.24021707, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.64705884}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -649,6 +675,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192178246}
   m_CullTransparentMesh: 1
+--- !u!95 &192178251
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192178246}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aae8714d5b31d29448483a607f488e2e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!225 &192178252
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192178246}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!115 &470561224
 MonoScript:
   m_ObjectHideFlags: 0
@@ -1142,6 +1201,7 @@ MonoBehaviour:
   textObject1: {fileID: 17281094}
   textObject2: {fileID: 118396274}
   textObject3: {fileID: 1492157127}
+  canvasGroupToDisable: {fileID: 1327241968}
   consoleCharPerSecond: 100
   textObjectDuration: 5
   maxLines: 10
@@ -2385,7 +2445,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Into Scene
+            m_StringArgument: Enter Config
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 1029571140}
@@ -2397,7 +2457,19 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Into Scene
+            m_StringArgument: Enter Config
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 192178251}
+          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_MethodName: SetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Enter Config
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1367796210

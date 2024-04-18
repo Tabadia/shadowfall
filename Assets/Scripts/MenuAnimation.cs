@@ -10,6 +10,7 @@ public class MenuAnimation : MonoBehaviour
     public TMP_Text textObject1;
     public TMP_Text textObject2;
     public TMP_Text textObject3;
+    public CanvasGroup canvasGroupToDisable;
 
     public float consoleCharPerSecond = 10.0f;
     public float textObjectDuration = 10.0f; // Delay between each letter for text objects
@@ -29,6 +30,8 @@ public class MenuAnimation : MonoBehaviour
 
     void Start()
     {
+        canvasGroupToDisable.interactable = false;
+        canvasGroupToDisable.blocksRaycasts = false;
         // Save original text values and clear the text of the three additional TMP_Text objects
         textObject1OriginalText = textObject1.text;
         textObject2OriginalText = textObject2.text;
@@ -56,6 +59,8 @@ public class MenuAnimation : MonoBehaviour
         {
             // Start the animation for other text objects once menu animation completes
             StartCoroutine("AnimateOtherTextObjects");
+            canvasGroupToDisable.interactable = true;
+            canvasGroupToDisable.blocksRaycasts = true;
             menuAnimationFinished = false;
         }
     }
