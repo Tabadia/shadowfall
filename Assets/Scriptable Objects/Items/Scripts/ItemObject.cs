@@ -23,6 +23,7 @@ public abstract class ItemObject : ScriptableObject
     [TextArea(15, 20)]
     public string description;
     public ItemBuff[] buffs;
+    public GameObject obj;
 
     public Item CreateItem()
     {
@@ -42,11 +43,13 @@ public class Item
     {
         Name = "";
         Id = -1;
+        obj = null;
     }
     public Item(ItemObject item)
     {
         Name = item.name;
         Id = item.Id;
+        obj = item.obj;
         buffs = new ItemBuff[item.buffs.Length];
         for(int i = 0; i < buffs.Length; i++)
         {

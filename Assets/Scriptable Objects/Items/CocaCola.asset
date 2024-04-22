@@ -17,3 +17,4 @@ MonoBehaviour:
   type: 0
   description: 
   buffs: []
+  obj: {fileID: 9190586298078959560, guid: 010cddc8545d6b14c91830bed9fdfdb5, type: 3}

@@ -16,8 +16,14 @@ public class InventoryObject : ScriptableObject {
     public Player player;
     public Transform worldMap;
 
+    public void Awake()
+    {
+        worldMap = GameObject.Find("Map Objects").GetComponent<Transform>();
+    }
+
     public void AddItem(Item item, int amount)
     {
+        Debug.Log(item.obj);
         if (item.buffs.Length > 0)
         {
             SetEmptySpace(item, amount);
@@ -41,6 +47,8 @@ public class InventoryObject : ScriptableObject {
             if (Container.Items[i].ID <= -1)
             {
                 Container.Items[i].UpdateSpace(item.Id, item, amount);
+                Debug.Log(item.obj);
+                Debug.Log(Container.Items[i].item.obj);
                 return Container.Items[i];
             }
         }
@@ -99,9 +107,9 @@ public class InventoryObject : ScriptableObject {
         {
             if (Container.Items[i].item == item)
             {
-                player.dropItem(Container.Items[i].item.obj);
+                Instantiate(item.obj, worldMap);
                 Container.Items[i].UpdateSpace(-1, null, 0);
-                Instantiate(Container.Items[i].item.obj, worldMap);
+               
             }
         }
     }
@@ -145,6 +153,7 @@ public class InventorySpace
         this.ID = ID;
         this.item = item;
         this.amount = amount;
+
     }
     public void AddAmount(int value)
     {

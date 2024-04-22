@@ -45,7 +45,7 @@ public class Interact : MonoBehaviour
         if (Physics.Raycast(interactCamera.position, interactCamera.TransformDirection(Vector3.forward), out hit, playerActiveDistance)) 
         {
              sensedObject = hit.transform.gameObject;
-            Debug.Log(hit.transform.gameObject);
+            //Debug.Log(hit.transform.gameObject);
         } else
         {
             sensedObject = null;
@@ -79,6 +79,7 @@ public class Interact : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     player.inventory.AddItem(sensedObject.GetComponent<GroundItem>().item, 1);
+                    Debug.Log(sensedObject.GetComponent<GroundItem>().item.obj);
                     DestroyImmediate(sensedObject.gameObject);
                     sensedObject = null;
                     
