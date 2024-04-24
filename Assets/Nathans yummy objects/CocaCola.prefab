@@ -97,10 +97,10 @@ GameObject:
   - component: {fileID: 4221756266877375625}
   - component: {fileID: 6953739626424045379}
   - component: {fileID: 670431927341455301}
-  - component: {fileID: -2146479834910744218}
+  - component: {fileID: -218797286149393695}
   m_Layer: 0
   m_Name: CocaCola
-  m_TagString: Untagged
+  m_TagString: GroundItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,7 +195,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: e507983bb5f8147479fd9090c1ec7782, type: 3}
---- !u!114 &-2146479834910744218
+--- !u!114 &-218797286149393695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,6 +209,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item:
     Name: CocaCola
-    Id: 2
+    Id: 1
     buffs: []
     obj: {fileID: 9190586298078959560}

@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc51d954ca87d044b85bf567f4d8d0c, type: 3}
   m_Name: Gloves
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2970859148732128746, guid: 7943aca7c8b703e47a26124604032ebe, type: 3}
+  uiDisplay: {fileID: 0}
+  stackable: 1
   type: 1
   description: 
-  sunlightResistanceBonus: 10
+  data:
+    Name: 
+    Id: 4
+    buffs: []
+    obj: {fileID: 0}

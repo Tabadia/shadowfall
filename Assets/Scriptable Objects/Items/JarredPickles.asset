@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02d28826849cbe4481f3813d6483170, type: 3}
   m_Name: JarredPickles
   m_EditorClassIdentifier: 
-  Id: 6
-  uiDisplay: {fileID: 0}
+  uiDisplay: {fileID: 21300000, guid: 02329ab360d77c149b71bad34978c54d, type: 3}
+  stackable: 0
   type: 0
   description: 
-  buffs: []
+  data:
+    Name: JarredPickles
+    Id: 0
+    buffs: []
+    obj: {fileID: 9190586298078959560, guid: 89974388ec2c89a4e8e08a75cdf76124, type: 3}

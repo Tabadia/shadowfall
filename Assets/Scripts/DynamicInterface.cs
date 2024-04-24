@@ -13,7 +13,7 @@ public class DynamicInterface: UserInterface
     public float Y_SPACE_BETWEEN_ITEM;
     public override void CreateSpace()
     {
-        itemsDisplayed = new Dictionary<GameObject, InventorySpace>();
+        spacesOnInterface = new Dictionary<GameObject, InventorySpace>();
         for (int i = 0; i < inventory.Container.Items.Length; i++)
         {
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
@@ -26,7 +26,7 @@ public class DynamicInterface: UserInterface
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
 
 
-            itemsDisplayed.Add(obj, inventory.Container.Items[i]);
+            spacesOnInterface.Add(obj, inventory.Container.Items[i]);
         }
     }
     private Vector3 GetPosition(int i)

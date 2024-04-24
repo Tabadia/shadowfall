@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public InventoryObject inventory;
-    public MouseItem mouseItem = new MouseItem();
 
     public int maxHealth = 100;
     public int maxHunger = 100;

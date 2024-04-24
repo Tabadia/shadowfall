@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4864.989, g: 3234.0376, b: 1967.7034, a: 1}
+  m_IndirectSpecularColor: {r: 4864.989, g: 3234.106, b: 1967.6799, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -889,7 +889,6 @@ MonoBehaviour:
   canGoThruWalls: 0
   player: {fileID: 1545992437}
   agent: {fileID: 47128889}
-  audioSource: {fileID: 0}
 --- !u!195 &47128889
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -20352,7 +20351,7 @@ MonoBehaviour:
   interactableObjects:
   - CannedPeaches
   - CocaCola
-  - CocaCola
+  - JarredPickles
   interactText: {fileID: 1770474627}
   crosshair: {fileID: 828229452}
   planks:
