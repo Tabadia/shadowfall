@@ -27,6 +27,5 @@ public class Footsteps : MonoBehaviour
     {
         AudioClip clip = footstepSounds[Random.Range(0, footstepSounds.Length)];
         audioSource.PlayOneShot(clip);
-        print("feet");
     }
 }

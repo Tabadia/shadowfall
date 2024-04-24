@@ -1,41 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeMusic : MonoBehaviour
+public class MusicManager : MonoBehaviour
 {
-    public AudioSource[] audioSources;
-    public int currentIndex = 0;
+    public AudioSource audioSource;
+    public AudioClip[] musicTracks;
+    
+    private int currentTrackIndex = 0;
 
     void Start()
     {
-        ShuffleAudioSources();
-        PlayNextAudioSource();
+        ShuffleTracks();
+        PlayNextTrack();
     }
 
     void Update()
     {
-        if (!audioSources[currentIndex].isPlaying)
+        if (!audioSource.isPlaying)
         {
-            PlayNextAudioSource();
+            PlayNextTrack();
         }
     }
 
-    void ShuffleAudioSources()
+    void ShuffleTracks()
     {
-        for (int i = 0; i < audioSources.Length; i++)
+        for (int i = 0; i < musicTracks.Length; i++)
         {
-            int randomIndex = Random.Range(i, audioSources.Length);
-            AudioSource temp = audioSources[i];
-            audioSources[i] = audioSources[randomIndex];
-            audioSources[randomIndex] = temp;
+            AudioClip temp = musicTracks[i];
+            int randomIndex = Random.Range(i, musicTracks.Length);
+            musicTracks[i] = musicTracks[randomIndex];
+            musicTracks[randomIndex] = temp;
         }
     }
 
-    void PlayNextAudioSource()
+    void PlayNextTrack()
     {
-        audioSources[currentIndex].Play();
-        currentIndex = (currentIndex + 1) % audioSources.Length;
-        print("Playing audio source " + currentIndex);
+        audioSource.clip = musicTracks[currentTrackIndex];
+        audioSource.Play();
+        currentTrackIndex = (currentTrackIndex + 1) % musicTracks.Length;
     }
 }
