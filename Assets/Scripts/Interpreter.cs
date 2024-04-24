@@ -26,6 +26,30 @@ public class Interpreter : MonoBehaviour
             response.Add("We're testing the potential outputs");
 
         }
+        else if (args[0] == "ping")
+        {
+            response.Add("pong!");
+        }
+        else if (args[0] == "boop")
+        {
+            response.Add("boop!");
+        }
+        else if (args[0] == "logs"){
+            string[] logs = {};//PlayerPrefs.GetString("logs").Split(',');
+            if(logs.Length < 1){
+                response.Add("You have discovered 0 logs");
+            }
+            else{
+                foreach(string log in logs){
+                    response.Add(log);
+                }
+            }
+        }
+        else if (args[0] == "shutdown /s")
+        {
+            response.Add("Goodbye!");
+            Application.Quit();
+        }
         else
         {
             response.Add("Command not recognized. Type help for a list of commands.");
