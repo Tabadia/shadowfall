@@ -65,7 +65,15 @@ public class Interact : MonoBehaviour
                 crosshair.localScale = crosshairGoalSizeBig;
                 interactText.enabled = true;
                 if (Input.GetKeyDown(KeyCode.F)) {
-                    sensedObject.transform.GetChild(0).gameObject.SetActive(!sensedObject.transform.GetChild(0).gameObject.activeSelf);
+                    foreach (Transform child in sensedObject.GetComponentsInChildren<Transform>(true))
+                    {
+                        Light lightComponent = child.GetComponent<Light>();
+                        if (lightComponent != null)
+                        {
+                            child.gameObject.SetActive(!child.gameObject.activeSelf);
+                            break;
+                        }
+                    }
                 }
             }
         }
