@@ -24,6 +24,9 @@ public class Interact : MonoBehaviour
     // private Vector2 crosshairCurrentPos;
     private Vector2 crosshairGoalPosSmall;
     private Vector2 crosshairGoalPosBig;
+
+    public AudioSource lightSwitchAudio;
+    public AudioClip[] switchSounds;
     // private float duration = 10;
     // public float time = 0;    
 
@@ -71,6 +74,9 @@ public class Interact : MonoBehaviour
                         if (lightComponent != null)
                         {
                             child.gameObject.SetActive(!child.gameObject.activeSelf);
+                                AudioClip randomClip = switchSounds[Random.Range(0, switchSounds.Length)];
+                                lightSwitchAudio.clip = randomClip;
+                                lightSwitchAudio.Play();
                             break;
                         }
                     }
