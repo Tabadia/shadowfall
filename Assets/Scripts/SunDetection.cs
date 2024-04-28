@@ -45,10 +45,14 @@ public class SunDetection : MonoBehaviour
 
     public GameObject pCamera;
     public LayerMask layerMask;
+
+    public GameObject BurnFX;
+
     void Start() {
         // lightAngle = directionalLight.transform.forward * -1;
         // sunDir = directionalLight.transform.forward;
         maxDarkness = 0.5f;
+        hideBurn();
     }
 
     void Update() {
@@ -157,6 +161,13 @@ public class SunDetection : MonoBehaviour
                 rightEffect.SetActive(false);       
             }
         }
+
+        if(inSun == true){
+            showBurn();
+        }
+        else {
+            hideBurn();
+        }
     }
 
     IEnumerator FadeIn() {
@@ -191,6 +202,14 @@ public class SunDetection : MonoBehaviour
             StartCoroutine(FadeIn());
         }
         yield return null;
+    }
+
+    void hideBurn() {
+        BurnFX.SetActive(false);
+    }
+
+    void showBurn() {
+        BurnFX.SetActive(true);
     }
 
 
