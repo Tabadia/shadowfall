@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02d28826849cbe4481f3813d6483170, type: 3}
+  m_Script: {fileID: 11500000, guid: c13eda454b3af404297530b88b606256, type: 3}
   m_Name: JarredPickles
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 02329ab360d77c149b71bad34978c54d, type: 3}
@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 0
   description: 
   data:
-    Name: JarredPickles
-    Id: 0
+    Name: 
+    Id: -1
     buffs: []
-    obj: {fileID: 9190586298078959560, guid: 89974388ec2c89a4e8e08a75cdf76124, type: 3}
+    obj: {fileID: 0}

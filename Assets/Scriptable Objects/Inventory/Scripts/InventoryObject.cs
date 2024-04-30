@@ -1,12 +1,7 @@
- using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
+
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using UnityEditor;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
@@ -15,12 +10,7 @@ public class InventoryObject : ScriptableObject {
     public ItemDatabaseObejct database;
     public Inventory Container;
     public Player player;
-    public Transform worldMap;
 
-    public void Awake()
-    {
-        worldMap = GameObject.Find("Map Objects").GetComponent<Transform>();
-    }
 
     public bool AddItem(Item item, int amount)
     {
@@ -29,7 +19,7 @@ public class InventoryObject : ScriptableObject {
             return false;
         }
         InventorySpace space = FindItemOnInventory(item);
-        if (!database.GetItem[item.Id].stackable | item == null)
+        if (!database.Items[item.Id].stackable || item == null)
         {
             SetEmptySpace(item, amount);
             return true;
@@ -68,8 +58,6 @@ public class InventoryObject : ScriptableObject {
             if (Container.Items[i].item.Id <= -1)
             {
                 Container.Items[i].UpdateSpace(item, amount);
-                Debug.Log(item.obj);
-                Debug.Log(Container.Items[i].item.obj);
                 return Container.Items[i];
             }
         }
@@ -133,7 +121,8 @@ public class InventoryObject : ScriptableObject {
         {
             if (Container.Items[i].item == item)
             {
-                Instantiate(item.obj, worldMap);
+                item.obj.SetActive(true);
+                item.obj.transform.localPosition = player.transform.localPosition;
                 Container.Items[i].UpdateSpace(null, 0);
                
             }
@@ -158,6 +147,7 @@ public class Inventory
 public class InventorySpace
 {
     public ItemType[] AllowedItems = new ItemType[0];
+    [System.NonSerialized]
     public UserInterface parent;
     public Item item;
     public int amount;
@@ -168,7 +158,7 @@ public class InventorySpace
         {
             if (item.Id >= 0)
             {
-                return parent.inventory.database.GetItem[item.Id];
+                return parent.inventory.database.Items[item.Id];
             }
             return null;
         }

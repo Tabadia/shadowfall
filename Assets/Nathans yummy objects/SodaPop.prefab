@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 670431927341455301}
   - component: {fileID: -218797286149393695}
   m_Layer: 0
-  m_Name: CocaCola
+  m_Name: SodaPop
   m_TagString: GroundItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
-    Name: CocaCola
+    Name: SodaPop
     Id: 1
     buffs: []
     obj: {fileID: 9190586298078959560}

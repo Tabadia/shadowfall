@@ -27,29 +27,10 @@ public abstract class UserInterface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateSpace();
+        spacesOnInterface.UpdateSpaceDisplay();
     }
 
     public abstract void CreateSpace();
-    public void UpdateSpace()
-    {
-        foreach (KeyValuePair<GameObject, InventorySpace> space in spacesOnInterface)
-        {
-            if (space.Value.item.Id >= 0)
-            {
-                space.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = space.Value.ItemObject.uiDisplay;
-                space.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-                space.Key.GetComponentInChildren<TextMeshProUGUI>().text = space.Value.amount == 1 ? "" : space.Value.amount.ToString("n0");
-            }
-            else
-            {
-                space.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-                space.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
-                space.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
-            }
-        }
-    }
-    
 
     protected void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
     {
@@ -78,17 +59,22 @@ public abstract class UserInterface : MonoBehaviour
     }
     public void OnDragStart(GameObject obj)
     {
-        var mouseObject = new GameObject();
-        var rt = mouseObject.AddComponent<RectTransform>();
-        rt.sizeDelta = new Vector2(50, 50);
-        mouseObject.transform.SetParent(transform.parent);
+        MouseData.tempItemBeingDragged = createTempItem(obj);
+    }
+    public GameObject createTempItem(GameObject obj)
+    {
+        GameObject tempItem = null;
         if (spacesOnInterface[obj].item.Id >= 0)
         {
-            var img = mouseObject.AddComponent<Image>();
+            tempItem = new GameObject();
+            var rt = tempItem.AddComponent<RectTransform>();
+            rt.sizeDelta = new Vector2(50, 50);
+            tempItem.transform.SetParent(transform.parent);
+            var img = tempItem.AddComponent<Image>();
             img.sprite = spacesOnInterface[obj].ItemObject.uiDisplay;
             img.raycastTarget = false;
         }
-        MouseData.tempItemBeingDragged = mouseObject;
+        return tempItem;
     }
     public void OnDragEnd(GameObject obj)
     {
@@ -118,4 +104,26 @@ public static class MouseData
     public static UserInterface interfaceMouseIsOver;
     public static GameObject tempItemBeingDragged;
     public static GameObject slotHoveredOver;
+}
+
+public static class ExtensionMethods
+{
+    public static void UpdateSpaceDisplay(this Dictionary<GameObject, InventorySpace> spacesOnInterface)
+    {
+        foreach (KeyValuePair<GameObject, InventorySpace> space in spacesOnInterface)
+        {
+            if (space.Value.item.Id >= 0)
+            {
+                space.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = space.Value.ItemObject.uiDisplay;
+                space.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                space.Key.GetComponentInChildren<TextMeshProUGUI>().text = space.Value.amount == 1 ? "" : space.Value.amount.ToString("n0");
+            }
+            else
+            {
+                space.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                space.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                space.Key.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
+        }
+    }
 }

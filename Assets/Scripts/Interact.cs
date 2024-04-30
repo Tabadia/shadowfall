@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+using Unity.VisualScripting;
 // using System;
 
 public class Interact : MonoBehaviour
@@ -12,7 +12,7 @@ public class Interact : MonoBehaviour
     public float playerActiveDistance;
     public GameObject sensedObject = null;
     public Player player;
-    public string[] interactableObjects = { "CocaCola", "CannedPeaches", "JarredPickles"};
+    public string[] interactableObjects = { "SodaPop", "JarredPickles"};
     public TextMeshProUGUI interactText;
     public RectTransform crosshair;
 
@@ -77,8 +77,9 @@ public class Interact : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     var item = sensedObject.GetComponent<GroundItem>();
+                    item.item.obj = sensedObject.gameObject;
                     if (player.inventory.AddItem(item.item, 1))
-                        Destroy(sensedObject.gameObject);
+                        item.item.obj.SetActive(false);
                     sensedObject = null;
 
                 }

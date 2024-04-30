@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02d28826849cbe4481f3813d6483170, type: 3}
-  m_Name: CannedBeans
+  m_Script: {fileID: 11500000, guid: 07ac59341d405554086c35e55c8ab264, type: 3}
+  m_Name: Database
   m_EditorClassIdentifier: 
-  Id: 1
-  uiDisplay: {fileID: 0}
-  type: 0
-  description: 
-  buffs: []
+  Items:
+  - {fileID: 11400000, guid: 6d88612d6bcc5c04aae323852c1a17d7, type: 2}
+  - {fileID: 11400000, guid: 47793d5193d488c45a5d5eaf6ce9945f, type: 2}

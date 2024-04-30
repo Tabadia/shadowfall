@@ -14,8 +14,8 @@ public enum Attributes
 {
     sunlightProtection
 }
-
-public abstract class ItemObject : ScriptableObject
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory System/Items/item")]
+public class ItemObject : ScriptableObject
 {
     public Sprite uiDisplay;
     public bool stackable;

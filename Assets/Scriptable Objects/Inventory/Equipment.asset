@@ -16,31 +16,33 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: e3e68b0f19328de4a966a61ae4babab6, type: 2}
   Container:
     Items:
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
-        Id: 0
+        Id: -1
         buffs: []
+        obj: {fileID: 0}
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
-        Id: 0
+        Id: -1
         buffs: []
+        obj: {fileID: 0}
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
-        Id: 0
+        Id: -1
         buffs: []
+        obj: {fileID: 0}
       amount: 0
-    - parent: {fileID: 0}
-      ID: -1
+    - AllowedItems: 
       item:
         Name: 
-        Id: 0
+        Id: -1
         buffs: []
+        obj: {fileID: 0}
       amount: 0
+  player: {fileID: 0}
+  worldMap: {fileID: 0}
