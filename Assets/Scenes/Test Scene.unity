@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4867.2935, g: 3235.2974, b: 1968.262, a: 1}
+  m_IndirectSpecularColor: {r: 4873.7896, g: 3247.559, b: 1985.2463, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -21216,75 +21216,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039387862}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1041403716
+--- !u!1 &1041403716 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1536353828522126680, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
+  m_PrefabInstance: {fileID: 3202172162891489514}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1041403718}
-  - component: {fileID: 1041403717}
-  m_Layer: 0
-  m_Name: BurnFX
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1041403717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041403716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  fadeRadius: 0
-  priority: 0
-  customPasses:
-  - rid: 7465523448465588224
-  injectionPoint: 3
-  m_TargetCamera: {fileID: 0}
-  useTargetCamera: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 7465523448465588224
-      type: {class: FullScreenCustomPass, ns: UnityEngine.Rendering.HighDefinition, asm: Unity.RenderPipelines.HighDefinition.Runtime}
-      data:
-        m_Name: Custom Pass
-        enabled: 1
-        targetColorBuffer: 0
-        targetDepthBuffer: 0
-        clearFlags: 0
-        passFoldout: 0
-        m_Version: 0
-        fullscreenPassMaterial: {fileID: 2100000, guid: b7fca842bbdb0174995d2faf746e911a, type: 2}
-        materialPassIndex: 0
-        materialPassName: Custom Pass 0
-        fetchColorBuffer: 0
---- !u!4 &1041403718
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041403716}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.037289, y: 2.232401, z: 0.06893486}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1046074399
 GameObject:
   m_ObjectHideFlags: 0
@@ -42535,6 +42471,63 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1001 &3202172162891489514
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1536353828522126680, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
+      propertyPath: m_Name
+      value: BurnFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616923430476746668, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.037289
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616923430476746668, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.232401
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616923430476746668, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.06893486
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616923430476746668, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616923430476746668, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616923430476746668, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616923430476746668, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616923430476746668, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616923430476746668, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7616923430476746668, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7dea8e13ddf8ac64384330e1358fbfc9, type: 3}
 --- !u!114 &3534122611026040838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43678,4 +43671,4 @@ SceneRoots:
   - {fileID: 682173424}
   - {fileID: 1019248541}
   - {fileID: 215102210}
-  - {fileID: 1041403718}
+  - {fileID: 3202172162891489514}
