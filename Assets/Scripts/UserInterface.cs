@@ -15,9 +15,9 @@ public abstract class UserInterface : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < inventory.Container.Items.Length; i++)
+        for (int i = 0; i < inventory.Container.Spaces.Length; i++)
         {
-            inventory.Container.Items[i].parent = this;
+            inventory.Container.Spaces[i].parent = this;
         }
         CreateSpace();
         AddEvent(gameObject, EventTriggerType.PointerEnter, delegate { OnEnterInterface(gameObject); });
@@ -82,6 +82,7 @@ public abstract class UserInterface : MonoBehaviour
         if(MouseData.interfaceMouseIsOver == null)
         {
             spacesOnInterface[obj].RemoveItem();
+            
             return;
         }
         if (MouseData.slotHoveredOver)

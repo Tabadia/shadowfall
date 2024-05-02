@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        inventory.Container.Items = new InventorySpace[25];
+        inventory.Container.Spaces = new InventorySpace[25];
     }
 
     void Start()

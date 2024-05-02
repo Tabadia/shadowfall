@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19dcce62607eb724ea33ef3a98625df1, type: 3}
   m_Name: Equipment
   m_EditorClassIdentifier: 
-  savePath: 
+  savePath: /Equipment.Save
   database: {fileID: 11400000, guid: e3e68b0f19328de4a966a61ae4babab6, type: 2}
   Container:
-    Items:
+    Spaces:
     - AllowedItems: 
       item:
         Name: 
@@ -45,4 +45,3 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
   player: {fileID: 0}
-  worldMap: {fileID: 0}

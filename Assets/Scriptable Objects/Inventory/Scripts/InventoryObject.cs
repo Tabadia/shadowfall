@@ -9,6 +9,7 @@ public class InventoryObject : ScriptableObject {
     public string savePath;
     public ItemDatabaseObejct database;
     public Inventory Container;
+    public InventorySpace[] GetSpaces { get { return Container.Spaces; } }
     public Player player;
 
 
@@ -19,7 +20,7 @@ public class InventoryObject : ScriptableObject {
             return false;
         }
         InventorySpace space = FindItemOnInventory(item);
-        if (!database.Items[item.Id].stackable || item == null)
+        if (!database.ItemsObject[item.Id].stackable || item == null)
         {
             SetEmptySpace(item, amount);
             return true;
@@ -32,9 +33,9 @@ public class InventoryObject : ScriptableObject {
         get
         {
             int counter = 0;
-            for (int q = 0; q < Container.Items.Length; q++)
+            for (int q = 0; q < Container.Spaces.Length; q++)
             {
-                if (Container.Items[q].item.Id <= -1)
+                if (Container.Spaces[q].item.Id <= -1)
                     counter++;
             }
             return counter;
@@ -42,23 +43,23 @@ public class InventoryObject : ScriptableObject {
     }
     public InventorySpace FindItemOnInventory(Item item)
     {
-        for (int i = 0; i < Container.Items.Length; i++)
+        for (int i = 0; i < Container.Spaces.Length; i++)
         {
-            if (Container.Items[i].item.Id == item.Id)
+            if (Container.Spaces[i].item.Id == item.Id)
             {
-                return Container.Items[i]; 
+                return Container.Spaces[i]; 
             }
         }
         return null;
     }
     public InventorySpace SetEmptySpace(Item item, int amount)
     {
-        for (int i = 0; i < Container.Items.Length; i++)
+        for (int i = 0; i < Container.Spaces.Length; i++)
         {
-            if (Container.Items[i].item.Id <= -1)
+            if (Container.Spaces[i].item.Id <= -1)
             {
-                Container.Items[i].UpdateSpace(item, amount);
-                return Container.Items[i];
+                Container.Spaces[i].UpdateSpace(item, amount);
+                return Container.Spaces[i];
             }
         }
         //set up full inv
@@ -106,24 +107,23 @@ public class InventoryObject : ScriptableObject {
 
     public void RemoveItem(Item item)
     {
-        for (int i = 0; i < Container.Items.Length; i++)
+        for (int i = 0; i < Container.Spaces.Length; i++)
         {
-            if (Container.Items[i].item == item)
+            if (Container.Spaces[i].item == item)
             {
-                Container.Items[i].UpdateSpace(null, 0);
+                Container.Spaces[i].UpdateSpace(null, 0);
             }
         }
     }
 
     public void DropItem(Item item)
     {
-        for (int i = 0; i < Container.Items.Length; i++)
+        for (int i = 0; i < Container.Spaces.Length; i++)
         {
-            if (Container.Items[i].item == item)
+            if (Container.Spaces[i].item == item)
             {
-                item.obj.SetActive(true);
-                item.obj.transform.localPosition = player.transform.localPosition;
-                Container.Items[i].UpdateSpace(null, 0);
+                Instantiate(item.obj, player.transform);
+                Container.Spaces[i].UpdateSpace(null, 0);
                
             }
         }
@@ -133,12 +133,12 @@ public class InventoryObject : ScriptableObject {
 [System.Serializable]
 public class Inventory
 {
-    public InventorySpace[] Items = new InventorySpace[25]; 
+    public InventorySpace[] Spaces = new InventorySpace[25]; 
     public void Clear()
     {
-        for (int i = 0; i < Items.Length; i++)
+        for (int i = 0; i < Spaces.Length; i++)
         {
-            Items[i].RemoveItem();
+            Spaces[i].RemoveItem();
         }
     }
 }
@@ -149,7 +149,9 @@ public class InventorySpace
     public ItemType[] AllowedItems = new ItemType[0];
     [System.NonSerialized]
     public UserInterface parent;
-    public Item item;
+    [System.NonSerialized]
+    public GameObject spaceDisplay;
+    public Item item = new Item();
     public int amount;
 
     public ItemObject ItemObject
@@ -158,7 +160,7 @@ public class InventorySpace
         {
             if (item.Id >= 0)
             {
-                return parent.inventory.database.Items[item.Id];
+                return parent.inventory.database.ItemsObject[item.Id];
             }
             return null;
         }

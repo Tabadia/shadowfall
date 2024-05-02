@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using UnityEditor;
+using UnityEngine.SceneManagement;
 // using System;
 
 public class Interact : MonoBehaviour
@@ -77,11 +79,12 @@ public class Interact : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     var item = sensedObject.GetComponent<GroundItem>();
-                    item.item.obj = sensedObject.gameObject;
+                    //item.item.obj = Instantiate(sensedObject);
                     if (player.inventory.AddItem(item.item, 1))
-                        item.item.obj.SetActive(false);
-                    sensedObject = null;
-
+                    {
+                        Destroy(sensedObject);
+                        //item.item.obj.SetActive(false);
+                    }
                 }
             }
         }

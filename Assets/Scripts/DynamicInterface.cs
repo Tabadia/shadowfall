@@ -14,7 +14,7 @@ public class DynamicInterface: UserInterface
     public override void CreateSpace()
     {
         spacesOnInterface = new Dictionary<GameObject, InventorySpace>();
-        for (int i = 0; i < inventory.Container.Items.Length; i++)
+        for (int i = 0; i < inventory.Container.Spaces.Length; i++)
         {
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
@@ -24,9 +24,8 @@ public class DynamicInterface: UserInterface
             AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
             AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
-
-
-            spacesOnInterface.Add(obj, inventory.Container.Items[i]);
+            inventory.GetSpaces[i].spaceDisplay = obj;
+            spacesOnInterface.Add(obj, inventory.Container.Spaces[i]);
         }
     }
     private Vector3 GetPosition(int i)

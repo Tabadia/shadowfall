@@ -17,7 +17,7 @@ MonoBehaviour:
   type: 0
   description: 
   data:
-    Name: 
-    Id: -1
+    Name: Soda Pop
+    Id: 1
     buffs: []
-    obj: {fileID: 0}
+    obj: {fileID: 9190586298078959560, guid: 010cddc8545d6b14c91830bed9fdfdb5, type: 3}
