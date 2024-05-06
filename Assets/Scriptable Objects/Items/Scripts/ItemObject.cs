@@ -48,7 +48,6 @@ public class Item
     {
         Name = item.name;
         Id = item.data.Id;
-        obj = GameObject.Find(Name);
         buffs = new ItemBuff[item.data.buffs.Length];
         for(int i = 0; i < buffs.Length; i++)
         {

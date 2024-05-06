@@ -1,17 +1,17 @@
-// -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="BoundedVoronoi.cs" company="">
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Tools
+namespace TriangleNet.Tools
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Data;
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry;
+    using TriangleNet.Data;
+    using TriangleNet.Geometry;
 
     /// <summary>
     /// The Bounded Voronoi Diagram is the dual of a PSLG triangulation.
@@ -103,7 +103,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Tools
         private void ComputeCircumCenters()
         {
             Otri tri = default(Otri);
-            double xi = 0, eta = 0;
+            float xi = 0, eta = 0;
             Point pt;
 
             // Compue triangle circumcenters
@@ -193,7 +193,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Tools
 
                             f0.SegPivot(ref sub1);
 
-                            // if f0 is finite and tagged non-blind & the common edge
+                            // if f0 is finite and tagged non-blind & the common edge 
                             // between f and f0 is unconstrained then
                             if (f0.triangle != Mesh.dummytri && !f0.triangle.infected && sub1.seg == Mesh.dummysub)
                             {
@@ -415,7 +415,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Tools
 
             if (f_prev.triangle == Mesh.dummytri)
             {
-                // For vertices on the domain boundaray, add the vertex. For
+                // For vertices on the domain boundaray, add the vertex. For 
                 // internal boundaries don't add it.
                 p = new Point(vertex.x, vertex.y);
                 p.id = n + segIndex;
@@ -588,7 +588,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Tools
         }
 
         /// <summary>
-        /// Determines the intersection point of the line segment defined by points A and B with the
+        /// Determines the intersection point of the line segment defined by points A and B with the 
         /// line segment defined by points C and D.
         /// </summary>
         /// <param name="seg">The first segment AB.</param>
@@ -604,19 +604,19 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Tools
         {
             p = null;
 
-            double Ax = p1.X, Ay = p1.Y;
-            double Bx = p2.X, By = p2.Y;
-            double Cx = p3.X, Cy = p3.Y;
-            double Dx = p4.X, Dy = p4.Y;
+            float Ax = p1.X, Ay = p1.Y;
+            float Bx = p2.X, By = p2.Y;
+            float Cx = p3.X, Cy = p3.Y;
+            float Dx = p4.X, Dy = p4.Y;
 
-            double distAB, theCos, theSin, newX, ABpos;
+            float distAB, theCos, theSin, newX, ABpos;
 
             //  Fail if either line segment is zero-length.
             if (Ax == Bx && Ay == By || Cx == Dx && Cy == Dy) return false;
 
             //  Fail if the segments share an end-point.
             if (Ax == Cx && Ay == Cy || Bx == Cx && By == Cy
-                || Ax == Dx && Ay == Dy || Bx == Dx && By == Dy)
+            || Ax == Dx && Ay == Dy || Bx == Dx && By == Dy)
             {
                 return false;
             }
@@ -627,7 +627,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Tools
             Dx -= Ax; Dy -= Ay;
 
             //  Discover the length of segment A-B.
-            distAB = Math.Sqrt(Bx * Bx + By * By);
+            distAB = UnityEngine.Mathf.Sqrt(Bx * Bx + By * By);
 
             //  (2) Rotate the system so that point B is on the positive X axis.
             theCos = Bx / distAB;

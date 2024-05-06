@@ -1,13 +1,13 @@
-// -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="Triangle.cs" company="">
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.IO
+namespace TriangleNet.IO
 {
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Data;
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry;
+    using TriangleNet.Data;
+    using TriangleNet.Geometry;
 
     /// <summary>
     /// Simple triangle class for input.
@@ -16,7 +16,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.IO
     {
         internal int[] vertices;
         internal int region;
-        internal double area;
+        internal float area;
 
         public InputTriangle(int p0, int p1, int p2)
         {
@@ -98,7 +98,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.IO
         /// <summary>
         /// Gets the triangle area constraint.
         /// </summary>
-        public double Area
+        public float Area
         {
             get { return area; }
             set { area = value; }

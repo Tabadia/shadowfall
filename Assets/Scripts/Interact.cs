@@ -82,7 +82,7 @@ public class Interact : MonoBehaviour
                     //item.item.obj = Instantiate(sensedObject);
                     if (player.inventory.AddItem(item.item, 1))
                     {
-                        //Destroy(sensedObject);
+                        Destroy(sensedObject);
                         //item.item.obj.SetActive(false);
                     }
                 }

@@ -1,12 +1,12 @@
-// -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="Segment.cs" company="">
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
+namespace TriangleNet.Geometry
 {
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Data;
+    using TriangleNet.Data;
 
     /// <summary>
     /// Interface for segment geometry.

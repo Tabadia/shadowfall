@@ -1,17 +1,17 @@
-// -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="VoronoiRegion.cs" company="">
 // TODO: Update copyright text.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Tools
+namespace TriangleNet.Tools
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry;
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Data;
+    using TriangleNet.Geometry;
+    using TriangleNet.Data;
 
     /// <summary>
     /// Represents a region in the Voronoi diagram.

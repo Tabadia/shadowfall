@@ -1,15 +1,15 @@
-// -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="Incremental.cs">
 // Original Triangle code by Jonathan Richard Shewchuk, http://www.cs.cmu.edu/~quake/triangle.html
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Algorithm
+namespace TriangleNet.Algorithm
 {
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Data;
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Log;
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry;
+    using TriangleNet.Data;
+    using TriangleNet.Log;
+    using TriangleNet.Geometry;
 
     /// <summary>
     /// Builds a delaunay triangulation using the incremental algorithm.
@@ -32,19 +32,19 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Algorithm
             BoundingBox box = mesh.bounds;
 
             // Find the width (or height, whichever is larger) of the triangulation.
-            double width = box.Width;
+            float width = box.Width;
             if (box.Height > width)
             {
                 width = box.Height;
             }
-            if (width == 0.0)
+            if (width == 0.0f)
             {
-                width = 1.0;
+                width = 1.0f;
             }
             // Create the vertices of the bounding box.
-            mesh.infvertex1 = new Vertex(box.Xmin - 50.0 * width, box.Ymin - 40.0 * width);
-            mesh.infvertex2 = new Vertex(box.Xmax + 50.0 * width, box.Ymin - 40.0 * width);
-            mesh.infvertex3 = new Vertex(0.5 * (box.Xmin + box.Xmax), box.Ymax + 60.0 * width);
+            mesh.infvertex1 = new Vertex(box.Xmin - 50.0f * width, box.Ymin - 40.0f * width);
+            mesh.infvertex2 = new Vertex(box.Xmax + 50.0f * width, box.Ymin - 40.0f * width);
+            mesh.infvertex3 = new Vertex(0.5f * (box.Xmin + box.Xmax), box.Ymax + 60.0f * width);
 
             // Create the bounding box.
             mesh.MakeTriangle(ref inftri);
@@ -148,7 +148,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Algorithm
         /// <summary>
         /// Form a Delaunay triangulation by incrementally inserting vertices.
         /// </summary>
-        /// <returns>Returns the number of edges on the convex hull of the
+        /// <returns>Returns the number of edges on the convex hull of the 
         /// triangulation.</returns>
         public int Triangulate(Mesh mesh)
         {
@@ -167,7 +167,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Algorithm
                 {
                     if (Behavior.Verbose)
                     {
-                        SimpleLog.Instance.Warning("A duplicate vertex appeared and was ignored.",
+                        SimpleLog.Instance.Warning("A duplicate vertex appeared and was ignored.", 
                             "Incremental.IncrementalDelaunay()");
                     }
                     v.type = VertexType.UndeadVertex;

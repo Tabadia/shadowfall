@@ -1,13 +1,13 @@
-// -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="IVoronoi.cs" company="">
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Tools
+namespace TriangleNet.Tools
 {
     using System.Collections.Generic;
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry;
+    using TriangleNet.Geometry;
 
     /// <summary>
     /// TODO: Update summary.
