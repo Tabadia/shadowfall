@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.AI;
+using Unity.AI.Navigation;
 
 public class ShadowMonster : MonoBehaviour
 {
@@ -13,14 +14,18 @@ public class ShadowMonster : MonoBehaviour
     public float clearFlickeredInterval = 30f;
     public bool canGoThruWalls = false;
     public GameObject player;
+    public NavMeshSurface navMeshSurface;
 
     private List<GameObject> flickeredLights = new List<GameObject>();
     private List<GameObject> turnedOffLights = new List<GameObject>();
 
-    public NavMeshAgent agent;
+    private NavMeshAgent agent;
 
     void Start()
     {
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
+        agent = GetComponent<NavMeshAgent>();
+        
         InvokeRepeating("ClearTurnedOffLights", clearTurnedOffInterval, clearTurnedOffInterval);
         InvokeRepeating("ClearFlickeredLights", clearFlickeredInterval, clearFlickeredInterval);
     }
@@ -29,8 +34,17 @@ public class ShadowMonster : MonoBehaviour
     {
         CheckLights();
 
-        agent.destination = player.transform.position;
-
+        agent.SetDestination(player.transform.position);
+        if (canGoThruWalls)
+        {
+            navMeshSurface.layerMask = ~LayerMask.GetMask("House");
+        }
+        else
+        {
+            // Bake the navmesh as normal
+            navMeshSurface.layerMask = -1;
+        }
+        //navMeshSurface.BuildNavMesh();
         // if (canGoThruWalls)
         // {
         //     agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance; // Disable obstacle avoidance

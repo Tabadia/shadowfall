@@ -141,18 +141,18 @@ public class Interact : MonoBehaviour
         source.PlayOneShot(source.clip);
     }*/
 
-    IEnumerator placeBoards(GameObject wall)
+    IEnumerator placeBoards(GameObject window)
     {
         // if player has planks in inventory
         for (int i = 0; i < 3; i++)
         {
-            GameObject plank = Instantiate(planks[Random.Range(0, planks.Length)]);
-            plank.transform.SetParent(wall.transform.parent.gameObject.transform);
-            plank.transform.localPosition = new Vector3(0, 9 + (i * 2.5f), -1);
-            plank.transform.localScale = new Vector3(100, 100, 100);
+            GameObject plank = Instantiate(planks[Random.Range(0, planks.Length)], window.transform);
+            // plank.transform.SetParent(window.transform.parent.gameObject.transform);
             float randomZRotation = Random.Range(-10, 10);
+            plank.transform.localPosition = new Vector3(0, 9/10 + (i * 2.5f)/10 -2.5f/10, -1);
             plank.transform.localRotation = Quaternion.Euler(0, 0, randomZRotation);
-            //plank.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            // //plank.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            plank.transform.localScale = new Vector3(10, 10, 10);
             yield return new WaitForSeconds(.5f);
         }
     }
