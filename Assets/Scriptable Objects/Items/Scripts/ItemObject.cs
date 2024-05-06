@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public enum ItemType
@@ -48,7 +50,13 @@ public class Item
     {
         Name = item.name;
         Id = item.data.Id;
-        obj = GameObject.Find(Name);
+        if (AssetDatabase.FindAssets(Name).Length <= 0)
+        {
+            return;
+        }
+        string GUID = AssetDatabase.FindAssets(Name)[0];
+        string PATH = AssetDatabase.GUIDToAssetPath(GUID);
+        obj = AssetDatabase.LoadAssetAtPath<GameObject>(PATH);
         buffs = new ItemBuff[item.data.buffs.Length];
         for(int i = 0; i < buffs.Length; i++)
         {
