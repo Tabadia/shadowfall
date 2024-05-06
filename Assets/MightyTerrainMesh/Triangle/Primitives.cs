@@ -1,27 +1,27 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="Primitives.cs">
 // Original Triangle code by Jonathan Richard Shewchuk, http://www.cs.cmu.edu/~quake/triangle.html
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TriangleNet
+namespace UnityEditor.Experimental.U2D.Animation.TriangleNet
 {
     using System;
-    using TriangleNet.Data;
-    using TriangleNet.Geometry;
-    using TriangleNet.Tools;
+	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Data;
+	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry;
+	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Tools;
 
     /// <summary>
     /// Provides some primitives regularly used in computational geometry.
     /// </summary>
     public static class Primitives
     {
-        static float splitter;       // Used to split float factors for exact multiplication.
-        static float epsilon;        // Floating-point machine epsilon.
-        //static float resulterrbound;
-        static float ccwerrboundA; // ccwerrboundB, ccwerrboundC;
-        static float iccerrboundA; // iccerrboundB, iccerrboundC;
+        static double splitter;       // Used to split double factors for exact multiplication.
+        static double epsilon;        // Floating-point machine epsilon.
+        //static double resulterrbound;
+        static double ccwerrboundA; // ccwerrboundB, ccwerrboundC;
+        static double iccerrboundA; // iccerrboundB, iccerrboundC;
 
         /// <summary>
         /// Initialize the variables used for exact arithmetic.
@@ -42,15 +42,15 @@ namespace TriangleNet
         /// </remarks>
         public static void ExactInit()
         {
-            float half;
-            float check, lastcheck;
+            double half;
+            double check, lastcheck;
             bool every_other;
 
             every_other = true;
-            half = 0.5f;
-            epsilon = 1.0f;
-            splitter = 1.0f;
-            check = 1.0f;
+            half = 0.5;
+            epsilon = 1.0;
+            splitter = 1.0;
+            check = 1.0;
             // Repeatedly divide 'epsilon' by two until it is too small to add to
             // one without causing roundoff. (Also check if the sum is equal to
             // the previous sum, for machines that round up instead of using exact
@@ -61,32 +61,33 @@ namespace TriangleNet
                 epsilon *= half;
                 if (every_other)
                 {
-                    splitter *= 2.0f;
+                    splitter *= 2.0;
                 }
                 every_other = !every_other;
-                check = 1.0f + epsilon;
-            } while ((check != 1.0f) && (check != lastcheck));
-            splitter += 1.0f;
+                check = 1.0 + epsilon;
+            }
+            while ((check != 1.0) && (check != lastcheck));
+            splitter += 1.0;
             // Error bounds for orientation and incircle tests.
             //resulterrbound = (3.0 + 8.0 * epsilon) * epsilon;
-            ccwerrboundA = (3.0f + 16.0f * epsilon) * epsilon;
+            ccwerrboundA = (3.0 + 16.0 * epsilon) * epsilon;
             //ccwerrboundB = (2.0 + 12.0 * epsilon) * epsilon;
             //ccwerrboundC = (9.0 + 64.0 * epsilon) * epsilon * epsilon;
-            iccerrboundA = (10.0f + 96.0f * epsilon) * epsilon;
+            iccerrboundA = (10.0 + 96.0 * epsilon) * epsilon;
             //iccerrboundB = (4.0 + 48.0 * epsilon) * epsilon;
             //iccerrboundC = (44.0 + 576.0 * epsilon) * epsilon * epsilon;
         }
 
         /// <summary>
-        /// Check, if the three points appear in counterclockwise order. The result is 
-        /// also a rough approximation of twice the signed area of the triangle defined 
+        /// Check, if the three points appear in counterclockwise order. The result is
+        /// also a rough approximation of twice the signed area of the triangle defined
         /// by the three points.
         /// </summary>
         /// <param name="pa">Point a.</param>
         /// <param name="pb">Point b.</param>
         /// <param name="pc">Point c.</param>
-        /// <returns>Return a positive value if the points pa, pb, and pc occur in 
-        /// counterclockwise order; a negative value if they occur in clockwise order; 
+        /// <returns>Return a positive value if the points pa, pb, and pc occur in
+        /// counterclockwise order; a negative value if they occur in clockwise order;
         /// and zero if they are collinear.</returns>
         /// <remarks>
         /// Uses exact arithmetic if necessary to ensure a correct answer. The
@@ -98,10 +99,10 @@ namespace TriangleNet
         ///
         /// See Robust Predicates paper for details.
         /// </remarks>
-        public static float CounterClockwise(Point pa, Point pb, Point pc)
+        public static double CounterClockwise(Point pa, Point pb, Point pc)
         {
-            float detleft, detright, det;
-            float detsum, errbound;
+            double detleft, detright, det;
+            double detsum, errbound;
 
             Statistic.CounterClockwiseCount++;
 
@@ -147,14 +148,14 @@ namespace TriangleNet
                 return det;
             }
 
-            return (float)CounterClockwiseDecimal(pa, pb, pc);
+            return (double)CounterClockwiseDecimal(pa, pb, pc);
         }
 
         private static decimal CounterClockwiseDecimal(Point pa, Point pb, Point pc)
         {
             Statistic.CounterClockwiseCountDecimal++;
 
-            decimal detleft, detright, det, detsum;
+            decimal detleft, detright, det;
 
             detleft = ((decimal)pa.x - (decimal)pc.x) * ((decimal)pb.y - (decimal)pc.y);
             detright = ((decimal)pa.y - (decimal)pc.y) * ((decimal)pb.x - (decimal)pc.x);
@@ -166,10 +167,6 @@ namespace TriangleNet
                 {
                     return det;
                 }
-                else
-                {
-                    detsum = detleft + detright;
-                }
             }
             else if (detleft < 0.0m)
             {
@@ -177,26 +174,22 @@ namespace TriangleNet
                 {
                     return det;
                 }
-                else
-                {
-                    detsum = -detleft - detright;
-                }
             }
 
             return det;
         }
 
         /// <summary>
-        /// Check if the point pd lies inside the circle passing through pa, pb, and pc. The 
-        /// points pa, pb, and pc must be in counterclockwise order, or the sign of the result 
+        /// Check if the point pd lies inside the circle passing through pa, pb, and pc. The
+        /// points pa, pb, and pc must be in counterclockwise order, or the sign of the result
         /// will be reversed.
         /// </summary>
         /// <param name="pa">Point a.</param>
         /// <param name="pb">Point b.</param>
         /// <param name="pc">Point c.</param>
         /// <param name="pd">Point d.</param>
-        /// <returns>Return a positive value if the point pd lies inside the circle passing through 
-        /// pa, pb, and pc; a negative value if it lies outside; and zero if the four points 
+        /// <returns>Return a positive value if the point pd lies inside the circle passing through
+        /// pa, pb, and pc; a negative value if it lies outside; and zero if the four points
         /// are cocircular.</returns>
         /// <remarks>
         /// Uses exact arithmetic if necessary to ensure a correct answer.  The
@@ -208,13 +201,13 @@ namespace TriangleNet
         ///
         /// See Robust Predicates paper for details.
         /// </remarks>
-        public static float InCircle(Point pa, Point pb, Point pc, Point pd)
+        public static double InCircle(Point pa, Point pb, Point pc, Point pd)
         {
-            float adx, bdx, cdx, ady, bdy, cdy;
-            float bdxcdy, cdxbdy, cdxady, adxcdy, adxbdy, bdxady;
-            float alift, blift, clift;
-            float det;
-            float permanent, errbound;
+            double adx, bdx, cdx, ady, bdy, cdy;
+            double bdxcdy, cdxbdy, cdxady, adxcdy, adxbdy, bdxady;
+            double alift, blift, clift;
+            double det;
+            double permanent, errbound;
 
             Statistic.InCircleCount++;
 
@@ -246,16 +239,16 @@ namespace TriangleNet
                 return det;
             }
 
-            permanent = (UnityEngine.Mathf.Abs(bdxcdy) + UnityEngine.Mathf.Abs(cdxbdy)) * alift
-                      + (UnityEngine.Mathf.Abs(cdxady) + UnityEngine.Mathf.Abs(adxcdy)) * blift
-                      + (UnityEngine.Mathf.Abs(adxbdy) + UnityEngine.Mathf.Abs(bdxady)) * clift;
+            permanent = (Math.Abs(bdxcdy) + Math.Abs(cdxbdy)) * alift
+                + (Math.Abs(cdxady) + Math.Abs(adxcdy)) * blift
+                + (Math.Abs(adxbdy) + Math.Abs(bdxady)) * clift;
             errbound = iccerrboundA * permanent;
             if ((det > errbound) || (-det > errbound))
             {
                 return det;
             }
 
-            return (float)InCircleDecimal(pa, pb, pc, pd);
+            return (double)InCircleDecimal(pa, pb, pc, pd);
         }
 
         private static decimal InCircleDecimal(Point pa, Point pb, Point pc, Point pd)
@@ -291,21 +284,21 @@ namespace TriangleNet
         }
 
         /// <summary>
-        /// Return a positive value if the point pd is incompatible with the circle 
-        /// or plane passing through pa, pb, and pc (meaning that pd is inside the 
-        /// circle or below the plane); a negative value if it is compatible; and 
-        /// zero if the four points are cocircular/coplanar. The points pa, pb, and 
-        /// pc must be in counterclockwise order, or the sign of the result will be 
+        /// Return a positive value if the point pd is incompatible with the circle
+        /// or plane passing through pa, pb, and pc (meaning that pd is inside the
+        /// circle or below the plane); a negative value if it is compatible; and
+        /// zero if the four points are cocircular/coplanar. The points pa, pb, and
+        /// pc must be in counterclockwise order, or the sign of the result will be
         /// reversed.
         /// </summary>
         /// <param name="pa">Point a.</param>
         /// <param name="pb">Point b.</param>
         /// <param name="pc">Point c.</param>
         /// <param name="pd">Point d.</param>
-        /// <returns>Return a positive value if the point pd lies inside the circle passing through 
-        /// pa, pb, and pc; a negative value if it lies outside; and zero if the four points 
+        /// <returns>Return a positive value if the point pd lies inside the circle passing through
+        /// pa, pb, and pc; a negative value if it lies outside; and zero if the four points
         /// are cocircular.</returns>
-        public static float NonRegular(Point pa, Point pb, Point pc, Point pd)
+        public static double NonRegular(Point pa, Point pb, Point pc, Point pd)
         {
             return InCircle(pa, pb, pc, pd);
         }
@@ -321,12 +314,12 @@ namespace TriangleNet
         /// <param name="offconstant">Off-center constant.</param>
         /// <returns>Coordinates of the circumcenter (or off-center)</returns>
         public static Point FindCircumcenter(Point torg, Point tdest, Point tapex,
-                              ref float xi, ref float eta, float offconstant)
+            ref double xi, ref double eta, double offconstant)
         {
-            float xdo, ydo, xao, yao;
-            float dodist, aodist, dadist;
-            float denominator;
-            float dx, dy, dxoff, dyoff;
+            double xdo, ydo, xao, yao;
+            double dodist, aodist, dadist;
+            double denominator;
+            double dx, dy, dxoff, dyoff;
 
             Statistic.CircumcenterCount++;
 
@@ -338,18 +331,18 @@ namespace TriangleNet
             dodist = xdo * xdo + ydo * ydo;
             aodist = xao * xao + yao * yao;
             dadist = (tdest.x - tapex.x) * (tdest.x - tapex.x) +
-                     (tdest.y - tapex.y) * (tdest.y - tapex.y);
+                (tdest.y - tapex.y) * (tdest.y - tapex.y);
 
             if (Behavior.NoExact)
             {
-                denominator = 0.5f / (xdo * yao - xao * ydo);
+                denominator = 0.5 / (xdo * yao - xao * ydo);
             }
             else
             {
                 // Use the counterclockwise() routine to ensure a positive (and
                 // reasonably accurate) result, avoiding any possibility of
                 // division by zero.
-                denominator = 0.5f / CounterClockwise(tdest, tapex, torg);
+                denominator = 0.5 / CounterClockwise(tdest, tapex, torg);
                 // Don't count the above as an orientation test.
                 Statistic.CounterClockwiseCount--;
             }
@@ -364,11 +357,11 @@ namespace TriangleNet
             // the input PSLG.
             if ((dodist < aodist) && (dodist < dadist))
             {
-                if (offconstant > 0.0f)
+                if (offconstant > 0.0)
                 {
                     // Find the position of the off-center, as described by Alper Ungor.
-                    dxoff = 0.5f * xdo - offconstant * ydo;
-                    dyoff = 0.5f * ydo + offconstant * xdo;
+                    dxoff = 0.5 * xdo - offconstant * ydo;
+                    dyoff = 0.5 * ydo + offconstant * xdo;
                     // If the off-center is closer to the origin than the
                     // circumcenter, use the off-center instead.
                     if (dxoff * dxoff + dyoff * dyoff < dx * dx + dy * dy)
@@ -380,10 +373,10 @@ namespace TriangleNet
             }
             else if (aodist < dadist)
             {
-                if (offconstant > 0.0f)
+                if (offconstant > 0.0)
                 {
-                    dxoff = 0.5f * xao + offconstant * yao;
-                    dyoff = 0.5f * yao - offconstant * xao;
+                    dxoff = 0.5 * xao + offconstant * yao;
+                    dyoff = 0.5 * yao - offconstant * xao;
                     // If the off-center is closer to the origin than the
                     // circumcenter, use the off-center instead.
                     if (dxoff * dxoff + dyoff * dyoff < dx * dx + dy * dy)
@@ -395,10 +388,10 @@ namespace TriangleNet
             }
             else
             {
-                if (offconstant > 0.0f)
+                if (offconstant > 0.0)
                 {
-                    dxoff = 0.5f * (tapex.x - tdest.x) - offconstant * (tapex.y - tdest.y);
-                    dyoff = 0.5f * (tapex.y - tdest.y) + offconstant * (tapex.x - tdest.x);
+                    dxoff = 0.5 * (tapex.x - tdest.x) - offconstant * (tapex.y - tdest.y);
+                    dyoff = 0.5 * (tapex.y - tdest.y) + offconstant * (tapex.x - tdest.x);
                     // If the off-center is closer to the destination than the
                     // circumcenter, use the off-center instead.
                     if (dxoff * dxoff + dyoff * dyoff <
@@ -415,8 +408,8 @@ namespace TriangleNet
             // directed from the triangle's origin to its destination, and
             // an eta-axis, directed from its origin to its apex.
             // Calculate the xi and eta coordinates of the circumcenter.
-            xi = (yao * dx - xao * dy) * (2.0f * denominator);
-            eta = (xdo * dy - ydo * dx) * (2.0f * denominator);
+            xi = (yao * dx - xao * dy) * (2.0 * denominator);
+            eta = (xdo * dy - ydo * dx) * (2.0 * denominator);
 
             return new Point(torg.x + dx, torg.y + dy);
         }
@@ -440,12 +433,12 @@ namespace TriangleNet
         /// shortest edge.
         /// </remarks>
         public static Point FindCircumcenter(Point torg, Point tdest, Point tapex,
-                              ref float xi, ref float eta)
+            ref double xi, ref double eta)
         {
-            float xdo, ydo, xao, yao;
-            float dodist, aodist;
-            float denominator;
-            float dx, dy;
+            double xdo, ydo, xao, yao;
+            double dodist, aodist;
+            double denominator;
+            double dx, dy;
 
             Statistic.CircumcenterCount++;
 
@@ -459,14 +452,14 @@ namespace TriangleNet
 
             if (Behavior.NoExact)
             {
-                denominator = 0.5f / (xdo * yao - xao * ydo);
+                denominator = 0.5 / (xdo * yao - xao * ydo);
             }
             else
             {
                 // Use the counterclockwise() routine to ensure a positive (and
                 // reasonably accurate) result, avoiding any possibility of
                 // division by zero.
-                denominator = 0.5f / CounterClockwise(tdest, tapex, torg);
+                denominator = 0.5 / CounterClockwise(tdest, tapex, torg);
                 // Don't count the above as an orientation test.
                 Statistic.CounterClockwiseCount--;
             }
@@ -479,8 +472,8 @@ namespace TriangleNet
             // directed from the triangle's origin to its destination, and
             // an eta-axis, directed from its origin to its apex.
             // Calculate the xi and eta coordinates of the circumcenter.
-            xi = (yao * dx - xao * dy) * (2.0f * denominator);
-            eta = (xdo * dy - ydo * dx) * (2.0f * denominator);
+            xi = (yao * dx - xao * dy) * (2.0 * denominator);
+            eta = (xdo * dy - ydo * dx) * (2.0 * denominator);
 
             return new Point(torg.x + dx, torg.y + dy);
         }

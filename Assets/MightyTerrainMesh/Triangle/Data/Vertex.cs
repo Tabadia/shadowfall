@@ -1,17 +1,17 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="Vertex.cs" company="">
 // Original Triangle code by Jonathan Richard Shewchuk, http://www.cs.cmu.edu/~quake/triangle.html
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TriangleNet.Data
+namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Data
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using TriangleNet.Geometry;
+	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry;
 
     /// <summary>
     /// The vertex data structure.
@@ -37,7 +37,7 @@ namespace TriangleNet.Data
         /// </summary>
         /// <param name="x">The x coordinate of the vertex.</param>
         /// <param name="y">The y coordinate of the vertex.</param>
-        public Vertex(float x, float y)
+        public Vertex(double x, double y)
             : this(x, y, 0, 0)
         {
         }
@@ -48,7 +48,7 @@ namespace TriangleNet.Data
         /// <param name="x">The x coordinate of the vertex.</param>
         /// <param name="y">The y coordinate of the vertex.</param>
         /// <param name="mark">The boundary mark.</param>
-        public Vertex(float x, float y, int mark)
+        public Vertex(double x, double y, int mark)
             : this(x, y, mark, 0)
         {
         }
@@ -60,14 +60,14 @@ namespace TriangleNet.Data
         /// <param name="y">The y coordinate of the vertex.</param>
         /// <param name="mark">The boundary mark.</param>
         /// <param name="attribs">The number of point attributes.</param>
-        public Vertex(float x, float y, int mark, int attribs)
+        public Vertex(double x, double y, int mark, int attribs)
             : base(x, y, mark)
         {
             this.type = VertexType.InputVertex;
 
             if (attribs > 0)
             {
-                this.attributes = new float[attribs];
+                this.attributes = new double[attribs];
             }
         }
 
@@ -86,7 +86,7 @@ namespace TriangleNet.Data
         /// </summary>
         /// <param name="i">Coordinate index.</param>
         /// <returns>X coordinate, if index is 0, Y coordinate, if index is 1.</returns>
-        public float this[int i]
+        public double this[int i]
         {
             get
             {

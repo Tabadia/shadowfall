@@ -1,10 +1,10 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="BoundingBox.cs" company="">
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TriangleNet.Geometry
+namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
 {
     using System;
 
@@ -13,17 +13,17 @@ namespace TriangleNet.Geometry
     /// </summary>
     public class BoundingBox
     {
-        float xmin, ymin, xmax, ymax;
+        double xmin, ymin, xmax, ymax;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BoundingBox" /> class.
         /// </summary>
         public BoundingBox()
         {
-            xmin = float.MaxValue;
-            ymin = float.MaxValue;
-            xmax = -float.MaxValue;
-            ymax = -float.MaxValue;
+            xmin = double.MaxValue;
+            ymin = double.MaxValue;
+            xmax = -double.MaxValue;
+            ymax = -double.MaxValue;
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace TriangleNet.Geometry
         /// <param name="ymin">Minimum y value.</param>
         /// <param name="xmax">Maximum x value.</param>
         /// <param name="ymax">Maximum y value.</param>
-        public BoundingBox(float xmin, float ymin, float xmax, float ymax)
+        public BoundingBox(double xmin, double ymin, double xmax, double ymax)
         {
             this.xmin = xmin;
             this.ymin = ymin;
@@ -45,7 +45,7 @@ namespace TriangleNet.Geometry
         /// <summary>
         /// Gets the minimum x value (left boundary).
         /// </summary>
-        public float Xmin
+        public double Xmin
         {
             get { return xmin; }
         }
@@ -53,7 +53,7 @@ namespace TriangleNet.Geometry
         /// <summary>
         /// Gets the minimum y value (bottom boundary).
         /// </summary>
-        public float Ymin
+        public double Ymin
         {
             get { return ymin; }
         }
@@ -61,7 +61,7 @@ namespace TriangleNet.Geometry
         /// <summary>
         /// Gets the maximum x value (right boundary).
         /// </summary>
-        public float Xmax
+        public double Xmax
         {
             get { return xmax; }
         }
@@ -69,7 +69,7 @@ namespace TriangleNet.Geometry
         /// <summary>
         /// Gets the maximum y value (top boundary).
         /// </summary>
-        public float Ymax
+        public double Ymax
         {
             get { return ymax; }
         }
@@ -77,7 +77,7 @@ namespace TriangleNet.Geometry
         /// <summary>
         /// Gets the width of the bounding box.
         /// </summary>
-        public float Width
+        public double Width
         {
             get { return xmax - xmin; }
         }
@@ -85,7 +85,7 @@ namespace TriangleNet.Geometry
         /// <summary>
         /// Gets the height of the bounding box.
         /// </summary>
-        public float Height
+        public double Height
         {
             get { return ymax - ymin; }
         }
@@ -95,12 +95,12 @@ namespace TriangleNet.Geometry
         /// </summary>
         /// <param name="x">X coordinate.</param>
         /// <param name="y">Y coordinate.</param>
-        public void Update(float x, float y)
+        public void Update(double x, double y)
         {
-            xmin = UnityEngine.Mathf.Min(xmin, x);
-            ymin = UnityEngine.Mathf.Min(ymin, y);
-            xmax = UnityEngine.Mathf.Max(xmax, x);
-            ymax = UnityEngine.Mathf.Max(ymax, y);
+            xmin = Math.Min(xmin, x);
+            ymin = Math.Min(ymin, y);
+            xmax = Math.Max(xmax, x);
+            ymax = Math.Max(ymax, y);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace TriangleNet.Geometry
         /// </summary>
         /// <param name="dx">Add dx to left and right bounds.</param>
         /// <param name="dy">Add dy to top and bottom bounds.</param>
-        public void Scale(float dx, float dy)
+        public void Scale(double dx, double dy)
         {
             xmin -= dx;
             xmax += dx;

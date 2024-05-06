@@ -1,22 +1,22 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="Triangle.cs" company="">
 // Original Triangle code by Jonathan Richard Shewchuk, http://www.cs.cmu.edu/~quake/triangle.html
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TriangleNet.Data
+namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Data
 {
     using System;
-    using TriangleNet.Geometry;
+	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry;
 
     /// <summary>
     /// The triangle data structure.
     /// </summary>
     /// <remarks>
-    /// Each triangle contains three pointers to adjoining triangles, plus three 
+    /// Each triangle contains three pointers to adjoining triangles, plus three
     /// pointers to vertices, plus three pointers to subsegments (declared below;
-    /// these pointers are usually 'dummysub'). It may or may not also contain 
+    /// these pointers are usually 'dummysub'). It may or may not also contain
     /// user-defined attributes and/or a floating-point "area constraint".
     /// </remarks>
     public class Triangle : ITriangle
@@ -31,7 +31,7 @@ namespace TriangleNet.Data
         internal Vertex[] vertices;
         internal Osub[] subsegs;
         internal int region;
-        internal float area;
+        internal double area;
         internal bool infected;
 
         public Triangle()
@@ -156,7 +156,7 @@ namespace TriangleNet.Data
         /// <summary>
         /// Gets the triangle area constraint.
         /// </summary>
-        public float Area
+        public double Area
         {
             get { return this.area; }
             set { this.area = value; }

@@ -3,8 +3,8 @@
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
-    using TriangleNet.Geometry;
-    //
+    using UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry;
+   
     public class TessellationJob
     {
         public MTMeshData[] mesh;
@@ -44,7 +44,7 @@
                 var vert = lVerts[i];
                 geometry.AddPoint(vert.Position.x, lVerts[i].Position.z, 0);
             }
-            TriangleNet.Mesh meshRepresentation = new TriangleNet.Mesh();
+            UnityEditor.Experimental.U2D.Animation.TriangleNet.Mesh meshRepresentation = new UnityEditor.Experimental.U2D.Animation.TriangleNet.Mesh();
             meshRepresentation.Triangulate(geometry);
             if (meshRepresentation.Vertices.Count != lVerts.Count)
             {
@@ -57,7 +57,7 @@
             lod.faces = new int[meshRepresentation.triangles.Count * 3];
             foreach (var v in meshRepresentation.Vertices)
             {
-                lod.vertices[vIdx] = new Vector3(v.x, lVerts[vIdx].Position.y, v.y);
+                lod.vertices[vIdx] = new Vector3(((float)v.x), lVerts[vIdx].Position.y, ((float)v.y));
                 lod.normals[vIdx] = lVerts[vIdx].Normal;
                 var uv = lVerts[vIdx].UV;
                 lod.uvs[vIdx] = uv;

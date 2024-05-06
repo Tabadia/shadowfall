@@ -1,14 +1,14 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="Behavior.cs">
 // Original Triangle code by Jonathan Richard Shewchuk, http://www.cs.cmu.edu/~quake/triangle.html
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TriangleNet
+namespace UnityEditor.Experimental.U2D.Animation.TriangleNet
 {
     using System;
-    using TriangleNet.Log;
+	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Log;
 
     /// <summary>
     /// Controls the behavior of the meshing software.
@@ -31,23 +31,23 @@ namespace TriangleNet
         int noBisect = 0;
         int steiner = -1;
 
-        float minAngle = 0.0f;
-        float maxAngle = 0.0f;
-        float maxArea = -1.0f;
+        double minAngle = 0.0;
+        double maxAngle = 0.0;
+        double maxArea = -1.0;
 
         internal bool fixedArea = false;
         internal bool useSegments = true;
         internal bool useRegions = false;
-        internal float goodAngle = 0.0f;
-        internal float maxGoodAngle = 0.0f;
-        internal float offconstant = 0.0f;
+        internal double goodAngle = 0.0;
+        internal double maxGoodAngle = 0.0;
+        internal double offconstant = 0.0;
 
         #endregion
 
         /// <summary>
         /// Creates an instance of the Behavior class.
         /// </summary>
-        public Behavior(bool quality = false, float minAngle = 20.0f)
+        public Behavior(bool quality = false, double minAngle = 20.0)
         {
             if (quality)
             {
@@ -82,16 +82,16 @@ namespace TriangleNet
             }
 
             this.useSegments = this.Poly || this.Quality || this.Convex;
-            this.goodAngle = UnityEngine.Mathf.Cos(this.MinAngle * UnityEngine.Mathf.PI / 180.0f);
-            this.maxGoodAngle = UnityEngine.Mathf.Cos(this.MaxAngle * UnityEngine.Mathf.PI / 180.0f);
+            this.goodAngle = Math.Cos(this.MinAngle * Math.PI / 180.0);
+            this.maxGoodAngle = Math.Cos(this.MaxAngle * Math.PI / 180.0);
 
             if (this.goodAngle == 1.0)
             {
-                this.offconstant = 0.0f;
+                this.offconstant = 0.0;
             }
             else
             {
-                this.offconstant = 0.475f * UnityEngine.Mathf.Sqrt((1.0f + this.goodAngle) / (1.0f - this.goodAngle));
+                this.offconstant = 0.475 * Math.Sqrt((1.0 + this.goodAngle) / (1.0 - this.goodAngle));
             }
 
             this.goodAngle *= this.goodAngle;
@@ -132,7 +132,7 @@ namespace TriangleNet
         /// <summary>
         /// Minimum angle constraint.
         /// </summary>
-        public float MinAngle
+        public double MinAngle
         {
             get { return minAngle; }
             set { minAngle = value; Update(); }
@@ -141,7 +141,7 @@ namespace TriangleNet
         /// <summary>
         /// Maximum angle constraint.
         /// </summary>
-        public float MaxAngle
+        public double MaxAngle
         {
             get { return maxAngle; }
             set { maxAngle = value; Update(); }
@@ -150,7 +150,7 @@ namespace TriangleNet
         /// <summary>
         /// Maximum area constraint.
         /// </summary>
-        public float MaxArea
+        public double MaxArea
         {
             get { return maxArea; }
             set
