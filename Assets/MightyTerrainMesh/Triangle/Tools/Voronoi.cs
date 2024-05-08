@@ -1,17 +1,17 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="Voronoi.cs">
 // Original Triangle code by Jonathan Richard Shewchuk, http://www.cs.cmu.edu/~quake/triangle.html
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using TriangleNet.Data;
-using TriangleNet.Geometry;
-
-namespace TriangleNet.Tools
+namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Tools
 {
+	using System;
+	using System.Collections.Generic;
+	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Data;
+	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry;
+	
     /// <summary>
     /// The Voronoi Diagram is the dual of a pointset triangulation.
     /// </summary>
@@ -100,7 +100,7 @@ namespace TriangleNet.Tools
         private void ComputeCircumCenters()
         {
             Otri tri = default(Otri);
-            float xi = 0, eta = 0;
+            double xi = 0, eta = 0;
             Point pt;
 
             // Compue triangle circumcenters
@@ -116,7 +116,7 @@ namespace TriangleNet.Tools
                 bounds.Update(pt.x, pt.y);
             }
 
-            float ds = UnityEngine.Mathf.Max(bounds.Width, bounds.Height);
+            double ds = Math.Max(bounds.Width, bounds.Height);
             bounds.Scale(ds, ds);
         }
 
@@ -229,7 +229,7 @@ namespace TriangleNet.Tools
             // Find the boundary segment id.
             f.SegPivot(ref sub);
             sid = sub.seg.hash;
-            
+
             if (rayPoints.ContainsKey(sid))
             {
                 vpoints.Add(rayPoints[sid]);
@@ -258,18 +258,18 @@ namespace TriangleNet.Tools
             region.Add(vpoints);
         }
 
-        private bool BoxRayIntersection(Point pt, float dx, float dy, out Vertex intersect)
+        private bool BoxRayIntersection(Point pt, double dx, double dy, out Vertex intersect)
         {
-            float x = pt.X;
-            float y = pt.Y;
+            double x = pt.X;
+            double y = pt.Y;
 
-            float t1, x1, y1, t2, x2, y2;
+            double t1, x1, y1, t2, x2, y2;
 
             // Bounding box
-            float minX = bounds.Xmin;
-            float maxX = bounds.Xmax;
-            float minY = bounds.Ymin;
-            float maxY = bounds.Ymax;
+            double minX = bounds.Xmin;
+            double maxX = bounds.Xmax;
+            double minY = bounds.Ymin;
+            double maxY = bounds.Ymax;
 
             // Check if point is inside the bounds
             if (x < minX || x > maxX || y < minY || y > maxY)
@@ -296,7 +296,7 @@ namespace TriangleNet.Tools
             else
             {
                 // Line going straight up or down: no intersection possible
-                t1 = float.MaxValue;
+                t1 = double.MaxValue;
                 x1 = y1 = 0;
             }
 
@@ -318,7 +318,7 @@ namespace TriangleNet.Tools
             else
             {
                 // Horizontal line: no intersection possible
-                t2 = float.MaxValue;
+                t2 = double.MaxValue;
                 x2 = y2 = 0;
             }
 

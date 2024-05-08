@@ -1,17 +1,17 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="InputGeometry.cs" company="">
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TriangleNet.Geometry
+namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
 {
     using System;
     using System.Collections.Generic;
-    using TriangleNet.Data;
+	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Data;
 
     /// <summary>
-    /// The input geometry which will be triangulated. May represent a 
+    /// The input geometry which will be triangulated. May represent a
     /// pointset or a planar straight line graph.
     /// </summary>
     public class InputGeometry
@@ -35,7 +35,7 @@ namespace TriangleNet.Geometry
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InputGeometry" /> class. 
+        /// Initializes a new instance of the <see cref="InputGeometry" /> class.
         /// The point list will be initialized with a given capacity.
         /// </summary>
         /// <param name="capacity">Point list capacity.</param>
@@ -80,7 +80,7 @@ namespace TriangleNet.Geometry
         /// </summary>
         public IEnumerable<Point> Points
         {
-            get { return (IEnumerable<Point>) points; }
+            get { return (IEnumerable<Point>)points; }
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace TriangleNet.Geometry
         /// </summary>
         /// <param name="x">X coordinate.</param>
         /// <param name="y">Y coordinate.</param>
-        public void AddPoint(float x, float y)
+        public void AddPoint(double x, double y)
         {
             AddPoint(x, y, 0);
         }
@@ -136,7 +136,7 @@ namespace TriangleNet.Geometry
         /// <param name="x">X coordinate.</param>
         /// <param name="y">Y coordinate.</param>
         /// <param name="boundary">Boundary marker.</param>
-        public void AddPoint(float x, float y, int boundary)
+        public void AddPoint(double x, double y, int boundary)
         {
             points.Add(new Vertex(x, y, boundary));
 
@@ -150,9 +150,9 @@ namespace TriangleNet.Geometry
         /// <param name="y">Y coordinate.</param>
         /// <param name="boundary">Boundary marker.</param>
         /// <param name="attribute">Point attribute.</param>
-        public void AddPoint(float x, float y, int boundary, float attribute)
+        public void AddPoint(double x, double y, int boundary, double attribute)
         {
-            AddPoint(x, y, 0, new float[] { attribute });
+            AddPoint(x, y, 0, new double[] { attribute });
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace TriangleNet.Geometry
         /// <param name="y">Y coordinate.</param>
         /// <param name="boundary">Boundary marker.</param>
         /// <param name="attribs">Point attributes.</param>
-        public void AddPoint(float x, float y, int boundary, float[] attribs)
+        public void AddPoint(double x, double y, int boundary, double[] attribs)
         {
             if (pointAttributes < 0)
             {
@@ -187,7 +187,7 @@ namespace TriangleNet.Geometry
         /// </summary>
         /// <param name="x">X coordinate of the hole.</param>
         /// <param name="y">Y coordinate of the hole.</param>
-        public void AddHole(float x, float y)
+        public void AddHole(double x, double y)
         {
             holes.Add(new Point(x, y));
         }
@@ -198,7 +198,7 @@ namespace TriangleNet.Geometry
         /// <param name="x">X coordinate of the hole.</param>
         /// <param name="y">Y coordinate of the hole.</param>
         /// <param name="id">The region id.</param>
-        public void AddRegion(float x, float y, int id)
+        public void AddRegion(double x, double y, int id)
         {
             regions.Add(new RegionPointer(x, y, id));
         }

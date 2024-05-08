@@ -1,10 +1,10 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="RegionPointer.cs" company="">
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TriangleNet.Geometry
+namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
 {
     using System;
     using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace TriangleNet.Geometry
         /// <param name="x">X coordinate of the region.</param>
         /// <param name="y">Y coordinate of the region.</param>
         /// <param name="id">Region id.</param>
-        public RegionPointer(float x, float y, int id)
+        public RegionPointer(double x, double y, int id)
         {
             this.point = new Point(x, y);
             this.id = id;
