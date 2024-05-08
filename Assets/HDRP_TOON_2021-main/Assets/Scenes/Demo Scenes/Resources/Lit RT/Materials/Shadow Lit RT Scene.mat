@@ -69,7 +69,7 @@ Material:
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 10
     - _Edge_Overlay_Shadows_RenderTexture_Required: 0
-    - _Edge_Thickness: 1
+    - _Edge_Thickness: -1.86
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _Float: 0
