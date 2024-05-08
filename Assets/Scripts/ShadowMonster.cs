@@ -16,6 +16,9 @@ public class ShadowMonster : MonoBehaviour
     public AudioSource flickerAudioSource; // Public variable for the flicker sound effect audio source
     public AudioClip[] flickerSounds; // Array of flicker sound effects
     private Dictionary<GameObject, float> flickerCooldowns = new Dictionary<GameObject, float>(); // Dictionary to track cooldown times for lights
+    public float normalSpeed = 3.5f; // Normal movement speed
+    public float slowSpeed = 1.5f; // Slower movement speed within the light detection radius
+    public float turnOffLightsRadius = 3f; // Radius to turn off lights
 
     void Start()
     {
@@ -28,6 +31,7 @@ public class ShadowMonster : MonoBehaviour
 
         // Set the NavMeshAgent's stopping distance based on the detection radius
         navMeshAgent.stoppingDistance = detectionRadius + stoppingDistanceOffset;
+        navMeshAgent.speed = normalSpeed; // Set initial movement speed
     }
 
     void Update()
@@ -59,6 +63,40 @@ public class ShadowMonster : MonoBehaviour
                         StartCoroutine(FlickerLight(collider.gameObject));
                     }
                 }
+            }
+
+            // Check for lights to turn off within the turnOffLightsRadius
+            Collider[] turnOffLightsColliders = Physics.OverlapSphere(transform.position, turnOffLightsRadius);
+            foreach (Collider collider in turnOffLightsColliders)
+            {
+                if (collider.CompareTag("Light"))
+                {
+                    Light lightComponent = collider.GetComponentInChildren<Light>();
+                    if (lightComponent != null)
+                    {
+                        lightComponent.enabled = false; // Turn off the light
+                    }
+                }
+            }
+
+            // Adjust movement speed based on lights in collision
+            bool lightsInCollision = false;
+            foreach (Collider collider in colliders)
+            {
+                if (collider.CompareTag("Light"))
+                {
+                    lightsInCollision = true;
+                    break;
+                }
+            }
+
+            if (lightsInCollision)
+            {
+                navMeshAgent.speed = slowSpeed; // Set slower movement speed
+            }
+            else
+            {
+                navMeshAgent.speed = normalSpeed; // Set normal movement speed
             }
         }
     }
@@ -134,5 +172,8 @@ public class ShadowMonster : MonoBehaviour
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, lightDetectionRadius);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, turnOffLightsRadius);
     }
 }
