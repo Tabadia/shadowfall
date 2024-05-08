@@ -1,16 +1,16 @@
-// -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="Edge.cs" company="">
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
+namespace TriangleNet.Geometry
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Data;
+    using TriangleNet.Data;
 
     /// <summary>
     /// Represents a straight line segment in 2D space.
@@ -49,7 +49,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
         /// </summary>
         public Edge(int p0, int p1)
             : this(p0, p1, 0)
-        {}
+        { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Edge" /> class.

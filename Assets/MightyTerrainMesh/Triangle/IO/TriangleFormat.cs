@@ -1,17 +1,17 @@
-// -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="TriangleFormat.cs" company="">
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.IO
+namespace TriangleNet.IO
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-	using System.IO;
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry;
+    using TriangleNet.Geometry;
+    using System.IO;
 
     /// <summary>
     /// Implements geometry and mesh file formats of the the original Triangle code.
@@ -55,7 +55,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.IO
             {
                 return FileReader.ReadNodeFile(filename);
             }
-
+            
             if (ext == ".poly")
             {
                 return FileReader.ReadPolyFile(filename);

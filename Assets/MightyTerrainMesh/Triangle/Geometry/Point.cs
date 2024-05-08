@@ -1,11 +1,12 @@
-// -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="Point.cs" company="">
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
+namespace TriangleNet.Geometry
 {
+    using UnityEngine;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -17,26 +18,54 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
     public class Point : IComparable<Point>, IEquatable<Point>
     {
         internal int id;
-        internal double x;
-        internal double y;
+        public Vector2 coordinates;
+        public float x
+        {
+            get
+            {
+                return coordinates.x;
+            }
+            set
+            {
+                coordinates.x = value;
+            }
+        }
+
+        public float y
+        {
+            get
+            {
+                return coordinates.y;
+            }
+            set
+            {
+                coordinates.y = value;
+            }
+        }
+
         internal int mark;
-        internal double[] attributes;
+        internal float[] attributes;
 
         public Point()
             : this(0, 0, 0)
         {
         }
 
-        public Point(double x, double y)
+        public Point(float x, float y)
             : this(x, y, 0)
         {
         }
 
-        public Point(double x, double y, int mark)
+        public Point(float x, float y, int mark)
         {
-            this.x = x;
-            this.y = y;
+            this.coordinates.x = x;
+            this.coordinates.y = y;
             this.mark = mark;
+        }
+
+        public Point(Vector2 coordinates)
+        {
+            this.coordinates = coordinates;
         }
 
         #region Public properties
@@ -52,7 +81,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
         /// <summary>
         /// Gets the vertex x coordinate.
         /// </summary>
-        public double X
+        public float X
         {
             get { return this.x; }
         }
@@ -60,7 +89,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
         /// <summary>
         /// Gets the vertex y coordinate.
         /// </summary>
-        public double Y
+        public float Y
         {
             get { return this.y; }
         }
@@ -76,7 +105,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
         /// <summary>
         /// Gets the vertex attributes (may be null).
         /// </summary>
-        public double[] Attributes
+        public float[] Attributes
         {
             get { return this.attributes; }
         }
@@ -88,10 +117,10 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
         // Compare "Guidelines for Overriding Equals() and Operator =="
         // http://msdn.microsoft.com/en-us/library/ms173147.aspx
 
-        public static bool operator==(Point a, Point b)
+        public static bool operator ==(Point a, Point b)
         {
             // If both are null, or both are same instance, return true.
-            if (Object.ReferenceEquals(a, b))
+            if (System.Object.ReferenceEquals(a, b))
             {
                 return true;
             }
@@ -105,7 +134,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
             return a.Equals(b);
         }
 
-        public static bool operator!=(Point a, Point b)
+        public static bool operator !=(Point a, Point b)
         {
             return !(a == b);
         }

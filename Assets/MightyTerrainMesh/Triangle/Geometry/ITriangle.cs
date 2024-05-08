@@ -1,12 +1,12 @@
-// -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="ITriangle.cs" company="">
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
+namespace TriangleNet.Geometry
 {
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Data;
+    using TriangleNet.Data;
 
     /// <summary>
     /// Triangle interface.
@@ -73,7 +73,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry
         /// <summary>
         /// Triangle area constraint.
         /// </summary>
-        double Area { get; set; }
+        float Area { get; set; }
 
         /// <summary>
         /// Region ID the triangle belongs to.

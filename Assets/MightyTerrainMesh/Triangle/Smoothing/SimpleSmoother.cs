@@ -1,17 +1,17 @@
-// -----------------------------------------------------------------------
+﻿// -----------------------------------------------------------------------
 // <copyright file="SimpleSmoother.cs" company="">
 // Triangle.NET code by Christian Woltering, http://triangle.codeplex.com/
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Smoothing
+namespace TriangleNet.Smoothing
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Geometry;
-	using UnityEditor.Experimental.U2D.Animation.TriangleNet.Tools;
+    using TriangleNet.Geometry;
+    using TriangleNet.Tools;
 
     /// <summary>
     /// Simple mesh smoother implementation.
@@ -39,7 +39,7 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Smoothing
                 Step();
 
                 // Actually, we only want to rebuild, if mesh is no longer
-                // Delaunay. Flipping edges could be the right choice instead
+                // Delaunay. Flipping edges could be the right choice instead 
                 // of re-triangulating...
                 mesh.Triangulate(Rebuild());
             }
@@ -54,13 +54,13 @@ namespace UnityEditor.Experimental.U2D.Animation.TriangleNet.Smoothing
 
             var cells = voronoi.Regions;
 
-            double x, y;
+            float x, y;
             int n;
 
             foreach (var cell in cells)
             {
                 n = 0;
-                x = y = 0.0;
+                x = y = 0.0f;
                 foreach (var p in cell.Vertices)
                 {
                     n++;
