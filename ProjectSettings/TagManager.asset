@@ -9,6 +9,7 @@ TagManager:
   - Boardable
   - Light
   - GroundItem
+  - Light Obj
   layers:
   - Default
   - TransparentFX

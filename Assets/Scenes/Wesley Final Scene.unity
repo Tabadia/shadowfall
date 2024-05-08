@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4858.7993, g: 3231.641, b: 1968.4182, a: 1}
+  m_IndirectSpecularColor: {r: 0.0025382007, g: 0.0021200406, b: 0.0019016203, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3910,6 +3910,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2015709160}
     m_Modifications:
+    - target: {fileID: 706386989089588280, guid: 330e18dc705fafb4e84addd935b20687, type: 3}
+      propertyPath: m_TagString
+      value: Light Obj
+      objectReference: {fileID: 0}
     - target: {fileID: 1522023846949084926, guid: 330e18dc705fafb4e84addd935b20687, type: 3}
       propertyPath: m_Name
       value: House Prefab (1)
@@ -5824,7 +5828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &705507994
 Light:
   m_ObjectHideFlags: 0
@@ -6468,7 +6472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &758047560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19559,7 +19563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1141197219
 Transform:
   m_ObjectHideFlags: 0
@@ -23078,7 +23082,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1461104949
 Transform:
   m_ObjectHideFlags: 0
@@ -24252,10 +24256,42 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4873624442597744982, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
       propertyPath: navMeshSurface
       value: 
       objectReference: {fileID: 1642324409}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: flickerDuration
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: flickerAudioSource
+      value: 
+      objectReference: {fileID: 1461104950}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: flickerSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: flickerSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 111ba419903e7b449ad202350065b38a, type: 3}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: flickerSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: bc175fe3687610445b0d65671e2ad2b7, type: 3}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: flickerSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e8c69f5c32b7464d9a5e840c3911a9f, type: 3}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: flickerSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 414213184d3160c4b833bdb80648f4c1, type: 3}
     - target: {fileID: 6243280745142173639, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
       propertyPath: m_Name
       value: Shadow Monster (1)
@@ -24979,7 +25015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1695840491
 Transform:
   m_ObjectHideFlags: 0
