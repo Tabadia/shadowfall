@@ -15,10 +15,16 @@ public class ShadowMonster : MonoBehaviour
     private List<GameObject> flickeringLights = new List<GameObject>(); // List of lights being flickered
     public AudioSource flickerAudioSource; // Public variable for the flicker sound effect audio source
     public AudioClip[] flickerSounds; // Array of flicker sound effects
+    public AudioClip[] monsterSounds; // Array of monster sound effects
     private Dictionary<GameObject, float> flickerCooldowns = new Dictionary<GameObject, float>(); // Dictionary to track cooldown times for lights
     public float normalSpeed = 3.5f; // Normal movement speed
     public float slowSpeed = 1.5f; // Slower movement speed within the light detection radius
     public float turnOffLightsRadius = 3f; // Radius to turn off lights
+    public float damageAmount = 10f; // Amount of damage inflicted on the player
+    public float damageCooldown = 2f; // Cooldown time between damage ticks
+    private float lastMonsterSoundTime = 0f; // Timestamp of the last monster sound played
+    public float monsterSoundCooldown = 5f; // Cooldown time between monster sounds
+    private float lastDamageTime = 0f; // Timestamp of the last damage
 
     void Start()
     {
@@ -48,6 +54,7 @@ public class ShadowMonster : MonoBehaviour
                 {
                     Debug.Log("Player detected nearby!");
                     // Add actions here, such as triggering an alert or changing behavior
+                    DamagePlayer();
                 }
             }
 
@@ -62,6 +69,10 @@ public class ShadowMonster : MonoBehaviour
                     {
                         StartCoroutine(FlickerLight(collider.gameObject));
                     }
+                }
+                if (collider.CompareTag("Player"))
+                {
+                    PlayRandomMonsterSound();
                 }
             }
 
@@ -97,6 +108,19 @@ public class ShadowMonster : MonoBehaviour
             else
             {
                 navMeshAgent.speed = normalSpeed; // Set normal movement speed
+            }
+        }
+    }
+
+    void DamagePlayer()
+    {
+        if (Time.time - lastDamageTime >= damageCooldown)
+        {
+            Player playerScript = player.GetComponent<Player>();
+            if (playerScript != null)
+            {
+                playerScript.setHealth(playerScript.currentHealth - damageAmount);
+                lastDamageTime = Time.time;
             }
         }
     }
@@ -162,6 +186,22 @@ public class ShadowMonster : MonoBehaviour
             int randomIndex = Random.Range(0, flickerSounds.Length); // Choose a random sound effect index
             flickerAudioSource.clip = flickerSounds[randomIndex]; // Set the audio source's clip to the chosen sound effect
             flickerAudioSource.PlayOneShot(flickerAudioSource.clip); // Play the flicker sound effect once
+        }
+    }
+
+    void PlayRandomMonsterSound()
+    {
+        // Check if enough time has passed since the last monster sound
+        if (Time.time - lastMonsterSoundTime >= monsterSoundCooldown)
+        {
+            if (flickerAudioSource != null && monsterSounds.Length > 0)
+            {
+                int randomIndex = Random.Range(0, monsterSounds.Length); // Choose a random sound effect index
+                flickerAudioSource.clip = monsterSounds[randomIndex]; // Set the audio source's clip to the chosen sound effect
+                flickerAudioSource.PlayOneShot(flickerAudioSource.clip); // Play the monster sound effect once
+
+                lastMonsterSoundTime = Time.time; // Update the timestamp of the last monster sound played
+            }
         }
     }
 

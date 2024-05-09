@@ -24285,6 +24285,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: monsterSounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
       propertyPath: flickerSounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 111ba419903e7b449ad202350065b38a, type: 3}
@@ -24300,6 +24304,26 @@ PrefabInstance:
       propertyPath: flickerSounds.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: 414213184d3160c4b833bdb80648f4c1, type: 3}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: monsterSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: da86442058f9e2042a97afc50b370cd7, type: 3}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: monsterSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 64c5f74af34b29b4c8072b82294c1a8b, type: 3}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: monsterSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 422230775f3079244a90d59c95528e82, type: 3}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: monsterSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 179e9065973055d4e8ce7c5e1f15f2e3, type: 3}
+    - target: {fileID: 5808900193585457414, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
+      propertyPath: monsterSounds.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a9f85da7e0fbac4ebfc668f1a61e6c7, type: 3}
     - target: {fileID: 6243280745142173639, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
       propertyPath: m_Name
       value: Shadow Monster (1)
