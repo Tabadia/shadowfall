@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public InventoryObject inventory;
-    public MouseItem mouseItem = new MouseItem();
 
     public int maxHealth = 100;
     public int maxHunger = 100;
@@ -30,7 +29,7 @@ public class Player : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        inventory.Container.Items = new InventorySpace[25];
+        inventory.Container.Spaces = new InventorySpace[25];
     }
 
     void Start()

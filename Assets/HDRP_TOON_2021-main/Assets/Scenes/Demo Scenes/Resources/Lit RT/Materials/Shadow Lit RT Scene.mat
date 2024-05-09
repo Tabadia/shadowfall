@@ -69,13 +69,13 @@ Material:
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 10
     - _Edge_Overlay_Shadows_RenderTexture_Required: 0
-    - _Edge_Thickness: -25.58
+    - _Edge_Thickness: -1.86
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _Float: 0
     - _OpaqueCullMode: 2
     - _RenderQueueType: 4
-    - _Shadow_Strength: 0.8
+    - _Shadow_Strength: 0.833
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 1

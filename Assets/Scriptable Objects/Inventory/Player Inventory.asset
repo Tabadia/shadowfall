@@ -15,10 +15,8 @@ MonoBehaviour:
   savePath: /Inventory.Save
   database: {fileID: 11400000, guid: e3e68b0f19328de4a966a61ae4babab6, type: 2}
   Container:
-    Items:
+    Spaces:
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -26,8 +24,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -35,8 +31,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -44,8 +38,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -53,8 +45,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -62,8 +52,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -71,8 +59,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -80,8 +66,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -89,8 +73,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -98,8 +80,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -107,8 +87,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -116,8 +94,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -125,8 +101,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -134,8 +108,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -143,8 +115,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -152,8 +122,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -161,8 +129,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -170,8 +136,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -179,8 +143,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -188,8 +150,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -197,8 +157,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -206,8 +164,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -215,8 +171,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -224,8 +178,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -233,8 +185,6 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
-      parent: {fileID: 0}
-      ID: -1
       item:
         Name: 
         Id: -1
@@ -242,4 +192,3 @@ MonoBehaviour:
         obj: {fileID: 0}
       amount: 0
   player: {fileID: 0}
-  worldMap: {fileID: 0}

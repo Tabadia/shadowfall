@@ -10,7 +10,7 @@ public class TerminalManager : MonoBehaviour
 
     public GameObject directoryLine;
     public GameObject responseLine;
-
+    public float verticalPadScale = 27.0f;
     public TMP_InputField terminalInput;
     public GameObject userInputLine;
     public ScrollRect sr;
@@ -64,7 +64,7 @@ public class TerminalManager : MonoBehaviour
     {
         //Resizing the command line container so ScrollRect doesn't crash
         Vector2 msgListSize = msgList.GetComponent<RectTransform>().sizeDelta;
-        msgList.GetComponent<RectTransform>().sizeDelta = new UnityEngine.Vector2(msgListSize.x, msgListSize.y + 27.0f);
+        msgList.GetComponent<RectTransform>().sizeDelta = new UnityEngine.Vector2(msgListSize.x, msgListSize.y + verticalPadScale);
 
 
         //Instantiate the directory line

@@ -1,11 +1,7 @@
- using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
+
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
-using UnityEditor;
-using JetBrains.Annotations;
 
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
@@ -13,43 +9,57 @@ public class InventoryObject : ScriptableObject {
     public string savePath;
     public ItemDatabaseObejct database;
     public Inventory Container;
+    public InventorySpace[] GetSpaces { get { return Container.Spaces; } }
     public Player player;
-    public Transform worldMap;
 
-    public void Awake()
-    {
-        worldMap = GameObject.Find("Map Objects").GetComponent<Transform>();
-    }
 
-    public void AddItem(Item item, int amount)
+    public bool AddItem(Item item, int amount)
     {
-        Debug.Log(item.obj);
-        if (item.buffs.Length > 0)
+        if (EmptySpaceCount <= 0)
+        {
+            return false;
+        }
+        InventorySpace space = FindItemOnInventory(item);
+        if (!database.ItemsObject[item.Id].stackable || item == null)
         {
             SetEmptySpace(item, amount);
-            return;
+            return true;
         }
-
-        for (int i = 0; i < Container.Items.Length; i++)
+        space.AddAmount(amount);
+        return true;
+    }
+    public int EmptySpaceCount
+    {
+        get
         {
-            if (Container.Items[i].ID == item.Id)
+            int counter = 0;
+            for (int q = 0; q < Container.Spaces.Length; q++)
             {
-                Container.Items[i].AddAmount(amount);
-                return;
+                if (Container.Spaces[q].item.Id <= -1)
+                    counter++;
+            }
+            return counter;
+        }
+    }
+    public InventorySpace FindItemOnInventory(Item item)
+    {
+        for (int i = 0; i < Container.Spaces.Length; i++)
+        {
+            if (Container.Spaces[i].item.Id == item.Id)
+            {
+                return Container.Spaces[i]; 
             }
         }
-        SetEmptySpace(item, amount);
+        return null;
     }
     public InventorySpace SetEmptySpace(Item item, int amount)
     {
-        for (int i = 0; i < Container.Items.Length; i++)
+        for (int i = 0; i < Container.Spaces.Length; i++)
         {
-            if (Container.Items[i].ID <= -1)
+            if (Container.Spaces[i].item.Id <= -1)
             {
-                Container.Items[i].UpdateSpace(item.Id, item, amount);
-                Debug.Log(item.obj);
-                Debug.Log(Container.Items[i].item.obj);
-                return Container.Items[i];
+                Container.Spaces[i].UpdateSpace(item, amount);
+                return Container.Spaces[i];
             }
         }
         //set up full inv
@@ -82,33 +92,38 @@ public class InventoryObject : ScriptableObject {
     {
         Container.Clear();
     }
-
-    public void MoveItem(InventorySpace item1, InventorySpace item2)
+    
+    public void SwapItems(InventorySpace item1, InventorySpace item2)
     {
-        InventorySpace temp = new InventorySpace(item2.ID, item2.item, item2.amount);
-        item2.UpdateSpace(item1.ID, item1.item, item1.amount);
-        item1.UpdateSpace(temp.ID, temp.item, temp.amount);
+        if(item2.CanPlaceInSpace(item1.ItemObject) && item1.CanPlaceInSpace(item2.ItemObject))
+        {
+            InventorySpace temp = new InventorySpace(item2.item, item2.amount);
+            item2.UpdateSpace(item1.item, item1.amount);
+            item1.UpdateSpace(temp.item, temp.amount);
+        }
+
+
     }
 
     public void RemoveItem(Item item)
     {
-        for (int i = 0; i < Container.Items.Length; i++)
+        for (int i = 0; i < Container.Spaces.Length; i++)
         {
-            if (Container.Items[i].item == item)
+            if (Container.Spaces[i].item == item)
             {
-                Container.Items[i].UpdateSpace(-1, null, 0);
+                Container.Spaces[i].UpdateSpace(null, 0);
             }
         }
     }
 
     public void DropItem(Item item)
     {
-        for (int i = 0; i < Container.Items.Length; i++)
+        for (int i = 0; i < Container.Spaces.Length; i++)
         {
-            if (Container.Items[i].item == item)
+            if (Container.Spaces[i].item == item)
             {
-                Instantiate(item.obj, worldMap);
-                Container.Items[i].UpdateSpace(-1, null, 0);
+                Instantiate(item.obj, player.transform);
+                Container.Spaces[i].UpdateSpace(null, 0);
                
             }
         }
@@ -118,12 +133,12 @@ public class InventoryObject : ScriptableObject {
 [System.Serializable]
 public class Inventory
 {
-    public InventorySpace[] Items = new InventorySpace[25]; 
+    public InventorySpace[] Spaces = new InventorySpace[25]; 
     public void Clear()
     {
-        for (int i = 0; i < Items.Length; i++)
+        for (int i = 0; i < Spaces.Length; i++)
         {
-            Items[i].UpdateSpace(-1, new Item(), 0);
+            Spaces[i].RemoveItem();
         }
     }
 }
@@ -132,42 +147,58 @@ public class Inventory
 public class InventorySpace
 {
     public ItemType[] AllowedItems = new ItemType[0];
+    [System.NonSerialized]
     public UserInterface parent;
-    public int ID;
-    public Item item;
+    [System.NonSerialized]
+    public GameObject spaceDisplay;
+    public Item item = new Item();
     public int amount;
+
+    public ItemObject ItemObject
+    {
+        get
+        {
+            if (item.Id >= 0)
+            {
+                return parent.inventory.database.ItemsObject[item.Id];
+            }
+            return null;
+        }
+    }
     public InventorySpace()
     {
-        this.ID = -1;
-        this.item = null;
-        this.amount = 0;
+        item = new Item();
+        amount = 0;
     }
-    public InventorySpace(int ID, Item item, int amount)
+    public InventorySpace(Item item, int amount)
     {
-        this.ID = ID;
         this.item = item;
         this.amount = amount;
     }
-    public void UpdateSpace(int ID, Item item, int amount)
+    public void UpdateSpace(Item item, int amount)
     {
-        this.ID = ID;
         this.item = item;
         this.amount = amount;
 
+    }
+    public void RemoveItem()
+    {
+        item = new Item();
+        amount = 0;
     }
     public void AddAmount(int value)
     {
         amount += value;
     }
-    public bool CanPlaceInSpace(ItemObject item)
+    public bool CanPlaceInSpace(ItemObject itemObject)
     {
-        if(AllowedItems.Length <= 0)
+        if(AllowedItems.Length <= 0 || itemObject == null || itemObject.data.Id < 0)
         {
             return true;
         }
         for (int i = 0; i < AllowedItems.Length; i++)
         {
-            if (item.type == AllowedItems[i])
+            if (itemObject.type == AllowedItems[i])
             {
                 return true;
             }

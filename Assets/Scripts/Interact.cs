@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using UnityEditor;
+using UnityEngine.SceneManagement;
 // using System;
 
 public class Interact : MonoBehaviour
@@ -11,7 +14,7 @@ public class Interact : MonoBehaviour
     public float playerActiveDistance;
     public GameObject sensedObject = null;
     public Player player;
-    public string[] interactableObjects = { "CocaCola", "CannedPeaches", "JarredPickles"};
+    public string[] interactableObjects = { "SodaPop", "JarredPickles"};
     public TextMeshProUGUI interactText;
     public RectTransform crosshair;
 
@@ -41,32 +44,20 @@ public class Interact : MonoBehaviour
 
     void Update() 
     {
-        crosshair.anchoredPosition = crosshairGoalPosSmall;
-        crosshair.localScale = crosshairGoalSizeSmall;
         RaycastHit hit;
-        interactText.enabled = false;
-        if (Physics.Raycast(interactCamera.position, interactCamera.TransformDirection(Vector3.forward), out hit, playerActiveDistance)) 
-        {
-             sensedObject = hit.transform.gameObject;
-            //Debug.Log(hit.transform.gameObject);
-        } else
-        {
-            sensedObject = null;
-        }
+        InteractUI(false);
+        sensedObject = Physics.Raycast(interactCamera.position, interactCamera.TransformDirection(Vector3.forward), out hit, playerActiveDistance) 
+            ? hit.transform.gameObject : null;
         if (sensedObject != null){
             if(sensedObject.tag == "Boardable"){
-                crosshair.anchoredPosition = crosshairGoalPosBig;
-                crosshair.localScale = crosshairGoalSizeBig;
-                interactText.enabled = true;
+                InteractUI(true);
                 if (Input.GetKeyDown(KeyCode.F) && !sensedObject.name.Contains("BOARDED")){ 
                     sensedObject.name += " BOARDED"; 
                     StartCoroutine(placeBoards(sensedObject));
                 }  
             }
             if(sensedObject.tag == "Light"){
-                crosshair.anchoredPosition = crosshairGoalPosBig;
-                crosshair.localScale = crosshairGoalSizeBig;
-                interactText.enabled = true;
+                InteractUI(true);
                 if (Input.GetKeyDown(KeyCode.F)) {
                     foreach (Transform child in sensedObject.GetComponentsInChildren<Transform>(true))
                     {
@@ -82,23 +73,19 @@ public class Interact : MonoBehaviour
                     }
                 }
             }
-        }
-        foreach (string name in interactableObjects)
-        {
-            if (sensedObject && sensedObject.name.Length >= name.Length && sensedObject.name.Substring(0,name.Length) == name)
+            if (sensedObject.tag == "GroundItem")
             {
-                crosshair.anchoredPosition = crosshairGoalPosBig;
-                crosshair.localScale = crosshairGoalSizeBig;
-                interactText.enabled = true;
+                InteractUI(true);
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    player.inventory.AddItem(sensedObject.GetComponent<GroundItem>().item, 1);
-                    Debug.Log(sensedObject.GetComponent<GroundItem>().item.obj);
-                    DestroyImmediate(sensedObject.gameObject);
-                    sensedObject = null;
-                    
+                    var item = sensedObject.GetComponent<GroundItem>();
+                    //item.item.obj = Instantiate(sensedObject);
+                    if (player.inventory.AddItem(item.item, 1))
+                    {
+                        //Destroy(sensedObject);
+                        //item.item.obj.SetActive(false);
+                    }
                 }
-                break;
             }
         }
         if (Input.GetKeyDown(KeyCode.Keypad8))
@@ -110,38 +97,19 @@ public class Interact : MonoBehaviour
             player.inventory.Load();
         }
     }
-    // IEnumerator crosshairLerping()
-    // {
-    //     Debug.Log("working???");
-    //     while (true) {
-    //         // yield return new WaitForSeconds(.1f);
-    //         // time = 0;
-    //         // bool lerped = false;
-    //         // crosshairCurrentSize = crosshair.localScale;
-    //         // crosshairCurrentPos = crosshair.anchoredPosition;
-    //         // foreach (string name in interactableObjects)
-    //         // {
-    //         //     if (sensedObject && sensedObject.name.Length >= name.Length && sensedObject.name.Substring(0,name.Length) == name)
-    //         //     {
-    //         //         lerped = true;
-    //         //         while (time < duration) {
-    //         //             crosshair.localScale = Vector3.Lerp(crosshairCurrentSize, crosshairGoalSizeBig, time / duration);
-    //         //             crosshair.anchoredPosition = Vector2.Lerp(crosshairCurrentPos, crosshairGoalPosBig, time / duration);
-    //         //             time += Time.deltaTime;
-    //         //         }
-    //         //     }
-    //         //     else if (!lerped)
-    //         //     {
-    //         //         while (time < duration) {
-    //         //             crosshair.localScale = Vector3.Lerp(crosshairCurrentSize, crosshairGoalSizeSmall, time / duration);
-    //         //             crosshair.anchoredPosition = Vector2.Lerp(crosshairCurrentPos, crosshairGoalPosSmall, time / duration);
-            //             time += Time.deltaTime;
-            //         }
-    //         //     }
-    //         // }
-    //     }
-    // }
-    
+    public void InteractUI(bool isActive)
+    {
+        if (isActive)
+        {
+            crosshair.anchoredPosition = crosshairGoalPosBig;
+            crosshair.localScale = crosshairGoalSizeBig;
+            interactText.enabled = true;
+            return;
+        }
+        crosshair.anchoredPosition = crosshairGoalPosSmall;
+        crosshair.localScale = crosshairGoalSizeSmall;
+        interactText.enabled = false;
+    }
     /*void Interact_CannedPeaches() 
     {
         float food_value = 50;
@@ -173,18 +141,18 @@ public class Interact : MonoBehaviour
         source.PlayOneShot(source.clip);
     }*/
 
-    IEnumerator placeBoards(GameObject wall)
+    IEnumerator placeBoards(GameObject window)
     {
         // if player has planks in inventory
         for (int i = 0; i < 3; i++)
         {
-            GameObject plank = Instantiate(planks[Random.Range(0, planks.Length)]);
-            plank.transform.SetParent(wall.transform.parent.gameObject.transform);
-            plank.transform.localPosition = new Vector3(0, 9 + (i * 2.5f), -1);
-            plank.transform.localScale = new Vector3(100, 100, 100);
+            GameObject plank = Instantiate(planks[Random.Range(0, planks.Length)], window.transform);
+            // plank.transform.SetParent(window.transform.parent.gameObject.transform);
             float randomZRotation = Random.Range(-10, 10);
+            plank.transform.localPosition = new Vector3(0, 9/10 + (i * 2.5f)/10 -2.5f/10, -1);
             plank.transform.localRotation = Quaternion.Euler(0, 0, randomZRotation);
-            //plank.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            // //plank.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            plank.transform.localScale = new Vector3(10, 10, 10);
             yield return new WaitForSeconds(.5f);
         }
     }
