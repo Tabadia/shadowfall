@@ -2,6 +2,9 @@
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using UnityEditor;
+using Unity.VisualScripting.FullSerializer;
+using System.Collections;
 
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
@@ -11,6 +14,7 @@ public class InventoryObject : ScriptableObject {
     public Inventory Container;
     public InventorySpace[] GetSpaces { get { return Container.Spaces; } }
     public Player player;
+    GameObject obj;
 
 
     public bool AddItem(Item item, int amount)
@@ -122,11 +126,43 @@ public class InventoryObject : ScriptableObject {
         {
             if (Container.Spaces[i].item == item)
             {
-                Instantiate(item.obj, player.transform);
-                Container.Spaces[i].UpdateSpace(null, 0);
-               
+                MonoInstance.instance.StartCoroutine(LoadAsset("mapobjects", item.Name));
+                Debug.Log(obj);
             }
         }
+    }
+    IEnumerator LoadAsset(string assetBundleName, string objectNameToLoad)
+    {
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "AssetBundles");
+        filePath = System.IO.Path.Combine(filePath, assetBundleName);
+        Debug.Log(filePath);
+
+        //Load "animals" AssetBundle
+        var assetBundleCreateRequest = AssetBundle.LoadFromFileAsync(filePath);
+        yield return assetBundleCreateRequest;
+
+        AssetBundle asseBundle = assetBundleCreateRequest.assetBundle;
+
+        //Load the "dog" Asset (Use Texture2D since it's a Texture. Use GameObject if prefab)
+        AssetBundleRequest asset = asseBundle.LoadAssetAsync<GameObject>(objectNameToLoad);
+        yield return asset;
+        Debug.Log(asset);
+
+        //Retrieve the object (Use Texture2D since it's a Texture. Use GameObject if prefab)
+        GameObject loadedAsset = asset.asset as GameObject;
+
+        //Do something with the loaded loadedAsset  object (Load to RawImage for example) 
+        obj = loadedAsset;
+    }
+}
+
+public class MonoInstance : MonoBehaviour
+{
+    public static MonoInstance instance;
+
+    private void Start()
+    {
+        MonoInstance.instance = this;
     }
 }
 

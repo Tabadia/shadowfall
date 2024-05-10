@@ -21,174 +21,149 @@ MonoBehaviour:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
   player: {fileID: 0}

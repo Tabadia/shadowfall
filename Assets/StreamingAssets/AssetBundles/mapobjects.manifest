@@ -1,0 +1,41 @@
+ManifestFileVersion: 0
+CRC: 1184858700
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 21fc20ba89f5714c452a39cf8928bac2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: fd94e77655081f86c5445a466d481484
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 21fc20ba89f5714c452a39cf8928bac2
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: bd129bf4ffd10184a91835ad7f56dabc, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: Item
+Assets:
+- Assets/Scriptable Objects/Items/JarredPickles_asset.prefab
+- Assets/Scriptable Objects/Items/SodaPop_asset.prefab
+Dependencies: []

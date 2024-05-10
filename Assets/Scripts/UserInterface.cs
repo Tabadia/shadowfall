@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
+using Unity.VisualScripting;
 
 public abstract class UserInterface : MonoBehaviour
 {
@@ -81,6 +82,7 @@ public abstract class UserInterface : MonoBehaviour
         Destroy(MouseData.tempItemBeingDragged);
         if(MouseData.interfaceMouseIsOver == null)
         {
+            inventory.DropItem(spacesOnInterface[obj].item);
             spacesOnInterface[obj].RemoveItem();
             
             return;

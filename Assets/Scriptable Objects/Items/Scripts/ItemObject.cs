@@ -39,24 +39,26 @@ public class Item
     public string Name;
     public int Id = -1;
     public ItemBuff[] buffs;
-    public GameObject obj;
+    //public GameObject obj;
     public Item()
     {
         Name = "";
         Id = -1;
-        obj = null;
+        //obj = null;
     }
     public Item(ItemObject item)
     {
         Name = item.name;
         Id = item.data.Id;
-        //string[] GUID = AssetDatabase.FindAssets(ItemDatabaseObejct.prefabNames[Id]);
-        //if (GUID.Length <= 0)
-        ///{
-        ///    Debug.Log("COULD NOT FIND THE ASSET FOR -> " + ItemDatabaseObejct.prefabNames[Id]);
-        //}
-        ///string PATH = AssetDatabase.GUIDToAssetPath(GUID[0]);
-        //obj = AssetDatabase.LoadAssetAtPath<GameObject>(PATH);
+        /*ItemDatabaseObejct databaseprefabaccessor = new ItemDatabaseObejct();
+        string[] GUID = AssetDatabase.FindAssets(databaseprefabaccessor.prefabNames[Id]);
+        if (GUID.Length <= 0)
+        {
+            Debug.Log("COULD NOT FIND THE ASSET FOR -> " + databaseprefabaccessor.prefabNames[Id]);
+        }
+        string PATH = AssetDatabase.GUIDToAssetPath(GUID[0]);
+        obj = AssetDatabase.LoadAssetAtPath<GameObject>(PATH);
+        databaseprefabaccessor = null;*/
         buffs = new ItemBuff[item.data.buffs.Length];
         for(int i = 0; i < buffs.Length; i++)
         {

@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         if((currentHealth <= 0)){
             if (!dead){
                 dead = true;
-                print("You died");
+                //print("You died");
             }
         }
 
