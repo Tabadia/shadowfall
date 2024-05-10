@@ -15,16 +15,21 @@ public class SunlightLerper : MonoBehaviour
     public float lerpDuration2 = 2.0f; // Duration of rotation interpolation for the second transition
     public float lerpDuration3 = 2.0f; // Duration of rotation interpolation for the third transition
 
-    private bool isLerping = false; // Flag to indicate if lerping is in progress
+    public bool isLerping = false; // Flag to indicate if lerping is in progress
     private float lerpStartTime; // Time when lerping started
-    private int currentTransition = 1; // Track the current transition
+    public int currentTransition = 1; // Track the current transition
     public MenuAnimation menAnim;
 
-    void Start()
+    void Awake()
     {
+        isLerping = false; 
         menAnim = GetComponent<MenuAnimation>();
+        currentTransition = 1;
+        sunlightTransform.rotation = Quaternion.Euler(startRotation);
         StartLerp();
     }
+
+
 
     void Update() 
     {

@@ -76,11 +76,7 @@ public class PlayerController : MonoBehaviour
 
             }
         }
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            canMove = !canMove;
-          
-        }
+        canMove = !PauseMenu.IsPaused;
 
 
         isMoving = characterController.velocity != Vector3.zero;

@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
     {
         StartCoroutine(ChangeSceneDelay(sceneName));
         audioSource.PlayOneShot(pressClip, pressVolume);
+
     }
     public void Quit()
     {
@@ -35,7 +36,7 @@ public class MainMenu : MonoBehaviour
     IEnumerator ChangeSceneDelay(string sceneName)
     {
         transition.SetTrigger("Start");
-        yield return new WaitForSeconds(nextSceneDelay);
+        yield return new WaitForSecondsRealtime(nextSceneDelay);
         SceneManager.LoadScene(sceneName);
     }
 
