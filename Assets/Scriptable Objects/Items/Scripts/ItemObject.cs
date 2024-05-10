@@ -50,12 +50,12 @@ public class Item
     {
         Name = item.name;
         Id = item.data.Id;
-        if (AssetDatabase.FindAssets(Name).Length <= 0)
+        string[] GUID = AssetDatabase.FindAssets(ItemDatabaseObejct.prefabNames[Id]);
+        if (GUID.Length <= 0)
         {
-            return;
+            Debug.Log("COULD NOT FIND THE ASSET FOR -> " + ItemDatabaseObejct.prefabNames[Id]);
         }
-        string GUID = AssetDatabase.FindAssets(Name)[0];
-        string PATH = AssetDatabase.GUIDToAssetPath(GUID);
+        string PATH = AssetDatabase.GUIDToAssetPath(GUID[0]);
         obj = AssetDatabase.LoadAssetAtPath<GameObject>(PATH);
         buffs = new ItemBuff[item.data.buffs.Length];
         for(int i = 0; i < buffs.Length; i++)

@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: -6252851631941760581}
   - component: {fileID: -1181005235386737321}
   m_Layer: 0
-  m_Name: JarredPickles
+  m_Name: JarredPickles_asset
   m_TagString: GroundItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
