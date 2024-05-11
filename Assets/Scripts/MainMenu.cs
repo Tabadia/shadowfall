@@ -36,8 +36,16 @@ public class MainMenu : MonoBehaviour
     IEnumerator ChangeSceneDelay(string sceneName)
     {
         transition.SetTrigger("Start");
-        yield return new WaitForSecondsRealtime(nextSceneDelay);
-        SceneManager.LoadScene(sceneName);
+
+
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }    
     }
 
    

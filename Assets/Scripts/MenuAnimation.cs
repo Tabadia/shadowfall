@@ -28,12 +28,12 @@ public class MenuAnimation : MonoBehaviour
     private string textObject3OriginalText;
     private string consoleOriginalText;
 
-    void Awake()
+    void Start()
     {
         active = false; // Flag to start the menu animation
-     canActive = true;
-     menuAnimationFinished = false; // Flag to track when menu animation has finished
-    canvasGroupToDisable.interactable = false;
+        canActive = true;
+        menuAnimationFinished = false; // Flag to track when menu animation has finished
+        canvasGroupToDisable.interactable = false;
         canvasGroupToDisable.blocksRaycasts = false;
         // Save original text values and clear the text of the three additional TMP_Text objects
         textObject1OriginalText = textObject1.text;
@@ -43,7 +43,7 @@ public class MenuAnimation : MonoBehaviour
         textObject1.text = "";
         textObject2.text = "";
         textObject3.text = "";
-       consoleText.text = "";
+        consoleText.text = "";
 
         // Start the menu animation when active becomes true
 

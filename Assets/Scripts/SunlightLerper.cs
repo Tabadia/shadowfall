@@ -20,10 +20,11 @@ public class SunlightLerper : MonoBehaviour
     public int currentTransition = 1; // Track the current transition
     public MenuAnimation menAnim;
 
-    void Awake()
+    void Start()
     {
         isLerping = false; 
         menAnim = GetComponent<MenuAnimation>();
+        Time.timeScale = 1f;
         currentTransition = 1;
         sunlightTransform.rotation = Quaternion.Euler(startRotation);
         StartLerp();
