@@ -208,7 +208,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
-    Name: SodaPop
-    Id: 1
-    buffs: []
-    obj: {fileID: 9190586298078959560}
+    Name: Soda Pop
+    Id: 4
+    buffs:
+    - attribute: 4
+      value: 0
+      min: 5
+      max: 5

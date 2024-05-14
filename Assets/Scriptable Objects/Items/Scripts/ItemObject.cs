@@ -14,7 +14,11 @@ public enum ItemType
 
 public enum Attributes
 {
-    sunlightProtection
+    sunlightProtection,
+    walkSpeed,
+    energyEndurance,
+    healValue,
+    sprintSpeed
 }
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory System/Items/item")]
 public class ItemObject : ScriptableObject

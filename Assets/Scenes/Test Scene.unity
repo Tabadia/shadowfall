@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4861.2676, g: 3230.9216, b: 1965.4783, a: 1}
+  m_IndirectSpecularColor: {r: 4864.973, g: 3234.0825, b: 1967.6799, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -806,6 +806,43 @@ Transform:
   - {fileID: 250204862}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &47789353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 47789354}
+  m_Layer: 5
+  m_Name: InventoryUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &47789354
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47789353}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 819192644}
+  - {fileID: 1855732080}
+  m_Father: {fileID: 1695924430}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 221.25, y: 0}
+  m_SizeDelta: {x: -531, y: -153}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &57985476
 GameObject:
   m_ObjectHideFlags: 0
@@ -8524,7 +8561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &819192644
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8537,12 +8574,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1327241965}
+  m_Father: {fileID: 47789354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 221.25, y: 0}
-  m_SizeDelta: {x: -531, y: -153}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 900, y: 506}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &819192645
 MonoBehaviour:
@@ -8640,7 +8677,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828229451}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -20306,12 +20343,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 963194225}
   playerObject: {fileID: 1545992437}
-  UIObjects:
-  - {fileID: 1770474625}
-  - {fileID: 828229451}
-  - {fileID: 819192643}
-  - {fileID: 1855732079}
-  isInventory: 0
   walkSpeed: 6
   runSpeedMultiplier: 1.5
   runSpeed: 0
@@ -20450,8 +20481,8 @@ MonoBehaviour:
   sensedObject: {fileID: 0}
   player: {fileID: 1004948809}
   interactableObjects:
-  - SodaPop
-  - JarredPickles
+  - Soda Pop
+  - Jarred Pickles
   interactText: {fileID: 1770474627}
   crosshair: {fileID: 828229452}
   planks:
@@ -23713,12 +23744,10 @@ RectTransform:
   - {fileID: 565586028}
   - {fileID: 659947263}
   - {fileID: 1770474626}
-  - {fileID: 828229452}
   - {fileID: 1218437924}
   - {fileID: 386871596}
   - {fileID: 215366499}
-  - {fileID: 819192644}
-  - {fileID: 1855732080}
+  - {fileID: 828229452}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -24465,9 +24494,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 7711119367113101730, guid: 2fe1aa95c05699248a01781a28dac1e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862664684707527530, guid: 2fe1aa95c05699248a01781a28dac1e2, type: 3}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 828229451}
+    - target: {fileID: 8862664684707527530, guid: 2fe1aa95c05699248a01781a28dac1e2, type: 3}
+      propertyPath: inventoryMenuUI
+      value: 
+      objectReference: {fileID: 47789353}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1145043531101571100, guid: 2fe1aa95c05699248a01781a28dac1e2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 47789354}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fe1aa95c05699248a01781a28dac1e2, type: 3}
 --- !u!1 &1394995141
@@ -28153,6 +28197,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 7
+--- !u!224 &1695924430 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1145043531101571100, guid: 2fe1aa95c05699248a01781a28dac1e2, type: 3}
+  m_PrefabInstance: {fileID: 1386288604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1696225139
 GameObject:
   m_ObjectHideFlags: 0
@@ -29847,7 +29896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1855732080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29864,11 +29913,11 @@ RectTransform:
   - {fileID: 2081611712}
   - {fileID: 1603274808}
   - {fileID: 903496937}
-  m_Father: {fileID: 1327241965}
+  m_Father: {fileID: 47789354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 225.25, y: 0}
+  m_AnchoredPosition: {x: -725.5, y: 0}
   m_SizeDelta: {x: 377.20007, y: 355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1855732082
@@ -41855,7 +41904,6 @@ SceneRoots:
   - {fileID: 593073844}
   - {fileID: 768018403}
   - {fileID: 1386288604}
-  - {fileID: 1327241965}
   - {fileID: 975774202}
   - {fileID: 1414103870}
   - {fileID: 1744376393}
@@ -41875,3 +41923,4 @@ SceneRoots:
   - {fileID: 215102210}
   - {fileID: 3202172162891489514}
   - {fileID: 1431199293}
+  - {fileID: 1327241965}

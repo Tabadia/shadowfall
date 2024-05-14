@@ -8,8 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject playerCamera;
     public GameObject playerObject;
-    public GameObject[] UIObjects;
-    public bool isInventory = false;
     public float walkSpeed = 6f;
     public float runSpeedMultiplier = 1.5f;
     public float runSpeed;
@@ -59,23 +57,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.I))
-        {
-            for (int i = 0; i < UIObjects.Length; i++) {
-                UIObjects[i].SetActive(!UIObjects[i].activeInHierarchy);
-            }
-            isInventory = !isInventory;
-            canMove = !canMove;
-            if (Cursor.lockState == CursorLockMode.Locked) {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-
-            }
-        }
         canMove = !PauseMenu.IsPaused;
 
 
@@ -109,7 +90,7 @@ public class PlayerController : MonoBehaviour
         // Rotation
         characterController.Move(moveDirection * Time.deltaTime);
  
-        if (canMove)
+        if (canMove && !PauseMenu.IsInventory)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);

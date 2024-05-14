@@ -126,12 +126,12 @@ public class InventoryObject : ScriptableObject {
         {
             if (Container.Spaces[i].item == item)
             {
-                MonoInstance.instance.StartCoroutine(LoadAsset("mapobjects", item.Name));
-                Debug.Log(obj);
+/*                MonoInstance.instance.StartCoroutine(LoadAsset("mapobjects", item.Name));
+*/                Debug.Log(obj);
             }
         }
     }
-    IEnumerator LoadAsset(string assetBundleName, string objectNameToLoad)
+/*    IEnumerator LoadAsset(string assetBundleName, string objectNameToLoad)
     {
         string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "AssetBundles");
         filePath = System.IO.Path.Combine(filePath, assetBundleName);
@@ -153,10 +153,10 @@ public class InventoryObject : ScriptableObject {
 
         //Do something with the loaded loadedAsset  object (Load to RawImage for example) 
         obj = loadedAsset;
-    }
+    }*/
 }
 
-public class MonoInstance : MonoBehaviour
+/*public class MonoInstance : MonoBehaviour
 {
     public static MonoInstance instance;
 
@@ -164,7 +164,7 @@ public class MonoInstance : MonoBehaviour
     {
         MonoInstance.instance = this;
     }
-}
+}*/
 
 [System.Serializable]
 public class Inventory

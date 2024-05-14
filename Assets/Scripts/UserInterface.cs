@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 using Unity.VisualScripting;
+using static InventoryObject;
 
 public abstract class UserInterface : MonoBehaviour
 {

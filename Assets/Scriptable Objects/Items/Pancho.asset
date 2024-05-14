@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c13eda454b3af404297530b88b606256, type: 3}
-  m_Name: SodaPop
+  m_Name: Pancho
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 6b70429c44412af4db4575f7aec078c3, type: 3}
-  stackable: 1
+  uiDisplay: {fileID: 0}
+  stackable: 0
   type: 0
   description: 
   data:
-    Name: Soda Pop
-    Id: 1
+    Name: Pancho
+    Id: 3
     buffs:
-    - attribute: 4
+    - attribute: 0
       value: 0
-      min: 5
-      max: 5
+      min: 20
+      max: 20

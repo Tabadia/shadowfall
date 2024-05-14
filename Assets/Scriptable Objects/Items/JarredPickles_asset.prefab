@@ -628,7 +628,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
-    Name: JarredPickles
-    Id: 0
+    Name: Jarred Pickles
+    Id: 1
     buffs: []
-    obj: {fileID: 9190586298078959560}
