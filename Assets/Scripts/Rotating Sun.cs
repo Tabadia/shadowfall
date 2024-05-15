@@ -10,6 +10,7 @@ public class RotateDirectionalLight : MonoBehaviour
     public GameObject moonLight;
     public GameObject sunVol;
     public GameObject moonVol;
+    public GameObject sunFog;
 
     public int timesRotated = 0;
 
@@ -29,9 +30,10 @@ public class RotateDirectionalLight : MonoBehaviour
             if(currentSunRotation.x >= 190f){
                 timesRotated++;
                 moonLight.SetActive(true);
-                sunLight.SetActive(false);
                 moonVol.SetActive(true);
+                sunLight.SetActive(false);
                 sunVol.SetActive(false);
+                sunFog.SetActive(false);
             }
         }
         else if (timesRotated == 2){
@@ -45,9 +47,10 @@ public class RotateDirectionalLight : MonoBehaviour
             if(currentMoonRotation.x >= 190f){
                 timesRotated++;
                 moonLight.SetActive(false);
-                sunLight.SetActive(true);
                 moonVol.SetActive(false);
+                sunLight.SetActive(true);
                 sunVol.SetActive(true);
+                sunFog.SetActive(true);
             }
         }
         else {
