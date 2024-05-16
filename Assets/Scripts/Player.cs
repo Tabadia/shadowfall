@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public InventoryObject inventory;
+    public InventoryObject equipment;
+
+    public Attribute[] attributes;
 
     public int maxHealth = 100;
     public int maxHunger = 100;
@@ -38,6 +42,92 @@ public class Player : MonoBehaviour
         healthHunger.SetMaxHealth(maxHealth);
         currentHunger = maxHunger;
         currentHealth = maxHealth;
+
+        for (int i = 0; i < attributes.Length; i++)
+        {
+            attributes[i].SetParent(this);
+        }
+        for (int i = 0; i < equipment.GetSpaces.Length; i++)
+        {
+            equipment.GetSpaces[i].OnBeforeUpdate += OnBeforeSlotUpdate;
+            equipment.GetSpaces[i].OnAfterUpdate += OnAfterSlotUpdate;
+        }
+    }
+    public void OnBeforeSlotUpdate(InventorySpace sapce)
+    {
+        if (sapce.ItemObject == null)
+            return;
+        switch (sapce.parent.inventory.type)
+        {
+            case InterfaceType.Inventory:
+                break;
+            case InterfaceType.Equipment:
+                print(string.Concat("Removed ", sapce.ItemObject, " on ", sapce.parent.inventory.type, ", Allowed Items: ", string.Join(", ", sapce.AllowedItems)));
+
+                for (int i = 0; i < sapce.item.buffs.Length; i++)
+                {
+                    for (int j = 0; j < attributes.Length; j++)
+                    {
+                        if (attributes[j].type == sapce.item.buffs[i].attribute)
+                            attributes[j].value.RemoveModifier(sapce.item.buffs[i]);
+                    }
+                }
+
+                break;
+            case InterfaceType.Chest:
+                break;
+            default:
+                break;
+        }
+    }
+    public void OnAfterSlotUpdate(InventorySpace space)
+    {
+        if (space.ItemObject == null)
+            return;
+        switch (space.parent.inventory.type)
+        {
+            case InterfaceType.Inventory:
+                break;
+            case InterfaceType.Equipment:
+                print(string.Concat("Placed ", space.ItemObject, " on ", space.parent.inventory.type, ", Allowed Items: ", string.Join(", ", space.AllowedItems)));
+
+                for (int i = 0; i < space.item.buffs.Length; i++)
+                {
+                    for (int j = 0; j < attributes.Length; j++)
+                    {
+                        if (attributes[j].type == space.item.buffs[i].attribute)
+                            attributes[j].value.AddModifier(space.item.buffs[i]);
+                    }
+                }
+
+                break;
+            case InterfaceType.Chest:
+                break;
+            default:
+                break;
+        }
+    }
+    [System.Serializable]
+    public class Attribute
+    {
+        [System.NonSerialized]
+        public Player parent;
+        public Attributes type;
+        public ModifiableInt value;
+
+        public void SetParent(Player _parent)
+        {
+            parent = _parent;
+            value = new ModifiableInt(AttributeModified);
+        }
+        public void AttributeModified()
+        {
+            parent.AttributeModified(this);
+        }
+    }
+    public void AttributeModified(Attribute attribute)
+    {
+        Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
     }
 
     // Update is called once per frame

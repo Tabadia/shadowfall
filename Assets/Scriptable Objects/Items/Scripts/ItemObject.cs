@@ -1,28 +1,29 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public enum ItemType
 {
-    Food, 
-    Equipment,
-    Resources,
+    Food,
+    Helmet,
+    Weapon,
+    Shield,
+    Boots,
+    Chest,
     Default
 }
 
 public enum Attributes
 {
-    sunlightProtection,
-    walkSpeed,
-    energyEndurance,
-    healValue,
-    sprintSpeed
+    Agility,
+    Intellect,
+    Stamina,
+    Strength
 }
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory System/Items/item")]
 public class ItemObject : ScriptableObject
 {
+
     public Sprite uiDisplay;
     public bool stackable;
     public ItemType type;
@@ -35,6 +36,8 @@ public class ItemObject : ScriptableObject
         Item newItem = new Item(this);
         return newItem;
     }
+
+
 }
 
 [System.Serializable]
@@ -43,28 +46,17 @@ public class Item
     public string Name;
     public int Id = -1;
     public ItemBuff[] buffs;
-    //public GameObject obj;
     public Item()
     {
         Name = "";
         Id = -1;
-        //obj = null;
     }
     public Item(ItemObject item)
     {
         Name = item.name;
         Id = item.data.Id;
-        /*ItemDatabaseObejct databaseprefabaccessor = new ItemDatabaseObejct();
-        string[] GUID = AssetDatabase.FindAssets(databaseprefabaccessor.prefabNames[Id]);
-        if (GUID.Length <= 0)
-        {
-            Debug.Log("COULD NOT FIND THE ASSET FOR -> " + databaseprefabaccessor.prefabNames[Id]);
-        }
-        string PATH = AssetDatabase.GUIDToAssetPath(GUID[0]);
-        obj = AssetDatabase.LoadAssetAtPath<GameObject>(PATH);
-        databaseprefabaccessor = null;*/
         buffs = new ItemBuff[item.data.buffs.Length];
-        for(int i = 0; i < buffs.Length; i++)
+        for (int i = 0; i < buffs.Length; i++)
         {
             buffs[i] = new ItemBuff(item.data.buffs[i].min, item.data.buffs[i].max)
             {
@@ -75,17 +67,24 @@ public class Item
 }
 
 [System.Serializable]
-public class ItemBuff
+public class ItemBuff : IModifier
 {
     public Attributes attribute;
     public int value;
     public int min;
     public int max;
-    public ItemBuff(int min, int max)
+    public ItemBuff(int _min, int _max)
     {
-        this.min = min; this.max = max;
+        min = _min;
+        max = _max;
         GenerateValue();
     }
+
+    public void AddValue(ref int baseValue)
+    {
+        baseValue += value;
+    }
+
     public void GenerateValue()
     {
         value = UnityEngine.Random.Range(min, max);

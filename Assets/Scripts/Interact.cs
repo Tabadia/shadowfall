@@ -146,7 +146,12 @@ public class Interact : MonoBehaviour
         {
             player.inventory.Load();
         }
+
+        // check if the player is clicking
+        // if they are clicking check the static interface to see whaqt item is being held/selected 
+        // make a variable 
     }
+    
     public void InteractUI(bool isActive)
     {
         if (isActive)
@@ -160,7 +165,8 @@ public class Interact : MonoBehaviour
         crosshair.localScale = crosshairGoalSizeSmall;
         interactText.enabled = false;
     }
-    /*void Interact_CannedPeaches() 
+
+    /*void Interact_    () 
     {
         float food_value = 50;
         Debug.Log("yummy: " + sensedObject.name);

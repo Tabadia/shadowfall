@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 4864.973, g: 3234.0825, b: 1967.6799, a: 1}
+  m_IndirectSpecularColor: {r: 3620.0415, g: 2009.4807, b: 726.5401, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8638,7 +8638,7 @@ MonoBehaviour:
   Y_START: 128
   X_SPACE_BETWEEN_ITEM: 68
   NUMBER_OF_COLUMN: 5
-  Y_SPACE_BETWEEN_ITEM: 64
+  Y_SPACE_BETWEEN_ITEMS: 64
 --- !u!114 &819192648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15042,6 +15042,7 @@ MonoBehaviour:
   moonLight: {fileID: 1695840490}
   sunVol: {fileID: 758047559}
   moonVol: {fileID: 1141197218}
+  sunFog: {fileID: 0}
   timesRotated: 0
 --- !u!1 &976777239
 GameObject:
@@ -20353,7 +20354,6 @@ MonoBehaviour:
   crouchHeight: 1
   lookSpeed: 2
   lookXLimit: 65
-  canMove: 1
   crouching: 0
   isSliding: 0
   isRunning: 0
@@ -20439,6 +20439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: aad7bc8e6f4e1594f9898af26e5c41f5, type: 2}
+  equipment: {fileID: 11400000, guid: a7bfdd0b4d5b061409fb919ee170b962, type: 2}
+  attributes: []
   maxHealth: 100
   maxHunger: 100
   currentHealth: 0
@@ -20495,6 +20497,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 78ada7a20b502d54ba9fec932aaa03c5, type: 3}
   - {fileID: 8300000, guid: 6f45c7ba7c9f2274ea51626936260e02, type: 3}
   - {fileID: 8300000, guid: 487e57658aa830348a79dc18feea293e, type: 3}
+  hasFlashlight: 0
+  flashlight: {fileID: 0}
+  lookTimer: 0
+  nest: {fileID: 0}
 --- !u!4 &1011644856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 483799254002397227, guid: 010cddc8545d6b14c91830bed9fdfdb5, type: 3}
@@ -26486,6 +26492,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 56664f5d999d5f64290be5550a8ed8a1, type: 3}
   - {fileID: 8300000, guid: 8f8f08501ece8464b98964ff7f5e4028, type: 3}
   - {fileID: 8300000, guid: cf28f036d7dc98a45853e6887f8fea16, type: 3}
+  sandFootstepSounds: []
+  onSand: 1
 --- !u!82 &1582030128
 AudioSource:
   m_ObjectHideFlags: 0

@@ -62,6 +62,7 @@ public abstract class UserInterface : MonoBehaviour
     public void OnDragStart(GameObject obj)
     {
         MouseData.tempItemBeingDragged = createTempItem(obj);
+        //check if miuse is right click. if so end drag and replace sprite with border. then add effect to player.
     }
     public GameObject createTempItem(GameObject obj)
     {
@@ -83,7 +84,6 @@ public abstract class UserInterface : MonoBehaviour
         Destroy(MouseData.tempItemBeingDragged);
         if(MouseData.interfaceMouseIsOver == null)
         {
-            inventory.DropItem(spacesOnInterface[obj].item);
             spacesOnInterface[obj].RemoveItem();
             
             return;

@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DynamicInterface: UserInterface
+public class DynamicInterface : UserInterface
 {
     public GameObject inventoryPrefab;
-    public float X_START;
-    public float Y_START;
-    public float X_SPACE_BETWEEN_ITEM;
-    public float NUMBER_OF_COLUMN;
-    public float Y_SPACE_BETWEEN_ITEM;
+    public int X_START;
+    public int Y_START;
+    public int X_SPACE_BETWEEN_ITEM;
+    public int NUMBER_OF_COLUMN;
+    public int Y_SPACE_BETWEEN_ITEMS;
+
     public override void CreateSpace()
     {
         spacesOnInterface = new Dictionary<GameObject, InventorySpace>();
-        for (int i = 0; i < inventory.Container.Spaces.Length; i++)
+        for (int i = 0; i < inventory.GetSpaces.Length; i++)
         {
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
@@ -24,12 +25,14 @@ public class DynamicInterface: UserInterface
             AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
             AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
+
             inventory.GetSpaces[i].spaceDisplay = obj;
-            spacesOnInterface.Add(obj, inventory.Container.Spaces[i]);
+
+            spacesOnInterface.Add(obj, inventory.GetSpaces[i]);
         }
     }
     private Vector3 GetPosition(int i)
     {
-        return new Vector3(X_START + (X_SPACE_BETWEEN_ITEM * (i % NUMBER_OF_COLUMN)), Y_START + (-Y_SPACE_BETWEEN_ITEM * (int)(i / NUMBER_OF_COLUMN)), 0f);
+        return new Vector3(X_START + (X_SPACE_BETWEEN_ITEM * (i % NUMBER_OF_COLUMN)), Y_START + (-Y_SPACE_BETWEEN_ITEMS * (i / NUMBER_OF_COLUMN)), 0f);
     }
 }
