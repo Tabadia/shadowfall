@@ -33,6 +33,10 @@ public class Interact : MonoBehaviour
     // private float duration = 10;
     // public float time = 0;    
 
+    public bool hasFlashlight = true;
+    public GameObject flashlight;
+    
+
     void Start() {
         // crosshairCurrentSize = crosshair.localScale;
         crosshairGoalSizeSmall = crosshair.localScale;
@@ -44,6 +48,18 @@ public class Interact : MonoBehaviour
 
     void Update() 
     {
+        if(Input.GetKeyDown(KeyCode.F) && hasFlashlight){
+            flashlight.SetActive(!flashlight.activeSelf);
+        }
+        if (hasFlashlight)
+        {
+            // Get the rotation of the player's camera
+            Quaternion cameraRotation = interactCamera.rotation;
+
+            // Set the rotation of the flashlight to match the camera rotation
+            flashlight.transform.rotation = cameraRotation;
+        }
+
         RaycastHit hit;
         InteractUI(false);
         sensedObject = Physics.Raycast(interactCamera.position, interactCamera.TransformDirection(Vector3.forward), out hit, playerActiveDistance) 
@@ -51,14 +67,14 @@ public class Interact : MonoBehaviour
         if (sensedObject != null){
             if(sensedObject.tag == "Boardable"){
                 InteractUI(true);
-                if (Input.GetKeyDown(KeyCode.F) && !sensedObject.name.Contains("BOARDED")){ 
+                if (Input.GetKeyDown(KeyCode.E) && !sensedObject.name.Contains("BOARDED")){ 
                     sensedObject.name += " BOARDED"; 
                     StartCoroutine(placeBoards(sensedObject));
                 }  
             }
             if(sensedObject.tag == "Light"){
                 InteractUI(true);
-                if (Input.GetKeyDown(KeyCode.F)) {
+                if (Input.GetKeyDown(KeyCode.E)) {
                     foreach (Transform child in sensedObject.GetComponentsInChildren<Transform>(true))
                     {
                         Light lightComponent = child.GetComponent<Light>();
@@ -76,7 +92,7 @@ public class Interact : MonoBehaviour
             if (sensedObject.tag == "GroundItem")
             {
                 InteractUI(true);
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     var item = sensedObject.GetComponent<GroundItem>();
                     //item.item.obj = Instantiate(sensedObject);
