@@ -74,8 +74,7 @@ public class Player : MonoBehaviour
                 }
 
                 break;
-            case InterfaceType.Chest:
-                break;
+
             default:
                 break;
         }
@@ -100,8 +99,6 @@ public class Player : MonoBehaviour
                     }
                 }
 
-                break;
-            case InterfaceType.Chest:
                 break;
             default:
                 break;

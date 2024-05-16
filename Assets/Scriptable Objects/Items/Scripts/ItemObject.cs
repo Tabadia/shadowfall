@@ -7,18 +7,18 @@ public enum ItemType
     Food,
     Helmet,
     Weapon,
-    Shield,
+    Armor,
     Boots,
-    Chest,
+    SunProt,
     Default
 }
 
 public enum Attributes
 {
-    Agility,
-    Intellect,
-    Stamina,
-    Strength
+    Speed,
+    SolarResistance,
+    Hunger,
+    Health
 }
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory System/Items/item")]
 public class ItemObject : ScriptableObject

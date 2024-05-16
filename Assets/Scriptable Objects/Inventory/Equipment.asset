@@ -17,31 +17,19 @@ MonoBehaviour:
   type: 1
   Container:
     Spaces:
-    - AllowedItems: 06000000
-      item:
-        Name: 
-        Id: -1
-        buffs: []
-      amount: 0
-    - AllowedItems: 06000000
-      item:
-        Name: 
-        Id: -1
-        buffs: []
-      amount: 0
-    - AllowedItems: 06000000
-      item:
-        Name: 
-        Id: -1
-        buffs: []
-      amount: 0
-    - AllowedItems: 06000000
-      item:
-        Name: 
-        Id: -1
-        buffs: []
-      amount: 0
     - AllowedItems: 01000000
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 03000000
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 04000000
       item:
         Name: 
         Id: -1
@@ -53,7 +41,7 @@ MonoBehaviour:
         Id: -1
         buffs: []
       amount: 0
-    - AllowedItems: 04000000
+    - AllowedItems: 02000000
       item:
         Name: 
         Id: -1

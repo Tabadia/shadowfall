@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 0}
   stackable: 0
-  type: 0
+  type: 6
   description: 
   data:
     Name: 
