@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   savePath: /Equipment.Save
   database: {fileID: 11400000, guid: e3e68b0f19328de4a966a61ae4babab6, type: 2}
+  type: 1
   Container:
     Spaces:
     - AllowedItems: 
@@ -21,27 +22,40 @@ MonoBehaviour:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
     - AllowedItems: 
       item:
         Name: 
         Id: -1
         buffs: []
-        obj: {fileID: 0}
       amount: 0
-  player: {fileID: 0}
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
