@@ -104,10 +104,10 @@ Material:
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
-    - _VignetteIntensity: 1.5
+    - _VignetteIntensity: 1.25
     - _VignettePower: 3.15
     - _VoroniIntensity: 2
-    - _VoroniPower: 3.58
+    - _VoroniPower: 4
     - _VoroniSpeed: 8
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
@@ -120,7 +120,7 @@ Material:
     - Color_B0CDD922: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _VignetteColor: {r: 0.8301887, g: 0.085679986, b: 0, a: 1}
+    - _VignetteColor: {r: 0.9254902, g: 0.3821435, b: 0.054901984, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &485310015315797697
 MonoBehaviour:
