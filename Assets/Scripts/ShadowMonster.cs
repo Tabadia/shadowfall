@@ -25,6 +25,8 @@ public class ShadowMonster : MonoBehaviour
     private float lastMonsterSoundTime = 0f; // Timestamp of the last monster sound played
     public float monsterSoundCooldown = 5f; // Cooldown time between monster sounds
     private float lastDamageTime = 0f; // Timestamp of the last damage
+    public GameObject nest;
+    public bool chasingPlayer = true;
 
     void Start()
     {
@@ -42,7 +44,7 @@ public class ShadowMonster : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
+        if (player != null && chasingPlayer)
         {
             navMeshAgent.SetDestination(player.transform.position);
 

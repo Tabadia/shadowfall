@@ -36,6 +36,9 @@ public class Interact : MonoBehaviour
     public bool hasFlashlight = true;
     public GameObject flashlight;
     
+    public float lookTimer = 0f;
+
+    public GameObject nest;
 
     void Start() {
         // crosshairCurrentSize = crosshair.localScale;
@@ -48,19 +51,47 @@ public class Interact : MonoBehaviour
 
     void Update() 
     {
+        lookTimer -= .5f * Time.deltaTime;
+        if (lookTimer <= 0){
+            lookTimer = 0;
+        }
+
         if(Input.GetKeyDown(KeyCode.F) && hasFlashlight){
             flashlight.SetActive(!flashlight.activeSelf);
             AudioClip randomClip = switchSounds[Random.Range(0, switchSounds.Length)];
             lightSwitchAudio.clip = randomClip;
             lightSwitchAudio.Play();
         }
-        if (hasFlashlight)
+        if (hasFlashlight && flashlight.activeSelf)
         {
             // Get the rotation of the player's camera
             Quaternion cameraRotation = interactCamera.rotation;
 
             // Set the rotation of the flashlight to match the camera rotation
             flashlight.transform.rotation = cameraRotation;
+            
+            RaycastHit hit2;
+            if (Physics.Raycast(flashlight.transform.position, flashlight.transform.forward, out hit2, flashlight.GetComponent<Light>().range))
+            {
+                GameObject hitObject = hit2.transform.gameObject;
+                Vector3 flashlightDirection = flashlight.transform.forward;
+                Vector3 raycastDirection = hit2.point - flashlight.transform.position;
+                float angle = Vector3.Angle(flashlightDirection, raycastDirection);
+                if (angle < 0.17f && angle >= 0)
+                {
+                    print("looking at guy.");
+                    lookTimer += 1.5f * Time.deltaTime;
+                    if (lookTimer >= 4f){
+                        //freeze
+                        StartCoroutine(affectMonster(hitObject));
+                    }
+                }
+                // check vector angle
+
+                // if looking for certain amt of time
+                // freeze for 1s
+                // run opposite direction for 
+            }
         }
 
         RaycastHit hit;
@@ -174,5 +205,14 @@ public class Interact : MonoBehaviour
             plank.transform.localScale = new Vector3(10, 10, 10);
             yield return new WaitForSeconds(.5f);
         }
+    }
+
+    IEnumerator affectMonster(GameObject monster)
+    {
+        monster.GetComponent<ShadowMonster>().chasingPlayer = false;
+        monster.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(monster.transform.position);
+        yield return new WaitForSeconds(1);
+        monster.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(nest.transform.position);
+        lookTimer = 0;
     }
 }
