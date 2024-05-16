@@ -50,6 +50,9 @@ public class Interact : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.F) && hasFlashlight){
             flashlight.SetActive(!flashlight.activeSelf);
+            AudioClip randomClip = switchSounds[Random.Range(0, switchSounds.Length)];
+            lightSwitchAudio.clip = randomClip;
+            lightSwitchAudio.Play();
         }
         if (hasFlashlight)
         {
