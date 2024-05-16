@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
  
-    public bool canMove = true;
+    public static bool canMove = true;
     public bool crouching = false;
     //public bool canDash = true;
     public bool isSliding = false;
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        canMove = !PauseMenu.IsPaused;
+        //canMove = !PauseMenu.IsPaused; 
 
 
         isMoving = characterController.velocity != Vector3.zero;

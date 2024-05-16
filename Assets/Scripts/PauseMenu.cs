@@ -47,6 +47,7 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        PlayerController.canMove = true;
         pauseMenuUI.SetActive(false);
         inventoryMenuUI.SetActive(false); 
         crosshair.SetActive(true);
@@ -60,6 +61,7 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         Cursor.lockState = CursorLockMode.None;
+        PlayerController.canMove = false;
         Cursor.visible = true;
         pauseMenuUI.SetActive(true);
         crosshair.SetActive(false);
