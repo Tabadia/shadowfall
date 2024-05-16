@@ -10,6 +10,7 @@ TagManager:
   - Light
   - GroundItem
   - Light Obj
+  - Door
   layers:
   - Default
   - TransparentFX
