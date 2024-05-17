@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1333817645900101756
+--- !u!114 &-6176848736750506125
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23,29 +23,43 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lit Influence High
-  m_Shader: {fileID: -6465566751694194690, guid: 3792124419f2bdb44a021f7c302ab15b, type: 3}
+  m_Name: Medkit Body
+  m_Shader: {fileID: -6465566751694194690, guid: 22ea7fcedc1f743439d23128b07be427, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _DISABLE_SSR_TRANSPARENT
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2225
+  m_CustomRenderQueue: 2000
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
   - TransparentDepthPrepass
   - TransparentDepthPostpass
   - TransparentBackface
-  - RayTracingPrepass
   - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Alpha_Texture:
+        m_Texture: {fileID: 2800000, guid: 8de91784a667d7c469879561f8e72573, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Alpha_Texture_2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Alpha_Texture_3:
+        m_Texture: {fileID: 2800000, guid: 6ee51bb9e4096ad4fb80a68ac5b84f7c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Diffuse_Color_Alpha_Texture:
+        m_Texture: {fileID: 2800000, guid: 107dc00df1c57b845a2029921698550a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -70,43 +84,43 @@ Material:
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
     - _CullModeForward: 2
-    - _Debug_Show_ColorMap: 0
+    - _Debug_Mode_Colormap: 0
     - _DepthOffsetEnable: 0
+    - _Diffuse_Color_Texture_Tiling: 9.6
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 0
-    - _EnableBlendModePreserveSpecularLighting: 1
+    - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
-    - _Float: 0
-    - _Light_Influence: 1
-    - _Light_Intensity: 0.23
-    - _Light_Strength: 1000000
-    - _Lit_Color_Influence: 1
-    - _Metallic: 1
+    - _Gradient_Edge_1: 0.302
+    - _Gradient_Edge_2: 0.788
+    - _Gradient_Offset: 0.29
+    - _Gradient_Rotation: 0
+    - _Gradient_World_Space: 0
+    - _Noise_Mask_Step: 1
+    - _Noise_Mask_TIling: 5
     - _OpaqueCullMode: 2
-    - _RayTracing: 0
-    - _ReceivesSSR: 1
-    - _ReceivesSSRTransparent: 0
-    - _RefractionModel: 0
     - _RenderQueueType: 1
-    - _RequireSplitLighting: 0
-    - _Smoothness: 0.348
+    - _Rotation_1: 0
+    - _ShadowMatteFilter: 2.3138e-41
     - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 8
+    - _StencilRefDepth: 0
     - _StencilRefDistortionVec: 4
-    - _StencilRefGBuffer: 10
-    - _StencilRefMV: 40
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 9
     - _StencilWriteMaskDistortionVec: 4
-    - _StencilWriteMaskGBuffer: 15
-    - _StencilWriteMaskMV: 41
-    - _SupportDecals: 1
+    - _StencilWriteMaskGBuffer: 14
+    - _StencilWriteMaskMV: 43
+    - _Strength: 0.51
+    - _Strength_2: 0.5
+    - _Strength_3: 1
     - _SurfaceType: 0
     - _TransparentBackfaceEnable: 0
-    - _TransparentCullMode: 1
+    - _TransparentCullMode: 2
     - _TransparentDepthPostpassEnable: 0
     - _TransparentDepthPrepassEnable: 0
     - _TransparentSortPriority: 0
@@ -118,8 +132,16 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.5268167, g: 1, b: 0, a: 1}
+    - _Color: {r: 0.6698113, g: 0.635057, b: 0.635057, a: 0}
+    - _Color_2: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 0}
+    - _Diffuse_Color_Ramp_Step: {r: 1, g: -2.93, b: 0, a: 0}
+    - _Diffuse_Texture_Tint: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _Edge_Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Edges_Color: {r: 0.27358484, g: 0.27358484, b: 0.27358484, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Shadow_Color: {r: 0.6039216, g: 0.29411763, b: 0.5333333, a: 0.4627451}
+    - _Tiling: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Tiling_2: {r: 2, g: 2, b: 0, a: 0}
+    - _Tiling_3: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c13eda454b3af404297530b88b606256, type: 3}
-  m_Name: SodaPop
+  m_Name: Jam
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 6b70429c44412af4db4575f7aec078c3, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 02329ab360d77c149b71bad34978c54d, type: 3}
   stackable: 1
   type: 0
   description: 
   data:
-    Name: Soda Pop
-    Id: 4
+    Name: Jam
+    Id: 1
     buffs:
     - attribute: 2
-      value: 0
-      min: 5
-      max: 5
+      value: 30
+      min: 30
+      max: 30

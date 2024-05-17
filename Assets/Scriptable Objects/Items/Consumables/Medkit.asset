@@ -10,13 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c13eda454b3af404297530b88b606256, type: 3}
-  m_Name: JarredPickles
+  m_Name: Medkit
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 02329ab360d77c149b71bad34978c54d, type: 3}
+  uiDisplay: {fileID: 0}
   stackable: 0
   type: 0
   description: 
   data:
-    Name: Jarred Pickles
-    Id: 0
-    buffs: []
+    Name: Medkit
+    Id: 2
+    buffs:
+    - attribute: 3
+      value: 50
+      min: 50
+      max: 50
