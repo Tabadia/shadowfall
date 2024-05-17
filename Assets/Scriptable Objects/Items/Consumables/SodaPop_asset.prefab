@@ -124,6 +124,6 @@ MonoBehaviour:
     Id: 4
     buffs:
     - attribute: 2
-      value: 0
-      min: 5
-      max: 5
+      value: 15
+      min: 15
+      max: 15
