@@ -109,6 +109,25 @@ public class Interact : MonoBehaviour
                     StartCoroutine(placeBoards(sensedObject));
                 }  
             }
+            if(sensedObject.tag == "Door"){
+                InteractUI(true);
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Animator animator = sensedObject.GetComponent<Animator>();
+                    if (animator != null)
+                    {
+                        bool open = animator.GetBool("open");
+                        if(open){
+                            animator.Play("doorOpen", 0, 0.0f);
+                            animator.SetBool("open", false);
+                        }
+                        else{
+                            animator.Play("doorClose", 0, 0.0f);
+                            animator.SetBool("open", true);
+                        }
+                    }
+                }
+            }
             if(sensedObject.tag == "Light"){
                 InteractUI(true);
                 if (Input.GetKeyDown(KeyCode.E)) {
