@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
@@ -9,10 +11,32 @@ public class SettingsMenu : MonoBehaviour
 
     public AudioMixer musicAudioMixer;
     public AudioMixer SFXAudioMixer;
+
+    public static float musicVolume;
+    public static float SFXVolume;
+
+    public static bool firstStart = true;
+
+    public Slider music;
+    public Slider SFX;
+
+    public void Start()
+    {
+        if (firstStart)
+        {
+            musicVolume = music.value;
+            SFXVolume = SFX.value;
+
+        }
+        firstStart = false;
+    }
     public void SetMusicVolume(float volume)
     {
 
-        musicAudioMixer.SetFloat("Music Volume", Mathf.Log10(volume) * 20);
+
+
+        musicVolume = volume;
+
             
     
     
@@ -21,9 +45,18 @@ public class SettingsMenu : MonoBehaviour
     public void SetSFXVolume(float volume)
     {
 
-        SFXAudioMixer.SetFloat("SFX Volume", Mathf.Log10(volume) * 20);
+        SFXVolume = volume; 
 
 
+    }
+
+    public void Update()
+    {
+        musicAudioMixer.SetFloat("Music Volume", Mathf.Log10(musicVolume) * 20);
+        SFXAudioMixer.SetFloat("SFX Volume", Mathf.Log10(SFXVolume) * 20);
+
+        music.value = musicVolume;
+        SFX.value = SFXVolume;
 
     }
 }
