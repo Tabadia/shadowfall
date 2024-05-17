@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -12,6 +13,9 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer musicAudioMixer;
     public AudioMixer SFXAudioMixer;
 
+    public TMP_Dropdown resolutionDropdown;
+
+
     public static float musicVolume;
     public static float SFXVolume;
 
@@ -23,6 +27,8 @@ public class SettingsMenu : MonoBehaviour
     public CanvasGroup menuButtons;
     public CanvasGroup configButtons;
 
+    public Resolution[] resolutions;
+
     public void Start()
     {
         if (firstStart)
@@ -32,6 +38,27 @@ public class SettingsMenu : MonoBehaviour
 
         }
         firstStart = false;
+
+        resolutions  = Screen.resolutions;
+        resolutionDropdown.ClearOptions();
+
+        List<string> options = new List<string>();
+        int currentResolutionIndex = 0;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + "x" + resolutions[i].height;
+            options.Add(option);
+
+            if ((resolutions[i].width == Screen.currentResolution.width) && (resolutions[i].height == Screen.currentResolution.height))
+            {
+                currentResolutionIndex = i;
+            }
+        
+        }
+        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.value = currentResolutionIndex;
+        resolutionDropdown.RefreshShownValue();
+
     }
     public void SetMusicVolume(float volume)
     {
@@ -39,6 +66,14 @@ public class SettingsMenu : MonoBehaviour
         musicVolume = volume;
 
     
+    }
+
+
+
+    public void SetResolution(int resIndex)
+    {
+        Resolution resolution = resolutions[resIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
     public void SetSFXVolume(float volume)
@@ -79,5 +114,17 @@ public class SettingsMenu : MonoBehaviour
         configButtons.interactable = false;
         configButtons.blocksRaycasts = false;
 
+    }
+
+    public void SetQuality(int qualityIndex)
+    {
+        QualitySettings.SetQualityLevel(qualityIndex);
+    
+    }
+
+    public void SetFullScreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;
+    
     }
 }
