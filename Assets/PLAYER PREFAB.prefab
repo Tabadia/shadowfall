@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1024702804179469807
 Transform:
   m_ObjectHideFlags: 0
@@ -4987,7 +4987,6 @@ MonoBehaviour:
   crouchHeight: 1
   lookSpeed: 2
   lookXLimit: 65
-  canMove: 1
   crouching: 0
   isSliding: 0
   isRunning: 0
@@ -5047,7 +5046,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: aad7bc8e6f4e1594f9898af26e5c41f5, type: 2}
-  maxHealth: 100
+  equipment: {fileID: 11400000, guid: a7bfdd0b4d5b061409fb919ee170b962, type: 2}
+  attributes: []
+  maxHealth: 1000
   maxHunger: 100
   currentHealth: 0
   currentHunger: 0
@@ -5095,8 +5096,8 @@ MonoBehaviour:
   interactText: {fileID: 0}
   crosshair: {fileID: 0}
   planks:
-  - {fileID: 919132149155446097, guid: 19880c9bf2ad13343846cb6afcc80672, type: 3}
-  - {fileID: 919132149155446097, guid: 2548d6f0dc52ce849bc392925dd425b7, type: 3}
+  - {fileID: 2155335632183720758, guid: 3ebadef6a9b1af54fbef1202e800708b, type: 3}
+  - {fileID: 245501173890599502, guid: 1bb5caaf8247e0248b1ee6759bb0cbe0, type: 3}
   lightSwitchAudio: {fileID: 0}
   switchSounds:
   - {fileID: 8300000, guid: b040c5b5428175741a5be2d350405c43, type: 3}
@@ -5106,6 +5107,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 487e57658aa830348a79dc18feea293e, type: 3}
   hasFlashlight: 1
   flashlight: {fileID: 4317412266493198955}
+  lookTimer: 0
+  nest: {fileID: 0}
 --- !u!1 &5499290949461654999
 GameObject:
   m_ObjectHideFlags: 0
@@ -5178,7 +5181,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.25
-  far clip plane: 1000
+  far clip plane: 2000
   field of view: 60
   orthographic: 0
   orthographic size: 5
