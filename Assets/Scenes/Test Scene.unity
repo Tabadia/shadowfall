@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 3619.2544, g: 2009.2073, b: 726.5059, a: 1}
+  m_IndirectSpecularColor: {r: 3615.2913, g: 2005.3602, b: 722.8637, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -20661,7 +20661,7 @@ MonoBehaviour:
   speedBoostDuration: 5
   speedBoostTimer: 0
   isSpeedBoost: 0
-  player: {fileID: 0}
+  player: {fileID: 1004948809}
   isMoving: 0
   playerCollider: {fileID: 1545992439}
 --- !u!143 &1004948807

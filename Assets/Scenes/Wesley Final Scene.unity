@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 3615.5767, g: 2007.5627, b: 726.3897, a: 1}
+  m_IndirectSpecularColor: {r: 3611.035, g: 2003.7507, b: 722.87067, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5581,7 +5581,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 70aaa12f16dde954f837948ed7c2c65e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7662,6 +7662,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2015709160}
     m_Modifications:
+    - target: {fileID: 5394960987788480380, guid: 4b68cd331edb9a641ab953459dd81e02, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 70aaa12f16dde954f837948ed7c2c65e, type: 2}
     - target: {fileID: 5899218667632504489, guid: 4b68cd331edb9a641ab953459dd81e02, type: 3}
       propertyPath: m_Name
       value: Tower Prefab
@@ -9850,7 +9854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &1642324406
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13673,7 +13677,7 @@ PrefabInstance:
       objectReference: {fileID: 705507994}
     - target: {fileID: 6041057994088649882, guid: e163add165247eb45932e866194ff6ca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
