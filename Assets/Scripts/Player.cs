@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
 
 
     // Start is called before the first frame update
-    //penis
 
     private void OnApplicationQuit()
     {

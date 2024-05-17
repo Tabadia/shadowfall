@@ -20,6 +20,9 @@ public class SettingsMenu : MonoBehaviour
     public Slider music;
     public Slider SFX;
 
+    public CanvasGroup menuButtons;
+    public CanvasGroup configButtons;
+
     public void Start()
     {
         if (firstStart)
@@ -33,12 +36,8 @@ public class SettingsMenu : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
 
-
-
         musicVolume = volume;
 
-            
-    
     
     }
 
@@ -46,7 +45,6 @@ public class SettingsMenu : MonoBehaviour
     {
 
         SFXVolume = volume; 
-
 
     }
 
@@ -57,6 +55,29 @@ public class SettingsMenu : MonoBehaviour
 
         music.value = musicVolume;
         SFX.value = SFXVolume;
+
+    }
+
+    public void EnableSettings()
+    {
+        menuButtons.alpha = 0;
+        menuButtons.interactable = false;
+        menuButtons.blocksRaycasts = false;
+        configButtons.alpha = 1;
+        configButtons.interactable = true;
+        configButtons.blocksRaycasts = true;
+
+    }
+
+    public void DisableSettings()
+    {
+
+        menuButtons.alpha = 1;
+        menuButtons.interactable = true;
+        menuButtons.blocksRaycasts = true;
+        configButtons.alpha = 0;
+        configButtons.interactable = false;
+        configButtons.blocksRaycasts = false;
 
     }
 }
