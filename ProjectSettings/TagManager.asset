@@ -13,6 +13,7 @@ TagManager:
   - Door
   - Sand
   - Monster
+  - nest
   layers:
   - Default
   - TransparentFX

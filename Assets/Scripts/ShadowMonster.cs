@@ -32,6 +32,7 @@ public class ShadowMonster : MonoBehaviour
 
     void Start()
     {
+        nest = GameObject.FindGameObjectWithTag("nest");
         animator = childMonster.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -47,7 +48,7 @@ public class ShadowMonster : MonoBehaviour
 
     void Update()
     {
-        if(transform.position == nest.transform.position)
+        if(Vector3.Distance(transform.position, nest.transform.position) < 1f)
         {
             chasingPlayer = true;
         }
