@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
 
 
     // Start is called before the first frame update
-    //penis
 
     private void OnApplicationQuit()
     {
@@ -137,6 +136,7 @@ public class Player : MonoBehaviour
             }
         }
 
+        //currentHealth -= attributes[0].value.ModifiedValue; (attribute system test)
 
         if (currentHealth > 0)
         {

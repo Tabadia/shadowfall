@@ -21,6 +21,6 @@ MonoBehaviour:
     Id: 0
     buffs:
     - attribute: 0
-      value: 0
+      value: 5
       min: 5
       max: 5
