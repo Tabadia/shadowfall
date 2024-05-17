@@ -61,10 +61,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //Tanush I had to comment all this out cus no work - WesleyS
         //canMove = !PauseMenu.IsPaused; <-- BAD CODE DO NOT EVER DO THIS
-        print(player.attributes[0].value.ModifiedValue);
-        modifiedRunMultiplier =  (10* runSpeedMultiplier + player.attributes[0].value.ModifiedValue)/10;
-        runSpeed = modifiedRunMultiplier * walkSpeed;
+        //print(player.attributes[0].value.ModifiedValue);
+        //modifiedRunMultiplier =  (10* runSpeedMultiplier + player.attributes[0].value.ModifiedValue)/10;
+        //runSpeed = modifiedRunMultiplier * walkSpeed;
 
 
         isMoving = characterController.velocity != Vector3.zero;
