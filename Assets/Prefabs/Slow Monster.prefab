@@ -241,10 +241,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33dad569b5e23443a16677d328351af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowSpeed: 1.5
-  maxChaseSpeed: 10
-  accelerationRate: 2
-  detectionRadius: 25
+  damageRadius: 1.5
+  initialSpeed: 2
+  speedIncreaseRate: 8
+  speedIncreaseInterval: 0.5
+  damageAmount: 10
+  damageCooldown: 2
+  currentSpeed: 0
 --- !u!1 &6406523864577780262
 GameObject:
   m_ObjectHideFlags: 0
