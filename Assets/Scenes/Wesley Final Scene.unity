@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 3623.5493, g: 2010.8069, b: 726.58405, a: 1}
+  m_IndirectSpecularColor: {r: 3619.2935, g: 2009.2327, b: 726.57916, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13551,6 +13551,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4595430760497832337, guid: e163add165247eb45932e866194ff6ca, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4595430760497832337, guid: e163add165247eb45932e866194ff6ca, type: 3}
       propertyPath: healthHunger
       value: 

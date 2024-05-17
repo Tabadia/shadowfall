@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     CharacterController characterController;
     public CapsuleCollider playerCollider;
 
+    public Vector3 playerSpawn;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
         offset = new Vector3(0, 0.5f, 0);
         player = GetComponent<Player>();
         runSpeed = runSpeedMultiplier*walkSpeed;
+        playerSpawn = transform.position;
     }
 
     void Update()
@@ -198,7 +201,9 @@ public class PlayerController : MonoBehaviour
     public void respawn() {
         player.setHunger(player.maxHunger);
         player.setHealth(player.maxHealth);
-        transform.position = new Vector3(1, 1, 1);
+        characterController.enabled = false;
+        transform.position = playerSpawn;
+        characterController.enabled = true;
         player.dead = false;
     }
 }
