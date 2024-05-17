@@ -40,6 +40,8 @@ public class Interact : MonoBehaviour
 
     public GameObject nest;
 
+    private ShadowMonster shadowScript;
+
     void Start() {
         // crosshairCurrentSize = crosshair.localScale;
         crosshairGoalSizeSmall = crosshair.localScale;
@@ -83,6 +85,7 @@ public class Interact : MonoBehaviour
                     lookTimer += 1.5f * Time.deltaTime;
                     if (lookTimer >= 4f){
                         //freeze
+                        lookTimer = 0;
                         StartCoroutine(affectMonster(hitObject));
                     }
                 }
@@ -215,10 +218,27 @@ public class Interact : MonoBehaviour
 
     IEnumerator affectMonster(GameObject monster)
     {
-        monster.GetComponent<ShadowMonster>().chasingPlayer = false;
+        GameObject monsterAnim = monster.transform.parent.gameObject;
+        monster = monsterAnim.transform.parent.gameObject;
+        shadowScript = monster.GetComponent<ShadowMonster>();
+        print(monster.name);
+        shadowScript.setChasingPlayer(false);
         monster.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(monster.transform.position);
-        yield return new WaitForSeconds(1);
-        monster.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(nest.transform.position);
+        monsterAnim.GetComponent<Animator>().speed = 0;
+        yield return new WaitForSeconds(1.5f);
+        monsterAnim.GetComponent<Animator>().speed = 1;
         lookTimer = 0;
+        if (Random.Range(0,2) == 0)
+        {
+            monsterAnim.GetComponent<Animator>().SetBool("isDead", true);
+            print("monster dead");
+            yield return new WaitForSeconds(10f);
+            monster.SetActive(false);
+        }
+        else
+        {
+            monster.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(nest.transform.position);
+            print("monster ran away");
+        }
     }
 }

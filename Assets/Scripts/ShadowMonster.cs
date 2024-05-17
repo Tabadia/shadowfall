@@ -47,7 +47,11 @@ public class ShadowMonster : MonoBehaviour
 
     void Update()
     {
-
+        if(transform.position == nest.transform.position)
+        {
+            chasingPlayer = true;
+        }
+        
         if (navMeshAgent.velocity.magnitude > 0)
         {
             animator.SetBool("isWalking", true);
@@ -73,6 +77,8 @@ public class ShadowMonster : MonoBehaviour
                 }
             }
 
+            // Adjust movement speed based on lights in collision
+            bool lightsInCollision = false;
             // Check for lights using a larger overlap sphere
             Collider[] lightColliders = Physics.OverlapSphere(transform.position, lightDetectionRadius);
             foreach (Collider collider in lightColliders)
@@ -84,8 +90,9 @@ public class ShadowMonster : MonoBehaviour
                     {
                         StartCoroutine(FlickerLight(collider.gameObject));
                     }
+                    lightsInCollision = true;
                 }
-                if (collider.CompareTag("Player"))
+                else if (collider.CompareTag("Player"))
                 {
                     PlayRandomMonsterSound();
                 }
@@ -102,17 +109,6 @@ public class ShadowMonster : MonoBehaviour
                     {
                         lightComponent.enabled = false; // Turn off the light
                     }
-                }
-            }
-
-            // Adjust movement speed based on lights in collision
-            bool lightsInCollision = false;
-            foreach (Collider collider in colliders)
-            {
-                if (collider.CompareTag("Light"))
-                {
-                    lightsInCollision = true;
-                    break;
                 }
             }
 
@@ -193,6 +189,11 @@ public class ShadowMonster : MonoBehaviour
             return (currentTime - cooldownTime) < 10f; // 10-second cooldown
         }
         return false;
+    }
+
+    public void setChasingPlayer(bool value)
+    {
+        chasingPlayer = value;
     }
 
     void PlayRandomFlickerSound()

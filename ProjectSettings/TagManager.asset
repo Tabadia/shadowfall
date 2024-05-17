@@ -12,6 +12,7 @@ TagManager:
   - Light Obj
   - Door
   - Sand
+  - Monster
   layers:
   - Default
   - TransparentFX
