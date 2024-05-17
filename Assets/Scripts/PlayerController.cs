@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerObject;
     public float walkSpeed = 6f;
     public float runSpeedMultiplier = 1.5f;
+    public float modifiedRunMultiplier;
     public float runSpeed;
     public float jumpPower = 7f;
     public float gravity = 10f;
@@ -54,13 +55,16 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         offset = new Vector3(0, 0.5f, 0);
         player = GetComponent<Player>();
-        runSpeed = runSpeedMultiplier*walkSpeed;
+        
         playerSpawn = transform.position;
     }
 
     void Update()
     {
-        //canMove = !PauseMenu.IsPaused; 
+        //canMove = !PauseMenu.IsPaused; <-- BAD CODE DO NOT EVER DO THIS
+        print(player.attributes[0].value.ModifiedValue);
+        modifiedRunMultiplier =  (10* runSpeedMultiplier + player.attributes[0].value.ModifiedValue)/10;
+        runSpeed = modifiedRunMultiplier * walkSpeed;
 
 
         isMoving = characterController.velocity != Vector3.zero;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13eda454b3af404297530b88b606256, type: 3}
   m_Name: Boots
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 69fbab0d7210d66458c9fdb32006b842, type: 3}
+  uiDisplay: {fileID: 21300000, guid: d38f75dabf4f08b41b13f51ee6101209, type: 3}
   stackable: 0
   type: 4
   description: 
