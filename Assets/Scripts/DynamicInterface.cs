@@ -25,6 +25,7 @@ public class DynamicInterface : UserInterface
             AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
             AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
             AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(obj); });
+            AddEvent(obj, EventTriggerType.PointerDown, delegate { OnPointerDown(obj); });
 
             inventory.GetSpaces[i].spaceDisplay = obj;
 
