@@ -51,7 +51,7 @@ MonoBehaviour:
   stoppingDistanceOffset: 0.5
   lightDetectionRadius: 5
   flickerDuration: 0.05
-  flickerAudioSource: {fileID: 0}
+  flickerAudioSource: {fileID: 8011632704491474501}
   flickerSounds:
   - {fileID: 8300000, guid: 111ba419903e7b449ad202350065b38a, type: 3}
   - {fileID: 8300000, guid: bc175fe3687610445b0d65671e2ad2b7, type: 3}
@@ -72,6 +72,8 @@ MonoBehaviour:
   nest: {fileID: 0}
   childMonster: {fileID: 2760033651303240396}
   chasingPlayer: 1
+  earRing: {fileID: 8300000, guid: e36c1468cfce20e4da1b5f10a5c02eee, type: 3}
+  wack: {fileID: 8300000, guid: 4911397e848fea04c88d2919c79b2bce, type: 3}
 --- !u!195 &2995640429402622700
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -30,6 +30,9 @@ public class ShadowMonster : MonoBehaviour
     public bool chasingPlayer = true;
     private Animator animator;
 
+    public AudioClip earRing;
+    public AudioClip wack;
+
     void Start()
     {
         nest = GameObject.FindGameObjectWithTag("nest");
@@ -134,6 +137,8 @@ public class ShadowMonster : MonoBehaviour
             {
                 playerScript.setHealth(playerScript.currentHealth - damageAmount);
                 lastDamageTime = Time.time;
+                flickerAudioSource.PlayOneShot(wack);
+                //StartCoroutine(FadeRing());
             }
         }
     }
@@ -233,5 +238,46 @@ public class ShadowMonster : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, turnOffLightsRadius);
+    }
+
+    IEnumerator FadeRing()
+    {
+        // Fade in
+        float fadeDuration = 0.5f; // Duration of the fade in seconds
+        float startVolume = 0f; // Starting volume of the audio source
+        float targetVolume = 1f; // Target volume of the audio source
+
+        float currentTime = 0f; // Current time during the fade
+        while (currentTime < fadeDuration)
+        {
+            currentTime += Time.deltaTime;
+            float newVolume = Mathf.Lerp(startVolume, targetVolume, currentTime / fadeDuration);
+            flickerAudioSource.volume = newVolume;
+            yield return null;
+        }
+
+        // Play the audio source at full volume
+        flickerAudioSource.volume = targetVolume;
+
+        // Wait for the audio clip to finish playing
+        yield return new WaitForSeconds(flickerAudioSource.clip.length);
+
+        // Fade out
+        fadeDuration = 2f; // Duration of the fade in seconds
+        startVolume = flickerAudioSource.volume; // Starting volume of the audio source
+        targetVolume = 0f; // Target volume of the audio source
+
+        currentTime = 0f; // Reset the current time
+        while (currentTime < fadeDuration)
+        {
+            currentTime += Time.deltaTime;
+            float newVolume = Mathf.Lerp(startVolume, targetVolume, currentTime / fadeDuration);
+            flickerAudioSource.volume = newVolume;
+            yield return null;
+        }
+
+        // Stop the audio source and reset the volume
+        flickerAudioSource.Stop();
+        flickerAudioSource.volume = startVolume;
     }
 }
