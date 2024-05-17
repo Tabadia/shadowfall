@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //canMove = !PauseMenu.IsPaused; <-- BAD CODE DO NOT EVER DO THIS
-        print(player.attributes[0].value.ModifiedValue);
+        //print(player.attributes[0].value.ModifiedValue);
         modifiedRunMultiplier =  (10* runSpeedMultiplier + player.attributes[0].value.ModifiedValue)/10;
         runSpeed = modifiedRunMultiplier * walkSpeed;
 

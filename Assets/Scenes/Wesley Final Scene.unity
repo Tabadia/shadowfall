@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 3614.0903, g: 2007.1311, b: 726.45807, a: 1}
+  m_IndirectSpecularColor: {r: 3616.026, g: 2007.6956, b: 726.419, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -881,6 +881,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2081404290277305047, guid: fe9ddae0694c6784391c166992c2b5ff, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2088349886564959358, guid: fe9ddae0694c6784391c166992c2b5ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -32.56388
@@ -923,7 +927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5221026561237239100, guid: fe9ddae0694c6784391c166992c2b5ff, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6645483652103989907, guid: fe9ddae0694c6784391c166992c2b5ff, type: 3}
       propertyPath: m_Name
@@ -933,11 +937,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6818063103118803284, guid: fe9ddae0694c6784391c166992c2b5ff, type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe9ddae0694c6784391c166992c2b5ff, type: 3}
+--- !u!95 &129884426 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2081404290277305047, guid: fe9ddae0694c6784391c166992c2b5ff, type: 3}
+  m_PrefabInstance: {fileID: 129884425}
+  m_PrefabAsset: {fileID: 0}
 --- !u!33 &131965672 stripped
 MeshFilter:
   m_CorrespondingSourceObject: {fileID: 4053853561341573329, guid: 8901828d368c0354faba987a94824146, type: 3}
@@ -2453,11 +2466,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 44208278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &343154600 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6818063103118803284, guid: fe9ddae0694c6784391c166992c2b5ff, type: 3}
-  m_PrefabInstance: {fileID: 129884425}
-  m_PrefabAsset: {fileID: 0}
 --- !u!33 &346895950 stripped
 MeshFilter:
   m_CorrespondingSourceObject: {fileID: 6700546089408241715, guid: 8901828d368c0354faba987a94824146, type: 3}
@@ -15090,8 +15098,8 @@ MonoBehaviour:
   hoverVolume: 1
   pressClip: {fileID: 8300000, guid: 2aa23f9ecc129874faab310408050797, type: 3}
   pressVolume: 1
-  nextSceneDelay: 0.3
-  transition: {fileID: 343154600}
+  nextSceneDelay: 1
+  transition: {fileID: 129884426}
 --- !u!114 &1763833687
 MonoBehaviour:
   m_ObjectHideFlags: 0

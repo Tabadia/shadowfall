@@ -37,15 +37,18 @@ public class MainMenu : MonoBehaviour
     {
         transition.SetTrigger("Start");
 
-
+        yield return new WaitForSecondsRealtime(nextSceneDelay);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
 
+        
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
             yield return null;
-        }    
+        }
+
+        
     }
 
    
