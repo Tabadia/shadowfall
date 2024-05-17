@@ -26,10 +26,13 @@ public class ShadowMonster : MonoBehaviour
     public float monsterSoundCooldown = 5f; // Cooldown time between monster sounds
     private float lastDamageTime = 0f; // Timestamp of the last damage
     public GameObject nest;
+    public GameObject childMonster;
     public bool chasingPlayer = true;
+    private Animator animator;
 
     void Start()
     {
+        animator = childMonster.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent = GetComponent<NavMeshAgent>();
         if (player == null)
@@ -44,6 +47,16 @@ public class ShadowMonster : MonoBehaviour
 
     void Update()
     {
+
+        if (navMeshAgent.velocity.magnitude > 0)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+
         if (player != null && chasingPlayer)
         {
             navMeshAgent.SetDestination(player.transform.position);
@@ -118,6 +131,7 @@ public class ShadowMonster : MonoBehaviour
     {
         if (Time.time - lastDamageTime >= damageCooldown)
         {
+            animator.SetTrigger("Attack");
             Player playerScript = player.GetComponent<Player>();
             if (playerScript != null)
             {
