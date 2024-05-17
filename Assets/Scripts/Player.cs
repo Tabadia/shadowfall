@@ -35,12 +35,15 @@ public class Player : MonoBehaviour
         inventory.Container.Spaces = new InventorySpace[25];
     }
 
-    void Start()
+    void Awake()
     {
         healthHunger.SetMaxHunger(maxHunger);
         healthHunger.SetMaxHealth(maxHealth);
         currentHunger = maxHunger;
         currentHealth = maxHealth;
+
+        inventory.Load();
+        equipment.Load();
 
         for (int i = 0; i < attributes.Length; i++)
         {
@@ -148,6 +151,9 @@ public class Player : MonoBehaviour
             if (currentHunger <= 0)
                 currentHealth = Mathf.Max(0, currentHealth - healthLostFromHungerRate * Time.deltaTime);
             healthHunger.SetHealth(currentHealth);
+
+        inventory.Save();
+        equipment.Save();
     }
 
 

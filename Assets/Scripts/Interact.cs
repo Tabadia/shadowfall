@@ -17,6 +17,7 @@ public class Interact : MonoBehaviour
     public string[] interactableObjects = { "SodaPop", "JarredPickles"};
     public TextMeshProUGUI interactText;
     public RectTransform crosshair;
+    public ObjectSaveManager objSave;
 
     // public GameObject wall;
     public GameObject[] planks;
@@ -154,7 +155,7 @@ public class Interact : MonoBehaviour
                     //item.item.obj = Instantiate(sensedObject);
                     if (player.inventory.AddItem(item.item, 1))
                     {
-                        Destroy(sensedObject);
+                        objSave.RemoveObject(sensedObject);
                         //item.item.obj.SetActive(false);
                     }
                 }
