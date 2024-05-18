@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 3609.4429, g: 2003.8304, b: 724.5311, a: 1}
+  m_IndirectSpecularColor: {r: 3617.2407, g: 2007.1553, b: 724.7697, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -30650,7 +30650,7 @@ MonoBehaviour:
   shadowMonsterPrefab: {fileID: 6243280745142173639, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
   night: {fileID: 1695840490}
   spawnRate: 17
-  spawnRadius: 150
+  spawnRadius: 75
 --- !u!1001 &1752421279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41119,7 +41119,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6531938079285218561, guid: e163add165247eb45932e866194ff6ca, type: 3}
       propertyPath: runSpeed
-      value: 8
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531938079285218561, guid: e163add165247eb45932e866194ff6ca, type: 3}
+      propertyPath: walkSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6531938079285218561, guid: e163add165247eb45932e866194ff6ca, type: 3}
       propertyPath: transition
