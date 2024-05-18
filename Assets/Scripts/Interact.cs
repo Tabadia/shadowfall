@@ -31,6 +31,8 @@ public class Interact : MonoBehaviour
 
     public AudioSource lightSwitchAudio;
     public AudioClip[] switchSounds;
+
+    public AudioSource pickupAudio;
     // private float duration = 10;
     // public float time = 0;    
 
@@ -146,6 +148,7 @@ public class Interact : MonoBehaviour
             }
             if (sensedObject.tag == "GroundItem")
             {
+                pickupAudio.Play();
                 InteractUI(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
