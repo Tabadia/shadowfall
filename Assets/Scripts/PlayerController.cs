@@ -2,10 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+using UnityEngine.SceneManagement;
+
+
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
+
 {
+    public Animator transition;
     public GameObject playerCamera;
     public GameObject playerObject;
     public float walkSpeed = 6f;
@@ -151,7 +155,9 @@ public class PlayerController : MonoBehaviour
         
         //dying
         if(player.dead) {
-            respawn();
+            StartCoroutine(respawn());
+            
+
         }
     }
 
@@ -203,12 +209,27 @@ public class PlayerController : MonoBehaviour
             walkSpeed /= 2;
     }
 
-    public void respawn() {
-        player.setHunger(player.maxHunger);
-        player.setHealth(player.maxHealth);
-        characterController.enabled = false;
-        transform.position = playerSpawn;
-        characterController.enabled = true;
-        player.dead = false;
+    IEnumerator respawn() {
+
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSecondsRealtime(1.0f);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Main Menu");
+
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+
+        //player.setHunger(player.maxHunger);
+        //player.setHealth(player.maxHealth);
+        //characterController.enabled = false;
+        //transform.position = playerSpawn;
+        //characterController.enabled = true;
+        //player.dead = false;
     }
 }

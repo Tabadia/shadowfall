@@ -34,10 +34,10 @@ public class ScoreAdder : MonoBehaviour
     public void Update()
     {
         currentTime = thetimer.GetComponent<TimerHolder>().timer;
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            ScoreTime();
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+           // ScoreTime();
+       // }
     }
 
 
