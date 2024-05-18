@@ -22,7 +22,10 @@ public class SunlightLerper : MonoBehaviour
 
     void Start()
     {
-        isLerping = false; 
+        isLerping = false;
+        Cursor.lockState = CursorLockMode.None;
+        PlayerController.canMove = false;
+        Cursor.visible = true;
         menAnim = GetComponent<MenuAnimation>();
         Time.timeScale = 1f;
         currentTransition = 1;
