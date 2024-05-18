@@ -23,7 +23,8 @@ public class SunDetection : MonoBehaviour
     
     public float sunDamage = 0.05f;
 
-    public float burnSpeed = 0.01f;
+    public float burnSpeedBase = 1.0f;
+    public float burnSpeed;
     private float sunTime = 0.0f;
 
     private Vector3 topPos;
@@ -56,6 +57,8 @@ public class SunDetection : MonoBehaviour
     }
 
     void Update() {
+
+        burnSpeed = burnSpeedBase * ((100f - (player.attributes[1].value.ModifiedValue * 5.0f)) / 100.0f);
         sun.color = new Color32(255, (byte)(255 * (1 - sun.fillAmount)), (byte)(255 * (1 - sun.fillAmount)), 255);
         sunDir = directionalLight.transform.forward;
         lightAngle = directionalLight.transform.forward * -1;
