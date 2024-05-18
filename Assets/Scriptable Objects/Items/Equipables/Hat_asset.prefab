@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 7530063679742086148}
   - component: {fileID: 2495889700233425994}
   - component: {fileID: 2366892321907481604}
+  - component: {fileID: 300781622414233529}
   m_Layer: 11
-  m_Name: CowboyHat 1
+  m_Name: Hat_asset
   m_TagString: GroundItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,3 +110,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 20ca5998b1146734795a5093ca33a59a, type: 3}
+--- !u!114 &300781622414233529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5740512908753415815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd129bf4ffd10184a91835ad7f56dabc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    Name: Hat
+    Id: 3
+    buffs:
+    - attribute: 1
+      value: 5
+      min: 5
+      max: 5
