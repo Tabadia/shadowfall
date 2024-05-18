@@ -44,6 +44,7 @@ public class RotateDirectionalLight : MonoBehaviour
             RotateUp(sunLight, currentSunRotation);
             if(currentSunRotation.x == 45f){
                 rotationSpeed *= 2;
+                print("doubled");
             }
             if(currentSunRotation.x == 90f){
                 timesRotated++;
