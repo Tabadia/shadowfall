@@ -14,7 +14,7 @@ public class Interact : MonoBehaviour
     public float playerActiveDistance;
     public GameObject sensedObject = null;
     public Player player;
-    public string[] interactableObjects = { "SodaPop", "JarredPickles"};
+    public string[] interactableObjects = { "EndingObject", "JarredPickles"};
     public TextMeshProUGUI interactText;
     public RectTransform crosshair;
     public ObjectSaveManager objSave;
@@ -31,6 +31,7 @@ public class Interact : MonoBehaviour
 
     public AudioSource lightSwitchAudio;
     public AudioClip[] switchSounds;
+    public Animator transition;
 
     public AudioSource pickupAudio;
     // private float duration = 10;
@@ -44,6 +45,8 @@ public class Interact : MonoBehaviour
     public GameObject nest;
 
     private ShadowMonster shadowScript;
+
+    public CanvasGroup endingScreen;
 
     void Start() {
         // crosshairCurrentSize = crosshair.localScale;
@@ -110,7 +113,18 @@ public class Interact : MonoBehaviour
                     StartCoroutine(placeBoards(sensedObject));
                 }  
             }
-            if(sensedObject.tag == "Door"){
+            if (sensedObject.tag == "EndingObject")
+            {
+
+                print("ENDING OBJECT");
+                InteractUI(true);
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+
+                    StartCoroutine(InteractEnding());
+                }
+            }
+            if (sensedObject.tag == "Door"){
                 InteractUI(true);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -188,6 +202,37 @@ public class Interact : MonoBehaviour
         crosshair.anchoredPosition = crosshairGoalPosSmall;
         crosshair.localScale = crosshairGoalSizeSmall;
         interactText.enabled = false;
+    }
+
+
+
+    IEnumerator InteractEnding()
+    {
+
+        endingScreen.alpha = 1;
+        endingScreen.interactable = true;
+        endingScreen.blocksRaycasts = true;
+        yield return new WaitForSeconds(3f);
+
+
+        GameObject scoreAdder = GameObject.Find("ScoreAdder");
+
+        scoreAdder.GetComponent<ScoreAdder>().ScoreTime();
+
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSecondsRealtime(1f);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Main Menu");
+
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+
     }
 
     /*void Interact_    () 
