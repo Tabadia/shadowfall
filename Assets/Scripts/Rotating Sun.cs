@@ -101,11 +101,13 @@ public class RotateDirectionalLight : MonoBehaviour
             RotateUp(moonLight, currentMoonRotation);
             if(currentMoonRotation.x == 90f){
                 timesRotated++;
+                rotationSpeed *= 2;
             }
         }
         else if (timesRotated == 3){
             RotateDown(moonLight, currentMoonRotation);
             if(currentMoonRotation.x >= 190f){
+                rotationSpeed /= 2;
                 timesRotated++;
                 moonLight.SetActive(false);
                 moonVol.SetActive(false);
