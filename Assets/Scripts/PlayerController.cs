@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
         float curSpeedY = canMove ? (Input.GetAxis("Vertical") > 0 ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        moveDirection = Vector3.ClampMagnitude(moveDirection, runSpeed);
   
         // Jumping
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
