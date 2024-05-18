@@ -80,7 +80,7 @@ Material:
     - _RenderQueueType: 4
     - _Shadow_Alpha_Strength: 1
     - _Shadow_Strength: 1
-    - _Shadow_Tint_Strength: 0.089
+    - _Shadow_Tint_Strength: 0.866
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 1

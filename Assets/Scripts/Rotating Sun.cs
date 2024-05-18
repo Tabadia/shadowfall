@@ -16,6 +16,10 @@ public class RotateDirectionalLight : MonoBehaviour
 
     public bool spedUp = false;
 
+    public GameObject flashlight;
+    public GameObject dayCustomPass;
+    public GameObject nightCustomPass;
+
     public int timesRotated = 0;
     void Start()
     {
@@ -36,6 +40,7 @@ public class RotateDirectionalLight : MonoBehaviour
                 obj.SetActive(false);
             }
         }
+        
     }
     void Update()
     {
@@ -60,12 +65,15 @@ public class RotateDirectionalLight : MonoBehaviour
                 spedUp = false;
             }
             if(currentSunRotation.x >= 190f){
+                print("night!");
                 timesRotated++;
                 moonLight.SetActive(true);
                 moonVol.SetActive(true);
                 sunLight.SetActive(false);
                 sunVol.SetActive(false);
                 sunFog.SetActive(false);
+                dayCustomPass.SetActive(false);
+                nightCustomPass.SetActive(true);
                 GameObject[] lightObjects = GameObject.FindGameObjectsWithTag("Light Obj");
                 foreach (GameObject obj in lightObjects)
                 {
@@ -74,6 +82,9 @@ public class RotateDirectionalLight : MonoBehaviour
                     {
                         lightComponent.intensity /= 75;
                     }
+                }
+                if(!flashlight.activeInHierarchy){
+                    flashlight.GetComponent<Light>().intensity /= 75;
                 }
             }
         }
@@ -92,6 +103,8 @@ public class RotateDirectionalLight : MonoBehaviour
                 sunLight.SetActive(true);
                 sunVol.SetActive(true);
                 sunFog.SetActive(true);
+                nightCustomPass.SetActive(false);
+                dayCustomPass.SetActive(true);
                 GameObject[] lightObjects = GameObject.FindGameObjectsWithTag("Light Obj");
                 foreach (GameObject obj in lightObjects)
                 {
@@ -103,6 +116,9 @@ public class RotateDirectionalLight : MonoBehaviour
                     if(obj.name == "Flashlight"){
                         obj.SetActive(false);
                     }
+                }
+                if(!flashlight.activeInHierarchy){
+                    flashlight.GetComponent<Light>().intensity *= 75;
                 }
             }
         }
