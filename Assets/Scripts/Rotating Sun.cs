@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
+using System.Collections;
 
 
 public class RotateDirectionalLight : MonoBehaviour
@@ -19,6 +20,11 @@ public class RotateDirectionalLight : MonoBehaviour
     public GameObject flashlight;
     public GameObject dayCustomPass;
     public GameObject nightCustomPass;
+
+    public AudioSource logAudio;
+    public AudioClip[] logClips;
+    public AudioClip radioClip;
+    public int logIndex = 0;
 
     public int timesRotated = 0;
     void Start()
@@ -40,10 +46,11 @@ public class RotateDirectionalLight : MonoBehaviour
                 obj.SetActive(false);
             }
         }
-        
+        StartCoroutine(PlayRadio(0));
     }
     void Update()
     {
+        
         currentMoonRotation = moonLight.transform.rotation.eulerAngles;
         currentSunRotation = sunLight.transform.rotation.eulerAngles;
 
@@ -120,6 +127,7 @@ public class RotateDirectionalLight : MonoBehaviour
                 if(!flashlight.activeInHierarchy){
                     flashlight.GetComponent<Light>().intensity *= 75;
                 }
+                StartCoroutine(PlayRadio(1));
             }
         }
         else {
@@ -143,5 +151,14 @@ public class RotateDirectionalLight : MonoBehaviour
 
         // Apply the new rotation
         light.transform.rotation = Quaternion.Euler(currentRotation);
+    }
+
+    IEnumerator PlayRadio(int index){
+        yield return new WaitForSeconds(10);
+        logAudio.clip = radioClip;
+        logAudio.Play();
+        yield return new WaitUntil(() => !logAudio.isPlaying);
+        logAudio.clip = logClips[index];
+        logAudio.Play();
     }
 }
