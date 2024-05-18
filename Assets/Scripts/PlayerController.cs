@@ -57,6 +57,10 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        PlayerController.canMove = true;
+
         offset = new Vector3(0, 0.5f, 0);
         player = GetComponent<Player>();
         
