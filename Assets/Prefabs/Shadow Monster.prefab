@@ -63,8 +63,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 422230775f3079244a90d59c95528e82, type: 3}
   - {fileID: 8300000, guid: 179e9065973055d4e8ce7c5e1f15f2e3, type: 3}
   - {fileID: 8300000, guid: 6a9f85da7e0fbac4ebfc668f1a61e6c7, type: 3}
-  normalSpeed: 3
-  slowSpeed: 1.5
+  normalSpeed: 5
+  slowSpeed: 2
   turnOffLightsRadius: 3
   damageAmount: 10
   damageCooldown: 2
