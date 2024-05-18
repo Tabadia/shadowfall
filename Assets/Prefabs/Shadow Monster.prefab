@@ -280,6 +280,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.404388
       objectReference: {fileID: 0}
+    - target: {fileID: -7029948723529949830, guid: 13bf04bfa7c7ed747b81c1d0448af90c, type: 3}
+      propertyPath: m_TagString
+      value: Monster
+      objectReference: {fileID: 0}
     - target: {fileID: -6784893441183110723, guid: 13bf04bfa7c7ed747b81c1d0448af90c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 14.558462

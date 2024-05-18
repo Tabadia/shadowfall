@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4175561403131865435}
   - component: {fileID: 914157859000793674}
   - component: {fileID: 637826090982785189}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Umbrella_asset
   m_TagString: GroundItem
   m_Icon: {fileID: 0}

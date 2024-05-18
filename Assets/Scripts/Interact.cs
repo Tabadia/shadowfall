@@ -77,6 +77,7 @@ public class Interact : MonoBehaviour
             if (Physics.Raycast(flashlight.transform.position, flashlight.transform.forward, out hit2, flashlight.GetComponent<Light>().range))
             {
                 GameObject hitObject = hit2.transform.gameObject;
+                print(hitObject.tag);
                 if (hitObject.CompareTag("Monster"))
                 {
                     Vector3 flashlightDirection = flashlight.transform.forward;

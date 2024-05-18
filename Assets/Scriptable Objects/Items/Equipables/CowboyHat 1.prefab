@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7530063679742086148}
   - component: {fileID: 2495889700233425994}
   - component: {fileID: 2366892321907481604}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CowboyHat 1
   m_TagString: GroundItem
   m_Icon: {fileID: 0}

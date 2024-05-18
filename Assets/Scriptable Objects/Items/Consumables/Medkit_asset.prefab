@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 8695607776681660053}
   - component: {fileID: -6133873362816356753}
   - component: {fileID: 2656410164091308409}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Medkit_asset
   m_TagString: GroundItem
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6933413466412115184}

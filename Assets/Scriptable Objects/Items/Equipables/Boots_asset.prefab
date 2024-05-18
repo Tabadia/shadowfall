@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8371235496174844609}
   - component: {fileID: 1380419200756559101}
   - component: {fileID: 2572361003564194080}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Boots_asset
   m_TagString: GroundItem
   m_Icon: {fileID: 0}
