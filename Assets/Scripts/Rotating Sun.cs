@@ -28,9 +28,10 @@ public class RotateDirectionalLight : MonoBehaviour
             HDAdditionalLightData lightComponent = obj.GetComponent<HDAdditionalLightData>();
             if (lightComponent != null)
             {
-                print(lightComponent.intensity);
                 lightComponent.intensity *= 75;
-                print(lightComponent.intensity);
+            }
+            if(obj.name == "Flashlight"){
+                obj.SetActive(false);
             }
         }
     }
@@ -41,12 +42,18 @@ public class RotateDirectionalLight : MonoBehaviour
 
         if (timesRotated == 0){
             RotateUp(sunLight, currentSunRotation);
+            if(currentSunRotation.x == 45f){
+                rotationSpeed *= 2;
+            }
             if(currentSunRotation.x == 90f){
                 timesRotated++;
             }
         }
         else if (timesRotated == 1){
             RotateDown(sunLight, currentSunRotation);
+            if(currentSunRotation.x == 135){
+                rotationSpeed /= 2;
+            }
             if(currentSunRotation.x >= 190f){
                 timesRotated++;
                 moonLight.SetActive(true);
