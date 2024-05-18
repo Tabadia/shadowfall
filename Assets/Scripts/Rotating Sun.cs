@@ -91,7 +91,9 @@ public class RotateDirectionalLight : MonoBehaviour
                     }
                 }
                 if(!flashlight.activeInHierarchy){
+                    flashlight.SetActive(true);
                     flashlight.GetComponent<Light>().intensity /= 75;
+                    flashlight.SetActive(false);
                 }
             }
         }
