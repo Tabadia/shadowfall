@@ -77,24 +77,21 @@ public class Interact : MonoBehaviour
             if (Physics.Raycast(flashlight.transform.position, flashlight.transform.forward, out hit2, flashlight.GetComponent<Light>().range))
             {
                 GameObject hitObject = hit2.transform.gameObject;
-                Vector3 flashlightDirection = flashlight.transform.forward;
-                Vector3 raycastDirection = hit2.point - flashlight.transform.position;
-                float angle = Vector3.Angle(flashlightDirection, raycastDirection);
-                if (angle < 0.17f && angle >= 0)
+                if (hitObject.CompareTag("Monster"))
                 {
-                    print("looking at guy.");
-                    lookTimer += 1.5f * Time.deltaTime;
-                    if (lookTimer >= 4f){
-                        //freeze
-                        lookTimer = 0;
-                        StartCoroutine(affectMonster(hitObject));
+                    Vector3 flashlightDirection = flashlight.transform.forward;
+                    Vector3 raycastDirection = hit2.point - flashlight.transform.position;
+                    float angle = Vector3.Angle(flashlightDirection, raycastDirection);
+                    if (angle < 0.17f && angle >= 0)
+                    {
+                        print("looking at guy!");
+                        lookTimer += 1.5f * Time.deltaTime;
+                        if (lookTimer >= 4f){
+                            lookTimer = 0;
+                            StartCoroutine(affectMonster(hitObject));
+                        }
                     }
-                }
-                // check vector angle
-
-                // if looking for certain amt of time
-                // freeze for 1s
-                // run opposite direction for 
+                } 
             }
         }
 

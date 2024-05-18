@@ -423,7 +423,7 @@ MonoBehaviour:
     m_Value: -1
   limitMax:
     m_OverrideState: 1
-    m_Value: 14
+    m_Value: 15
   curveMap:
     m_OverrideState: 1
     m_Value:

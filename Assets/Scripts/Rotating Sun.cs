@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
+
 
 public class RotateDirectionalLight : MonoBehaviour
 {
@@ -13,7 +15,25 @@ public class RotateDirectionalLight : MonoBehaviour
     public GameObject sunFog;
 
     public int timesRotated = 0;
-
+    void Start()
+    {
+        sunLight.SetActive(true);
+        sunVol.SetActive(true);
+        moonLight.SetActive(false);
+        moonVol.SetActive(false);
+        sunFog.SetActive(true);
+        GameObject[] lightObjects = GameObject.FindGameObjectsWithTag("Light Obj");
+        foreach (GameObject obj in lightObjects)
+        {
+            HDAdditionalLightData lightComponent = obj.GetComponent<HDAdditionalLightData>();
+            if (lightComponent != null)
+            {
+                print(lightComponent.intensity);
+                lightComponent.intensity *= 75;
+                print(lightComponent.intensity);
+            }
+        }
+    }
     void Update()
     {
         currentMoonRotation = moonLight.transform.rotation.eulerAngles;
@@ -34,6 +54,15 @@ public class RotateDirectionalLight : MonoBehaviour
                 sunLight.SetActive(false);
                 sunVol.SetActive(false);
                 sunFog.SetActive(false);
+                GameObject[] lightObjects = GameObject.FindGameObjectsWithTag("Light Obj");
+                foreach (GameObject obj in lightObjects)
+                {
+                    Light lightComponent = obj.GetComponent<Light>();
+                    if (lightComponent != null)
+                    {
+                        lightComponent.intensity /= 75;
+                    }
+                }
             }
         }
         else if (timesRotated == 2){
@@ -51,6 +80,18 @@ public class RotateDirectionalLight : MonoBehaviour
                 sunLight.SetActive(true);
                 sunVol.SetActive(true);
                 sunFog.SetActive(true);
+                GameObject[] lightObjects = GameObject.FindGameObjectsWithTag("Light Obj");
+                foreach (GameObject obj in lightObjects)
+                {
+                    Light lightComponent = obj.GetComponent<Light>();
+                    if (lightComponent != null)
+                    {
+                        lightComponent.intensity *= 75;
+                    }
+                    if(obj.name == "Flashlight"){
+                        obj.SetActive(false);
+                    }
+                }
             }
         }
         else {
