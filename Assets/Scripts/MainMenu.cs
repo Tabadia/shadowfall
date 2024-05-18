@@ -19,7 +19,6 @@ public class MainMenu : MonoBehaviour
     public Animator transition;
 
 
-
     public void Hover()
     {
         audioSource.PlayOneShot(hoverClip, hoverVolume);
@@ -31,6 +30,29 @@ public class MainMenu : MonoBehaviour
         audioSource.PlayOneShot(pressClip, pressVolume);
 
     }
+
+
+    public void Run(string sceneName)
+    {
+        PlayerPrefs.DeleteKey("RemovedObjects");
+        PlayerPrefs.SetInt("NewGame", 1);
+
+
+        StartCoroutine(ChangeSceneDelay(sceneName));
+        audioSource.PlayOneShot(pressClip, pressVolume);
+
+    }
+
+
+    public void Load(string sceneName)
+    {
+        StartCoroutine(ChangeSceneDelay(sceneName));
+        audioSource.PlayOneShot(pressClip, pressVolume);
+
+    }
+
+
+
     public void Quit()
     {
         audioSource.PlayOneShot(pressClip, pressVolume);

@@ -42,8 +42,19 @@ public class Player : MonoBehaviour
         currentHunger = maxHunger;
         currentHealth = maxHealth;
 
+
+
         inventory.Load();
         equipment.Load();
+
+
+        if (PlayerPrefs.GetInt("NewGame") == 1)
+        {
+            inventory.Clear();
+            equipment.Clear();
+            print("Cleared!");
+            PlayerPrefs.SetInt("NewGame", 0);
+        }
 
         for (int i = 0; i < attributes.Length; i++)
         {
