@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 3620.0005, g: 2009.4651, b: 726.5079, a: 1}
+  m_IndirectSpecularColor: {r: 3619.1118, g: 2010.5237, b: 729.62213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6610,12 +6610,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d743586755efb154ea91e8acd80ca620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 1
+  rotationSpeed: 2
   sunLight: {fileID: 705507993}
   moonLight: {fileID: 1695840490}
   sunVol: {fileID: 1391449597}
   moonVol: {fileID: 1141197218}
   sunFog: {fileID: 1453543874}
+  spedUp: 0
   timesRotated: 0
 --- !u!1001 &976527971
 PrefabInstance:
@@ -14394,8 +14395,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shadowMonsterPrefab: {fileID: 6243280745142173639, guid: 760b6b44f22268e4f910bbbcf8731cf1, type: 3}
   night: {fileID: 1695840490}
-  spawnRate: 15
-  spawnRadius: 5
+  spawnRate: 17
+  spawnRadius: 150
 --- !u!33 &1756862001 stripped
 MeshFilter:
   m_CorrespondingSourceObject: {fileID: 2878269420228473376, guid: 8901828d368c0354faba987a94824146, type: 3}
