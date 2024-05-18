@@ -14,6 +14,8 @@ public class RotateDirectionalLight : MonoBehaviour
     public GameObject moonVol;
     public GameObject sunFog;
 
+    public bool spedUp = false;
+
     public int timesRotated = 0;
     void Start()
     {
@@ -42,8 +44,9 @@ public class RotateDirectionalLight : MonoBehaviour
 
         if (timesRotated == 0){
             RotateUp(sunLight, currentSunRotation);
-            if(currentSunRotation.x == 45f){
+            if(currentSunRotation.x >= 45f & !spedUp){
                 rotationSpeed *= 2;
+                spedUp = true;
                 print("doubled");
             }
             if(currentSunRotation.x == 90f){
@@ -52,8 +55,9 @@ public class RotateDirectionalLight : MonoBehaviour
         }
         else if (timesRotated == 1){
             RotateDown(sunLight, currentSunRotation);
-            if(currentSunRotation.x == 135){
+            if(currentSunRotation.x >= 135 & spedUp){
                 rotationSpeed /= 2;
+                spedUp = false;
             }
             if(currentSunRotation.x >= 190f){
                 timesRotated++;

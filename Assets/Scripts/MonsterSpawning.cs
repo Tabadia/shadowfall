@@ -9,6 +9,12 @@ public class MonsterSpawning : MonoBehaviour
     public float spawnRate = 5f; // The rate at which monsters are spawned (in seconds)
     private List<GameObject> spawnedMonsters = new List<GameObject>();
     private Coroutine spawnCoroutine;
+    public float spawnRadius = 5.0f;
+    private GameObject player;
+
+    void Start(){
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     void Update()
     {
@@ -35,7 +41,9 @@ public class MonsterSpawning : MonoBehaviour
         while (true)
         {
             // Spawn a monster at the position of the nest GameObject
-            GameObject monster = Instantiate(shadowMonsterPrefab, transform.position, Quaternion.identity);
+            Vector3 spawnPosition = player.transform.position + Random.insideUnitSphere * spawnRadius;
+            spawnPosition.y = transform.position.y;
+            GameObject monster = Instantiate(shadowMonsterPrefab, spawnPosition, Quaternion.identity);
             spawnedMonsters.Add(monster);
             yield return new WaitForSeconds(spawnRate);
         }
