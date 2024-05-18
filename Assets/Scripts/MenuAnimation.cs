@@ -10,6 +10,7 @@ public class MenuAnimation : MonoBehaviour
     public TMP_Text textObject1;
     public TMP_Text textObject2;
     public TMP_Text textObject3;
+    public TMP_Text textObject4;
     public CanvasGroup canvasGroupToDisable;
 
     public float consoleCharPerSecond = 10.0f;
@@ -26,6 +27,7 @@ public class MenuAnimation : MonoBehaviour
     private string textObject1OriginalText;
     private string textObject2OriginalText;
     private string textObject3OriginalText;
+    private string textObject4OriginalText;
     private string consoleOriginalText;
 
     void Start()
@@ -39,10 +41,12 @@ public class MenuAnimation : MonoBehaviour
         textObject1OriginalText = textObject1.text;
         textObject2OriginalText = textObject2.text;
         textObject3OriginalText = textObject3.text;
+        textObject4OriginalText = textObject4.text;
         consoleOriginalText = consoleText.text;
         textObject1.text = "";
         textObject2.text = "";
         textObject3.text = "";
+        textObject4.text = "";
         consoleText.text = "";
 
         // Start the menu animation when active becomes true
@@ -104,6 +108,7 @@ public class MenuAnimation : MonoBehaviour
         StartCoroutine(AnimateText(textObject1, textObject1OriginalText ));
         StartCoroutine(AnimateText(textObject2, textObject2OriginalText ));
         StartCoroutine(AnimateText(textObject3, textObject3OriginalText));
+        StartCoroutine(AnimateText(textObject4, textObject4OriginalText));
 
         // Wait for all animations to finish
         yield return null;

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System;
 
 public class MainMenu : MonoBehaviour
 {
@@ -14,7 +15,10 @@ public class MainMenu : MonoBehaviour
     
     [SerializeField] private float nextSceneDelay = 0.3f;
 
+
     public Animator transition;
+
+
 
     public void Hover()
     {
@@ -33,6 +37,10 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
 
     }
+
+
+
+
     IEnumerator ChangeSceneDelay(string sceneName)
     {
         transition.SetTrigger("Start");
