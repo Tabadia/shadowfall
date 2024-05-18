@@ -127,7 +127,8 @@ public class RotateDirectionalLight : MonoBehaviour
                 if(!flashlight.activeInHierarchy){
                     flashlight.GetComponent<Light>().intensity *= 75;
                 }
-                StartCoroutine(PlayRadio(1));
+                logIndex++;
+                StartCoroutine(PlayRadio(logIndex));
             }
         }
         else {
